@@ -18,7 +18,9 @@
   "homepage": "https://github.com/CharlieDeltaZA/Matcha#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongodb": "^3.3.4"
+    "jade": "^1.11.0",
+    "mongodb": "^3.3.4",
+    "pug": "^2.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.1"
