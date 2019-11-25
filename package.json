@@ -1,0 +1,23 @@
+{
+  "name": "matcha",
+  "version": "1.0.0",
+  "description": "The dating site that could",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CharlieDeltaZA/Matcha.git"
+  },
+  "author": "Cameron Shaun Taljaard, Calvin Diogo, Jeff Limbada, Ben Webb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CharlieDeltaZA/Matcha/issues"
+  },
+  "homepage": "https://github.com/CharlieDeltaZA/Matcha#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.3.4"
+  }
+}
