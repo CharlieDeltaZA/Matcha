@@ -6,7 +6,7 @@ app.set('view engine', 'pug');
 
 app.get("/", (req, res) => {
     res.render('index', {
-        title:'Articles',
+        title:'Homepage',
     });
 });
 
@@ -15,8 +15,8 @@ app.get("/goodbye", (req, res) => {
 });
 
 app.get('*', function(req, res) {
-    res.render('404', {
-        title:'404',
+    res.render('error', {
+        title:'error',
     });
 });
 
