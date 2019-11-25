@@ -1,7 +1,8 @@
 body {
-    background-image: url(../../images/404.png);
+    background-image: url("404.png");
     background-color: #c25a5a;
-  }
+}
+
 p {
     color: yellow;
 }

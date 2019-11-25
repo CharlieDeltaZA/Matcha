@@ -3,6 +3,8 @@ const PORT = 8080;
 const app = express();
 
 app.set('view engine', 'pug');
+app.use(express.static('styles'));
+app.use(express.static('images'));
 
 app.get("/", (req, res) => {
     res.render('index', {
