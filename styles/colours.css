@@ -1,17 +1,33 @@
 /* https://colorhunt.co/palette/138147 */
 
-.matcha-blue {
+.mbg-blue {
     background-color: #1cb3c8;
 }
 
-.matcha-grey {
+.mbg-grey {
     background-color: #738598;
 }
 
-.matcha-white {
+.mbg-white {
     background-color: #dfe2e2;
 }
 
-.matcha-purple {
+.mbg-purple {
     background-color: #3c415e;
+}
+
+.mt-blue {
+    color: #1cb3c8;
+}
+
+.mt-grey {
+    color: #738598;
+}
+
+.mt-white {
+    color: #dfe2e2;
+}
+
+.mt-purple {
+    color: #3c415e;
 }
