@@ -24,6 +24,13 @@ html
 									label(for='password') Password
 									input#users.password(type='password' placeholder='password' name='password')
 									
+									p.text-right
+										| New User? 
+										a(href='/register') Register.
+									p.text-right
+										| Forgot Password? 
+										a(href='/forgot') Reset.
+
 									button.btn.btn-success.btn-block.btn-lg(type='submit', value='add') Login
 
 			//- SCRIPTS
