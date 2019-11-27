@@ -18,13 +18,13 @@ html
 								h1 Login
 								hr
 								form#login(name="login",action='api/login', method='POST')
-									div.form-group
-										label(for='userName') Username
-										input#users.userName(type='text' placeholder='userName' name='userName')
-									div.form-group
-										label(for='password') Password
-										input#users.password(type='password' placeholder='password' name='password')
-									button.btn.btn-success.btn-block(type='submit', value='add') Login
+									label(for='userName') Username
+									input#users.userName(type='text' placeholder='userName' name='userName')
+
+									label(for='password') Password
+									input#users.password(type='password' placeholder='password' name='password')
+									
+									button.btn.btn-success.btn-block.btn-lg(type='submit', value='add') Login
 
 			//- SCRIPTS
 		include bootstrap_js.pug

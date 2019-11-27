@@ -18,25 +18,25 @@ html
 								h1 Register
 								hr
 								form#addUser(name="adduser",action='api/register', method='POST')
-									div.form-group
-										label(for='userName') Username
-										input#users.userName(type='text' placeholder='userName' name='userName')
-									div.form-group
-										label(for='firstName') First Name
-										input#users.firstName(type='text' placeholder='firstName' name='firstName')
-									div.form-group
-										label(for='lastName') Last Name
-										input#users.lastName(type='text' placeholder='lastName' name='lastName')
-									div.form-group
-										label(for='email') Email
-										input#users.email(type='text' placeholder='email' name='email')
-									div.form-group
-										label(for='password') Password
-										input#users.password(type='password' placeholder='password' name='password')
-									div.form-group
-										label(for='confirmPassword') Confirm Password
-										input#users.confirmPassword(type='password' placeholder='confirmPassword' name='confirmPassword')
-									button.btn.btn-success.btn-block(type='submit', value='register') Register
+									label(for='userName') Username
+									input#users.userName(type='text' placeholder='userName' name='userName')
+
+									label(for='firstName') First Name
+									input#users.firstName(type='text' placeholder='firstName' name='firstName')
+
+									label(for='lastName') Last Name
+									input#users.lastName(type='text' placeholder='lastName' name='lastName')
+
+									label(for='email') Email
+									input#users.email(type='text' placeholder='email' name='email')
+
+									label(for='password') Password
+									input#users.password(type='password' placeholder='password' name='password')
+
+									label(for='confirmPassword') Confirm Password
+									input#users.confirmPassword(type='password' placeholder='confirmPassword' name='confirmPassword')
+									
+									button.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Register
 
 			//- SCRIPTS
 		include bootstrap_js.pug
