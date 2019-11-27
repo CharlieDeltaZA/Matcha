@@ -9,31 +9,34 @@ html
 	body
 		include navbar.pug
 
-		block content
-			h1 Sign Up
-			form#addUser(name="adduser",action='api/register', method='POST')
-				div.form-group
-					label(for='userName') Username
-					input#users.userName(type='text' placeholder='userName' name='userName')
-				div.form-group
-					label(for='firstName') First Name
-					input#users.firstName(type='text' placeholder='firstName' name='firstName')
-				div.form-group
-					label(for='lastName') Last Name
-					input#users.lastName(type='text' placeholder='lastName' name='lastName')
-				div.form-group
-					label(for='email') Email
-					input#users.email(type='text' placeholder='email' name='email')
-				div.form-group
-					label(for='password') Password
-					input#users.password(type='password' placeholder='password' name='password')
-				div.form-group
-					label(for='confirmPassword') Confirm Password
-					input#users.confirmPassword(type='password' placeholder='confirmPassword' name='confirmPassword')
-				//- div.form-group
-				//-     label(for='jobTitle') Job Title
-				//-     input#users.jobTitle(type='text' placeholder='jobTitle' name='jobTitle')
-				button(type='submit', value='add') Register
+		.container.mx-auto
+			.row
+				.col-4.mx-auto
+					.card.my-5(style='width:400px')
+						.card-body
+							block content
+								h1 Register
+								hr
+								form#addUser(name="adduser",action='api/register', method='POST')
+									div.form-group
+										label(for='userName') Username
+										input#users.userName(type='text' placeholder='userName' name='userName')
+									div.form-group
+										label(for='firstName') First Name
+										input#users.firstName(type='text' placeholder='firstName' name='firstName')
+									div.form-group
+										label(for='lastName') Last Name
+										input#users.lastName(type='text' placeholder='lastName' name='lastName')
+									div.form-group
+										label(for='email') Email
+										input#users.email(type='text' placeholder='email' name='email')
+									div.form-group
+										label(for='password') Password
+										input#users.password(type='password' placeholder='password' name='password')
+									div.form-group
+										label(for='confirmPassword') Confirm Password
+										input#users.confirmPassword(type='password' placeholder='confirmPassword' name='confirmPassword')
+									button.btn.btn-success.btn-block(type='submit', value='register') Register
 
 			//- SCRIPTS
 		include bootstrap_js.pug
