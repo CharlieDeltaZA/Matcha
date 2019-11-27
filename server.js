@@ -12,6 +12,18 @@ app.get("/", (req, res) => {
     });
 });
 
+app.get("/register", (req, res) => {
+    res.render('register', {
+        title:'Register',
+    });
+});
+
+app.get("/login", (req, res) => {
+    res.render('login', {
+        title:'Login',
+    });
+});
+
 app.get("/goodbye", (req, res) => {
     res.send("Goodbye world");
 });
