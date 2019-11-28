@@ -10,6 +10,33 @@ html
 		.container.text-center
 			h1.mt-white.text-center.mt-5.display-3 Edit Profile
 
+		.container.mx-auto
+			.row
+				.col
+					.card.my-5.mx-auto(style='max-width:400px')
+						.card-body
+							block content
+								h1 Register
+								hr
+								form#addUser(name="adduser",action='api/register', method='POST')
+									label(for='userName') Username
+									input#users.userName(type='text' placeholder='userName' name='userName')
 
+									label(for='firstName') First Name
+									input#users.firstName(type='text' placeholder='firstName' name='firstName')
+
+									label(for='lastName') Last Name
+									input#users.lastName(type='text' placeholder='lastName' name='lastName')
+
+									label(for='email') Email
+									input#users.email(type='text' placeholder='email' name='email')
+
+									label(for='password') Password
+									input#users.password(type='password' placeholder='password' name='password')
+
+									label(for='confirmPassword') Confirm Password
+									input#users.confirmPassword(type='password' placeholder='confirmPassword' name='confirmPassword')
+									
+									button.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Register
 			//- SCRIPTS
 		include bootstrap_js.pug
