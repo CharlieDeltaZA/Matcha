@@ -5,4 +5,7 @@
 
 body {
     background-color: #ff4949;
+    /* background-image: url("back1.jpg"); */
+    background-size: cover;
+    background-repeat: no-repeat;
 }
