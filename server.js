@@ -36,6 +36,12 @@ app.get("/edit_profile", (req, res) => {
     });
 });
 
+app.get("/set_prefs", (req, res) => {
+    res.render('set_prefs', {
+        title:'Set Preferences',
+    });
+});
+
 app.get("/goodbye", (req, res) => {
     res.send("Goodbye world");
 });
