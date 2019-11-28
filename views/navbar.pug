@@ -16,6 +16,13 @@ nav.navbar.navbar-expand-lg.navbar-light.mbg-light-grey
                 a.nav-link(href='/login') LOGIN
             //- li.nav-item
             //-     a.nav-link.disabled(href='#', tabindex='-1', aria-disabled='true') Disabled
-        form.form-inline.my-2.my-lg-0
-            input.form-control.mr-sm-2(type='search', placeholder='Search')
-            button.btn.btn-light.my-2.my-sm-0(type='submit') Search
+            li.nav-item.dropdown.float-right
+                a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                    | Username
+                .dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
+                    a.dropdown-item(href='#') Profile
+                    a.dropdown-item(href='#') Edit Profile
+                    a.dropdown-item(href='#') Logout
+        //- form.form-inline.my-2.my-lg-0
+        //-     input.form-control.mr-sm-2(type='search', placeholder='Search')
+        //-     button.btn.btn-light.my-2.my-sm-0(type='submit') Search
