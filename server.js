@@ -24,6 +24,18 @@ app.get("/login", (req, res) => {
     });
 });
 
+app.get("/profile", (req, res) => {
+    res.render('profile', {
+        title:'Profile',
+    });
+});
+
+app.get("/edit_profile", (req, res) => {
+    res.render('edit_profile', {
+        title:'Edit Profile',
+    });
+});
+
 app.get("/goodbye", (req, res) => {
     res.send("Goodbye world");
 });
