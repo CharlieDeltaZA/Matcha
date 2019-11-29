@@ -25,9 +25,15 @@ nav.navbar.navbar-expand-lg.navbar-light.mbg-white
 				a#NotificationDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
 					| Notifications
 				.dropdown-menu(aria-labelledby='NotificationDropdown')
-					a.dropdown-item(href='#') Likes
-					a.dropdown-item(href='#') Messages
-					a.dropdown-item(href='#') Profile Views
+					a.dropdown-item(href='#') 
+						| Likes 
+						i.fa.fa-heart
+					a.dropdown-item(href='#') 
+						| Messages 
+						i.fa.fa-comments
+					a.dropdown-item(href='#') 
+						| Profile Views 
+						i.fa.fa-eye
 			//-     a.nav-link.disabled(href='#', tabindex='-1', aria-disabled='true') Disabled
 			li.nav-item.dropdown.float-right
 				a#usernameDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
