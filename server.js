@@ -5,6 +5,7 @@ const app = express();
 app.set('view engine', 'pug');
 app.use(express.static('styles'));
 app.use(express.static('images'));
+app.use(express.static('scripts'));
 
 app.get("/", (req, res) => {
     res.render('index', {
