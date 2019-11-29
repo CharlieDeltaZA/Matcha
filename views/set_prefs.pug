@@ -15,7 +15,7 @@ html
 							block content
 								h1 Preferences
 								hr
-								form#addUser(name="adduser",action='api/prefs', method='POST')
+								form#userPrefs(name="adduser",action='api/prefs', method='POST')
 									label(for='gender') Gender
 									input#users.gender(type='text' placeholder='userName' name='gender')
 
@@ -23,7 +23,7 @@ html
 									input#users.sexPref(type='text' placeholder='firstName' name='sexPref')
 
 									label(for='bio') Biography
-									input#users.bio(type='textarea' placeholder='lastName' name='bio')
+									textarea#users.bio(placeholder='Biography' name='bio' form="userPrefs" rows='3')
 
 									label(for='interests') Interests
 									input#users.interests(type='text' placeholder='email' name='interests')
