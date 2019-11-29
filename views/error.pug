@@ -1,7 +1,15 @@
 doctype html
 html
 	head
-		title= "You fucked up"
+		title Matcha | Error
+		include header_items.pug
 		link(rel="stylesheet", href="error.css")
 	body
-		p HELP!
+		#main
+			.fof
+				p#err.display-2 Error 404
+				p.display-4 ¯\_(ツ)_/¯ 
+
+				a.rounded-pill.btn.btn-lg.mbg-white.mx-auto.mt-5(href="/") Take Me Home
+				
+		include bootstrap_js.pug
