@@ -16,27 +16,50 @@ html
 					.card.my-5.mx-auto(style='max-width:400px')
 						.card-body
 							block content
-								h1 Register
+								h1 Profile
 								hr
 								form#addUser(name="adduser",action='api/register', method='POST')
-									label(for='userName') Username
+									label(for='userName') Change Username
 									input#users.userName(type='text' placeholder='userName' name='userName')
 
-									label(for='firstName') First Name
+									label(for='firstName') Change First Name
 									input#users.firstName(type='text' placeholder='firstName' name='firstName')
 
-									label(for='lastName') Last Name
+									label(for='lastName') Change Last Name
 									input#users.lastName(type='text' placeholder='lastName' name='lastName')
 
-									label(for='email') Email
+									label(for='email') Change Email
 									input#users.email(type='text' placeholder='email' name='email')
 
-									label(for='password') Password
+									label(for='password') Change Password
 									input#users.password(type='password' placeholder='password' name='password')
 
-									label(for='confirmPassword') Confirm Password
+									label(for='confirmPassword') Confirm New Password
 									input#users.confirmPassword(type='password' placeholder='confirmPassword' name='confirmPassword')
 									
-									button.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Register
+									button.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update
+				.col
+					.card.my-5.mx-auto(style='max-width:400px')
+						.card-body
+							block content
+								h1 Preferences
+								hr
+								form#addUser(name="adduser",action='api/register', method='POST')
+									label(for='userName') Change Gender
+									input#users.userName(type='text' placeholder='userName' name='userName')
+
+									label(for='firstName') Change Location
+									input#users.firstName(type='text' placeholder='firstName' name='firstName')
+
+									label(for='lastName') Change Sexual Preference
+									input#users.lastName(type='text' placeholder='lastName' name='lastName')
+
+									label(for='email') Change Interests
+									input#users.email(type='text' placeholder='email' name='email')
+
+									label(for='password') Change Bio
+									input#users.password(type='password' placeholder='password' name='password')
+
+									button.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update
 			//- SCRIPTS
 		include bootstrap_js.pug
