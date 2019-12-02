@@ -1,6 +1,6 @@
 let servername = "localhost";
 let dbusername = "root";
-let dbpassword = "password";
+let dbpassword = "some_pass";
 let dbname = "matcha";
 
 module.exports.servername = servername;
