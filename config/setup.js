@@ -2,7 +2,7 @@ const db = require('./database');
 var mysql = require('mysql');
 
 // Create needed database and tables.
-var setup = function setup()
+var setupDB = function setupDB()
 {
 	// Attempt to connect to the DB
 	var conn = mysql.createConnection( {
@@ -31,6 +31,9 @@ var setup = function setup()
 			}
 		});
 	});
+}
+
+var setupTables = function setupTables() {
 
 	var conn = mysql.createConnection( {
 		host: `${db.servername}`,
@@ -66,7 +69,7 @@ var setup = function setup()
 					userLocation LONGTEXT,
 					userFame int(11)
 					);`
-				con.query(sql, function (err, result) {
+				conn.query(sql, function (err, result) {
 					if (err) throw err;
 					console.log("user table created");
 				});
@@ -75,5 +78,6 @@ var setup = function setup()
 	});
 }
 
-module.exports.setup = setup;
+module.exports.setupDB = setupDB;
+module.exports.setupTables = setupTables;
 
