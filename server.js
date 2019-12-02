@@ -2,6 +2,9 @@ const express = require("express");
 const PORT = 8080;
 const app = express();
 
+var sql = require("./config/setup");
+sql.setup();
+
 app.set('view engine', 'pug');
 app.use(express.static('styles'));
 app.use(express.static('images'));
