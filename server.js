@@ -3,8 +3,9 @@ const PORT = 8080;
 const app = express();
 const sql = require('./config/setup');
 
+// sql.setupDB();
 sql.setupDB();
-sql.setupTables();
+// sql.setupTables();
 
 app.set('view engine', 'pug');
 app.use(express.static('styles'));
