@@ -1,8 +1,9 @@
 const express = require("express");
 const PORT = 8080;
 const app = express();
+const sql = require('./config/setup');
+var mysql = require('mysql');
 
-var sql = require("./config/setup");
 sql.setup();
 
 app.set('view engine', 'pug');
