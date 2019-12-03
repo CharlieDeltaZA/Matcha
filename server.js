@@ -6,7 +6,7 @@ const sql = require('./config/setup');
 // var express        =         require("express");
 var bodyParser     =         require("body-parser");
 
-// sql.setupDB();
+sql.setupDB();
 // sql.setupDB();
 // sql.setupTables();
 
