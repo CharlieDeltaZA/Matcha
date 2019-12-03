@@ -10,6 +10,22 @@ html
 		.container.text-center
 			h1.mt-white.text-center.mt-5.display-3 Profile
 
+			.card(style='max-width: 1000;')
+				#carouselExampleSlidesOnly.carousel.slide(data-ride='carousel')
+					.carousel-inner
+						.carousel-item.active
+							img.d-block.w-1000(src='images.jpeg', alt='...')
+						.carousel-item
+							img.d-block.w-1000(src='images.jpeg', alt='...')
+						.carousel-item
+							img.d-block.w-1000(src='images.jpeg', alt='...')
+	
+				//- img.card-img-top(src='images.jpeg', alt='...', style='max-width: 1000;')
+				.card-body
+					h5.card-title Card title
+					p.card-text
+					| Some quick example text to build on the card title and make up the bulk of the card's content.
+					a.btn.btn-primary(href='#') Go somewhere
 
 			//- SCRIPTS
 		include bootstrap_js.pug
