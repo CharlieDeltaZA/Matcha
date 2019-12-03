@@ -4,6 +4,8 @@ html
 		title Matcha | Home
 		include header_items.pug
 		link(rel='stylesheet', href='index.css')
+		//- link(rel='stylesheet', href='popupS.min.css')
+		link(rel='stylesheet', href='sweetalert2.css')
 	body
 		include navbar.pug
 
@@ -11,9 +13,26 @@ html
 			h1.mt-white.text-center.mt-5.display-3 There's no place like 127.0.0.1
 			//- img.img-fluid(src="back1.jpg" style="z-index:5")
 
-			a.rounded-pill.btn.btn-lg.mbg-white.mx-auto.mt-5(href="/register") Join Us
+			//- a.rounded-pill.btn.btn-lg.mbg-white.mx-auto.mt-5(href="/register") Join Us
+			button#success.rounded-pill.btn.btn-lg.mbg-white.mx-auto.mt-5(href="#" onclick="fuckMe()") Join Us
 			a.rounded-pill.btn.btn-lg.mbg-white.mx-auto.mt-5(href="#" onclick="logMe()") JS Test Btn
 
 			//- SCRIPTS
 		script(src="test.js")
+		//- script(src="popupS.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+		link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css')
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js")
+		script(src="popup.js")
+		
 		include bootstrap_js.pug
+		script.
+			$('#JoinUs').click(function(f){
+			swal({
+			//- swal.fire(
+				'Good job!',
+				'You clicked the button!',
+				'success'
+				//- )
+			})
+
