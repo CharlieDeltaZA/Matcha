@@ -15,12 +15,12 @@ html
 							block content
 								h1 Login
 								hr
-								form#login(name="login", action='api/login', method='POST')
+								form#login(name="login", action='', method='POST')
 									label(for='userName') Username
-									input#users.userName(type='text' placeholder='userName' name='userName')
+									input#userLogin.userName(type='text' placeholder='userName' name='userName')
 
 									label(for='password') Password
-									input#users.password(type='password' placeholder='password' name='password')
+									input#userPass.password(type='password' placeholder='password' name='password')
 									
 									p.text-right
 										| New User? 
@@ -29,7 +29,19 @@ html
 										| Forgot Password? 
 										a(href='/forgot') Reset.
 
-									button.btn.btn-success.btn-block.btn-lg(type='submit', value='add') Login
+									button#submit.btn.btn-success.btn-block.btn-lg(type='submit', value='add') Login
 
 			//- SCRIPTS
 		include bootstrap_js.pug
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+		script.
+			$(document).ready(function(){
+				var user,pass;
+				$("#submit").click(function(){
+				user=$("#userLogin").val();
+				pass=$("#userPass").val();
+				$.post("/",{user: user,password: pass}, function(data){
+				});
+				window.location.replace("http://localhost:8080?action=login");
+				});
+			});
