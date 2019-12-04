@@ -20,11 +20,19 @@ app.use(express.static('images'));
 app.use(express.static('scripts'));
 
 app.post('/login',function(req,res){
-    var user_name=req.body.userName;
+    var userLogin=req.body.userLogin;
     var password=req.body.password;
-    console.log("User name = "+user_name+", password is "+password);
+    console.log("Username = "+userLogin+", password is "+password);
     // if (GET == 'login')
     res.redirect('http://localhost:8080?action=login');
+});
+
+app.post('/register',function(req,res){
+    var userLogin=req.body.userLogin;
+    var password=req.body.password;
+    console.log("Username = "+userLogin+", password is "+password);
+    // if (GET == 'login')
+    res.redirect('http://localhost:8080?action=register');
 });
 
 app.get("/", (req, res) => {
@@ -39,6 +47,12 @@ app.get("/", (req, res) => {
 app.get("/register", (req, res) => {
     res.render('register', {
         title:'Register',
+    });
+});
+
+app.get("/chat", (req, res) => {
+    res.render('chat', {
+        title:'Chat',
     });
 });
 
