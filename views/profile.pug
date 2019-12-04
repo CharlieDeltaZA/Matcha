@@ -11,14 +11,24 @@ html
 			h1.mt-white.text-center.mt-5.display-3 Profile
 
 			.card(style='max-width: 1000;')
-				#carouselExampleSlidesOnly.carousel.slide(data-ride='carousel')
+				#carouselExampleControls.carousel.slide(data-ride='carousel')
+					ol.carousel-indicators
+						li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
+						li(data-target='#carouselExampleIndicators', data-slide-to='1')
+						li(data-target='#carouselExampleIndicators', data-slide-to='2')
 					.carousel-inner
 						.carousel-item.active
-							img.d-block.w-1000(src='images.jpeg', alt='...')
+							img.img-fluidd-block.w-100(src='images.jpeg', alt='...')
 						.carousel-item
-							img.d-block.w-1000(src='images.jpeg', alt='...')
+							img.d-block.w-100(src='images2.jpeg', alt='...')
 						.carousel-item
-							img.d-block.w-1000(src='images.jpeg', alt='...')
+							img.d-block.w-100(src='images3.png', alt='...')
+					a.carousel-control-prev(href='#carouselExampleControls', role='button', data-slide='prev')
+						span.carousel-control-prev-icon(aria-hidden='true')
+						span.sr-only Previous
+					a.carousel-control-next(href='#carouselExampleControls', role='button', data-slide='next')
+						span.carousel-control-next-icon(aria-hidden='true')
+						span.sr-only Next 
 	
 				//- img.card-img-top(src='images.jpeg', alt='...', style='max-width: 1000;')
 				.card-body
