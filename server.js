@@ -3,14 +3,11 @@ const PORT = 8080;
 const app = express();
 const sql = require('./config/setup');
 
-<<<<<<< HEAD
-// sql.setupDB();
-=======
+
 // var express        =         require("express");
 var bodyParser     =         require("body-parser");
 
 sql.setupDB();
->>>>>>> 4ee476587ec09606b4630a1255ea8b45637ac09b
 // sql.setupDB();
 // sql.setupTables();
 
