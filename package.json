@@ -18,9 +18,14 @@
   },
   "homepage": "https://github.com/CharlieDeltaZA/Matcha#readme",
   "dependencies": {
+<<<<<<< HEAD
+    "bluebird": "^3.7.2",
+=======
+>>>>>>> c623a8bfaea08f44a2c6bc7b979abd06285fa1f6
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "jade": "^1.11.0",
+    "mongoose": "^5.7.13",
     "mysql": "^2.17.1",
     "pug": "^2.0.4",
     "socket.io": "^2.3.0",

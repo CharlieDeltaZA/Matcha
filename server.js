@@ -45,9 +45,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/register", (req, res) => {
-    res.render('register', {
-        title:'Register',
-    });
+	res.render('register', {
+		title:'Register',
+	});
 });
 
 app.get("/chat", (req, res) => {
@@ -57,37 +57,37 @@ app.get("/chat", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-    res.render('login', {
-        title:'Login',
-    });
+	res.render('login', {
+		title:'Login',
+	});
 });
 
 app.get("/profile", (req, res) => {
-    res.render('profile', {
-        title:'Profile',
-    });
+	res.render('profile', {
+		title:'Profile',
+	});
 });
 
 app.get("/edit_profile", (req, res) => {
-    res.render('edit_profile', {
-        title:'Edit Profile',
-    });
+	res.render('edit_profile', {
+		title:'Edit Profile',
+	});
 });
 
 app.get("/set_prefs", (req, res) => {
-    res.render('set_prefs', {
-        title:'Set Preferences',
-    });
+	res.render('set_prefs', {
+		title:'Set Preferences',
+	});
 });
 
 app.get("/goodbye", (req, res) => {
-    res.send("Goodbye world");
+	res.send("Goodbye world");
 });
 
 app.get('*', function(req, res) {
-    res.render('error', {
-        title:'error',
-    });
+	res.render('error', {
+		title:'error',
+	});
 });
 
 app.listen(PORT, () => {
