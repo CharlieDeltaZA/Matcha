@@ -1,54 +1,34 @@
 const db = require('./database');
 var mysql = require('mysql');
-
 // Create needed database and tables.
 var setupDB = function setupDB()
 {
-
 	var conn = mysql.createConnection( {
 		host: `${db.servername}`,
 		user: `${db.dbusername}`,
 		password: `${db.dbpassword}`
 	});
-
-	const promise = new Promise((resolve, reject) => {
-		conn.connect(function(err) {
-			if (err)
-				reject(err);
-			conn.query("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'matcha'",
-			function (err, result)
-			{
-				if (err)
-					reject(err);
-				if (result.length > 0)
-					console.log('Database already exists');
-				else
-				{
-					console.log('Database not found.');
-					conn.query("CREATE DATABASE matcha", function (err, result) {
-						if (err)
-							reject(err);
-						else
-						{
-							console.log("Database created");
-							setupTables();
-						}		
-					});
-				}
-			});
-		})
+	conn.connect(function(err) {
+		if (err)
+			throw(err);
+		conn.query("CREATE DATABASE IF NOT EXISTS matcha", function (err, result) {
+		if (err)
+			throw(err);
+		else
+		{
+			console.log("Database created");
+			setupTables();
+		}		
+		});
 	});
 }
-
 var setupTables = function setupTables() {
-
 	var conn = mysql.createConnection( {
 		host: `${db.servername}`,
 		user: `${db.dbusername}`,
 		password: `${db.dbpassword}`,
 		database: `${db.dbname}`
 	});
-
 	conn.connect(function(err) {
 		if (err) throw err;
 		conn.query(`SELECT * FROM information_schema.tables
@@ -83,14 +63,12 @@ var setupTables = function setupTables() {
 			}
 		});
 	});
-
 	var conn = mysql.createConnection( {
 		host: `${db.servername}`,
 		user: `${db.dbusername}`,
 		password: `${db.dbpassword}`,
 		database: `${db.dbname}`
 	});
-
 	conn.connect(function(err) {
 		if (err) throw err;
 		conn.query(`SELECT * FROM information_schema.tables
@@ -117,14 +95,12 @@ var setupTables = function setupTables() {
 			}
 		});
 	});
-
 	var conn = mysql.createConnection( {
 		host: `${db.servername}`,
 		user: `${db.dbusername}`,
 		password: `${db.dbpassword}`,
 		database: `${db.dbname}`
 	});
-
 	conn.connect(function(err) {
 		if (err) throw err;
 		conn.query(`SELECT * FROM information_schema.tables
@@ -150,6 +126,4 @@ var setupTables = function setupTables() {
 		});
 	});
 }
-
 module.exports.setupDB = setupDB;
-

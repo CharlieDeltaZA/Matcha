@@ -3,16 +3,37 @@ const PORT = 8080;
 const app = express();
 const sql = require('./config/setup');
 
+<<<<<<< HEAD
 // sql.setupDB();
+=======
+// var express        =         require("express");
+var bodyParser     =         require("body-parser");
+
 sql.setupDB();
+>>>>>>> 4ee476587ec09606b4630a1255ea8b45637ac09b
+// sql.setupDB();
 // sql.setupTables();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.set('view engine', 'pug');
 app.use(express.static('styles'));
 app.use(express.static('images'));
 app.use(express.static('scripts'));
 
+app.post('/login',function(req,res){
+    var user_name=req.body.userName;
+    var password=req.body.password;
+    console.log("User name = "+user_name+", password is "+password);
+    // if (GET == 'login')
+    res.redirect('http://localhost:8080?action=login');
+});
+
 app.get("/", (req, res) => {
+    var GET = req.query.action;
+    if (GET == 'login')
+        console.log('cool story');
     res.render('index', {
         title:'Homepage',
     });
