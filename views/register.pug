@@ -15,30 +15,46 @@ html
 							block content
 								h1 Register
 								hr
-								form#addUser(name="adduser", action='api/register', method='POST')
+								form#addUser(name="adduser", action='', method='POST')
 									label(for='userName') Username
-									input#users.userName(type='text' placeholder='userName' name='userName')
+									input#userLogin(type='text' placeholder='Enter Username' name='userLogin')
 
-									label(for='firstName') First Name
-									input#users.firstName(type='text' placeholder='firstName' name='firstName')
+									label(for='firstName') Name
+									input#userName(type='text' placeholder='Enter Name' name='userName')
 
-									label(for='lastName') Last Name
-									input#users.lastName(type='text' placeholder='lastName' name='lastName')
+									label(for='lastName') Surname
+									input#userSurname(type='text' placeholder='Enter Surname' name='userSurname')
 
 									label(for='email') Email
-									input#users.email(type='text' placeholder='email' name='email')
+									input#userEmail(type='text' placeholder='Enter Email' name='userEmail')
 
 									label(for='password') Password
-									input#users.password(type='password' placeholder='password' name='password')
+									input#userPassword(type='password' placeholder='Enter Password' name='userPass')
 
 									label(for='confirmPassword') Confirm Password
-									input#users.confirmPassword(type='password' placeholder='confirmPassword' name='confirmPassword')
+									input#userConfPass(type='password' placeholder='Confirm Password' name='userConfPass')
 
 									p.text-right
 										| Already have an account? 
 										a(href='/login') Login.
 									
-									button.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Register
+									button#submit.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Register
 
 			//- SCRIPTS
 		include bootstrap_js.pug
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+		script.
+			$(document).ready(function(){
+				var userLogin,userName,userSurname,userEmail,userPass,userConfPass;
+				$("#submit").click(function(){
+				userLogin=$("#userLogin").val();
+				userName=$("#userName").val();
+				userSurname=$("#userSurname").val();
+				userEmail=$("#userEmail").val();
+				userPass=$("#userPass").val();
+				UserConfPass=$("#userConfPass").val();
+				$.post("/",{userLogin: userLogin,userName: userName,userSurname: userSurname,userEmail: userEmail,userPass: userPass,UserConfPass: userConfPass}, function(data){
+				});
+				window.location.replace("http://localhost:8080?action=register");
+				});
+			});

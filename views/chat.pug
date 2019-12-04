@@ -1,0 +1,25 @@
+doctype html
+html
+    head
+        title Anonymouse real-time chat
+        link(rel="stylesheet", id="bootstrap-css", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css")
+        link(rel="stylesheet", href="../styles/chat.css")
+    body
+        .chat_window
+            .top_menu
+                .buttons
+                    .button.close
+                    .button.minimize
+                    .button.maximize
+                .title chat
+            ul.messages#messages
+            .bottom_wrapper.clearfix
+                i#typing
+                form#form
+                    .message_input_wrapper
+                        input#message.message_input(placeholder="Type your message here...")
+                    button.send_message
+        script(src="socket.js")
+        script(src="https://code.jquery.com/jquery-1.11.1.min.js")
+        script(src="https://cdn.jsdelivr.net/gh/rexeze/formatTimeStamp/src/index.min.js")
+        script(src="chat.js")
