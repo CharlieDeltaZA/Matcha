@@ -22,15 +22,28 @@ app.use(express.static('scripts'));
 app.post('/login',function(req,res){
     var userLogin=req.body.userLogin;
     var password=req.body.password;
-    console.log("Username = "+userLogin+", password is "+password);
+    console.log("---------- LOGIN ---------");
+    console.log("Username = "+userLogin+", Password = "+password);
+    console.log("--------------------------");
+
     // if (GET == 'login')
     res.redirect('http://localhost:8080?action=login');
 });
 
 app.post('/register',function(req,res){
     var userLogin=req.body.userLogin;
-    var password=req.body.password;
-    console.log("Username = "+userLogin+", password is "+password);
+    var userName=req.body.userName;
+    var userSurname=req.body.userSurname;
+    var userEmail=req.body.userEmail;
+    var userPass=req.body.userPass;
+    var userConfPass=req.body.userConfPass;
+    console.log("---------- REGISTER ----------");
+    console.log("Username = "+userLogin);
+    console.log("Name = "+userName+", Surname = "+userSurname);
+    console.log("Email = "+userEmail);
+    console.log("Pass = "+userPass+", ConfPass = "+userConfPass);
+    console.log("------------------------------");
+
     // if (GET == 'login')
     res.redirect('http://localhost:8080?action=register');
 });
@@ -38,7 +51,9 @@ app.post('/register',function(req,res){
 app.get("/", (req, res) => {
     var GET = req.query.action;
     if (GET == 'login')
-        console.log('cool story');
+        console.log('Found Login');
+    if (GET == 'register')
+        console.log('Found Register');
     res.render('index', {
         title:'Homepage',
     });
