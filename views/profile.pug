@@ -7,35 +7,41 @@ html
 	body
 		include navbar.pug
 
-		.container.text-center
+		.container
 			h1.mt-white.text-center.mt-5.display-3 Profile
 
-			.card(style='max-width: 1000;')
-				#carouselExampleControls.carousel.slide(data-ride='carousel')
-					ol.carousel-indicators
-						li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
-						li(data-target='#carouselExampleIndicators', data-slide-to='1')
-						li(data-target='#carouselExampleIndicators', data-slide-to='2')
-					.carousel-inner
-						.carousel-item.active
-							img.img-fluidd-block.w-100(src='images.jpeg', alt='...')
-						.carousel-item
-							img.d-block.w-100(src='images2.jpeg', alt='...')
-						.carousel-item
-							img.d-block.w-100(src='images3.png', alt='...')
-					a.carousel-control-prev(href='#carouselExampleControls', role='button', data-slide='prev')
-						span.carousel-control-prev-icon(aria-hidden='true')
-						span.sr-only Previous
-					a.carousel-control-next(href='#carouselExampleControls', role='button', data-slide='next')
-						span.carousel-control-next-icon(aria-hidden='true')
-						span.sr-only Next 
-	
-				//- img.card-img-top(src='images.jpeg', alt='...', style='max-width: 1000;')
-				.card-body
-					h5.card-title Card title
-					p.card-text
-					| Some quick example text to build on the card title and make up the bulk of the card's content.
-					a.btn.btn-primary(href='#') Go somewhere
+			.container.mx-auto(style='max-width: 1500px;')
+				.card.mx-auto(style='max-width: 1500px;')
+					#carouselExampleControls.carousel.slide(data-ride='carousel', data-interval="false")
+						ol.carousel-indicators
+							li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
+							li(data-target='#carouselExampleIndicators', data-slide-to='1')
+							li(data-target='#carouselExampleIndicators', data-slide-to='2')
+						.carousel-inner
+							.carousel-item.active(data-interval="false")
+								img.img-fluidd-block.w-100(src='images.jpeg', alt='...')
+							.carousel-item(data-interval="false")
+								img.d-block.w-100(src='images2.jpeg', alt='...')
+							.carousel-item(data-interval="false")
+								img.d-block.w-100(src='images3.jpg', alt='...')
+						a.carousel-control-prev(href='#carouselExampleControls', role='button', data-slide='prev')
+							span.carousel-control-prev-icon(aria-hidden='true')
+							span.sr-only Previous
+						a.carousel-control-next(href='#carouselExampleControls', role='button', data-slide='next')
+							span.carousel-control-next-icon(aria-hidden='true')
+							span.sr-only Next 
+		
+					//- img.card-img-top(src='images.jpeg', alt='...', style='max-width: 1000;')
+					.card-body
+						h5.card-title Jeff
+						h6.card-subtitle.mb-2.text-muted 69
+						p.card-text
+							| 420kms away
+						p.card-text
+							| straight, male
+						hr
+						p.card-text
+							| Is a gamer who lives in a society, programs the programs, is very hastag relatables, has a N-word pass.
 
 			//- SCRIPTS
 		include bootstrap_js.pug
