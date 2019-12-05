@@ -15,24 +15,44 @@ html
 							block content
 								h1 Register
 								hr
-								form#addUser(name="adduser", action='', method='POST')
-									label(for='userName') Username
-									input#userLogin(type='text' placeholder='Enter Username' name='userLogin')
+								form#register.needs-validation(name="register", action='', method='POST' novalidate)
+									.form-group
+										label(for='userName') Username:
+										input#userLogin.form-control(type='text' placeholder='Enter Username' name='userLogin' required)
+										.valid-feedback Valid.
+										.invalid-feedback Please fill out this field.
 
-									label(for='firstName') Name
-									input#userName(type='text' placeholder='Enter Name' name='userName')
+									.form-group
+										.form-group
+											label(for='firstName') Name:
+											input#userName.form-control(type='text' placeholder='Enter Name' name='userName' required)
+											.valid-feedback Valid.
+											.invalid-feedback Please fill out this field.
 
-									label(for='lastName') Surname
-									input#userSurname(type='text' placeholder='Enter Surname' name='userSurname')
+										.form-group
+											label(for='lastName') Surname:
+											input#userSurname.form-control(type='text' placeholder='Enter Surname' name='userSurname' required)
+											.valid-feedback Valid.
+											.invalid-feedback Please fill out this field.
 
-									label(for='email') Email
-									input#userEmail(type='text' placeholder='Enter Email' name='userEmail')
+									.form-group
+										label(for='email') Email:
+										input#userEmail.form-control(type='text' placeholder='Enter Email' name='userEmail' required)
+										.valid-feedback Valid.
+										.invalid-feedback Please fill out this field.
 
-									label(for='password') Password
-									input#userPassword(type='password' placeholder='Enter Password' name='userPass')
+									.form-group
+										.form-group
+											label(for='password') Password:
+											input#userPassword.form-control(type='password' placeholder='Enter Password' name='userPass' required)
+											.valid-feedback Valid.
+											.invalid-feedback Please fill out this field.
 
-									label(for='confirmPassword') Confirm Password
-									input#userConfPass(type='password' placeholder='Confirm Password' name='userConfPass')
+										.form-group
+											label(for='confirmPassword') Confirm Password:
+											input#userConfPass.form-control(type='password' placeholder='Confirm Password' name='userConfPass' required)
+											.valid-feedback Valid.
+											.invalid-feedback Please fill out this field.
 
 									p.text-right
 										| Already have an account? 
@@ -48,7 +68,7 @@ html
 		script.
 			$(document).ready(function(){
 				var userLogin,userName,userSurname,userEmail,userPass,userConfPass;
-				$("#submit").click(function(){
+				//- $("#submit").click(function(){
 				userLogin=$("#userLogin").val();
 				userName=$("#userName").val();
 				userSurname=$("#userSurname").val();
@@ -60,3 +80,23 @@ html
 				window.location.replace("http://localhost:8080?action=register");
 				});
 			});
+
+		script.
+			// Disable form submissions if there are invalid fields
+			(function() {
+				'use strict';
+				window.addEventListener('load', function() {
+				// Get the forms we want to add validation styles to
+				var forms = document.getElementsByClassName('needs-validation');
+				// Loop over them and prevent submission
+				var validation = Array.prototype.filter.call(forms, function(form) {
+				form.addEventListener('submit', function(event) {
+				if (form.checkValidity() === false) {
+				event.preventDefault();
+				event.stopPropagation();
+				}
+				form.classList.add('was-validated');
+				}, false);
+				});
+				}, false);
+				})();
