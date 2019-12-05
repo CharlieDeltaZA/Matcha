@@ -50,3 +50,12 @@ textarea {
     /* padding: 1rem; */
     overflow: hidden;
 }
+
+input[type=date] {
+	width: 100%;
+	padding: 15px;
+	margin: 5px 0 8px 0;
+	border: none;
+	color: black;
+	background: #edf0f2;
+}

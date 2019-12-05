@@ -15,12 +15,15 @@ html
 							block content
 								h1 Preferences
 								hr
-								form#userPrefs(name="adduser",action='api/prefs', method='POST')
+								form#userPrefs(name="adduser",action='', method='POST')
 									label(for='gender') Gender
 									input#users.gender(type='text' placeholder='userName' name='gender')
 
 									label(for='sexPref') Sexual Preference
 									input#users.sexPref(type='text' placeholder='firstName' name='sexPref')
+
+									label(for='DOB') Date of Birth									
+									input#users.DOB(type="date" name="DOB")
 
 									label(for='bio') Biography
 									textarea#users.bio(placeholder='Biography' name='bio' form="userPrefs" rows='3')
