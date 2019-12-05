@@ -12,11 +12,11 @@ html
 
 			.container.mx-auto.my-5(style='max-width: 1500px;')
 				.card.mx-auto(style='max-width: 1500px;')
-					#carouselExampleControls.carousel.slide(data-ride='carousel', data-interval="false")
+					#carouselControls.carousel.slide(data-ride='carousel', data-interval="false")
 						ol.carousel-indicators
-							li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
-							li(data-target='#carouselExampleIndicators', data-slide-to='1')
-							li(data-target='#carouselExampleIndicators', data-slide-to='2')
+							li.active(data-target='#carouselIndicators', data-slide-to='0')
+							li(data-target='#carouselIndicators', data-slide-to='1')
+							li(data-target='#carouselIndicators', data-slide-to='2')
 						.carousel-inner
 							.carousel-item.active(data-interval="false")
 								img.img-fluidd-block.w-100(src='images.jpeg', alt='...')
@@ -24,10 +24,10 @@ html
 								img.d-block.w-100(src='images2.jpeg', alt='...')
 							.carousel-item(data-interval="false")
 								img.d-block.w-100(src='images3.jpg', alt='...')
-						a.carousel-control-prev(href='#carouselExampleControls', role='button', data-slide='prev')
+						a.carousel-control-prev(href='#carouselControls', role='button', data-slide='prev')
 							span.carousel-control-prev-icon(aria-hidden='true')
 							span.sr-only Previous
-						a.carousel-control-next(href='#carouselExampleControls', role='button', data-slide='next')
+						a.carousel-control-next(href='#carouselControls', role='button', data-slide='next')
 							span.carousel-control-next-icon(aria-hidden='true')
 							span.sr-only Next 
 		
