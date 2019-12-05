@@ -41,3 +41,12 @@ textarea {
 	color: black;
 	background: #edf0f2;
 }
+
+.foot {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* padding: 1rem; */
+    overflow: hidden;
+}

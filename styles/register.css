@@ -32,3 +32,12 @@ input[type=button]:hover{
 input[type=button]:focus{
 	box-shadow:inset 0px -5px #ca3e47;
 }
+
+.foot {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* padding: 1rem; */
+    overflow: hidden;
+}
