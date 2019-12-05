@@ -15,12 +15,18 @@ html
 							block content
 								h1 Login
 								hr
-								form#login(name="login", action='', method='POST')
-									label(for='userName') Username
-									input#userLogin.userName(type='text' placeholder='Enter Username' name='userLogin')
+								form#login.needs-validation(name="login", action='', method='POST' novalidate)
+									.form-group
+										label(for='userName') Username:
+										input#userLogin.form-control(type='text' placeholder='Enter Username' name='userLogin' required)
+										.valid-feedback Valid.
+										.invalid-feedback Please fill out this field.
 
-									label(for='password') Password
-									input#userPass.password(type='password' placeholder='Enter Password' name='password')
+									.form-group
+										label(for='password') Password:
+										input#userPass.form-control(type='password' placeholder='Enter Password' name='password' required)
+										.valid-feedback Valid.
+										.invalid-feedback Please fill out this field.
 									
 									p.text-right
 										| New User? 
@@ -39,7 +45,7 @@ html
 		script.
 			$(document).ready(function(){
 				var user,pass;
-				$("#submit").click(function(){
+				//- $("#submit").click(function(){
 				user=$("#userLogin").val();
 				pass=$("#userPass").val();
 				$.post("/",{user: user,password: pass}, function(data){
@@ -47,3 +53,23 @@ html
 				window.location.replace("http://localhost:8080?action=login");
 				});
 			});
+
+		script.
+			// Disable form submissions if there are invalid fields
+			(function() {
+				'use strict';
+				window.addEventListener('load', function() {
+				// Get the forms we want to add validation styles to
+				var forms = document.getElementsByClassName('needs-validation');
+				// Loop over them and prevent submission
+				var validation = Array.prototype.filter.call(forms, function(form) {
+				form.addEventListener('submit', function(event) {
+				if (form.checkValidity() === false) {
+				event.preventDefault();
+				event.stopPropagation();
+				}
+				form.classList.add('was-validated');
+				}, false);
+				});
+				}, false);
+				})();
