@@ -33,8 +33,17 @@ input[type=button]:focus{
 	box-shadow:inset 0px -5px #ca3e47;
 }
 
+textarea {
+	width: 100%;
+	padding: 15px;
+	margin: 5px 0 12px 0;
+	border: none;
+	color: black;
+	background: #edf0f2;
+}
+
 .foot {
-    position: absolute;
+    /* position: absolute; */
     right: 0;
     bottom: 0;
     left: 0;

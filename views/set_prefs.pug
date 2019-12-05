@@ -31,9 +31,20 @@ html
 									label(for='pics') Pics
 									input#users.pics(type='password' placeholder='password' name='password')
 
-									button.btn.btn-success.btn-block.btn-lg(type='submit', value='update') Update Preferences
+									button#SetPref.btn.btn-success.btn-block.btn-lg(type='submit', value='update') Set Preferences
 
 		include footer.pug
 
 			//- SCRIPTS
 		include bootstrap_js.pug
+		script.
+			$(document).ready(function(){
+				var user,pass;
+				//- $("#SetPref").click(function(){
+				user=$("#userLogin").val();
+				pass=$("#userPass").val();
+				$.post("/",{user: user,password: pass}, function(data){
+				});
+				window.location.replace("http://localhost:8080?action=setPref");
+				});
+			});

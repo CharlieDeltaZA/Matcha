@@ -37,7 +37,7 @@ html
 									label(for='confirmPassword') Confirm New Password
 									input#users.confirmPassword(type='password' placeholder='confirmPassword' name='confirmPassword')
 									
-									button.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update
+									button#UpdatePro.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update Profile
 				.col
 					.card.my-5.mx-auto(style='max-width:400px')
 						.card-body
@@ -58,11 +58,36 @@ html
 									input#users.interests(type='text' placeholder='interests' name='interests')
 
 									label(for='bio') Change Bio
-									input#users.bio(type='text' placeholder='bio' name='bio')
+									textarea#users.bio(placeholder='Biography' name='bio' form="userPrefs" rows='3')
 
-									button.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update
+									button#UpdatePref.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update Preferences
 
 		include footer.pug	
 			
 			//- SCRIPTS
 		include bootstrap_js.pug
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+		//- PROFILE
+		script.
+			$(document).ready(function(){
+				var user,pass;
+				//- $("#UpdatePro").click(function(){
+				user=$("#userLogin").val();
+				pass=$("#userPass").val();
+				$.post("/",{user: user,password: pass}, function(data){
+				});
+				window.location.replace("http://localhost:8080?action=updatePro");
+				});
+			});
+		//- PREFERENCES
+		script.
+			$(document).ready(function(){
+				var user,pass;
+				//- $("#UpdatePref").click(function(){
+				user=$("#userLogin").val();
+				pass=$("#userPass").val();
+				$.post("/",{user: user,password: pass}, function(data){
+				});
+				window.location.replace("http://localhost:8080?action=updatePref");
+				});
+			});
