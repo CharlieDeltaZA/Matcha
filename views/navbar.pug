@@ -16,14 +16,19 @@ nav.navbar.navbar-expand-lg.navbar-light.mbg-white
 				a.nav-link(href='/login') LOGIN
 			li.nav-item
 				a.nav-link(href='#') RECOMMENDATIONS
+			//- li.nav-item
+			//-     a.nav-link(href='#') MESSAGES
+			//- li.nav-item
+			//-     a.nav-link.disabled(href='#', tabindex='-1', aria-disabled='true') Disabled
+		//- form.form-inline.my-2.my-lg-0
+		//-     input.form-control.mr-sm-2(type='search', placeholder='Search')
+		//-     button.btn.btn-light.my-2.my-sm-0(type='submit') Search
+		ul.navbar-nav.ml-auto.mt-2.mt-lg-0.nav-flex-auto
 			li.nav-item
 				a.nav-link(href='#') 
 					| 
 					i.fa.fa-search
-			//- li.nav-item
-			//-     a.nav-link(href='#') MESSAGES
-			//- li.nav-item
-			li.nav-item.dropdown.float-right
+			li.nav-item.dropdown
 				a#NotificationDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
 					| 
 					i.fa.fa-bell
@@ -37,21 +42,17 @@ nav.navbar.navbar-expand-lg.navbar-light.mbg-white
 					a.dropdown-item(href='#') 
 						| Profile Views 
 						i.fa.fa-eye
-			//-     a.nav-link.disabled(href='#', tabindex='-1', aria-disabled='true') Disabled
-		//- form.form-inline.my-2.my-lg-0
-		//-     input.form-control.mr-sm-2(type='search', placeholder='Search')
-		//-     button.btn.btn-light.my-2.my-sm-0(type='submit') Search
-		.nav-item.dropdown
-			a#usernameDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-				| Username 
-				i.fa.fa-user
-			.dropdown-menu.dropdown-menu-right(aria-labelledby='usernameDropdown')
-				a.dropdown-item(href='/profile')
-					| Profile 
-					i.fa.fa-user-circle(aria-hidden='true')
-				a.dropdown-item(href='/edit_profile')
-					| Edit Profile 
-					i.fa.fa-cog(aria-hidden='true')
-				a.dropdown-item(href='#')
-					| Logout 
-					i.fa.fa-sign-out
+			li.nav-item.dropdown
+				a#usernameDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+					| Username 
+					i.fa.fa-user
+				.dropdown-menu.dropdown-menu-right(aria-labelledby='usernameDropdown')
+					a.dropdown-item(href='/profile')
+						| Profile 
+						i.fa.fa-user-circle(aria-hidden='true')
+					a.dropdown-item(href='/edit_profile')
+						| Edit Profile 
+						i.fa.fa-cog(aria-hidden='true')
+					a.dropdown-item(href='#')
+						| Logout 
+						i.fa.fa-sign-out
