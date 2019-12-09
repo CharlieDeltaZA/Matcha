@@ -65,6 +65,12 @@ app.get("/register", (req, res) => {
 	});
 });
 
+app.get("/search", (req, res) => {
+	res.render('search', {
+		title:'Search',
+	});
+});
+
 app.get("/chat", (req, res) => {
     res.render('chat', {
         title:'Chat',
