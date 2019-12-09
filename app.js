@@ -6,12 +6,7 @@ const userRoutes = require('./api/routes/users');
 const searchRoutes = require('./api/routes/search');
 const chatRoutes = require('./api/routes/chat');
 
-// Body parser
-const bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-// Pug
+// Rendering
 app.set('view engine', 'pug');
 app.use(express.static('styles'));
 app.use(express.static('images'));

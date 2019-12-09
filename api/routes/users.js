@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const app = express();
 
+app.set('view engine', 'pug');
 app.use(express.static('/../../styles'));
 app.use(express.static('/../../images'));
 app.use(express.static('/../../scripts'));
@@ -13,17 +14,11 @@ router.get('/register', (req, res, next) => {
 });
 
 router.post('/register', (req, res, next) => {
-	var userLogin=req.body.userLogin;
-	var userName=req.body.userName;
-	var userSurname=req.body.userSurname;
-	var userEmail=req.body.userEmail;
-	var userPass=req.body.userPass;
-	var userConfPass=req.body.userConfPass;
 	console.log("---------- REGISTER ----------");
-	console.log("Username = "+userLogin);
-	console.log("Name = "+userName+", Surname = "+userSurname);
+	console.log("Userlogin = "+req.body.userLogin);
+	console.log("Name = "+req.body.userName+", Surname = "+req.body.userSurname);
 	console.log("Email = "+userEmail);
-	console.log("Pass = "+userPass+", ConfPass = "+userConfPass);
+	console.log("Pass = "+req.body.userPass+", ConfPass = "+req.body.userConfPass);
 });
 
 router.get('/login', (req, res, next) => {
@@ -33,10 +28,8 @@ router.get('/login', (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
-	var userLogin = req.body.userLogin;
-	var password=req.body.password;
-	console.log("---------- LOGIN ---------");
-	console.log("Username = "+userLogin+", Password = "+password);
+	console.log(req.body.userLogin);
+	console.log(req.body.password);
 	res.redirect('http://localhost:8080?action=login');
 });
 
