@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const app = express();
 
-// This doesn't work :)
 app.use(express.static('/../../styles'));
 app.use(express.static('/../../images'));
 app.use(express.static('/../../scripts'));
