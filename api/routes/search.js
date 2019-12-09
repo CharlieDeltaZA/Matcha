@@ -9,6 +9,7 @@ app.use(express.static('/../../scripts'));
 router.get('/', (req, res, next) => {
 	res.render('search', {
 		title:'Search',
+		user: (req.session.user === undefined ? "Username" : req.session.user)
 	});
 });
 

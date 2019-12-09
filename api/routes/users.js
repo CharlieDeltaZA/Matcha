@@ -10,6 +10,7 @@ app.use(express.static('/../../scripts'));
 router.get('/login', (req, res, next) => {
 	res.render('login', {
 		title:'Login',
+		user: (req.session.user === undefined ? "Username" : req.session.user)
 	});
 });
 
@@ -36,12 +37,13 @@ router.post('/login', (req, res, next) => {
 
 	// Placeholder
 	req.session.user = req.body.userLogin;
-	res.redirect('http://localhost:8080?action=yes');
+	res.redirect('http://localhost:8080');
 });
 
 router.get('/register', (req, res, next) => {
 	res.render('register', {
 		title:'Register',
+		user: (req.session.user === undefined ? "Username" : req.session.user)
 	});
 });
 
@@ -56,12 +58,14 @@ router.post('/register', (req, res, next) => {
 router.get('/profile', (req, res, next) => {
 	res.render('profile', {
 		title:'Profile',
+		user: (req.session.user === undefined ? "Username" : req.session.user)
 	});
 });
 
 router.get('/account', (req, res, next) => {
 	res.render('account', {
 		title:'Account',
+		user: (req.session.user === undefined ? "Username" : req.session.user)
 	});
 });
 

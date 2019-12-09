@@ -35,16 +35,16 @@ app.use('/search', searchRoutes);
 app.use('/chat', chatRoutes);
 
 app.get("/", (req, res) => {
-	if (req.session.user != undefined)
-		console.log("'logged in' user is "+"'"+req.session.user+"'");
     res.render('index', {
-        title:'Homepage',
+		title:'Homepage',
+		user: (req.session.user === undefined ? "Username" : req.session.user)
     });
 });
 
 app.get('*', function(req, res) {
 	res.render('error', {
 		title:'error',
+		user: (req.session.user === undefined ? "Username" : req.session.user)
 	});
 });
 
