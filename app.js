@@ -6,6 +6,7 @@ const app = express();
 const userRoutes = require('./api/routes/users');
 const searchRoutes = require('./api/routes/search');
 const chatRoutes = require('./api/routes/chat');
+const recommendRoutes = require('./api/routes/recommend');
 
 // Session
 app.use(session({
@@ -32,6 +33,7 @@ app.use(express.static('scripts'));
 // URL handling routers
 app.use('/user', userRoutes);
 app.use('/search', searchRoutes);
+app.use('/recommendations', recommendRoutes);
 app.use('/chat', chatRoutes);
 
 app.get("/", (req, res) => {

@@ -7,14 +7,10 @@ app.use(express.static('/../../images'));
 app.use(express.static('/../../scripts'));
 
 router.get('/', (req, res, next) => {
-	res.render('search', {
-		title:'Search',
+	res.render('recommendations', {
+		title:'Recommendations',
 		user: (req.session.user === undefined ? "Username" : req.session.user)
 	});
-});
-
-router.post('/', (req, res, next) => {
-	console.log("Searching");
 });
 
 module.exports = router;
