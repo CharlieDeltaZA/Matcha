@@ -1,12 +1,14 @@
 body {
-    background-color: #ff4949;
+	/* background-color: #ff4949; */
+	background-color: rgb(131, 58, 180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(214,22,48,1) 48%, rgba(214,22,48,1) 68%, rgba(224,105,19,1) 100%);
 }
 
 input[type=text], input[type=password] {
 	width: 100%;
 	padding: 15px;
 	margin: 5px 0 8px 0;
-	border: none;
+	/* border: none; */
 	color: black;
 	background: #edf0f2;
 }
@@ -29,4 +31,13 @@ input[type=button]:hover{
 
 input[type=button]:focus{
 	box-shadow:inset 0px -5px #ca3e47;
+}
+
+.foot {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* padding: 1rem; */
+    overflow: hidden;
 }

@@ -1,0 +1,53 @@
+doctype html
+html
+	head
+		title Matcha | Preferences
+		include header_items.pug
+		link(rel='stylesheet', href='/preferences.css')
+	body
+		include navbar.pug
+
+		.container.mx-auto
+			.row
+				.col
+					.card.my-5.mx-auto(style='max-width:400px')
+						.card-body
+							block content
+								h1 Preferences
+								hr
+								form#userPrefs(name="adduser",action='', method='POST')
+									label(for='gender') Gender
+									input#users.gender(type='text' placeholder='gender' name='gender')
+
+									label(for='sexPref') Sexual Preference
+									input#users.sexPref(type='text' placeholder='sexualPreference' name='sexPref')
+
+									label(for='DOB') Date of Birth									
+									input#users.DOB(type="date" name="DOB")
+
+									label(for='bio') Biography
+									textarea#users.bio(placeholder='Biography' name='bio' form="userPrefs" rows='3')
+
+									label(for='interests') Interests
+									input#users.interests(type='text' placeholder='interests' name='interests')
+									//- Change Pics and Bio, probably other things too
+									label(for='pics') Pics
+									input#users.pics(type='password' placeholder='password' name='password')
+
+									button#SetPref.btn.btn-success.btn-block.btn-lg(type='submit', value='update') Set Preferences
+
+		include footer.pug
+
+			//- SCRIPTS
+		include bootstrap_js.pug
+		script.
+			$(document).ready(function(){
+				var user,pass;
+				//- $("#SetPref").click(function(){
+				user=$("#userLogin").val();
+				pass=$("#userPass").val();
+				$.post("/",{user: user,password: pass}, function(data){
+				});
+				window.location.replace("http://localhost:8080?action=setPref");
+				});
+			});
