@@ -1,0 +1,75 @@
+doctype html
+html
+	head
+		title Matcha | Login
+		include header_items.pug
+		link(rel='stylesheet', href='login.css')
+	body
+		include navbar.pug
+
+		.container.mx-auto
+			.row
+				.col
+					.card.my-5.mx-auto(style='max-width:400px')
+						.card-body
+							block content
+								h1 Login
+								hr
+								form#login.needs-validation(name="login", action='', method='POST' novalidate)
+									.form-group
+										label(for='userName') Username:
+										input#userLogin.form-control(type='text' placeholder='Enter Username' name='userLogin' required)
+										.valid-feedback Valid.
+										.invalid-feedback Please fill out this field.
+
+									.form-group
+										label(for='password') Password:
+										input#userPass.form-control(type='password' placeholder='Enter Password' name='password' required)
+										.valid-feedback Valid.
+										.invalid-feedback Please fill out this field.
+									
+									p.text-right
+										| New User? 
+										a(href='/register') Register.
+									p.text-right
+										| Forgot Password? 
+										a(href='/forgot') Reset.
+
+									button#submit.btn.btn-success.btn-block.btn-lg(type='submit', value='add') Login
+		
+		include footer.pug
+
+			//- SCRIPTS
+		include bootstrap_js.pug
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+		script.
+			$(document).ready(function(){
+				var user,pass;
+				//- $("#submit").click(function(){
+				user=$("#userLogin").val();
+				pass=$("#userPass").val();
+				$.post("/",{user: user,password: pass}, function(data){
+				});
+				window.location.replace("http://localhost:8080?action=login");
+				});
+			});
+
+		script.
+			// Disable form submissions if there are invalid fields
+			(function() {
+				'use strict';
+				window.addEventListener('load', function() {
+				// Get the forms we want to add validation styles to
+				var forms = document.getElementsByClassName('needs-validation');
+				// Loop over them and prevent submission
+				var validation = Array.prototype.filter.call(forms, function(form) {
+				form.addEventListener('submit', function(event) {
+				if (form.checkValidity() === false) {
+				event.preventDefault();
+				event.stopPropagation();
+				}
+				form.classList.add('was-validated');
+				}, false);
+				});
+				}, false);
+				})();
