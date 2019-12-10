@@ -1,7 +1,7 @@
 doctype html
 html
 	head
-		title Matcha | Login
+		title Matcha | Search
 		include header_items.pug
 		link(rel='stylesheet', href='login.css')
 	body
@@ -13,12 +13,12 @@ html
 					.card.my-5.mx-auto(style='max-width:400px')
 						.card-body
 							block content
-								h1 Login
+								h1 Search
 								hr
 								form#login.needs-validation(name="login", action='', method='POST' novalidate)
 									.form-group
-										label(for='userName') Username:
-										input#userLogin.form-control(type='text' placeholder='Enter Username' name='userLogin' required)
+										label(for='userName') yes:
+										input#userLogin.form-control(type='text' placeholder='yes' name='userLogin' required)
 										.valid-feedback Valid.
 										.invalid-feedback Please fill out this field.
 
