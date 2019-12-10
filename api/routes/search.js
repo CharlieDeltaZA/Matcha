@@ -6,7 +6,14 @@ app.use(express.static('/../../styles'));
 app.use(express.static('/../../images'));
 app.use(express.static('/../../scripts'));
 
-router.get('/', (req, res, next) => {
+router.get('/recommendations', (req, res, next) => {
+	res.render('recommendations', {
+		title:'Recommendations',
+		user: (req.session.user === undefined ? "Username" : req.session.user)
+	});
+});
+
+router.get('/search', (req, res, next) => {
 	res.render('search', {
 		title:'Search',
 		user: (req.session.user === undefined ? "Username" : req.session.user)
