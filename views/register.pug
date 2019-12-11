@@ -8,9 +8,10 @@ html
 		include navbar.pug
 
 		#Main.container.mx-auto
+			h1.text-center.mt-white.mt-5.display-3 One of Us, One of Us!
 			.row
 				.col
-					.card.my-5.mx-auto(style='max-width:400px')
+					.card.my-5.mx-auto(style='max-width:500px')
 						.card-body
 							block content
 								h1 Register
@@ -45,6 +46,8 @@ html
 										.form-group
 											label(for='password') Password:
 											input#userPassword.form-control(type='password' placeholder='Enter Password' name='userPass' required)
+											small#passwordHelpBlock.form-text.text-muted
+												| Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
 											.valid-feedback Valid.
 											.invalid-feedback Please fill out this field.
 
