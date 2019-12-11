@@ -1,16 +1,17 @@
 doctype html
 html
 	head
-		title Matcha | Login
+		title Matcha | #{title}
 		include header_items.pug
 		link(rel='stylesheet', href='/login.css')
 	body
 		include navbar.pug
 
-		.container.mx-auto
+		#Main.container.mx-auto
+			h1.text-center.mt-white.mt-5.display-3 Welcome Back!
 			.row
 				.col
-					.card.my-5.mx-auto(style='max-width:400px')
+					.card.my-5.mx-auto(style='max-width:500px')
 						.card-body
 							block content
 								h1 Login
@@ -30,10 +31,15 @@ html
 									
 									p.text-right
 										| New User? 
-										a(href='/register') Register.
+										a(href='/user/register') Register.
 									p.text-right
 										| Forgot Password? 
 										a(href='/forgot') Reset.
+
+									//- p#error
+									#error.alert.alert-danger.alert-dismissible.d-none
+										button.close(type='button', data-dismiss='alert') ×
+										| Example Text
 
 									button#submit.btn.btn-success.btn-block.btn-lg(type='submit', value='add') Login
 		

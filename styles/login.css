@@ -34,10 +34,19 @@ input[type=button]:focus{
 }
 
 .foot {
-    position: absolute;
+    /* position: absolute; */
     right: 0;
     bottom: 0;
     left: 0;
     /* padding: 1rem; */
     overflow: hidden;
 }
+
+#Main {
+	height: calc(60vh + 250px);
+}
+
+/* #error {
+	color: red;
+} */
+
