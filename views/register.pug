@@ -61,6 +61,8 @@ html
 										| Already have an account? 
 										a(href='/user/login') Login.
 									
+									p#error
+
 									button#submit.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Register
 
 		include footer.pug
@@ -71,7 +73,7 @@ html
 		script.
 			$(document).ready(function(){
 				var userLogin,userName,userSurname,userEmail,userPass,userConfPass;
-				//- $("#submit").click(function(){
+				$("#submit").click(function(){
 				userLogin=$("#userLogin").val();
 				userName=$("#userName").val();
 				userSurname=$("#userSurname").val();
@@ -80,7 +82,7 @@ html
 				UserConfPass=$("#userConfPass").val();
 				$.post("/",{userLogin: userLogin,userName: userName,userSurname: userSurname,userEmail: userEmail,userPass: userPass,UserConfPass: userConfPass}, function(data){
 				});
-				window.location.replace("http://localhost:8080?action=register");
+				//- window.location.replace("http://localhost:8080?action=register");
 				});
 			});
 
