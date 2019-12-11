@@ -43,5 +43,5 @@ input[type=button]:focus{
 }
 
 #Main {
-	height: calc(80vh + 250px);
+	height: calc(90vh + 250px);
 }
