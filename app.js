@@ -38,14 +38,14 @@ app.use('/chat', chatRoutes);
 
 app.get("/", (req, res) => {
     res.render('index', {
-		title:'Homepage',
+		title:'Home',
 		user: (req.session.user === undefined ? "Username" : req.session.user)
     });
 });
 
 app.get('*', function(req, res) {
 	res.render('error', {
-		title:'error',
+		title:'Error',
 		user: (req.session.user === undefined ? "Username" : req.session.user)
 	});
 });
