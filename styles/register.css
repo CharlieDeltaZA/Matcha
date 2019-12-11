@@ -46,6 +46,6 @@ input[type=button]:focus{
 	height: calc(100vh + 250px);
 }
 
-#error {
+/* #error {
 	color: red;
-}
+} */

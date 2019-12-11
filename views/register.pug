@@ -61,7 +61,10 @@ html
 										| Already have an account? 
 										a(href='/user/login') Login.
 									
-									p#error
+									//- p#error
+									#error.alert.alert-danger.alert-dismissible.d-none
+										button.close(type='button', data-dismiss='alert') ×
+										| Example Text
 
 									button#submit.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Register
 
