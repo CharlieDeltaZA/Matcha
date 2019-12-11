@@ -32,16 +32,20 @@ nav.navbar.navbar-expand-lg.navbar-light.mbg-white
 				a#NotificationDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
 					| 
 					i.fa.fa-bell
+					span#Notif.badge.badge-pill.badge-danger  ⚪ 
 				.dropdown-menu(aria-labelledby='NotificationDropdown')
 					a.dropdown-item(href='#') 
-						| Likes 
 						i.fa.fa-heart
+						|  Likes 
+						span#NotifL.badge.badge-danger 69 
 					a.dropdown-item(href='#') 
-						| Messages 
 						i.fa.fa-comments
+						|  Messages 
+						span#NotifM.badge.badge-danger 2 
 					a.dropdown-item(href='#') 
-						| Profile Views 
 						i.fa.fa-eye
+						|  Profile Views 
+						span#NotifV.badge.badge-danger 420 
 			li.nav-item.dropdown
 				a#usernameDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
 					| #{user} 
