@@ -79,14 +79,22 @@ html
 				});
 				}, false);
 			})();
+		//- script.
+		//- 	$('#userPass, #userLogin').keyup(function () {
+		//- 		if ($(this).val() == '') {
+		//- 			//Check to see if there is any text entered
+		//- 			// If there is no text within the input ten disable the button
+		//- 			$('.enableOnInput').prop('disabled', true);
+		//- 		} else {
+		//- 			//If there is text in the input, then enable the button
+		//- 			$('.enableOnInput').prop('disabled', false);
+		//- 		}
+		//- 	});
 		script.
-			$('#userPass, #userLogin').keyup(function () {
-				if ($(this).val() == '') {
-					//Check to see if there is any text entered
-					// If there is no text within the input ten disable the button
-					$('.enableOnInput').prop('disabled', true);
+			$("input[type='text'], input[type='password']").on("keyup", function(){
+				if($("input[type='text']").val() != "" && $("input[type='password']").val() != ""){
+					$("#submit").prop("disabled", false);
 				} else {
-					//If there is text in the input, then enable the button
-					$('.enableOnInput').prop('disabled', false);
+					$("#submit").prop("disabled", true);
 				}
 			});
