@@ -94,9 +94,8 @@ class Database {
 				let inserts = [username, email, ret, name, surname];
 				sql = mysql.format(sql, inserts);
 				a.query(sql);
+				return resolve();
 			})
-
-			return resolve();
 		});
 	}
 

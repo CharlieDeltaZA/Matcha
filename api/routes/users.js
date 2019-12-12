@@ -35,10 +35,10 @@ router.post('/login', (req, res, next) => {
 		return;
 	}
 
-	let promise = db.login(req.body.userLogin, req.body.password);
+	let loginAttempt = db.login(req.body.userLogin, req.body.password);
 	var res2 = res;
 	var req2 = req;
-	promise.then(function(res){
+	loginAttempt.then(function(res){
 		req2.session.user = req.body.userLogin;
 		res2.redirect('http://localhost:8080');
 	},
@@ -56,7 +56,11 @@ router.get('/register', (req, res, next) => {
 
 router.post('/register', (req, res, next) => {
 	let db = new database;
-	var res = db.register(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass);
+	var registerAttempt = db.register(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass);
+	var res2 = res;
+	registerAttempt.then(function(ret){
+		res2.redirect('http://localhost:8080');
+	})
 });
 
 router.get('/profile', (req, res, next) => {
