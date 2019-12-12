@@ -1,6 +1,7 @@
 const express = require('express');
 var session = require('express-session');
 const app = express();
+let Database = require('./api/database/database');
 
 // URL handling
 const userRoutes = require('./api/routes/users');
@@ -10,12 +11,12 @@ const recommendRoutes = require('./api/routes/recommend');
 
 // Session
 app.use(session({
-    key: 'user_sid',
+	key: 'user_sid',
     secret: 'somerandonstuffs',
     resave: false,
     saveUninitialized: false,
     cookie: {
-        expires: 600000
+		expires: 600000
     }
 }));
 
@@ -38,14 +39,14 @@ app.use('/chat', chatRoutes);
 
 app.get("/", (req, res) => {
     res.render('index', {
-		title:'Homepage',
+		title:'Home',
 		user: (req.session.user === undefined ? "Username" : req.session.user)
     });
 });
 
 app.get('*', function(req, res) {
 	res.render('error', {
-		title:'error',
+		title:'Error',
 		user: (req.session.user === undefined ? "Username" : req.session.user)
 	});
 });

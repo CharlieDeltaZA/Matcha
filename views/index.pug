@@ -1,7 +1,7 @@
 doctype html
 html
 	head
-		title Matcha | Home
+		title Matcha | #{title}
 		include header_items.pug
 		link(rel='stylesheet', href='/index.css')
 		//- link(rel='stylesheet', href='popupS.min.css')
@@ -13,13 +13,13 @@ html
 			h1.mt-white.text-center.mt-5.display-2 There's no place like 127.0.0.1
 			//- img.img-fluid(src="back1.jpg" style="z-index:5")
 
-			//- a.rounded-pill.btn.btn-lg.mbg-white.mx-auto.mt-5(href="/register") Join Us
-			button#Register.rounded-pill.btn.btn-lg.mbg-white.mx-auto.mt-5(href="#") Join Us
+			a.rounded-pill.btn.btn-lg.mbg-white.mx-auto.mt-5(href="/user/register") Join Us
+			//- button#Register.rounded-pill.btn.btn-lg.mbg-white.mx-auto.mt-5(href="#") Join Us
 			a.rounded-pill.btn.btn-lg.mbg-white.mx-auto.mt-5(href="#" onclick="logMe()") JS Test Btn
 
 			.card.mx-auto.mt-5(style='max-width: 800px;')
 				h4.card-header Reviews:
-				img(src="images3.png", alt="Happy Couple")
+				img(src="/images3.png", alt="Happy Couple")
 				.card-body
 					h3.card-title Happy Couple
 

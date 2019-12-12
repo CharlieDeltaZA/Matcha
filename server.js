@@ -1,8 +1,8 @@
-const sql = require('./config/setup');
+const sql = require('./api/database/setup');
 const app = require('./app');
 const PORT = 8080;
 
-// sql.setupDB();
+sql.setupDB();
 app.listen(PORT, () => {
 	console.log(`Server is listening on port: ${PORT}`);
 });
