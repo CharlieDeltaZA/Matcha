@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const app = express();
+const database = require('../../api/database/database');
 
 app.set('view engine', 'pug');
 app.use(express.static('/../../styles'));
@@ -15,6 +16,7 @@ router.get('/login', (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
+	let db = new database;
 
 	if (req.body.userLogin.length == 0 || req.body.userLogin == undefined)
 	{
@@ -32,12 +34,17 @@ router.post('/login', (req, res, next) => {
 			console.log("password is blank");
 		return;
 	}
-	console.log("Userlogin = "+req.body.userLogin);
-	console.log("password = "+req.body.password);
 
-	// Placeholder
-	req.session.user = req.body.userLogin;
-	res.redirect('http://localhost:8080');
+	let promise = db.login(req.body.userLogin, req.body.password);
+	var res2 = res;
+	var req2 = req;
+	promise.then(function(res){
+		req2.session.user = req.body.userLogin;
+		res2.redirect('http://localhost:8080');
+	},
+	function(err){
+		console.log("Failed log in attempt.");
+	})
 });
 
 router.get('/register', (req, res, next) => {
@@ -48,11 +55,8 @@ router.get('/register', (req, res, next) => {
 });
 
 router.post('/register', (req, res, next) => {
-	console.log("---------- REGISTER ----------");
-	console.log("Userlogin = "+req.body.userLogin);
-	console.log("Name = "+req.body.userName+", Surname = "+req.body.userSurname);
-	console.log("Email = "+req.body.userEmail);
-	console.log("Pass = "+req.body.userPass+", ConfPass = "+req.body.userConfPass);
+	let db = new database;
+	var res = db.register(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass);
 });
 
 router.get('/profile', (req, res, next) => {

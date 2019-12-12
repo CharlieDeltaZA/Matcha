@@ -1,4 +1,4 @@
-const sql = require('./config/setup');
+const sql = require('./api/database/setup');
 const app = require('./app');
 const PORT = 8080;
 

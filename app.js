@@ -1,6 +1,7 @@
 const express = require('express');
 var session = require('express-session');
 const app = express();
+let Database = require('./api/database/database');
 
 // URL handling
 const userRoutes = require('./api/routes/users');
@@ -10,12 +11,12 @@ const recommendRoutes = require('./api/routes/recommend');
 
 // Session
 app.use(session({
-    key: 'user_sid',
+	key: 'user_sid',
     secret: 'somerandonstuffs',
     resave: false,
     saveUninitialized: false,
     cookie: {
-        expires: 600000
+		expires: 600000
     }
 }));
 
