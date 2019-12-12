@@ -38,7 +38,7 @@ html
 
 									.form-group
 										label(for='email') Email:
-										input#userEmail.form-control(type='text' placeholder='Enter Email' name='userEmail' required)
+										input#userEmail.form-control(type='email' placeholder='Enter Email' name='userEmail' required)
 										.valid-feedback Valid.
 										.invalid-feedback Please fill out this field.
 
@@ -66,7 +66,7 @@ html
 										button.close(type='button', data-dismiss='alert') ×
 										| Example Text
 
-									button#submit.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Register
+									button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='register' disabled='disabled') Register
 
 		include footer.pug
 
@@ -108,3 +108,22 @@ html
 				});
 				}, false);
 				})();
+		//- script.
+		//- 	$('#userLogin, #userName, #userSurname, #userEmail, #userPassword, #userConfPass').keyup(function () {
+		//- 		if ($(this).val() == '') {
+		//- 			//Check to see if there is any text entered
+		//- 			// If there is no text within the input ten disable the button
+		//- 			$('.enableOnInput').prop('disabled', true);
+		//- 		} else {
+		//- 			//If there is text in the input, then enable the button
+		//- 			$('.enableOnInput').prop('disabled', false);
+		//- 		}
+		//- 	});
+		script.
+			$("input[type='text'], input[type='password'], input[type='email']").on("keyup", function(){
+				if($("input[type='text']").val() != "" && $("input[type='password']").val() != "" && $("input[type='email']").val() != ""){
+					$("#submit").prop("disabled", false);
+				} else {
+					$("#submit").prop("disabled", true);
+				}
+			});

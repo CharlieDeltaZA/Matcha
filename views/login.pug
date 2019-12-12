@@ -41,7 +41,7 @@ html
 										button.close(type='button', data-dismiss='alert') ×
 										| Example Text
 
-									button#submit.btn.btn-success.btn-block.btn-lg(type='submit', value='add') Login
+									button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='add' disabled='disabled') Login
 		
 		include footer.pug
 
@@ -79,3 +79,22 @@ html
 				});
 				}, false);
 			})();
+		//- script.
+		//- 	$('#userPass, #userLogin').keyup(function () {
+		//- 		if ($(this).val() == '') {
+		//- 			//Check to see if there is any text entered
+		//- 			// If there is no text within the input ten disable the button
+		//- 			$('.enableOnInput').prop('disabled', true);
+		//- 		} else {
+		//- 			//If there is text in the input, then enable the button
+		//- 			$('.enableOnInput').prop('disabled', false);
+		//- 		}
+		//- 	});
+		script.
+			$("input[type='text'], input[type='password']").on("keyup", function(){
+				if($("input[type='text']").val() != "" && $("input[type='password']").val() != ""){
+					$("#submit").prop("disabled", false);
+				} else {
+					$("#submit").prop("disabled", true);
+				}
+			});
