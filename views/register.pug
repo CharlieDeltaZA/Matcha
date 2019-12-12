@@ -45,7 +45,7 @@ html
 									.form-group
 										.form-group
 											label(for='password') Password:
-											input#userPassword.form-control(type='password' placeholder='Enter Password' name='userPass' required)
+											input#userPass.form-control(type='password' placeholder='Enter Password' name='userPass' required)
 											small#passwordHelpBlock.form-text.text-muted
 												| Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
 											.valid-feedback Valid.
@@ -85,7 +85,7 @@ html
 				UserConfPass=$("#userConfPass").val();
 				$.post("/",{userLogin: userLogin,userName: userName,userSurname: userSurname,userEmail: userEmail,userPass: userPass,UserConfPass: userConfPass}, function(data){
 				});
-				//- window.location.replace("http://localhost:8080?action=register");
+				window.location.replace("http://localhost:8080?action=register");
 				});
 			});
 
@@ -119,6 +119,7 @@ html
 		//- 			$('.enableOnInput').prop('disabled', false);
 		//- 		}
 		//- 	});
+
 		script.
 			$("input[type='text'], input[type='password'], input[type='email']").on("keyup", function(){
 				if($("input[type='text']").val() != "" && $("input[type='password']").val() != "" && $("input[type='email']").val() != ""){
