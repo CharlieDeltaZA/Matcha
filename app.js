@@ -1,6 +1,7 @@
 const express = require('express');
 var session = require('express-session');
 const app = express();
+const database = require('./api/database/database');
 
 // URL handling
 const userRoutes = require('./api/routes/users');
@@ -8,7 +9,7 @@ const searchRoutes = require('./api/routes/search');
 const chatRoutes = require('./api/routes/chat');
 const recommendRoutes = require('./api/routes/recommend');
 
-// Session
+// Session and DB setup
 app.use(session({
 	key: 'user_sid',
     secret: 'somerandonstuffs',
@@ -18,6 +19,18 @@ app.use(session({
 		expires: 600000
     }
 }));
+let DB = new database;
+
+// TEMPORARY CODE. gets all information on a given user.
+
+// let user = DB.get_user('Test_User');
+// user.then(function (ret) {
+// 	console.log(ret[0]);
+// }, function (err) {
+// 	console.log(`Failed to retrieve user.\nReason: ${err}`);
+// })
+
+// TEMPOARY CODE. Emails any email given. 
 
 // const email_handler = require('./api/email');
 // let confirmation = email_handler.confirm_email('cameronstaljaard@gmail.com');

@@ -27,8 +27,8 @@ class Database {
 
 	validate_user(username) {
 		return new Promise ( (resolve, reject) => {
-			let sql = "SELECT * FROM ?? WHERE ?? = ?";
-			let inserts = ['users', 'username', username];
+			let sql = "SELECT * FROM users WHERE username = ?";
+			let inserts = [username];
 			sql = mysql.format(sql, inserts);
 			
 			let userExists = this.query(sql);
@@ -83,6 +83,21 @@ class Database {
 					return resolve();
 				})
 			})	
+		});
+	}
+
+	get_user(username) {
+		return new Promise ( (resolve, reject) => {
+			let sql = "SELECT * FROM users WHERE username = ?";
+			let inserts = [username];
+			sql = mysql.format(sql, inserts);
+			
+			let userExists = this.query(sql);
+			userExists.then(function(ret) {
+				if (!ret[0])
+					reject("User does not exist.");
+				resolve(ret);
+			});
 		});
 	}
 
