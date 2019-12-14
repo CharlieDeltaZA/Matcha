@@ -2,16 +2,6 @@ const db = require('./config');
 const mysql = require('mysql');
 var encrypt = require('../encrypt');
 
-//Example of promise catching. Need to implement this everywhere later..
-	// hash.then(function(res){
-	// 	let match = encrypt.comparePassword(password, res);
-	// 	match.then(function(ret){
-	// 		console.log(ret);
-	// 	}, function(err) {
-	// 		console.log(err);
-	// 	})
-	// })
-
 class Database {
 
     constructor() {
@@ -44,8 +34,8 @@ class Database {
 			let userExists = this.query(sql);
 			userExists.then(function(ret) {
 				if (!ret[0])
-					return reject(`User ${username} does not exist`);
-				return resolve("User exists");
+					reject(0);
+				resolve(1);
 			});
 		});
 	}
@@ -66,11 +56,11 @@ class Database {
 						resolve(`Logged in user '${username}'`);
 					},
 					function(err){
-						console.log("Password mismatch");
+						reject(`Incorrect password for '${username}'`);
 					})
 				})
 			},function(err){
-				reject("Invalid user");
+				reject(`'${username}' does not exist.`);
 			})
 		});
 	}
@@ -78,24 +68,21 @@ class Database {
 	// All field validation will be done in front-end js. This exclusively handles the SQL.
 	register(username, name, surname, gender, email, password) {
 		return new Promise ( (resolve, reject) => {
-			let sql = "SELECT * FROM users WHERE username = ?";
-			let inserts = [username];
-			sql = mysql.format(sql, inserts);
-			let userExists = this.query(sql);
-
+			let userExists = this.validate_user(username);
 			userExists.then(function(ret) {
-				if (ret[0])
-					return reject(`User ${username} already exists`);
-			})
-			let hash = encrypt.cryptPassword(password);
-			var a = this;
-			hash.then(function(ret){
-				sql = `INSERT INTO users (username, userEmail, userPassword, userFirstName, userLastName, userGender) VALUES(?, ?, ?, ?, ?, 'Male')`
-				let inserts = [username, email, ret, name, surname];
-				sql = mysql.format(sql, inserts);
-				a.query(sql);
-				return resolve();
-			})
+				reject(`User ${username} already exists`);
+			},
+			function(err) {
+				let hash = encrypt.cryptPassword(password);
+				var a = this;
+				hash.then(function(ret){
+					let sql = `INSERT INTO users (username, userEmail, userPassword, userFirstName, userLastName, userGender) VALUES(?, ?, ?, ?, ?, 'Male')`
+					let inserts = [username, email, ret, name, surname];
+					sql = mysql.format(sql, inserts);
+					a.query(sql);
+					return resolve();
+				})
+			})	
 		});
 	}
 

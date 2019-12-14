@@ -1,7 +1,6 @@
 const express = require('express');
 var session = require('express-session');
 const app = express();
-let Database = require('./api/database/database');
 
 // URL handling
 const userRoutes = require('./api/routes/users');
@@ -19,6 +18,14 @@ app.use(session({
 		expires: 600000
     }
 }));
+
+// const email_handler = require('./api/email');
+// let confirmation = email_handler.confirm_email('cameronstaljaard@gmail.com');
+// confirmation.then( function (ret){
+// 	console.log(`Email sent.`);
+// }, function (err) {
+// 	console.log(`Failed to send email.\nReason: ${err}`);
+// })
 
 // Body parser
 const bodyParser = require("body-parser");

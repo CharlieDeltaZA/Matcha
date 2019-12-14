@@ -43,7 +43,8 @@ router.post('/login', (req, res, next) => {
 		res2.redirect('http://localhost:8080');
 	},
 	function(err){
-		console.log("Failed log in attempt.");
+		console.log(`Failed log in attempt.\nReason: ${err}`);
+		res.status(204).end();
 	})
 });
 
@@ -56,10 +57,14 @@ router.get('/register', (req, res, next) => {
 
 router.post('/register', (req, res, next) => {
 	let db = new database;
-	var registerAttempt = db.register(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass);
 	var res2 = res;
+	var registerAttempt = db.register(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass);
 	registerAttempt.then(function(ret){
 		res2.redirect('http://localhost:8080');
+	},
+	function (err) {
+		console.log(`Failed registration.\nReason: ${err}`);
+		res.status(204).end();
 	})
 });
 
