@@ -51,7 +51,7 @@ html
 		script.
 			$(document).ready(function(){
 				var user,pass;
-				//- $("#submit").click(function(){
+				$("#submit").click(function(){
 				user=$("#userLogin").val();
 				pass=$("#userPass").val();
 				$.post("/",{user: user,password: pass}, function(data){
