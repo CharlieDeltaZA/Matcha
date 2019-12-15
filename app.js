@@ -20,10 +20,10 @@ app.use(session({
 		expires: 600000
     }
 }));
-let DB = new database;
 
 // TEMPORARY CODE. gets all information on a given user.
 
+// let DB = new database;
 // let user = DB.get_user('Test_User');
 // user.then(function (ret) {
 // 	console.log(ret[0]);

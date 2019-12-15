@@ -13,4 +13,8 @@ router.get('/', (req, res, next) => {
 	});
 });
 
+router.post('/', (req, res, next) => {
+	console.log(`Received location!\nLocation: ${req.body.lat}, ${req.body.lng}`);
+});
+
 module.exports = router;

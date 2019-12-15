@@ -14,7 +14,6 @@ router.get('/login', (req, res, next) => {
 		user: (req.session.user === undefined ? "Username" : req.session.user)
 	});
 });
-
 router.post('/login', (req, res, next) => {
 	let db = new database;
 
