@@ -83,7 +83,7 @@ var setupTables = function setupTables() {
 			}
 			else
 			{
-				console.log('user table not found.');
+				console.log('message table not found.');
 				var sql = `CREATE TABLE IF NOT EXISTS messages (
 					receiver LONGTEXT NOT NULL,
 					sender LONGTEXT NOT NULL,
