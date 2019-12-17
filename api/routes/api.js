@@ -9,7 +9,7 @@ app.use(express.static('/../../images'));
 app.use(express.static('/../../scripts'));
 
 router.get('/users/:username', (req, res) => {
-    
-})
+    //code to query and return json object if username is found.
+});
 
 module.exports = router;
