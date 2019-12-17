@@ -82,8 +82,8 @@ html
 				userSurname=$("#userSurname").val();
 				userEmail=$("#userEmail").val();
 				userPass=$("#userPass").val();
-				UserConfPass=$("#userConfPass").val();
-				$.post("/",{userLogin: userLogin,userName: userName,userSurname: userSurname,userEmail: userEmail,userPass: userPass,UserConfPass: userConfPass}, function(data){
+				userConfPass=$("#userConfPass").val();
+				$.post("/",{userLogin: userLogin,userName: userName,userSurname: userSurname,userEmail: userEmail,userPass: userPass,userConfPass: userConfPass}, function(data){
 				});
 				window.location.replace("http://localhost:8080?action=register");
 				});
