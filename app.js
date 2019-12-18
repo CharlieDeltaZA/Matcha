@@ -9,6 +9,7 @@ const searchRoutes = require('./api/routes/search');
 const chatRoutes = require('./api/routes/chat');
 const recommendRoutes = require('./api/routes/recommend');
 const locationRoutes = require('./api/routes/location');
+const apiRoutes = require('./api/routes/api');
 
 // Session and DB setup
 app.use(session({
@@ -58,6 +59,7 @@ app.use('/search', searchRoutes);
 app.use('/recommendations', recommendRoutes);
 app.use('/chat', chatRoutes);
 app.use('/location', locationRoutes);
+app.use('/api', apiRoutes);
 
 app.get("/", (req, res) => {
     res.render('index', {

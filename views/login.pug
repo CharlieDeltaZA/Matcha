@@ -36,49 +36,41 @@ html
 										| Forgot Password? 
 										a(href='/forgot') Reset.
 
-									//- p#error
-									#error.alert.alert-danger.alert-dismissible.d-none
-										button.close(type='button', data-dismiss='alert') ×
-										| Example Text
+									//- #error.alert.alert-danger.alert-dismissible.d-none
+									//- 	button.close(type='button', data-dismiss='alert') ×
+									//- 	| Example Text
 
-									button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='add' disabled='disabled') Login
+									//- button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='add' onclick='LogInCheck()') Login
+									//- Fix Styling Below!
+									input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Login' onclick='LogInCheck()' style="background-color:#28a745")
+								p#error.mt-3
 		
 		include footer.pug
 
 			//- SCRIPTS
-		include ../views/bootstrap_js.pug
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-		script.
-			$(document).ready(function(){
-				var user,pass;
-				$("#submit").click(function(){
-				user=$("#userLogin").val();
-				pass=$("#userPass").val();
-				$.post("/",{user: user,password: pass}, function(data){
-				});
-				window.location.replace("http://localhost:8080?action=login");
-				});
-			});
 
-		script.
-			// Disable form submissions if there are invalid fields
-			(function() {
-				'use strict';
-				window.addEventListener('load', function() {
-				// Get the forms we want to add validation styles to
-				var forms = document.getElementsByClassName('needs-validation');
-				// Loop over them and prevent submission
-				var validation = Array.prototype.filter.call(forms, function(form) {
-				form.addEventListener('submit', function(event) {
-				if (form.checkValidity() === false) {
-				event.preventDefault();
-				event.stopPropagation();
-				}
-				form.classList.add('was-validated');
-				}, false);
-				});
-				}, false);
-			})();
+		include bootstrap_js.pug
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+		//- script.
+		//- 	$(document).ready(function(){
+		//- 		var user,pass;
+		//- 		$("#submit").click(function(){
+		//- 		user=$("#userLogin").val();
+		//- 		pass=$("#userPass").val();
+		//- 		$.post("/",{user: user,password: pass}, function(data){
+		//- 		});
+		//- 		window.location.replace("http://localhost:8080?action=login");
+		//- 		});
+		//- 	});
+
+		script(src="/submission.js")
+		script(src="/login.js")
+
+		//- script.
+		//- 	function LogInCheck() {
+		//- 		// const uname = document.getElementById('userLogin');
+		//- 		console.log("FFS");
+		//- 	};
 		//- script.
 		//- 	$('#userPass, #userLogin').keyup(function () {
 		//- 		if ($(this).val() == '') {
@@ -90,11 +82,12 @@ html
 		//- 			$('.enableOnInput').prop('disabled', false);
 		//- 		}
 		//- 	});
-		script.
-			$("input[type='text'], input[type='password']").on("keyup", function(){
-				if($("input[type='text']").val() != "" && $("input[type='password']").val() != ""){
-					$("#submit").prop("disabled", false);
-				} else {
-					$("#submit").prop("disabled", true);
-				}
-			});
+
+		//- script.
+		//- 	$("input[type='text'], input[type='password']").on("keyup", function(){
+		//- 		if($("input[type='text']").val() != "" && $("input[type='password']").val() != ""){
+		//- 			$("#submit").prop("disabled", false);
+		//- 		} else {
+		//- 			$("#submit").prop("disabled", true);
+		//- 		}
+		//- 	});
