@@ -10,11 +10,11 @@ nav.navbar.navbar-expand-lg.navbar-light.mbg-white
 				a.nav-link(href='/') Home
 					//- | Home 
 					//- span.sr-only (current)
-			li.nav-item
+			li#LoginBtn.nav-item
 				a.nav-link(href='/user/login') Login
-			li.nav-item
+			li#RegisterBtn.nav-item
 				a.nav-link(href='/user/register') Register
-			li.nav-item
+			li#Recomm.nav-item
 				a.nav-link(href='/recommendations') Recommendations
 			//- li.nav-item
 			//-     a.nav-link(href='#') MESSAGES
@@ -51,13 +51,13 @@ nav.navbar.navbar-expand-lg.navbar-light.mbg-white
 					| #{user} 
 					i.fa.fa-user
 				.dropdown-menu.dropdown-menu-right(aria-labelledby='usernameDropdown')
-					a.dropdown-item(href='/user/profile')
+					a#Prof.dropdown-item(href='/user/profile')
 						i.fa.fa-user-circle(aria-hidden='true')
 						|  My Profile 
-					a.dropdown-item(href='/user/account')
+					a#Acc.dropdown-item(href='/user/account')
 						i.fa.fa-cog(aria-hidden='true')
 						|  Edit Profile 
 					.dropdown-divider
-					a.dropdown-item(href='#')
+					a#LogoutBtn.dropdown-item(href='#')
 						i.fa.fa-sign-out
 						|  Logout 
