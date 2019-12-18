@@ -16,7 +16,7 @@ router.get('/login', (req, res, next) => {
 });
 router.post('/login', (req, res, next) => {
 	let db = new database;
-
+	// console.log(req.body);
 	if (req.body.userLogin.length == 0 || req.body.userLogin == undefined)
 	{
 		if (req.body.userLogin == undefined)
@@ -57,6 +57,7 @@ router.get('/register', (req, res, next) => {
 router.post('/register', (req, res, next) => {
 	let db = new database;
 	var res2 = res;
+	// console.log(req.body);
 	var registerAttempt = db.register(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass);
 	registerAttempt.then(function(ret){
 		res2.redirect('http://localhost:8080');

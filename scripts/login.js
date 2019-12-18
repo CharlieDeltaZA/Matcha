@@ -25,7 +25,7 @@ function LogInCheck() {
         userPass: pw,
     };
 
-    xhr.open("POST", '/', true);
+    xhr.open("POST", '/user/login', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send(JSON.stringify(userDetails));
     console.log(userDetails);

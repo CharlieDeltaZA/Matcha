@@ -40,7 +40,7 @@ function RegisterCheck() {
         userConfPass: confpw
     };
 
-    xhr.open("POST", '/', true);
+    xhr.open("POST", '/user/register', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send(JSON.stringify(userDetails));
     console.log(userDetails);
