@@ -45,6 +45,8 @@ function RegisterCheck() {
     xhr.send(JSON.stringify(userDetails));
     console.log(userDetails);
     console.log("Posted");
+	window.location.replace("http://localhost:8080?action=register");
+
 };
 
 // Prints any error out to the hidden div, pass a custom message

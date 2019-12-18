@@ -30,6 +30,7 @@ function LogInCheck() {
     xhr.send(JSON.stringify(userDetails));
     console.log(userDetails);
     console.log("Posted");
+    window.location.replace("http://localhost:8080?action=login");
 
 };
 
