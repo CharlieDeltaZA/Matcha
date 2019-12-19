@@ -1,3 +1,13 @@
+const express = require('express');
+const router = express.Router();
+const app = express();
+const database = require('../../api/database/database');
+
+app.set('view engine', 'pug');
+app.use(express.static('/../../styles'));
+app.use(express.static('/../../images'));
+app.use(express.static('/../../scripts'));
+
 const mongoose = require("mongoose");
 const url = "mongodb+srv://admin:admin@cluster0-u7zcd.mongodb.net/test?retryWrites=true&w=majority";
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
@@ -24,3 +34,5 @@ app.post('/messages', (req, res) => {
 			res.sendStatus(200);
 		});
 	});
+
+module.exports = router;
