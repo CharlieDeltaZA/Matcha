@@ -46,26 +46,27 @@ html
 										input#userInterests(type='text' placeholder='interests' name='interests')
 									//- Change Pics and Bio, probably other things too
 									//- .custom-file
-									.form-group
-										label(for='propic') Profile Image
-										input#userProPic(type='file' placeholder='Select an Image' name='propic')
+									//- .form-group
+									//- 	label(for='propic') Profile Image
+									//- 	input#userProPic(type='file' placeholder='Select an Image' name='propic')
 
-									//- button#SetPref.btn.btn-success.btn-block.btn-lg.mt-3(type='submit', value='update') Set Preferences
-									input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Pref' onclick='PrefCheck()' style="background-color:#28a745")
-								p#error.mt-3								
+									input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Update' onclick='PrefCheck()' style="background-color:#28a745")
+								p#error.mt-3
 
 		include footer.pug
 
 			//- SCRIPTS
 		include bootstrap_js.pug
-		script.
-			$(document).ready(function(){
-				var user,pass;
-				//- $("#SetPref").click(function(){
-				user=$("#userLogin").val();
-				pass=$("#userPass").val();
-				$.post("/",{user: user,password: pass}, function(data){
-				});
-				window.location.replace("http://localhost:8080?action=setPref");
-				});
-			});
+		script(src="/submission.js")
+		script(src="/pref.js")
+		//- script.
+		//- 	$(document).ready(function(){
+		//- 		var user,pass;
+		//- 		//- $("#SetPref").click(function(){
+		//- 		user=$("#userLogin").val();
+		//- 		pass=$("#userPass").val();
+		//- 		$.post("/",{user: user,password: pass}, function(data){
+		//- 		});
+		//- 		window.location.replace("http://localhost:8080?action=setPref");
+		//- 		});
+		//- 	});
