@@ -6,10 +6,9 @@ const database = require('./api/database/database');
 // URL handling
 const userRoutes = require('./api/routes/users');
 const searchRoutes = require('./api/routes/search');
-const chatRoutes = require('./api/routes/chat');
+// const chatRoutes = require('./api/routes/chat');
 const recommendRoutes = require('./api/routes/recommend');
 const locationRoutes = require('./api/routes/location');
-const apiRoutes = require('./api/routes/api');
 
 // Session and DB setup
 app.use(session({
@@ -24,13 +23,13 @@ app.use(session({
 
 // TEMPORARY CODE. gets all information on a given user.
 
-let DB = new database;
-let user = DB.get_user('Test_User');
-user.then(function (ret) {
-	console.log(ret[0]);
-}, function (err) {
-	console.log(`Failed to retrieve user.\nReason: ${err}`);
-})
+// let DB = new database;
+// let user = DB.get_user('Test_User');
+// user.then(function (ret) {
+// 	console.log(ret[0]);
+// }, function (err) {
+// 	console.log(`Failed to retrieve user.\nReason: ${err}`);
+// })
 
 // TEMPOARY CODE. Emails any email given. 
 
@@ -57,9 +56,8 @@ app.use(express.static('scripts'));
 app.use('/user', userRoutes);
 app.use('/search', searchRoutes);
 app.use('/recommendations', recommendRoutes);
-app.use('/chat', chatRoutes);
+// app.use('/chat', chatRoutes);
 app.use('/location', locationRoutes);
-app.use('/api', apiRoutes);
 
 app.get("/", (req, res) => {
     res.render('index', {

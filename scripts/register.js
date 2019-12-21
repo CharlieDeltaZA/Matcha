@@ -38,15 +38,13 @@ function RegisterCheck() {
         userEmail: email,
         userPass: pw,
         userConfPass: confpw
-    };
+	};
 
     xhr.open("POST", '/user/register', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify(userDetails));
-    console.log(userDetails);
-    console.log("Posted");
-	window.location.replace("http://localhost:8080?action=register");
-
+	xhr.send(JSON.stringify(userDetails));
+	
+	window.location.replace("http://localhost:8080");
 };
 
 // Prints any error out to the hidden div, pass a custom message
@@ -82,10 +80,6 @@ function checkPass(pw, confpw) {
         //more checks
         if (pw.length < 8) {
             printError("Password must be longer than 8 characters!");
-            return 0;
-        }
-        if (pw.length > 20) {
-            printError("Password must not be longer than 20 characters!");
             return 0;
         }
         if (pw_format.test(pw)) {

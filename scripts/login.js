@@ -6,8 +6,6 @@ function LogInCheck() {
     var userDetails;
     const uname = document.getElementById("userLogin").value;
     const pw = document.getElementById("userPass").value;
-    
-    const url = `http://localhost:8080/api/users/${uname}`;
 
     if (checkContent(uname, pw) == 0)
         return;
@@ -28,10 +26,6 @@ function LogInCheck() {
     xhr.open("POST", '/user/login', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send(JSON.stringify(userDetails));
-    console.log(userDetails);
-    console.log("Posted");
-    window.location.replace("http://localhost:8080?action=login");
-
 };
 
 function printError(msg) {

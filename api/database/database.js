@@ -33,14 +33,14 @@ class Database {
 			
 			let userExists = this.query(sql);
 			userExists.then(function(ret) {
-				if (!ret[0])
-					reject(0);
-				resolve(1);
-			},
+				if (ret[0])
+					resolve(1);
+				reject(0);
+				}),
 			function (err) {
-				reject ("Failed to validate user.");
-			});
-		});
+				reject ("Failed to validate query.");
+			};
+		})
 	}
 
 	login(username, password) {
@@ -71,23 +71,21 @@ class Database {
 	// All field validation will be done in front-end js. This exclusively handles the SQL.
 	register(username, name, surname, gender, email, password) {
 		return new Promise ( (resolve, reject) => {
+			var a = this;
 			let userExists = this.validate_user(username);
-			userExists.then(function(ret) {
-				reject(`User ${username} already exists`);
+			userExists.then( function(ret) {
+				reject("User already exists");
 			},
-			function(err) {
+			function (err) {
 				let hash = encrypt.cryptPassword(password);
-				var a = this;
 				hash.then(function(ret){
 					let sql = `INSERT INTO users (username, userEmail, userPassword, userFirstName, userLastName, userGender) VALUES(?, ?, ?, ?, ?, 'Male')`
 					let inserts = [username, email, ret, name, surname];
 					sql = mysql.format(sql, inserts);
 					a.query(sql);
 					return resolve();
-				}, function (err) {
-					reject("Failed to hash password");
-				})
-			})	
+				})	
+			})
 		});
 	}
 
