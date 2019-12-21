@@ -2,40 +2,42 @@ doctype html
 
 html
 	head
-		title Hello World
-	script(src="../scripts/chat.js")
-	script
-		var socket = io();
-		function setUsername() {
-			socket.emit('setUsername', $('name').value);
-		}
-
-		let user;
-		socket.on('userExists', (data) => {
-			$('error-container').innerHTML = data;
-		});
-
-		socket.on('userSet', (data) => {
-			user = data.username;
-			document.body.innerHTML = '<input type = "text" id = "message">\
-         	<button type = "button" name = "button" onclick = "sendMessage()">Send</button>\
-         	<div id = "message-container"></div>';
-		});
-
-		function sendMessage() {
-			let msg = $('message').value;
-			if (msg) {
-				socket.emit('msg', {message: msg, user: user});
-			}
-		}
-
-		socket.on('newmsg', (data) => {
-			if (user) {
-				$('message-container').innerHTML += '<div><b>' + 
-               data.user + '</b>: ' + data.message + '</div>'
-			}
-		})
+		include header_items.pug
 	body
-		#error-container
-		input(type="text" name="name" value = "" placeholder = "enter your name")
-		button( type="button" name="button") Let me chat
+		.container
+			br
+			.jumbotron
+				h1.display-4 Send Message
+				br
+				input#name.form-control(placeholder='Name')
+				br
+				textarea#message.form-control(placeholder='Your Message Here')
+				br
+				button#send.btn.btn-success Send
+			#messages
+		include bootstrap_js.pug
+		script.
+			$(() => {
+				$("#send").click(()=>{
+				sendMessage({
+					name: $("#name").val(), 
+					message:$("#message").val()});
+					})
+				getMessages()
+			});
+
+			function addMessages(message){
+				$("#messages").append(`
+					<h4> ${message.name} </h4>
+					<p>  ${message.message} </p>`)
+			}
+
+			function getMessages(){
+				$.get('/messages', (data) => {
+					data.forEach(addMessages);
+				})
+			}
+
+			function sendMessage(message){
+				$.post('/messages', message)
+			}

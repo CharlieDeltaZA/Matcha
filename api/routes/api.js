@@ -10,6 +10,19 @@ app.use(express.static('/../../scripts'));
 
 router.get('/users/:username', (req, res) => {
     //code to query and return json object if username is found.
+    let db = new database;
+    let user = db.get_user(req.params.username);
+    sleep(5000);
+    console.log(user);
 });
+
+function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds){
+        break;
+      }
+    }
+  }
 
 module.exports = router;

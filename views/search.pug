@@ -3,10 +3,36 @@ html
 	head
 		title Matcha | #{title}
 		include header_items.pug
-		link(rel='stylesheet', href='/login.css')
+		link(rel='stylesheet', href='/search.css')
 	body
 		include navbar.pug
 		
+		#Main.container.mx-auto
+			h1.text-center.mt-white.mt-5.display-3 Search
+			.row
+				.col
+					.card.my-5.mx-auto(style='max-width:500px')
+						.card-body
+							block content
+								h1 Search
+								hr
+
+
+								form#login.needs-validation(name="login", action='', method='POST' novalidate)
+									.form-group
+										label(for='userName') Location:
+										input#userLogin.form-control(type='text' placeholder='Enter Location' name='Location' required)
+										.valid-feedback Valid.
+										.invalid-feedback Please fill out this field.
+
+									.form-group
+										label(for='password') Interests:
+										input#userPass.form-control(type='text' placeholder='Enter Interests Tags' name='Interests' required)
+										.valid-feedback Valid.
+										.invalid-feedback Please fill out this field.
+
+									button#SetPref.btn.btn-success.btn-block.btn-lg(type='submit', value='update') Search
+
 		include footer.pug
 
 		include bootstrap_js.pug

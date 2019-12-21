@@ -2,6 +2,8 @@ function RegisterCheck() {
     'use strict';
     printError("");
     
+    var xhr = new XMLHttpRequest();
+    var userDetails;
     const uname = document.getElementById("userLogin").value;
     const name = document.getElementById("userName").value;
     const sname = document.getElementById("userSurname").value;
@@ -9,7 +11,7 @@ function RegisterCheck() {
     const pw = document.getElementById("userPass").value;
     const confpw = document.getElementById("userConfPass").value;
     
-    const url = `http://localhost:8080/api/users/${uname}`;
+    // const url = `http://localhost:8080/api/users/${uname}`;
 
     if (checkContent(uname, name, sname, email, pw, confpw) == 0)
         return;
@@ -20,13 +22,31 @@ function RegisterCheck() {
     if (checkName(name, sname) == 0)
         return;
         
-    let response = fetch(url);
-    if (response.ok) {
-        console.log("Good Response");
-    } else {
-        console.log("Bad Response");
-        return;
-    }
+    // let response = fetch(url);
+    // sleep(2000);
+    // if (response.ok) {
+    //     console.log("Good Response");
+    // } else {
+    //     console.log("Bad Response");
+    //     return;
+    // }
+
+    userDetails = {
+        userLogin: uname,
+        userName: name,
+        userSurname: sname,
+        userEmail: email,
+        userPass: pw,
+        userConfPass: confpw
+    };
+
+    xhr.open("POST", '/user/register', true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify(userDetails));
+    console.log(userDetails);
+    console.log("Posted");
+	window.location.replace("http://localhost:8080?action=register");
+
 };
 
 // Prints any error out to the hidden div, pass a custom message
