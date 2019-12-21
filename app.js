@@ -24,13 +24,13 @@ app.use(session({
 
 // TEMPORARY CODE. gets all information on a given user.
 
-// let DB = new database;
-// let user = DB.get_user('Test_User');
-// user.then(function (ret) {
-// 	console.log(ret[0]);
-// }, function (err) {
-// 	console.log(`Failed to retrieve user.\nReason: ${err}`);
-// })
+let DB = new database;
+let user = DB.get_user('Test_User');
+user.then(function (ret) {
+	console.log(ret[0]);
+}, function (err) {
+	console.log(`Failed to retrieve user.\nReason: ${err}`);
+})
 
 // TEMPOARY CODE. Emails any email given. 
 

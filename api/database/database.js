@@ -36,6 +36,9 @@ class Database {
 				if (!ret[0])
 					reject(0);
 				resolve(1);
+			},
+			function (err) {
+				reject ("Failed to validate user.");
 			});
 		});
 	}
@@ -81,6 +84,8 @@ class Database {
 					sql = mysql.format(sql, inserts);
 					a.query(sql);
 					return resolve();
+				}, function (err) {
+					reject("Failed to hash password");
 				})
 			})	
 		});
