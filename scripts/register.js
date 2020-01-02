@@ -1,8 +1,7 @@
 function RegisterCheck() {
     'use strict';
-    printError("");
-    
-    var xhr = new XMLHttpRequest();
+	printError("");
+	
     var userDetails;
     const uname = document.getElementById("userLogin").value;
     const name = document.getElementById("userName").value;
@@ -44,7 +43,7 @@ function RegisterCheck() {
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xhr.send(JSON.stringify(userDetails));
 	
-	window.location.replace("http://localhost:8080");
+	// window.location.replace("http://localhost:8080");
 };
 
 // Prints any error out to the hidden div, pass a custom message

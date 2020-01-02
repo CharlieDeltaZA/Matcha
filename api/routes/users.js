@@ -21,9 +21,7 @@ router.post('/login', (req, res, next) => {
 
 	let loginAttempt = db.login(req.body.userLogin, req.body.userPass);
 	loginAttempt.then(function(res){
-		// req2.session.user = req.body.userLogin;
-		// Remove this if you get weird errors. 
-		// db.close();
+		req2.session.user = req.body.userLogin;
 		res2.redirect('http://localhost:8080');
 	},
 	function(err){

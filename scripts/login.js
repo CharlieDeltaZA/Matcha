@@ -23,9 +23,10 @@ function LogInCheck() {
         userPass: pw,
     };
 
-    xhr.open("POST", '/user/login', true);
+    xhr.open("POST", '/', true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify(userDetails));
+	xhr.send(JSON.stringify(userDetails));
+	window.location.replace("http://localhost:8080");
 };
 
 function printError(msg) {

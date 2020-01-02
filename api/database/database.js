@@ -69,7 +69,7 @@ class Database {
 	}
 
 	// All field validation will be done in front-end js. This exclusively handles the SQL.
-	register(username, name, surname, gender, email, password) {
+	register(username, name, surname, gender, email, userPass) {
 		return new Promise ( (resolve, reject) => {
 			var a = this;
 			let userExists = this.validate_user(username);
@@ -77,7 +77,7 @@ class Database {
 				reject("User already exists");
 			},
 			function (err) {
-				let hash = encrypt.cryptPassword(password);
+				let hash = encrypt.cryptPassword(userPass);
 				hash.then(function(ret){
 					let sql = `INSERT INTO users (username, userEmail, userPassword, userFirstName, userLastName, userGender) VALUES(?, ?, ?, ?, ?, 'Male')`
 					let inserts = [username, email, ret, name, surname];

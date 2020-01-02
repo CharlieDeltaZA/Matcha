@@ -66,6 +66,24 @@ app.get("/", (req, res) => {
     });
 });
 
+app.post('/', (req, res) => {
+	var res2 = res;
+	var req2 = req;
+	let db = new database;
+
+	let loginAttempt = db.login(req.body.userLogin, req.body.userPass);
+	loginAttempt.then(function(res){
+		req2.session.user = req.body.userLogin;
+		res2.redirect('http://localhost:8080');
+	},
+	function(err){
+		console.log(`Failed log in attempt.\nReason: ${err}`);
+		// Remove this if you get weird errors. 
+		db.close();
+		res.status(204).end();
+	})
+});
+
 app.get('*', function(req, res) {
 	res.render('error', {
 		title:'Error',
