@@ -20,7 +20,7 @@ html
 
 								form#login.needs-validation(name="login", action='', method='POST' novalidate)
 									.form-group
-										label(for='userName') Location:
+										label(for='location') Location:
 										input#userLogin.form-control(type='text' placeholder='Enter Location' name='Location' required)
 										.valid-feedback Valid.
 										.invalid-feedback Please fill out this field.
@@ -28,6 +28,26 @@ html
 									.form-group
 										label(for='password') Interests:
 										input#userPass.form-control(type='text' placeholder='Enter Interests Tags' name='Interests' required)
+										.valid-feedback Valid.
+										.invalid-feedback Please fill out this field.
+									.row
+										label(for='password') Age Range:
+										input#yes.form-control(type='text' placeholder='' name='Interests' required)
+										.valid-feedback Valid.
+										.invalid-feedback Please fill out this field.
+
+										label(for='password') to
+										input#yes.form-control(type='text' placeholder='' name='Interests' required)
+										.valid-feedback Valid.
+										.invalid-feedback Please fill out this field.
+									.row
+										label(for='password') Fame Range:
+										input#yes.form-control(type='text' placeholder='' name='Interests' required)
+										.valid-feedback Valid.
+										.invalid-feedback Please fill out this field.
+
+										label(for='password') to
+										input#yes.form-control(type='text' placeholder='' name='Interests' required)
 										.valid-feedback Valid.
 										.invalid-feedback Please fill out this field.
 
