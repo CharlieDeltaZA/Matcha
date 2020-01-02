@@ -26,30 +26,34 @@ html
 										.invalid-feedback Please fill out this field.
 
 									.form-group
-										label(for='password') Interests:
+										label(for='interests') Interests:
 										input#userPass.form-control(type='text' placeholder='Enter Interests Tags' name='Interests' required)
 										.valid-feedback Valid.
 										.invalid-feedback Please fill out this field.
-									.row
-										label(for='password') Age Range:
-										input#yes.form-control(type='text' placeholder='' name='Interests' required)
-										.valid-feedback Valid.
-										.invalid-feedback Please fill out this field.
+									.form-group
+										label(for='age') Age Range:
+										.row.ml-1
+											br
+											input#yes.form-control.mx-2(type='text' placeholder='' name='ageFrom' required)
+											.valid-feedback Valid.
+											.invalid-feedback Please fill out this field.
 
-										label(for='password') to
-										input#yes.form-control(type='text' placeholder='' name='Interests' required)
-										.valid-feedback Valid.
-										.invalid-feedback Please fill out this field.
-									.row
-										label(for='password') Fame Range:
-										input#yes.form-control(type='text' placeholder='' name='Interests' required)
-										.valid-feedback Valid.
-										.invalid-feedback Please fill out this field.
+											p.mx-2 to
+											input#yes.form-control.mx-2(type='text' placeholder='' name='ageTo' required)
+											.valid-feedback Valid.
+											.invalid-feedback Please fill out this field.
+									.form-group
+										label(for='fame') Fame Range:
+										.row.ml-1
+											br
+											input#yes.form-control.mx-2(type='text' placeholder='' name='fameFrom' required)
+											.valid-feedback Valid.
+											.invalid-feedback Please fill out this field.
 
-										label(for='password') to
-										input#yes.form-control(type='text' placeholder='' name='Interests' required)
-										.valid-feedback Valid.
-										.invalid-feedback Please fill out this field.
+											p.mx-2 to
+											input#yes.form-control.mx-2(type='text' placeholder='' name='fameTo' required)
+											.valid-feedback Valid.
+											.invalid-feedback Please fill out this field.
 
 									button#SetPref.btn.btn-success.btn-block.btn-lg(type='submit', value='update') Search
 
