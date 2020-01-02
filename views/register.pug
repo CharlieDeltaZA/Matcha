@@ -15,6 +15,8 @@ html
 						.card-body
 							block content
 								h1 Register
+								small#passwordHelpBlock.form-text.text-muted
+									| Fields marked with an asterisk are required.
 								hr
 								form#register.needs-validation(name="register", action='', method='POST' novalidate)
 									.form-group
@@ -61,8 +63,8 @@ html
 										| Already have an account? 
 										a(href='/user/login') Login.
 									
-									//- button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='register' disabled='disabled') Register
-									input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Register' onclick='RegisterCheck()' style="background-color:#28a745")
+									button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='register' disabled='disabled') Register
+									//- input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Register' onclick='RegisterCheck()' style="background-color:#28a745")
 								p#error.mt-3
 
 		include footer.pug
@@ -70,24 +72,24 @@ html
 			//- SCRIPTS
 		include bootstrap_js.pug
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-		//- script.
-		//- 	$(document).ready(function(){
-		//- 		var userLogin,userName,userSurname,userEmail,userPass,userConfPass;
-		//- 		$("#submit").click(function(){
-		//- 		userLogin=$("#userLogin").val();
-		//- 		userName=$("#userName").val();
-		//- 		userSurname=$("#userSurname").val();
-		//- 		userEmail=$("#userEmail").val();
-		//- 		userPass=$("#userPass").val();
-		//- 		userConfPass=$("#userConfPass").val();
-		//- 		$.post("/",{userLogin: userLogin,userName: userName,userSurname: userSurname,userEmail: userEmail,userPass: userPass,userConfPass: userConfPass}, function(data){
-		//- 		});
-		//- 		window.location.replace("http://localhost:8080?action=register");
-		//- 		});
-		//- 	});
+		script.
+			$(document).ready(function(){
+				var userLogin,userName,userSurname,userEmail,userPass,userConfPass;
+				$("#submit").click(function(){
+				userLogin=$("#userLogin").val();
+				userName=$("#userName").val();
+				userSurname=$("#userSurname").val();
+				userEmail=$("#userEmail").val();
+				userPass=$("#userPass").val();
+				userConfPass=$("#userConfPass").val();
+				$.post("/",{userLogin: userLogin,userName: userName,userSurname: userSurname,userEmail: userEmail,userPass: userPass,userConfPass: userConfPass}, function(data){
+				});
+				window.location.replace("http://localhost:8080?action=register");
+				});
+			});
 
-		//- script(src="/submission.js")
-		script(src="/register.js")
+		script(src="/submission.js")
+		//- script(src="/register.js")
 
 		//- script.
 		//- 	$('#userLogin, #userName, #userSurname, #userEmail, #userPassword, #userConfPass').keyup(function () {
@@ -101,11 +103,11 @@ html
 		//- 		}
 		//- 	});
 
-		//- script.
-		//- 	$("input[type='text'], input[type='password'], input[type='email']").on("keyup", function(){
-		//- 		if($("input[type='text']").val() != "" && $("input[type='password']").val() != "" && $("input[type='email']").val() != ""){
-		//- 			$("#submit").prop("disabled", false);
-		//- 		} else {
-		//- 			$("#submit").prop("disabled", true);
-		//- 		}
-		//- 	});
+		script.
+			$("input[type='text'], input[type='password'], input[type='email']").on("keyup", function(){
+				if($("input[type='text']").val() != "" && $("input[type='password']").val() != "" && $("input[type='email']").val() != ""){
+					$("#submit").prop("disabled", false);
+				} else {
+					$("#submit").prop("disabled", true);
+				}
+			});
