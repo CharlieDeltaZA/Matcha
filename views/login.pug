@@ -36,7 +36,7 @@ html
 										| Forgot Password? 
 										a(href='/forgot') Reset.
 
-									button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='add') Login
+									button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='add' disabled='disabled') Login
 									//- input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Login' onclick='LogInCheck()' style="background-color:#28a745")
 								p#error.mt-3
 		
@@ -48,11 +48,11 @@ html
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
 		script.
 			$(document).ready(function(){
-				var user,pass;
+				var userLogin,userPass;
 				$("#submit").click(function(){
-				user=$("#userLogin").val();
-				pass=$("#userPass").val();
-				$.post("/",{userLogin: user,userPass: pass}, function(data){
+				userLogin=$("#userLogin").val();
+				userPass=$("#userPass").val();
+				$.post("/",{userLogin: userLogin,userPass: userPass}, function(data){
 				});
 				window.location.replace("http://localhost:8080?action=login");
 				});
