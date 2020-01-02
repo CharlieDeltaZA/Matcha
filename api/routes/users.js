@@ -17,6 +17,8 @@ router.get('/login', (req, res, next) => {
 router.post('/login', (req, res, next) => {
 	var res2 = res;
 	var req2 = req;
+	console.log('userLogin = ' + req.body.userLogin);
+	console.log('userPass = ' + req.body.userPass);
 	let db = new database;
 
 	let loginAttempt = db.login(req.body.userLogin, req.body.userPass);

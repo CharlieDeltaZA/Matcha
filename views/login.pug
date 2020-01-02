@@ -25,7 +25,7 @@ html
 
 									.form-group
 										label(for='password') Password:
-										input#userPass.form-control(type='password' placeholder='Enter Password' name='password' required)
+										input#userPass.form-control(type='password' placeholder='Enter Password' name='userPass' required)
 										.valid-feedback Valid.
 										.invalid-feedback Please fill out this field.
 									
@@ -36,8 +36,8 @@ html
 										| Forgot Password? 
 										a(href='/forgot') Reset.
 
-									//- button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='add' onclick='LogInCheck()') Login
-									input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Login' onclick='LogInCheck()' style="background-color:#28a745")
+									button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='add') Login
+									//- input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Login' onclick='LogInCheck()' style="background-color:#28a745")
 								p#error.mt-3
 		
 		include footer.pug
@@ -46,20 +46,20 @@ html
 
 		include bootstrap_js.pug
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-		//- script.
-		//- 	$(document).ready(function(){
-		//- 		var user,pass;
-		//- 		$("#submit").click(function(){
-		//- 		user=$("#userLogin").val();
-		//- 		pass=$("#userPass").val();
-		//- 		$.post("/",{user: user,password: pass}, function(data){
-		//- 		});
-		//- 		window.location.replace("http://localhost:8080?action=login");
-		//- 		});
-		//- 	});
+		script.
+			$(document).ready(function(){
+				var user,pass;
+				$("#submit").click(function(){
+				user=$("#userLogin").val();
+				pass=$("#userPass").val();
+				$.post("/",{userLogin: user,userPass: pass}, function(data){
+				});
+				window.location.replace("http://localhost:8080?action=login");
+				});
+			});
 
 		script(src="/submission.js")
-		script(src="/login.js")
+		//- script(src="/login.js")
 
 		//- script.
 		//- 	function LogInCheck() {
@@ -78,11 +78,11 @@ html
 		//- 		}
 		//- 	});
 
-		//- script.
-		//- 	$("input[type='text'], input[type='password']").on("keyup", function(){
-		//- 		if($("input[type='text']").val() != "" && $("input[type='password']").val() != ""){
-		//- 			$("#submit").prop("disabled", false);
-		//- 		} else {
-		//- 			$("#submit").prop("disabled", true);
-		//- 		}
-		//- 	});
+		script.
+			$("input[type='text'], input[type='password']").on("keyup", function(){
+				if($("input[type='text']").val() != "" && $("input[type='password']").val() != ""){
+					$("#submit").prop("disabled", false);
+				} else {
+					$("#submit").prop("disabled", true);
+				}
+			});
