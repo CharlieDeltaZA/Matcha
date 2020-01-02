@@ -82,6 +82,7 @@ class Database {
 					let sql = `INSERT INTO users (username, userEmail, userPassword, userFirstName, userLastName, userGender) VALUES(?, ?, ?, ?, ?, 'Male')`
 					let inserts = [username, email, ret, name, surname];
 					sql = mysql.format(sql, inserts);
+					console.log(`SQL = ${sql}`);
 					a.query(sql);
 					return resolve();
 				})	
