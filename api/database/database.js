@@ -69,7 +69,7 @@ class Database {
 	}
 
 	// All field validation will be done in front-end js. This exclusively handles the SQL.
-	register(username, name, surname, gender, email, userPass) {
+	register(username, name, surname, email, userPass, userConfPass) {
 		return new Promise ( (resolve, reject) => {
 			var a = this;
 			let userExists = this.validate_user(username);
