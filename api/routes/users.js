@@ -11,7 +11,8 @@ app.use(express.static('/../../scripts'));
 router.get('/login', (req, res, next) => {
 	res.render('login', {
 		title:'Login',
-		user: (req.session.user === undefined ? "Username" : req.session.user)
+		user: (req.session.user === undefined ? "Username" : req.session.user),
+		userLogged: (req.session.user === undefined ? false : true)
 	});
 });
 router.post('/login', (req, res, next) => {
@@ -37,7 +38,8 @@ router.post('/login', (req, res, next) => {
 router.get('/register', (req, res, next) => {
 	res.render('register', {
 		title:'Register',
-		user: (req.session.user === undefined ? "Username" : req.session.user)
+		user: (req.session.user === undefined ? "Username" : req.session.user),
+		userLogged: (req.session.user === undefined ? false : true)
 	});
 });
 
@@ -67,14 +69,16 @@ router.post('/register', (req, res, next) => {
 router.get('/profile', (req, res, next) => {
 	res.render('profile', {
 		title:'Profile',
-		user: (req.session.user === undefined ? "Username" : req.session.user)
+		user: (req.session.user === undefined ? "Username" : req.session.user),
+		userLogged: (req.session.user === undefined ? false : true)
 	});
 });
 
 router.get('/account', (req, res, next) => {
 	res.render('account', {
 		title:'Account',
-		user: (req.session.user === undefined ? "Username" : req.session.user)
+		user: (req.session.user === undefined ? "Username" : req.session.user),
+		userLogged: (req.session.user === undefined ? false : true)
 	});
 });
 

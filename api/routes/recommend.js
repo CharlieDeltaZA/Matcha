@@ -9,7 +9,8 @@ app.use(express.static('/../../scripts'));
 router.get('/', (req, res, next) => {
 	res.render('recommendations', {
 		title:'Recommendations',
-		user: (req.session.user === undefined ? "Username" : req.session.user)
+		user: (req.session.user === undefined ? "Username" : req.session.user),
+		userLogged: (req.session.user === undefined ? false : true)
 	});
 });
 
