@@ -16,15 +16,16 @@
                             a(href='/user/login') Login
                         li
                             a(href='/user/register') Register
-                .col-md-3.mb-md-0.mb-3
-                    h5.text-uppercase Profile
-                    ul.list-unstyled
-                        li
-                            a(href='/user/profile') My Profile
-                        li
-                            a(href='/user/account') Edit Profile
-                        li
-                            a(href='#!') Link 3
+                if userLogged
+                    .col-md-3.mb-md-0.mb-3
+                        h5.text-uppercase Profile
+                        ul.list-unstyled
+                            li
+                                a(href='/user/profile') My Profile
+                            li
+                                a(href='/user/account') Edit Profile
+                            li
+                                a(href='#!') Link 3
     footer.mbg-white
         .container-fluid.text-center
             .text-center.py-3
