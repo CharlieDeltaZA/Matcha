@@ -79,7 +79,7 @@ class Database {
 			function (err) {
 				let hash = encrypt.cryptPassword(userPass);
 				hash.then(function(ret){
-					let sql = `INSERT INTO users (username, userEmail, userPassword, userFirstName, userLastName, userGender) VALUES(?, ?, ?, ?, ?, 'Male')`
+					let sql = `INSERT INTO users (username, userEmail, userPassword, userFirstName, userLastName) VALUES(?, ?, ?, ?, ?)`
 					let inserts = [username, email, ret, name, surname];
 					sql = mysql.format(sql, inserts);
 					console.log(`SQL = ${sql}`);
