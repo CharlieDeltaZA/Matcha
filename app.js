@@ -64,7 +64,8 @@ app.use('/profileviews', viewRoutes);
 app.get("/", (req, res) => {
     res.render('index', {
 		title:'Home',
-		user: (req.session.user === undefined ? "Username" : req.session.user)
+		user: (req.session.user === undefined ? "Username" : req.session.user),
+		userLogged: (req.session.user === undefined ? false : true)
     });
 });
 

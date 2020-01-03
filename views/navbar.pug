@@ -10,12 +10,13 @@ nav.navbar.navbar-expand-lg.navbar-light.mbg-white
 				a.nav-link(href='/') Home
 					//- | Home 
 					//- span.sr-only (current)
-			li#LoginBtn.nav-item
-				a.nav-link(href='/user/login') Login
-			li#RegisterBtn.nav-item
-				a.nav-link(href='/user/register') Register
+			if !userLogged
+				li#LoginBtn.nav-item
+					a.nav-link(href='/user/login') Login
+				li#RegisterBtn.nav-item
+					a.nav-link(href='/user/register') Register
 			li#Recomm.nav-item
-				a.nav-link(href='/recommendations') Recommendations
+			a.nav-link(href='/recommendations') Recommendations
 			//- li.nav-item
 			//-     a.nav-link(href='#') MESSAGES
 			//- li.nav-item
