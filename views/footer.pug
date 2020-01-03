@@ -12,10 +12,16 @@
                     ul.list-unstyled
                         li
                             a(href='/') Home
-                        li
-                            a(href='/user/login') Login
-                        li
-                            a(href='/user/register') Register
+                        if !userLogged
+                            li
+                                a(href='/user/login') Login
+                            li
+                                a(href='/user/register') Register
+                        else
+                            li
+                                a(href='/recommendations') Recommendations
+                            li
+                                a(href='/search') Search
                 if userLogged
                     .col-md-3.mb-md-0.mb-3
                         h5.text-uppercase Profile
