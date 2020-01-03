@@ -8,7 +8,7 @@ app.use(express.static('/../../scripts'));
 
 router.get('/', (req, res, next) => {
 	res.render('profileviews', {
-		title:'Profileviews',
+		title:'Profile Views',
 		user: (req.session.user === undefined ? "Username" : req.session.user)
 	});
 });
