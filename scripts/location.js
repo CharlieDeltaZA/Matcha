@@ -1,4 +1,3 @@
-var map, infoWindow;
 var position;
 
 function createMap () {
@@ -7,8 +6,8 @@ function createMap () {
 		zoom: 15
   };
 
-	map = new google.maps.Map(document.getElementById('map'), options);
-	infoWindow = new google.maps.InfoWindow;
+	// map = new google.maps.Map(document.getElementById('map'), options);
+	// infoWindow = new google.maps.InfoWindow;
 
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function (p) {
@@ -17,12 +16,10 @@ function createMap () {
 				lng: p.coords.longitude
 			};
 
-			infoWindow.setPosition(position);
-			infoWindow.setContent('Your location!');
-			infoWindow.open(map);
-			map.setCenter(position);
-
-			let templocation = JSON.stringify(position);
+			// infoWindow.setPosition(position);
+			// infoWindow.setContent('Your location!');
+			// infoWindow.open(map);
+			// map.setCenter(position);
 
 			$.ajax({
 				type: "POST", 
@@ -40,8 +37,8 @@ function createMap () {
 	}
 }
 
-function handleLocationError (content, position) {
-	infoWindow.setPosition(position);
-	infoWindow.setContent(content);
-	infoWindow.open(map);
-}
+// function handleLocationError (content, position) {
+// 	infoWindow.setPosition(position);
+// 	infoWindow.setContent(content);
+// 	infoWindow.open(map);
+// }
