@@ -1,5 +1,4 @@
 var map, infoWindow;
-var xhr = new XMLHttpRequest();
 var position;
 
 function createMap () {
@@ -22,12 +21,18 @@ function createMap () {
 			infoWindow.setContent('Your location!');
 			infoWindow.open(map);
 			map.setCenter(position);
-			//
-			xhr.open("POST", '/location', true);
-			xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-			xhr.send(JSON.stringify(position));
-			//
-		}, function () {
+
+			let templocation = JSON.stringify(position);
+
+			$.ajax({
+				type: "POST", 
+				url : '/location',
+				data: JSON.stringify(position),
+				contentType: "application/json; charset=utf-8",
+    			dataType: "json",
+				success: function(){location.href = "/";}
+			})
+			}, function () {
 			handleLocationError('Geolocation service failed', map.getCenter());
 		});
 	} else {

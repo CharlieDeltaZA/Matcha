@@ -25,7 +25,6 @@ app.get('/messages', (req, res) => {
 		});
 	});
 
-
 app.post('/messages', (req, res) => {
 		var message = new Message(req.body);
 		message.save((err) =>{

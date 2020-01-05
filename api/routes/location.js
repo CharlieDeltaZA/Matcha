@@ -19,6 +19,8 @@ router.post('/', (req, res, next) => {
 	var lng = req.body.lng;
 	lng = lng.toFixed(3);
 	console.log(`Received location!\nLocation: lat: ${lat}, lng: ${lng}`);
+	res.json('Received');
+	// res.redirect('/');
 });
 
 module.exports = router;

@@ -55,8 +55,9 @@ router.post('/register', (req, res, next) => {
 	var registerAttempt = db.register(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass);
 
 	registerAttempt.then(function(ret){
-		// Remove this if you get weird errors. 
+		// Remove this if you get weird errors. \
 		db.close();
+		res2.redirect('/');
 	},
 	function (err) {
 		console.log(`Failed registration.\nReason: ${err}`);
