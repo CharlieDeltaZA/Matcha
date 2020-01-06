@@ -13,84 +13,132 @@ html
 		.container.text-center
 			h1.mt-white.text-center.mt-5.display-3 Edit Profile
 
-		.container.mx-auto
-			.row
-				.col
-					.card.my-5.mx-auto(style='max-width:400px')
-						.card-body
-							block content
-								h1 Profile
-								hr
-								form#addUser(name="adduser",action='api/update', method='POST')
-									label(for='userName') Change Username
-									input#users.userName(type='text' placeholder='userName' name='userName')
+		.container
+			.container.mx-auto.my-5(style='max-width: 1500px;')
+				.card.mx-auto(style='max-width: 1500px;')
+					#carouselControls.carousel.slide(data-ride='carousel', data-interval="false")
+						ol.carousel-indicators
+							li.active(data-target='#carouselIndicators', data-slide-to='0')
+							li(data-target='#carouselIndicators', data-slide-to='1')
+							li(data-target='#carouselIndicators', data-slide-to='2')
+						.carousel-inner
+							.carousel-item.active(data-interval="false")
+								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...')
+							.carousel-item(data-interval="false")
+								img.d-block.w-100(src='/images2.jpeg', alt='...')
+							.carousel-item(data-interval="false")
+								img.d-block.w-100(src='/images3.jpg', alt='...')
+						a.carousel-control-prev(href='#carouselControls', role='button', data-slide='prev')
+							span.carousel-control-prev-icon(aria-hidden='true')
+							span.sr-only Previous
+						a.carousel-control-next(href='#carouselControls', role='button', data-slide='next')
+							span.carousel-control-next-icon(aria-hidden='true')
+							span.sr-only Next 
+		
+					.card-body
+						//- h1.display-4.card-title #{name}
+						input#users.firstName(type='text' placeholder='Name' name='firstName')
+						//- h4.card-subtitle.mb-2.text-muted #{age}
+						h4.card-subtitle.mb-2.text-muted 69
+						//- p.card-text
+						//- 	| #{distance}   <--- Maybe use something to generalize the distance based on how far away they are. So instead of numbers,
+													it's something like: Close, Nearby, Distant, Far etc. idk
+						p.card-text
+							| 420kms away
+						//- p.card-text
+						//- 	| #{orientation}, #{gender}
+						input#users.gender(type='text' placeholder='gender' name='gender')
+						//- p.card-text
+						//- 	| #{lookingFor}
+						input#users.sexualPreference(type='text' placeholder='sexualPreference' name='sexualPreference')
+						hr
+						h4.card-title Interests
+						input#users.interests(type='text' placeholder='interests' name='interests')
+						hr
+						h4.card-title Bio
+						//- p.card-text
+						//- 	| #{bio}
+						textarea#users.bio(placeholder='Biography' name='bio' form="userPrefs" rows='3')
+						button#UpdatePref.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update Profile
 
-									label(for='firstName') Change First Name
-									input#users.firstName(type='text' placeholder='firstName' name='firstName')
+		//- .container.mx-auto
+		//- 	.row
+		//- 		.col
+		//- 			.card.my-5.mx-auto(style='max-width:400px')
+		//- 				.card-body
+		//- 					block content
+		//- 						h1 Profile
+		//- 						hr
+		//- 						form#addUser(name="adduser",action='api/update', method='POST')
+		//- 							label(for='userName') Change Username
+		//- 							input#users.userName(type='text' placeholder='userName' name='userName')
 
-									label(for='lastName') Change Last Name
-									input#users.lastName(type='text' placeholder='lastName' name='lastName')
+		//- 							label(for='firstName') Change First Name
+		//- 							input#users.firstName(type='text' placeholder='firstName' name='firstName')
 
-									label(for='email') Change Email
-									input#users.email(type='text' placeholder='email' name='email')
+		//- 							label(for='lastName') Change Last Name
+		//- 							input#users.lastName(type='text' placeholder='lastName' name='lastName')
 
-									label(for='password') Change Password
-									input#users.password(type='password' placeholder='password' name='password')
+		//- 							label(for='email') Change Email
+		//- 							input#users.email(type='text' placeholder='email' name='email')
 
-									label(for='confirmPassword') Confirm New Password
-									input#users.confirmPassword(type='password' placeholder='confirmPassword' name='confirmPassword')
+		//- 							label(for='password') Change Password
+		//- 							input#users.password(type='password' placeholder='password' name='password')
+
+		//- 							label(for='confirmPassword') Confirm New Password
+		//- 							input#users.confirmPassword(type='password' placeholder='confirmPassword' name='confirmPassword')
 									
-									button#UpdatePro.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update Profile
-				.col
-					.card.my-5.mx-auto(style='max-width:400px')
-						.card-body
-							block content
-								h1 Preferences
-								hr
-								form#addUser(name="adduser",action='', method='POST')
-									label(for='gender') Change Gender
-									input#users.gender(type='text' placeholder='gender' name='gender')
+		//- 							button#UpdatePro.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update Profile
+		//- 		.col
+		//- 			.card.my-5.mx-auto(style='max-width:400px')
+		//- 				.card-body
+		//- 					block content
+		//- 						h1 Preferences
+		//- 						hr
+		//- 						form#addUser(name="adduser",action='', method='POST')
+		//- 							label(for='gender') Change Gender
+		//- 							input#users.gender(type='text' placeholder='gender' name='gender')
 
-									label(for='location') Change Location
-									input#users.location(type='text' placeholder='location' name='location')
+		//- 							label(for='location') Change Location
+		//- 							input#users.location(type='text' placeholder='location' name='location')
 
-									label(for='sexualPreference') Change Sexual Preference
-									input#users.sexualPreference(type='text' placeholder='sexualPreference' name='sexualPreference')
+		//- 							label(for='sexualPreference') Change Sexual Preference
+		//- 							input#users.sexualPreference(type='text' placeholder='sexualPreference' name='sexualPreference')
 
-									label(for='interests') Change Interests
-									input#users.interests(type='text' placeholder='interests' name='interests')
+		//- 							label(for='interests') Change Interests
+		//- 							input#users.interests(type='text' placeholder='interests' name='interests')
 
-									label(for='bio') Change Bio
-									textarea#users.bio(placeholder='Biography' name='bio' form="userPrefs" rows='3')
+		//- 							label(for='bio') Change Bio
+		//- 							textarea#users.bio(placeholder='Biography' name='bio' form="userPrefs" rows='3')
 
-									button#UpdatePref.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update Preferences
+		//- 							button#UpdatePref.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update Preferences
 
 		include footer.pug	
 			
-			//- SCRIPTS
-		include bootstrap_js.pug
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-		//- PROFILE
-		script.
-			$(document).ready(function(){
-				var user,pass;
-				//- $("#UpdatePro").click(function(){
-				user=$("#userLogin").val();
-				pass=$("#userPass").val();
-				$.post("/",{user: user,password: pass}, function(data){
-				});
-				window.location.replace("http://localhost:8080?action=updatePro");
-				});
-			});
-		//- PREFERENCES
-		script.
-			$(document).ready(function(){
-				var user,pass;
-				//- $("#UpdatePref").click(function(){
-				user=$("#userLogin").val();
-				pass=$("#userPass").val();
-				$.post("/",{user: user,password: pass}, function(data){
-				});
-				window.location.replace("http://localhost:8080?action=updatePref");
-				});
-			});
+		//- 	//- SCRIPTS
+		//- include bootstrap_js.pug
+		//- script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+		//- //- PROFILE
+		//- script.
+		//- 	$(document).ready(function(){
+		//- 		var user,pass;
+		//- 		//- $("#UpdatePro").click(function(){
+		//- 		user=$("#userLogin").val();
+		//- 		pass=$("#userPass").val();
+		//- 		$.post("/",{user: user,password: pass}, function(data){
+		//- 		});
+		//- 		window.location.replace("http://localhost:8080?action=updatePro");
+		//- 		});
+		//- 	});
+		//- //- PREFERENCES
+		//- script.
+		//- 	$(document).ready(function(){
+		//- 		var user,pass;
+		//- 		//- $("#UpdatePref").click(function(){
+		//- 		user=$("#userLogin").val();
+		//- 		pass=$("#userPass").val();
+		//- 		$.post("/",{user: user,password: pass}, function(data){
+		//- 		});
+		//- 		window.location.replace("http://localhost:8080?action=updatePref");
+		//- 		});
+		//- 	});
