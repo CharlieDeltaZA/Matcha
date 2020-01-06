@@ -9,6 +9,7 @@ const searchRoutes = require('./api/routes/search');
 // const chatRoutes = require('./api/routes/chat');
 const recommendRoutes = require('./api/routes/recommend');
 const locationRoutes = require('./api/routes/location');
+const locationRoutes2 = require('./api/routes/location2');
 const viewRoutes = require('./api/routes/profileviews');
 
 // Session and DB setup
@@ -57,8 +58,8 @@ app.use(express.static('scripts'));
 app.use('/user', userRoutes);
 app.use('/search', searchRoutes);
 app.use('/recommendations', recommendRoutes);
-// app.use('/chat', chatRoutes);
 app.use('/location', locationRoutes);
+app.use('/location2', locationRoutes2);
 app.use('/profileviews', viewRoutes);
 
 app.get("/", (req, res) => {
