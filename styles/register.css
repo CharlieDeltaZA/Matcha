@@ -50,6 +50,16 @@ input[type=button]:focus{
 	color: red;
 }
 
+@media screen and (max-width: 767.98px) {
+    body {
+        padding-bottom: 90px;
+    }
+
+    .foot {
+        height: 56px;
+	}
+}
+
 .errorMsg {
 	color: red;
 }
