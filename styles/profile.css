@@ -1,14 +1,17 @@
 body {
-    /* background-color: #ff4949; */
     background-color: rgb(131, 58, 180);
     background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(214,22,48,1) 48%, rgba(214,22,48,1) 68%, rgba(224,105,19,1) 100%);
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 250px;
 }
 
 .foot {
-    /* position: absolute; */
+    position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 1rem;
     overflow: hidden;
+    width: 100vw;
+    height: 200px;
 }
