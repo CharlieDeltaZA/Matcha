@@ -72,24 +72,9 @@ html
 
 		include footer.pug
 
-			//- SCRIPTS
+			SCRIPTS
 		include bootstrap_js.pug
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-		script.
-			$(document).ready(function(){
-				var userLogin,userName,userSurname,userEmail,userPass,userConfPass;
-				$("#submit").click(function(){
-				userLogin=$("#userLogin").val();
-				userName=$("#userName").val();
-				userSurname=$("#userSurname").val();
-				userEmail=$("#userEmail").val();
-				userPass=$("#userPass").val();
-				userConfPass=$("#userConfPass").val();
-				$.post("/",{userLogin: userLogin,userName: userName,userSurname: userSurname,userEmail: userEmail,userPass: userPass,userConfPass: userConfPass}, function(data){
-				});
-				window.location.replace("http://localhost:8080?action=register");
-				});
-			});
 
 		//- script(src="/submission.js")
 		//- script(src="/register.js")
@@ -106,11 +91,21 @@ html
 		//- 		}
 		//- 	});
 
+		script(src='/validation.js')
 		script.
+
+			let userLogin=document.getElementById("userLogin").value
+			let userName=document.getElementById("userName").value
+			let userSurname=document.getElementById("userSurname").value
+			let userEmail=document.getElementById("userEmail").value
+			let userPass=document.getElementById("userPass").value
+			let userConfPass=document.getElementById("userConfPass").value
+
 			$("input[type='text'], input[type='password'], input[type='email']").on("keyup", function(){
-				if($("input[type='text']").val() != "" && $("input[type='password']").val() != "" && $("input[type='email']").val() != ""){
+				if(registrationValid(userLogin, userName, userSurname, userEmail, userPass, userConfPass) == 1){
 					$("#submit").prop("disabled", false);
 				} else {
+					console.log(registrationValid(userLogin, userName, userSurname, userEmail, userPass, userConfPass))
 					$("#submit").prop("disabled", true);
 				}
 			});

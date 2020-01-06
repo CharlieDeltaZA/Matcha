@@ -52,6 +52,7 @@ router.post('/register', (req, res, next) => {
 	console.log('userEmail = ' + req.body.userEmail);
 	console.log('userPass = ' + req.body.userPass);
 	console.log('userConfPass = ' + req.body.userConfPass);
+
 	var registerAttempt = db.register(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass);
 
 	registerAttempt.then(function(ret){

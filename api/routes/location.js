@@ -14,13 +14,12 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-	var lat = req.body.lat;
-	lat = lat.toFixed(3);
-	var lng = req.body.lng;
-	lng = lng.toFixed(3);
-	console.log(`Received location!\nLocation: lat: ${lat}, lng: ${lng}`);
+	// var lat = req.body.lat;
+	// lat = lat.toFixed(3);
+	// var lng = req.body.lng;
+	// lng = lng.toFixed(3);
+	console.log(`Received location!\nLocation: lat: ${req.body.lat}, lng: ${req.body.lng}`);
 	res.json('Received');
-	// res.redirect('/');
 });
 
 module.exports = router;
