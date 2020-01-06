@@ -10,7 +10,7 @@ html
 	body
 		include navbar.pug
 
-		#Main.container.mx-auto
+		.container.mx-auto
 			h1.text-center.mt-white.mt-5.display-3 One of Us, One of Us!
 			.row
 				.col
@@ -25,6 +25,7 @@ html
 									.form-group
 										label(for='userName') * Username:
 										input#userLogin.form-control(type='text' placeholder='Enter Username' name='userLogin' required)
+										p#userNameError.errorMsg
 										.valid-feedback Valid.
 										.invalid-feedback Please fill out this field.
 
@@ -32,18 +33,21 @@ html
 										.form-group
 											label(for='firstName') * Name:
 											input#userName.form-control(type='text' placeholder='Enter Name' name='userName' required)
+											p#firstNameError.errorMsg
 											.valid-feedback Valid.
 											.invalid-feedback Please fill out this field.
 
 										.form-group
 											label(for='lastName') * Surname:
 											input#userSurname.form-control(type='text' placeholder='Enter Surname' name='userSurname' required)
+											p#lastNameError.errorMsg
 											.valid-feedback Valid.
 											.invalid-feedback Please fill out this field.
 
 									.form-group
 										label(for='email') * Email:
 										input#userEmail.form-control(type='email' placeholder='Enter Email' name='userEmail' required)
+										lp#emailError.errorMsg
 										.valid-feedback Valid.
 										.invalid-feedback Please fill out this field.
 
@@ -51,6 +55,7 @@ html
 										.form-group
 											label(for='password') * Password:
 											input#userPass.form-control(type='password' placeholder='Enter Password' name='userPass' required)
+											p#passError.errorMsg
 											small#passwordHelpBlock.form-text.text-muted
 												| Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
 											.valid-feedback Valid.
@@ -59,6 +64,7 @@ html
 										.form-group
 											label(for='confirmPassword') * Confirm Password:
 											input#userConfPass.form-control(type='password' placeholder='Confirm Password' name='userConfPass' required)
+											p#confPassError.errorMsg
 											.valid-feedback Valid.
 											.invalid-feedback Please fill out this field.
 
@@ -72,7 +78,7 @@ html
 
 		include footer.pug
 
-			SCRIPTS
+			//- SCRIPTS
 		include bootstrap_js.pug
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
 
@@ -103,10 +109,36 @@ html
 				userPass=document.getElementById("userPass").value;
 				userConfPass=document.getElementById("userConfPass").value;
 
-				if(registrationValid(userLogin, userName, userSurname, userEmail, userPass, userConfPass) == 1){
-					$("#submit").prop("disabled", false);
-				} else {
-					console.log(registrationValid(userLogin, userName, userSurname, userEmail, userPass, userConfPass))
-					$("#submit").prop("disabled", true);
-				}
+				
+				$(".errorMsg").text("");
+				$("#submit").prop("disabled", true);
+				
+				switch (registrationValid(userLogin, userName, userSurname, userEmail, userPass, userConfPass)) {
+					case 1:
+						$("#submit").prop("disabled", false);
+						break;
+					case 2:
+						$("#userNameError").text("Username is Blank");
+						break;
+					case 3:
+						$("#firstNameError").text("First Name is Blank");
+						break;
+					case 4:
+						$("#surnameError").text("Surname is blank");
+						break;
+					case 5:
+						$("#emailError").text("Email is Blank");
+						break;
+					case 6:
+						$("#passError").text("Password is Blank");
+						break;
+					case 7:
+						$("#confPassError").text("Confirm Password is blank");
+						break;
+					case 8:
+						$("#confPassError").text("Passwords Do Not Match");
+						break;
+					default :
+						console.log(registrationValid(userLogin, userName, userSurname, userEmail, userPass, userConfPass))
+				};
 			});
