@@ -54,3 +54,13 @@ textarea {
 	color: black;
 	background: #edf0f2;
 }
+
+@media screen and (max-width: 767.98px) {
+    body {
+        padding-bottom: 90px;
+    }
+
+    .foot {
+        height: 56px;
+    }
+}
