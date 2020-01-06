@@ -30,8 +30,7 @@ function LogInCheck() {
 };
 
 function printError(msg) {
-    const err = document.getElementById('error');
-    err.innerHTML = msg;
+    $("#error").text(msg);
 }
 
 function checkContent(uname, pw) {
