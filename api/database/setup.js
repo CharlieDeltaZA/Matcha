@@ -51,11 +51,12 @@ var setupTables = function setupTables() {
 					userPassword LONGTEXT NOT NULL,
 					userFirstName LONGTEXT,
 					userLastName LONGTEXT,
-					userGender LONGTEXT NOT NULL,
+					userGender LONGTEXT,
 					userAge int(11),
 					userOrientation LONGTEXT,
 					userBiography LONGTEXT,
-					userLocation LONGTEXT,
+					userLocationlat FLOAT,
+					userLocationlng FLOAT,
 					userFame int(11)
 					);`
 				conn.query(sql, function (err, result) {

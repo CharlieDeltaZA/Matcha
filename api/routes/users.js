@@ -89,4 +89,15 @@ router.get('/preferences', (req, res, next) => {
 	});
 });
 
+router.get('/logout', (req, res, next) => {
+	res.render('logout', {
+		title:'logging you out..',
+	});
+});
+
+router.post('/logout', (req, res, next) => {
+	req.session.destroy();
+	res.json('Received');
+});
+
 module.exports = router;
