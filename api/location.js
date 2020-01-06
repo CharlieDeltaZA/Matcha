@@ -1,2 +1,0 @@
-// API key
-// AIzaSyBbM1RQ9usKaBQ8uIWG2QwbfEYy9lFdOF8 

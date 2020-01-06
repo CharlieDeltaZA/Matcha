@@ -49,9 +49,11 @@ html, body {
 	font-size: 15px;
 	font-weight: 300;
 	margin-left: 12px;
+	margin-top: 12px;
 	padding: 0 11px 0 13px;
 	text-overflow: ellipsis;
 	width: 400px;
+	height: 25px;
 }
 #pac-input:focus {
 	border-color: #4d90fe;
@@ -62,4 +64,11 @@ html, body {
 	font-size: 25px;
 	font-weight: 500;
 	padding: 6px 12px;
+}
+#confirm {
+	width: 120px;
+	height: 30px;
+	font-size: 15px;
+	background-color: green;
+	color: white;
 }
