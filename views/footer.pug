@@ -1,39 +1,67 @@
-#FooterContainer.container-fluid.foot.px-0.pb-0.mt-5
-    footer.mbg-light-grey.pt-4.d-none.d-sm-none.d-md-block
-        .container-fluid.text-center.text-md-left
-            .row
-                .col-md-5.mt-md-0.mt-3
-                    h4.text-uppercase Matcha
-                    p.h6 There's no place like 127.0.0.1
-                    p bwebb, cdiogo, ctaljaar, jlimbada
-                hr.clearfix.w-100.d-md-none.pb-3
-                .col-md-3.mb-md-0.mb-3
-                    h5.text-uppercase Website
-                    ul.list-unstyled
-                        li
-                            a(href='/') Home
-                        if !userLogged
-                            li
-                                a(href='/user/login') Login
-                            li
-                                a(href='/user/register') Register
-                        else
-                            li
-                                a(href='/recommendations') Recommendations
-                            li
-                                a(href='/search') Search
-                if userLogged
-                    .col-md-3.mb-md-0.mb-3
-                        h5.text-uppercase Profile
-                        ul.list-unstyled
-                            li
-                                a(href='/user/profile') My Profile
-                            li
-                                a(href='/user/account') Edit Profile
-                            li
-                                a(href='#!') Link 3
-    footer.mbg-white
-        .container-fluid.text-center
-            .text-center.py-3
-                | © 2019 Copyright: 
-                a(href='/') Matcha
+footer.page-footer.font-small.mbg-white
+  .container.text-center.text-md-left
+    .row
+      .col-md-3.mx-auto
+        h5.font-weight-bold.text-uppercase.mt-3.mb-4 Links
+        ul.list-unstyled
+          li
+            a(href='#!') Very long link 1
+          li
+            a(href='#!') Very long link 2
+          li
+            a(href='#!') Very long link 3
+          li
+            a(href='#!') Very long link 4
+      // Grid column
+      hr.clearfix.w-100.d-md-none
+      // Grid column
+      .col-md-3.mx-auto
+        // Links
+        h5.font-weight-bold.text-uppercase.mt-3.mb-4 Links
+        ul.list-unstyled
+          li
+            a(href='#!') Link 1
+          li
+            a(href='#!') Link 2
+          li
+            a(href='#!') Link 3
+          li
+            a(href='#!') Link 4
+      // Grid column
+      hr.clearfix.w-100.d-md-none
+      // Grid column
+      .col-md-3.mx-auto
+        // Links
+        h5.font-weight-bold.text-uppercase.mt-3.mb-4 Links
+        ul.list-unstyled
+          li
+            a(href='#!') Link 1
+          li
+            a(href='#!') Link 2
+          li
+            a(href='#!') Link 3
+          li
+            a(href='#!') Link 4
+      // Grid column
+      hr.clearfix.w-100.d-md-none
+      // Grid column
+      .col-md-3.mx-auto
+        // Links
+        h5.font-weight-bold.text-uppercase.mt-3.mb-4 Links
+        ul.list-unstyled
+          li
+            a(href='#!') Link 1
+          li
+            a(href='#!') Link 2
+          li
+            a(href='#!') Link 3
+          li
+            a(href='#!') Link 4
+      // Grid column
+  // Footer Links
+  // Copyright
+  .footer-copyright.text-center.py-3
+    | &copy; 2020 Copyright:
+    a(href='https://mdbootstrap.com/education/bootstrap/')  MDBootstrap.com
+  // Copyright
+// Footer

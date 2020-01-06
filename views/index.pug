@@ -2,12 +2,12 @@ doctype html
 html
 	head
 		title Matcha | #{title}
-		include header_items.pug
+		include header_items
 		link(rel='stylesheet', href='/index.css')
 		//- link(rel='stylesheet', href='popupS.min.css')
 		//- link(rel='stylesheet', href='sweetalert2.css')
 	body
-		include navbar.pug
+		include navbar
 
 		.container.text-center
 			h1.mt-white.text-center.mt-5.display-2 There's no place like 127.0.0.1
@@ -24,7 +24,7 @@ html
 					h3.card-title Happy Couple: 11/10
 
 
-		include footer.pug
+		include footer
 
 			//- SCRIPTS
 		//- script(src="test.js")
@@ -36,7 +36,7 @@ html
 		//- script(src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js")
 		//- script(src="popup.js")
 		
-		include bootstrap_js.pug
+		include bootstrap_js
 		//- script.
 		//- 	$('#JoinUs').click(function(f){
 		//- 	swal({
