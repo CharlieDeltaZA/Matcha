@@ -49,3 +49,7 @@ input[type=button]:focus{
 #error {
 	color: red;
 }
+
+.errorMsg {
+	color: red;
+}
