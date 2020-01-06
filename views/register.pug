@@ -93,15 +93,16 @@ html
 
 		script(src='/validation.js')
 		script.
-
-			let userLogin=document.getElementById("userLogin").value
-			let userName=document.getElementById("userName").value
-			let userSurname=document.getElementById("userSurname").value
-			let userEmail=document.getElementById("userEmail").value
-			let userPass=document.getElementById("userPass").value
-			let userConfPass=document.getElementById("userConfPass").value
+			var userLogin, userName, userSurname, userEmail, userPass, userConfPass;
 
 			$("input[type='text'], input[type='password'], input[type='email']").on("keyup", function(){
+				userLogin=document.getElementById("userLogin").value;
+				userName=document.getElementById("userName").value;
+				userSurname=document.getElementById("userSurname").value;
+				userEmail=document.getElementById("userEmail").value;
+				userPass=document.getElementById("userPass").value;
+				userConfPass=document.getElementById("userConfPass").value;
+
 				if(registrationValid(userLogin, userName, userSurname, userEmail, userPass, userConfPass) == 1){
 					$("#submit").prop("disabled", false);
 				} else {
