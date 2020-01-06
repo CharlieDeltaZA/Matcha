@@ -26,30 +26,22 @@ html
 										label(for='userName') * Username:
 										input#userLogin.form-control(type='text' placeholder='Enter Username' name='userLogin' required)
 										p#userNameError.errorMsg
-										.valid-feedback Valid.
-										.invalid-feedback Please fill out this field.
 
 									.form-group
 										.form-group
 											label(for='firstName') * Name:
 											input#userName.form-control(type='text' placeholder='Enter Name' name='userName' required)
 											p#firstNameError.errorMsg
-											.valid-feedback Valid.
-											.invalid-feedback Please fill out this field.
 
 										.form-group
 											label(for='lastName') * Surname:
 											input#userSurname.form-control(type='text' placeholder='Enter Surname' name='userSurname' required)
 											p#lastNameError.errorMsg
-											.valid-feedback Valid.
-											.invalid-feedback Please fill out this field.
 
 									.form-group
 										label(for='email') * Email:
 										input#userEmail.form-control(type='email' placeholder='Enter Email' name='userEmail' required)
 										lp#emailError.errorMsg
-										.valid-feedback Valid.
-										.invalid-feedback Please fill out this field.
 
 									.form-group
 										.form-group
@@ -58,15 +50,11 @@ html
 											p#passError.errorMsg
 											small#passwordHelpBlock.form-text.text-muted
 												| Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-											.valid-feedback Valid.
-											.invalid-feedback Please fill out this field.
 
 										.form-group
 											label(for='confirmPassword') * Confirm Password:
 											input#userConfPass.form-control(type='password' placeholder='Confirm Password' name='userConfPass' required)
 											p#confPassError.errorMsg
-											.valid-feedback Valid.
-											.invalid-feedback Please fill out this field.
 
 									p.text-right
 										| Already have an account? 
@@ -112,7 +100,7 @@ html
 				
 				$(".errorMsg").text("");
 				$("#submit").prop("disabled", true);
-				
+
 				switch (registrationValid(userLogin, userName, userSurname, userEmail, userPass, userConfPass)) {
 					case 1:
 						$("#submit").prop("disabled", false);
