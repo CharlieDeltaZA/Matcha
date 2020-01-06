@@ -1,18 +1,74 @@
 doctype html
-head
-	meta(name='viewport' content='initial-scale=1.0')
-	meta(charset='utf-8')
+html
+	head
+		title Location
+		link(rel='stylesheet' href='location.css')
+		meta(name='viewport' content='initial-scale=1.0, user-scalable=no')
+		meta(charset='utf-8')
+	body
+		#pac-card.pac-card
+			#pac-container
+				input#pac-input(type='text' placeholder='Enter a location')
+		#map
+		#infowindow-content
+			img#place-icon(src='' width='16' height='16')
+			span#place-name.title
+			br
+			span#place-address
 
-	// Stylesheets.
-	link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
-	link(rel='stylesheet' href='location.css')
+		script.
+			var position;
+			function initMap() {
+				var map = new google.maps.Map(document.getElementById('map'), {
+					center: {lat: -33.9058688, lng: 18.415616},
+					zoom: 13
+				});
 
-	// Bootstrap scripts.
-	script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
-	script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
-	script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+				var card = document.getElementById('pac-card');
+				var input = document.getElementById('pac-input');
+				var types = document.getElementById('type-selector');
+				var strictBounds = document.getElementById('strict-bounds-selector');
+				var options = {
+					componentRestrictions: {country: "za"}
+				};
 
-	// Google Maps scripts.
-	script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
-	script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBbM1RQ9usKaBQ8uIWG2QwbfEYy9lFdOF8&callback=createMap' async='' defer='')
-	script(src='location.js')
+				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+				var autocomplete = new google.maps.places.Autocomplete(input, options);
+				autocomplete.bindTo('bounds', map);
+				autocomplete.setFields(
+				['address_components', 'geometry', 'icon', 'name']);
+				var infowindow = new google.maps.InfoWindow();
+				var infowindowContent = document.getElementById('infowindow-content');
+				infowindow.setContent(infowindowContent);
+				var marker = new google.maps.Marker({
+					map: map,
+					anchorPoint: new google.maps.Point(0, -29)
+				});
+				autocomplete.addListener('place_changed', function() {
+					infowindow.close();
+					marker.setVisible(false);
+					var place = autocomplete.getPlace();
+					if (!place.geometry) {
+						window.alert("No details available for input: '" + place.name + "'");
+						return;
+					}
+					if (place.geometry.viewport) {
+						map.fitBounds(place.geometry.viewport);
+					} else {
+						map.setCenter(place.geometry.location);
+						map.setZoom(17);
+					}
+					marker.setPosition(place.geometry.location);
+					position = place.geometry.location;
+					$.ajax({
+						type: "POST", 
+						url : '/location',
+						data: JSON.stringify(position),
+						contentType: "application/json; charset=utf-8",
+						dataType: "json",
+						success: function(){location.href = "/";}
+					})
+				});
+			}
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+		script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBbM1RQ9usKaBQ8uIWG2QwbfEYy9lFdOF8&libraries=places&callback=initMap' async='' defer='')

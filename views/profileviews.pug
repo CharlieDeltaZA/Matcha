@@ -1,9 +1,6 @@
 doctype html
 html
 	head
-		if !userLogged
-				script.
-					window.location.replace = "/user/login";
 		title Matcha | #{title}
 		include header_items.pug
 		link(rel='stylesheet', href='/recommendations.css')

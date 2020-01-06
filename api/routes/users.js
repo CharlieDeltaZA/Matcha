@@ -9,6 +9,8 @@ app.use(express.static('/../../images'));
 app.use(express.static('/../../scripts'));
 
 router.get('/login', (req, res, next) => {
+	if (req.session.user)
+		res.redirect('/');
 	res.render('login', {
 		title:'Login',
 		user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -36,6 +38,8 @@ router.post('/login', (req, res, next) => {
 });
 
 router.get('/register', (req, res, next) => {
+	if (req.session.user)
+		res.redirect('/');
 	res.render('register', {
 		title:'Register',
 		user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -69,6 +73,8 @@ router.post('/register', (req, res, next) => {
 });
 
 router.get('/profile', (req, res, next) => {
+	if (req.session.user === undefined)
+		res.redirect('/login');
 	res.render('profile', {
 		title:'Profile',
 		user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -77,6 +83,8 @@ router.get('/profile', (req, res, next) => {
 });
 
 router.get('/account', (req, res, next) => {
+	if (req.session.user === undefined)
+		res.redirect('/login');
 	res.render('account', {
 		title:'Account',
 		user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -85,20 +93,11 @@ router.get('/account', (req, res, next) => {
 });
 
 router.get('/preferences', (req, res, next) => {
+	if (req.session.user === undefined)
+		res.redirect('/login');
 	res.render('preferences', {
 		title:'Preferences',
 	});
-});
-
-router.get('/logout', (req, res, next) => {
-	res.render('logout', {
-		title:'logging you out..',
-	});
-});
-
-router.post('/logout', (req, res, next) => {
-	req.session.destroy();
-	res.json('Received');
 });
 
 module.exports = router;

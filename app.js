@@ -6,7 +6,6 @@ const database = require('./api/database/database');
 // URL handling
 const userRoutes = require('./api/routes/users');
 const searchRoutes = require('./api/routes/search');
-// const chatRoutes = require('./api/routes/chat');
 const recommendRoutes = require('./api/routes/recommend');
 const locationRoutes = require('./api/routes/location');
 const viewRoutes = require('./api/routes/profileviews');
@@ -18,7 +17,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-		expires: 600000
+		expires: 600000000
     }
 }));
 
@@ -57,7 +56,6 @@ app.use(express.static('scripts'));
 app.use('/user', userRoutes);
 app.use('/search', searchRoutes);
 app.use('/recommendations', recommendRoutes);
-// app.use('/chat', chatRoutes);
 app.use('/location', locationRoutes);
 app.use('/profileviews', viewRoutes);
 

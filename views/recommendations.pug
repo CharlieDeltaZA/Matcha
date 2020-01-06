@@ -1,9 +1,5 @@
-doctype html
 html
 	head
-		if !userLogged
-			script.
-				window.location.replace = "/user/login";
 		title Matcha | #{title}
 		include header_items.pug
 		link(rel='stylesheet', href='/recommendations.css')
@@ -60,6 +56,5 @@ html
 								.card.mbg-light-grey
 									h5.card-title Bob, 19
 
-		include footer.pug
-
 		include bootstrap_js.pug
+		include footer.pug

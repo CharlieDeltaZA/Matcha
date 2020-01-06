@@ -27,7 +27,7 @@ function createMap () {
 				data: JSON.stringify(position),
 				contentType: "application/json; charset=utf-8",
     			dataType: "json",
-				success: function(){location.href = "/";}
+				// success: function(){location.href = "/";}
 			})
 			}, function () {
 			handleLocationError('Geolocation service failed', map.getCenter());
