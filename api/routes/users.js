@@ -13,7 +13,10 @@ app.use(express.static('/../../scripts'));
 
 router.get('/login/:error?', (req, res, next) => {
 	if (req.session.user)
+	{
 		res.redirect('/');
+		return ;
+	}
 	res.render('login', {
 		title:'Login',
 		error: req.params.error,
@@ -47,7 +50,10 @@ router.post('/login', (req, res, next) => {
 
 router.get('/register/:error?', (req, res, next) => {
 	if (req.session.user)
+	{
 		res.redirect('/');
+		return ;
+	}
 	res.render('register', {
 		title:'Register',
 		error: req.params.error,
@@ -58,7 +64,6 @@ router.get('/register/:error?', (req, res, next) => {
 
 router.post('/register', (req, res, next) => {
 	let db = new database;
-	var res2 = res;
 	if (!validation.registrationFormValid(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass)) {
 		res.redirect('/user/register/failed');
 	} else
@@ -79,7 +84,10 @@ router.post('/register', (req, res, next) => {
 
 router.get('/profile', (req, res, next) => {
 	if (req.session.user === undefined)
-		res.redirect('/login');
+	{
+		res.redirect('/');
+		return ;
+	}
 	res.render('profile', {
 		title:'Profile',
 		user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -89,7 +97,10 @@ router.get('/profile', (req, res, next) => {
 
 router.get('/account', (req, res, next) => {
 	if (req.session.user === undefined)
-		res.redirect('/login');
+	{
+		res.redirect('/');
+		return ;
+	}
 	res.render('account', {
 		title:'Account',
 		user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -99,7 +110,10 @@ router.get('/account', (req, res, next) => {
 
 router.get('/preferences', (req, res, next) => {
 	if (req.session.user === undefined)
-		res.redirect('/login');
+	{
+		res.redirect('/user/login');
+		return ;
+	}
 	res.render('preferences', {
 		title:'Preferences',
 	});
