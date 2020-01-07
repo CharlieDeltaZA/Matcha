@@ -31,4 +31,4 @@ function registrationFormValid(username, name, surname, email, password, confpas
 }
 
 module.exports.registrationFormValid = registrationFormValid;
-module.exports.loginFormValid = registrationFormValid;
+module.exports.loginFormValid = loginFormValid;
