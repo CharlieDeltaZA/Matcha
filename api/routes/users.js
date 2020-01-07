@@ -11,11 +11,12 @@ app.use(express.static('/../../styles'));
 app.use(express.static('/../../images'));
 app.use(express.static('/../../scripts'));
 
-router.get('/login', (req, res, next) => {
+router.get('/login/:error?', (req, res, next) => {
 	if (req.session.user)
 		res.redirect('/');
 	res.render('login', {
 		title:'Login',
+		error: req.params.error,
 		user: (req.session.user === undefined ? "Username" : req.session.user),
 		userLogged: (req.session.user === undefined ? false : true)
 	});
@@ -49,7 +50,7 @@ router.get('/register/:error?', (req, res, next) => {
 		res.redirect('/');
 	res.render('register', {
 		title:'Register',
-		error: req.params.error ? 1 : 0,
+		error: req.params.error,
 		user: (req.session.user === undefined ? "Username" : req.session.user),
 		userLogged: (req.session.user === undefined ? false : true)
 	});
@@ -65,15 +66,13 @@ router.post('/register', (req, res, next) => {
 		var registerAttempt = db.register(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass);
 
 		registerAttempt.then(function(ret){
-			// Remove this if you get weird errors. \
+			res.json("success");
 			db.close();
-			res2.redirect('/');
 		},
 		function (err) {
+			res.json(err);
 			console.log(`Failed registration.\nReason: ${err}`);
-			// Remove this if you get weird errors. 
 			db.close();
-			res.status(204).end();
 		})
 	}
 });
