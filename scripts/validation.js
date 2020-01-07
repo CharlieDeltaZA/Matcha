@@ -13,14 +13,12 @@ function registrationValid(username, name, surname, email, password, confpasswor
 		return (6);
 	// if (password.length < 8)
 	// 	return (10);
-	// if (password.length > 20)
-	// 	return (11);
 	// if (!(/.*[a-zA-Z].*/.test(password)))
-	// 	return (12);
+	// 	return (11);
 	// if (!(/.*[1-9].*/.test(password)))
-	// 	return (13);
+	// 	return (12);
 	// if (!(/^[a-zA-Z0-9]*$/.test(password)))
-	// 	return (14);
+	// 	return (13);
 	if (confpassword === undefined || confpassword == "")
 		return (7);
 	if (password != confpassword)
@@ -86,4 +84,5 @@ $("input[type='text'], input[type='password'], input[type='email']").on("keyup",
 			break;
 		default :
 			console.log(registrationValid(userLogin, userName, userSurname, userEmail, userPass, userConfPass))
-};});
+	};
+});

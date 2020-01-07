@@ -37,8 +37,8 @@ html
 										| Forgot Password? 
 										a(href='/forgot') Reset.
 
-									button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='add') Login
-									//- input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Login', onclick='LogInCheck()', style="background-color:#28a745", disabled='disabled')
+									//- button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='add' onclick="postLogin()" disabled='disabled') Login
+									input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Login', onclick='postLogin()', style="background-color:#28a745", disabled='disabled')
 								//- p#error.mt-3
 		
 		include footer.pug
@@ -50,7 +50,7 @@ html
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
 
 		//- script(src="/submission.js")
-		//- script(src="/login.js")
+		script(src="/login.js")
 		if error === 'postRegistration'
 			script.
 				swal(
@@ -58,21 +58,4 @@ html
 					'Please confirm email and then login. :)',
 					'success'
 				)
-
-		//- script.
-		//- 	function LogInCheck() {
-		//- 		// const uname = document.getElementById('userLogin');
-		//- 		console.log("FFS");
-		//- 	};
-		//- script.
-		//- 	$('#userPass, #userLogin').keyup(function () {
-		//- 		if ($(this).val() == '') {
-		//- 			//Check to see if there is any text entered
-		//- 			// If there is no text within the input ten disable the button
-		//- 			$('.enableOnInput').prop('disabled', true);
-		//- 		} else {
-		//- 			//If there is text in the input, then enable the button
-		//- 			$('.enableOnInput').prop('disabled', false);
-		//- 		}
-		//- 	});
 

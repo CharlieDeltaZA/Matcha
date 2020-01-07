@@ -1,28 +1,39 @@
-// function LogInCheck() {
-//     'use strict';
-//     printError("");
-    
-//     var xhr = new XMLHttpRequest();
-//     var userDetails;
-//     const uname = document.getElementById("userLogin").value;
-//     const pw = document.getElementById("userPass").value;
+function loginHandler(data) {
+	if (data !== 'success') {
+        swal(
+            'Error!',
+            `${data}`,
+            'error'
+        )
+	} else {
+		window.location.href = "/";
+	}
+}
 
-//     // let response = fetch(url);
-//     // if (response.ok) {
-//     //     console.log("Good Response");
-//     // } else {
-//     //     console.log("Bad Response");
-//     //     return;
-//     // }
+function postLogin() {
+	let registrationForm = {
+		userLogin: document.getElementById('userLogin').value.toLowerCase(),
+		userPass: document.getElementById('userPass').value
+	}
+	console.log(registrationForm);
+    $.ajax({
+		type: "POST", 
+		url : '/user/login',
+		data: JSON.stringify(registrationForm),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(data) {
+			loginHandler(data);
+		}
+	})
+}
 
-//     userDetails = {
-//         userLogin: uname,
-//         userPass: pw,
-//     };
 
-//     xhr.open("POST", '/', true);
-//     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-// 	xhr.send(JSON.stringify(userDetails));
-// 	window.location.replace("http://localhost:8080");
-// };
+var userLogin, userName, userSurname, userEmail, userPass, userConfPass;
 
+$("input[type='text'], input[type='password'], input[type='email']").on("keyup", function(){
+	if (document.getElementById("userLogin").value && document.getElementById("userPass").value)
+		$("#submit").prop("disabled", false);
+	else
+		$("#submit").prop("disabled", true);
+});

@@ -32,12 +32,12 @@ router.post('/login', (req, res, next) => {
 		let loginAttempt = db.login(req.body.userLogin, req.body.userPass);
 		loginAttempt.then(function(res){
 			req2.session.user = req.body.userLogin;
-			res2.redirect('http://localhost:8080');
+			res2.json('success');
 		},
 		function(err){
 			console.log(`Failed log in attempt.\nReason: ${err}`);
+			res.json(err);
 			db.close();
-			res.status(204).end();
 		})
 	} else
 	{

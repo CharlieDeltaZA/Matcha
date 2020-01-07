@@ -1,6 +1,5 @@
 function registrationHandler(data) {
 	if (data !== 'success') {
-        // CALVIN PUT A POPUP HERE.
         swal(
             'Error!',
             `${data}`,
