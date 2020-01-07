@@ -1,6 +1,11 @@
 function registrationHandler(data) {
 	if (data !== 'success') {
-		// CALVIN PUT A POPUP HERE.
+        // CALVIN PUT A POPUP HERE.
+        swal(
+            'Error!',
+            `${data}`,
+            'error'
+        )
 	} else {
 		window.location.href = "/user/login/postRegistration";
 	}
