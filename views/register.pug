@@ -48,7 +48,7 @@ html
 											input#userPass.form-control(type='password' placeholder='Enter Password' name='userPass')
 											p#passError.errorMsg
 											small#passwordHelpBlock.form-text.text-muted
-												| Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+												| Your password must contain letters and numbers, and must not contain spaces, special characters, or emoji.
 
 										.form-group
 											label(for='confirmPassword') * Confirm Password:
@@ -70,6 +70,7 @@ html
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js")
 		script(src="/register.js")
 		script(src='/validation.js')
+		//- annoying validation is currently disabled
 		//- script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
 
 		//- script(src="/submission.js")
