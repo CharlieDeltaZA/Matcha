@@ -60,6 +60,16 @@ html
 				window.location.replace("http://localhost:8080?action=login");
 				});
 			});
+		script.
+			$("input[type='text'], input[type='password']").on("keyup", function(){
+				$("#error").text("");
+				if($("input[type='text']").val() != "" && $("input[type='password']").val() != ""){
+					$("#submit").prop("disabled", false);
+				} else {
+					$("#error").text("please enter username and password");
+					$("#submit").prop("disabled", true);
+				}
+			});
 
 		//- script(src="/submission.js")
 		//- script(src="/login.js")
@@ -81,11 +91,3 @@ html
 		//- 		}
 		//- 	});
 
-		script.
-			$("input[type='text'], input[type='password']").on("keyup", function(){
-				if($("input[type='text']").val() != "" && $("input[type='password']").val() != ""){
-					$("#submit").prop("disabled", false);
-				} else {
-					$("#submit").prop("disabled", true);
-				}
-			});

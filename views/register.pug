@@ -15,6 +15,7 @@ html
 						.card-body
 							block content
 								h1 Register
+								//- please let ben know if you move the order of resiteration fields so he can fix validation
 								small#passwordHelpBlock.form-text.text-muted
 									| Fields marked with an asterisk are required.
 								hr
@@ -65,10 +66,11 @@ html
 
 			//- SCRIPTS
 		include js_includes.pug
+		script(src="/register.js")
+		script(src='/validation.js')
 		//- script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
 
 		//- script(src="/submission.js")
-		script(src="/register.js")
 
 		//- script.
 		//- 	$('#userLogin, #userName, #userSurname, #userEmail, #userPassword, #userConfPass').keyup(function () {
@@ -82,5 +84,4 @@ html
 		//- 		}
 		//- 	});
 
-		script(src='/validation.js')
 			

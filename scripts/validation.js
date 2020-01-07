@@ -7,8 +7,20 @@ function registrationValid(username, name, surname, email, password, confpasswor
 		return (4);
 	if (email === undefined || email == "")
 		return (5);
+	// if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)))
+	// 	return (9);
 	if (password === undefined || password == "")
 		return (6);
+	// if (password.length < 8)
+	// 	return (10);
+	// if (password.length > 20)
+	// 	return (11);
+	// if (!(/.*[a-zA-Z].*/.test(password)))
+	// 	return (12);
+	// if (!(/.*[1-9].*/.test(password)))
+	// 	return (13);
+	// if (!(/^[a-zA-Z0-9]*$/.test(password)))
+	// 	return (14);
 	if (confpassword === undefined || confpassword == "")
 		return (7);
 	if (password != confpassword)
@@ -29,7 +41,6 @@ $("input[type='text'], input[type='password'], input[type='email']").on("keyup",
 	
 	$(".errorMsg").text("");
 	$("#submit").prop("disabled", true);
-
 	switch (registrationValid(userLogin, userName, userSurname, userEmail, userPass, userConfPass)) {
 		case 1:
 			$("#submit").prop("disabled", false);
@@ -54,6 +65,24 @@ $("input[type='text'], input[type='password'], input[type='email']").on("keyup",
 			break;
 		case 8:
 			$("#confPassError").text("Passwords Do Not Match");
+			break;
+		case 9:
+			$("#emailError").text("Email is Invalid");
+			break;
+		case 10:
+			$("#passError").text("Password is too short");
+			break;
+		case 11:
+			$("#passError").text("Password is too long");
+			break;
+		case 12:
+			$("#passError").text("Password does not contain letters");
+			break;
+		case 13:
+			$("#passError").text("Password does not contain numbers");
+			break;
+		case 14:
+			$("#passError").text("Password contains symbols or emojis");
 			break;
 		default :
 			console.log(registrationValid(userLogin, userName, userSurname, userEmail, userPass, userConfPass))
