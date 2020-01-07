@@ -1,12 +1,10 @@
 doctype html
 html
 	head
-		if userLogged
-			script.
-				window.location.replace = "/";
 		title Matcha | #{title}
 		include header_items.pug
 		link(rel='stylesheet', href='/login.css')
+		link(rel='stylesheet', href='sweetalert2.css')
 	body
 		include navbar.pug
 
@@ -39,40 +37,27 @@ html
 										| Forgot Password? 
 										a(href='/forgot') Reset.
 
-									button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='add' disabled='disabled') Login
-									//- input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Login' onclick='LogInCheck()' style="background-color:#28a745")
-								p#error.mt-3
+									button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='add') Login
+									//- input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Login', onclick='LogInCheck()', style="background-color:#28a745", disabled='disabled')
+								//- p#error.mt-3
 		
 		include footer.pug
 
 			//- SCRIPTS
 
 		include js_includes.pug
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-		script.
-			$(document).ready(function(){
-				var userLogin,userPass;
-				$("#submit").click(function(){
-				userLogin=$("#userLogin").val();
-				userPass=$("#userPass").val();
-				$.post("/",{userLogin: userLogin,userPass: userPass}, function(data){
-				});
-				window.location.replace("http://localhost:8080?action=login");
-				});
-			});
-		script.
-			$("input[type='text'], input[type='password']").on("keyup", function(){
-				$("#error").text("");
-				if($("input[type='text']").val() != "" && $("input[type='password']").val() != ""){
-					$("#submit").prop("disabled", false);
-				} else {
-					$("#error").text("please enter username and password");
-					$("#submit").prop("disabled", true);
-				}
-			});
 
 		//- script(src="/submission.js")
 		//- script(src="/login.js")
+		if error === 'postRegistration'
+			script.
+				swal(
+					'Welcome!',
+					'Please confirm email and then login. :)',
+					'success'
+				)
 
 		//- script.
 		//- 	function LogInCheck() {

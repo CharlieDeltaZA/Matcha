@@ -4,6 +4,7 @@ html
 		title Matcha | #{title}
 		include header_items.pug
 		link(rel='stylesheet', href='/register.css')
+		link(rel='stylesheet', href='sweetalert2.css')
 	body
 		include navbar.pug
 
@@ -22,36 +23,36 @@ html
 								form#register.needs-validation(name="register", action='', method='POST' novalidate)
 									.form-group
 										label(for='userName') * Username:
-										input#userLogin.form-control(type='text' placeholder='Enter Username' name='userLogin' required)
+										input#userLogin.form-control(type='text' placeholder='Enter Username' name='userLogin')
 										p#userNameError.errorMsg
 
 									.form-group
 										.form-group
 											label(for='firstName') * Name:
-											input#userName.form-control(type='text' placeholder='Enter Name' name='userName' required)
+											input#userName.form-control(type='text' placeholder='Enter Name' name='userName')
 											p#firstNameError.errorMsg
 
 										.form-group
 											label(for='lastName') * Surname:
-											input#userSurname.form-control(type='text' placeholder='Enter Surname' name='userSurname' required)
+											input#userSurname.form-control(type='text' placeholder='Enter Surname' name='userSurname')
 											p#lastNameError.errorMsg
 
 									.form-group
 										label(for='email') * Email:
-										input#userEmail.form-control(type='email' placeholder='Enter Email' name='userEmail' required)
+										input#userEmail.form-control(type='email' placeholder='Enter Email' name='userEmail')
 										lp#emailError.errorMsg
 
 									.form-group
 										.form-group
 											label(for='password') * Password:
-											input#userPass.form-control(type='password' placeholder='Enter Password' name='userPass' required)
+											input#userPass.form-control(type='password' placeholder='Enter Password' name='userPass')
 											p#passError.errorMsg
 											small#passwordHelpBlock.form-text.text-muted
-												| Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+												| Your password must contain letters and numbers, and must not contain spaces, special characters, or emoji.
 
 										.form-group
 											label(for='confirmPassword') * Confirm Password:
-											input#userConfPass.form-control(type='password' placeholder='Confirm Password' name='userConfPass' required)
+											input#userConfPass.form-control(type='password' placeholder='Confirm Password' name='userConfPass')
 											p#confPassError.errorMsg
 
 									p.text-right
@@ -59,13 +60,14 @@ html
 										a(href='/user/login') Login.
 									
 									//- button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='register' disabled='disabled') Register
-									input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Register', onclick='Test()', style="background-color:#28a745", disabled='disabled')
+									input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Register', onclick='registerPost()', style="background-color:#28a745", disabled='disabled')
 								p#error.mt-3
 
 		include footer.pug
 
 			//- SCRIPTS
 		include js_includes.pug
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js")
 		script(src="/register.js")
 		script(src='/validation.js')
 		//- annoying validation is currently disabled
