@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const app = express();
 const database = require('../../api/database/database');
+const validation = require('../../scripts/formValidation.js');
+//
+const Swal = require('sweetalert2');
 
 app.set('view engine', 'pug');
 app.use(express.static('/../../styles'));
@@ -20,28 +23,33 @@ router.get('/login', (req, res, next) => {
 router.post('/login', (req, res, next) => {
 	var res2 = res;
 	var req2 = req;
-	console.log('userLogin = ' + req.body.userLogin);
-	console.log('userPass = ' + req.body.userPass);
-	let db = new database;
 
-	let loginAttempt = db.login(req.body.userLogin, req.body.userPass);
-	loginAttempt.then(function(res){
-		req2.session.user = req.body.userLogin;
-		res2.redirect('http://localhost:8080');
-	},
-	function(err){
-		console.log(`Failed log in attempt.\nReason: ${err}`);
-		// Remove this if you get weird errors. 
-		db.close();
-		res.status(204).end();
-	})
+	if (validation.loginFormValid(req.body.userLogin, req.body.userPass))
+		{
+		let db = new database;
+
+		let loginAttempt = db.login(req.body.userLogin, req.body.userPass);
+		loginAttempt.then(function(res){
+			req2.session.user = req.body.userLogin;
+			res2.redirect('http://localhost:8080');
+		},
+		function(err){
+			console.log(`Failed log in attempt.\nReason: ${err}`);
+			db.close();
+			res.status(204).end();
+		})
+	} else
+	{
+		res.redirect('/user/login');
+	}
 });
 
-router.get('/register', (req, res, next) => {
+router.get('/register/:error?', (req, res, next) => {
 	if (req.session.user)
 		res.redirect('/');
 	res.render('register', {
 		title:'Register',
+		error: req.params.error ? 1 : 0,
 		user: (req.session.user === undefined ? "Username" : req.session.user),
 		userLogged: (req.session.user === undefined ? false : true)
 	});
@@ -50,26 +58,24 @@ router.get('/register', (req, res, next) => {
 router.post('/register', (req, res, next) => {
 	let db = new database;
 	var res2 = res;
-	console.log('userLogin = ' + req.body.userLogin);
-	console.log('userName = ' + req.body.userName);
-	console.log('userSurname = ' + req.body.userSurname);
-	console.log('userEmail = ' + req.body.userEmail);
-	console.log('userPass = ' + req.body.userPass);
-	console.log('userConfPass = ' + req.body.userConfPass);
+	if (!validation.registrationFormValid(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass)) {
+		res.redirect('/user/register/failed');
+	} else
+	{
+		var registerAttempt = db.register(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass);
 
-	var registerAttempt = db.register(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass);
-
-	registerAttempt.then(function(ret){
-		// Remove this if you get weird errors. \
-		db.close();
-		res2.redirect('/');
-	},
-	function (err) {
-		console.log(`Failed registration.\nReason: ${err}`);
-		// Remove this if you get weird errors. 
-		db.close();
-		res.status(204).end();
-	})
+		registerAttempt.then(function(ret){
+			// Remove this if you get weird errors. \
+			db.close();
+			res2.redirect('/');
+		},
+		function (err) {
+			console.log(`Failed registration.\nReason: ${err}`);
+			// Remove this if you get weird errors. 
+			db.close();
+			res.status(204).end();
+		})
+	}
 });
 
 router.get('/profile', (req, res, next) => {

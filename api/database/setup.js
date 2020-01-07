@@ -18,7 +18,6 @@ var setupDB = function setupDB()
 			throw(err);
 		else
 		{
-			// console.log("Database created");
 			setupTables();
 		}		
 		});
