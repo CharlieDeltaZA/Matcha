@@ -57,18 +57,18 @@ html
 										| Already have an account? 
 										a(href='/user/login') Login.
 									
-									button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='register' disabled='disabled') Register
-									//- input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Register' onclick='RegisterCheck()' style="background-color:#28a745")
+									//- button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='register' disabled='disabled') Register
+									input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Register' onclick='Test()' style="background-color:#28a745")
 								p#error.mt-3
 
 		include footer.pug
 
 			//- SCRIPTS
-		include bootstrap_js.pug
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+		include js_includes.pug
+		//- script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
 
 		//- script(src="/submission.js")
-		//- script(src="/register.js")
+		script(src="/register.js")
 
 		//- script.
 		//- 	$('#userLogin, #userName, #userSurname, #userEmail, #userPassword, #userConfPass').keyup(function () {
