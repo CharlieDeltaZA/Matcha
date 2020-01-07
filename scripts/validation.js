@@ -1,10 +1,16 @@
 function registrationValid(username, name, surname, email, password, confpassword) {
 	if (username === undefined || username == "")
 		return (2);
+	// if (!(/^[A-Za-z0-9-_. ]+$/.test(username)))
+	// 	return (15);
 	if (name === undefined || name == "")
 		return (3);
+	// if (!(/^[\w'\-,.]*[^_!¡?÷?¿\/\\+=@#$%ˆ&*(){}|~<>;:[\]]*$/.test(name)))
+	// 	return (16);
 	if (surname === undefined || surname == "")
 		return (4);
+	// if (!(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(surname)))
+	// 	return (17);
 	if (email === undefined || email == "")
 		return (5);
 	// if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)))
@@ -48,6 +54,7 @@ $("input[type='text'], input[type='password'], input[type='email']").on("keyup",
 		case 2:
 			$("#userNameError").text("Username is Blank");
 			break;
+		
 		case 3:
 			$("#firstNameError").text("First Name is Blank");
 			break;
@@ -83,6 +90,15 @@ $("input[type='text'], input[type='password'], input[type='email']").on("keyup",
 			break;
 		case 14:
 			$("#passError").text("Password contains symbols or emojis");
+			break;
+		case 15:
+			$("#userNameError").text("Username can only contain numbers, letters, fulls stops, spaces, hyphens or underscores");
+			break;
+		case 16:
+			$("#firstNameError").text("First Name contains bad symbols");
+			break;
+		case 17:
+			$("#lastNameError").text("Surname contains bad symbols");
 			break;
 		default :
 			console.log(registrationValid(userLogin, userName, userSurname, userEmail, userPass, userConfPass))
