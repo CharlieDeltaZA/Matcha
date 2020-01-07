@@ -79,7 +79,7 @@ router.post('/register', (req, res, next) => {
 
 router.get('/profile', (req, res, next) => {
 	if (req.session.user === undefined)
-		res.redirect('/login');
+		res.redirect('/user/login');
 	res.render('profile', {
 		title:'Profile',
 		user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -89,7 +89,7 @@ router.get('/profile', (req, res, next) => {
 
 router.get('/account', (req, res, next) => {
 	if (req.session.user === undefined)
-		res.redirect('/login');
+		res.redirect('/user/login');
 	res.render('account', {
 		title:'Account',
 		user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -99,7 +99,7 @@ router.get('/account', (req, res, next) => {
 
 router.get('/preferences', (req, res, next) => {
 	if (req.session.user === undefined)
-		res.redirect('/login');
+		res.redirect('/user/login');
 	res.render('preferences', {
 		title:'Preferences',
 	});
