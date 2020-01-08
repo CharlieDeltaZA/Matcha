@@ -44,7 +44,7 @@ html
 						form#account(name="account", action='', method='POST' novalidate)
 							.form-group
 								label(for='name') Name
-								input#userName(type='text' placeholder='First Name' name='userName' value= userFirstname)
+								input#userName(type='text' placeholder='First Name' name='userName' value=userFirstName)
 								p#firstNameError
 								input#userSurname(type='text' placeholder='Last Name' name='userSurname' value=userLastName)
 								p#surnameError
@@ -99,10 +99,10 @@ html
 						hr
 						form#details(name='details', action='', method='POST' novalidate)
 							label(for='userlogin') Username
-							input#userLogin(type='text' placeholder='Username' name='userLogin')
+							input#userLogin(type='text' placeholder='Username' name='userLogin' value=username)
 
 							label(for='email') Email
-							input#userEmail(type='email' placeholder='Email' name='userEmail')
+							input#userEmail(type='email' placeholder='Email' name='userEmail' value=userEmail)
 							hr
 							label(for='oldpass') Current Password
 							input#userPass(type='password' placeholder='Current Password' name='userPass')
