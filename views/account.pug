@@ -15,7 +15,7 @@ html
 			h1.mt-white.text-center.mt-5.display-3 Edit Profile
 
 		.container
-			.container.mx-auto.my-5(style='max-width: 1500px;')
+			.container.mx-auto.my-3(style='max-width: 1500px;')
 				.card.mx-auto(style='max-width: 1500px;')
 					#carouselControls.carousel.slide(data-ride='carousel', data-interval="false")
 						ol.carousel-indicators
@@ -38,6 +38,8 @@ html
 					a#UpdateImg.btn.btn-success.btn-block.btn-lg(href='/user/images') Change Image(s)
 		
 					.card-body
+						h4.card-title Public Details
+						hr
 						form#account(name="account", action='', method='POST' novalidate)
 							input#userName(type='text' placeholder='First Name' name='userName')
 							input#userSurname(type='text' placeholder='Last Name' name='userSurname')
@@ -61,7 +63,7 @@ html
 
 							button#UpdateAcc.btn.btn-success.btn-block.btn-lg(type='submit', value='account') Update Profile
 
-			.container.mx-auto.my-5(style='max-width: 1500px;')
+			.container.mx-auto.my-3(style='max-width: 1500px;')
 				.card.mx-auto(style='max-width: 1500px;')
 					.card-body
 						h4.card-title Interests
@@ -69,6 +71,28 @@ html
 						form#interests(name="interests", action='', method='POST' novalidate)
 							input#userInterests(type='text' placeholder='Interests' name='userInterests')
 							button#UpdateInterest.btn.btn-success.btn-block.btn-lg(type='submit', value='interests') Update Interests
+
+			.container.mx-auto.my-3(style='max-width: 1500px;')
+				.card.mx-auto(style='max-width: 1500px;')
+					.card-body
+						h4.card-title Personal Details
+						hr
+						form#details(name='details', action='', method='POST' novalidate)
+							label(for='userlogin') Username
+							input#userLogin(type='text' placeholder='Username' name='userLogin')
+
+							label(for='email') Email
+							input#userEmail(type='email' placeholder='Email' name='userEmail')
+							hr
+							label(for='userlogin') Current Password
+							input#userLogin(type='text' placeholder='Username' name='userLogin')
+
+							label(for='password') New Password
+							input#userLogin(type='text' placeholder='Username' name='userLogin')
+
+							label(for='userlogin') Username
+							input#userLogin(type='text' placeholder='Username' name='userLogin')
+
 				
 
 		//- .container.mx-auto
