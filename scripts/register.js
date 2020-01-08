@@ -58,8 +58,8 @@ function registerPost() {
 		userPass: document.getElementById('userPass').value,
 		userConfPass: document.getElementById('userConfPass').value,
 	}
-	if (registrationValid(form.userLogin, form.username, form.userSurname, form.userEmail, form.userPass, form.userConfPass) == 1)
-	{
+	// if (registrationValid(form.userLogin, form.username, form.userSurname, form.userEmail, form.userPass, form.userConfPass) == 1)
+	// {
 		$.ajax({
 			type: "POST", 
 			url : '/user/register',
@@ -70,7 +70,7 @@ function registerPost() {
 				registrationHandler(data);
 			}
 		})
-	}
-	else
-		window.location.href = "/user/register/invalidForm";
+	// }
+	// else
+		// window.location.href = "/user/register/invalidForm";
 }

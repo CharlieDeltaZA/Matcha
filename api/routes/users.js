@@ -3,8 +3,6 @@ const router = express.Router();
 const app = express();
 const database = require('../../api/database/database');
 const validation = require('../../scripts/formValidation.js');
-//
-const Swal = require('sweetalert2');
 
 app.set('view engine', 'pug');
 app.use(express.static('/../../styles'));
@@ -75,7 +73,7 @@ router.post('/register', (req, res, next) => {
 			db.close();
 		},
 		function (err) {
-			res.json(err);
+			res.json('err');
 			console.log(`Failed registration.\nReason: ${err}`);
 			db.close();
 		})

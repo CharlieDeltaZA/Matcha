@@ -70,8 +70,11 @@ class Database {
 	register(username, name, surname, email, userPass, userConfPass) {
 		return new Promise ( (resolve, reject) => {
 			var a = this;
-			let userExists = !(this.validate_user(username));
+			let userExists = this.validate_user(username);
 			userExists.then( function(ret) {
+				reject("User already exists");
+			},
+			function (err) {
 				let hash = encrypt.cryptPassword(userPass);
 				hash.then(function(ret){
 					let sql = `INSERT INTO users (username, userEmail, userPassword, userFirstName, userLastName) VALUES(?, ?, ?, ?, ?)`
@@ -79,10 +82,7 @@ class Database {
 					sql = mysql.format(sql, inserts);
 					a.query(sql);
 					return resolve();
-				})
-			},
-			function (err) {
-				reject("User already exists");
+				})	
 			})
 		});
 	}
