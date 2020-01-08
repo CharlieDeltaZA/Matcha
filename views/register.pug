@@ -20,7 +20,7 @@ html
 								small#passwordHelpBlock.form-text.text-muted
 									| Fields marked with an asterisk are required.
 								hr
-								form#register.needs-validation(name="register", action='', method='POST' novalidate)
+								form#register(name="register", action='', method='POST' novalidate)
 									.form-group
 										label(for='userName') * Username:
 										input#userLogin.form-control(type='text' placeholder='Enter Username' name='userLogin')

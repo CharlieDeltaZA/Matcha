@@ -41,15 +41,33 @@ html
 						h4.card-title Public Details
 						hr
 						form#account(name="account", action='', method='POST' novalidate)
-							input#userName(type='text' placeholder='First Name' name='userName')
-							p#firstNameError
-							input#userSurname(type='text' placeholder='Last Name' name='userSurname')
-							p#surnameError
+							.form-group
+								label(for='name') Name
+								input#userName(type='text' placeholder='First Name' name='userName')
+								p#firstNameError
+								input#userSurname(type='text' placeholder='Last Name' name='userSurname')
+								p#surnameError
+
 							h4.card-subtitle.mb-2.text-muted 69
 							p.card-text
 								| 420kms away
-							input#userGender(type='text' placeholder='gender' name='userGender')
-							input#userSexPref(type='text' placeholder='sexualPreference' name='userSexPref')
+							//- input#userGender(type='text' placeholder='gender' name='userGender')
+
+							.form-group
+								label(for='gender') Gender
+								select#userGender.custom-select(name='gender')
+									option(value='male') Male
+									option(value='female') Female
+									option(value='other') Other
+									option(value='attackheli') Attack Helicopter 
+							
+							.form-group
+								label(for='orientation') Sexual Orientation
+								//- input#userSexPref(type='text' placeholder='sexualPreference' name='userSexPref')
+								select#userSexPref.custom-select(name='sexPref')
+									option(value='bi') Bisexual
+									option(value='hetero') Heterosexual
+									option(value='homo') Homosexual
 							hr
 							h4.card-title Bio
 							textarea#userBio(placeholder='Biography' name='userBio' form="account" rows='3')
@@ -73,6 +91,7 @@ html
 						form#interests(name="interests", action='', method='POST' novalidate)
 							input#userInterests(type='text' placeholder='Interests' name='userInterests')
 							button#UpdateInterest.btn.btn-success.btn-block.btn-lg(type='submit', value='interests') Update Interests
+						p#interestError
 
 			.container.mx-auto.my-3(style='max-width: 1500px;')
 				.card.mx-auto(style='max-width: 1500px;')
@@ -86,16 +105,18 @@ html
 							label(for='email') Email
 							input#userEmail(type='email' placeholder='Email' name='userEmail')
 							hr
-							label(for='userlogin') Current Password
-							input#userLogin(type='text' placeholder='Username' name='userLogin')
+							label(for='oldpass') Current Password
+							input#userPass(type='password' placeholder='Current Password' name='userPass')
 
-							label(for='password') New Password
-							input#userLogin(type='text' placeholder='Username' name='userLogin')
+							label(for='pass') New Password
+							input#userNewPass(type='password' placeholder='New Password' name='userNewPass')
 
-							label(for='userlogin') Username
-							input#userLogin(type='text' placeholder='Username' name='userLogin')
+							label(for='confpass') Confirm New Password
+							input#userConfNew(type='password' placeholder='Confirm New Password' name='userNewConf')
 
-						p#interestError
+							button#UpdateDetails.btn.btn-success.btn-block.btn-lg(type='submit', value='details') Update Details
+
+
 				
 
 		//- .container.mx-auto
