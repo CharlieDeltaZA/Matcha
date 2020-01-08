@@ -119,9 +119,8 @@ router.get('/account', (req, res, next) => {
 		res.render('account', {
 			title:'Account',
 			user: (req.session.user === undefined ? "Username" : req.session.user),
-			userLogin: data[0].userlogin,
-			userName: data[0].username,
-			userSurname: data[0].usersurname,
+			userName: data[0].userFirstName,
+			userSurname: data[0].userLastName,
 			userGender: data[0].userGender,
 			userBio: data[0].userBio,
 			userLat: data[0].userLat,
