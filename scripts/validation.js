@@ -1,30 +1,35 @@
 function registrationValid(username, name, surname, email, password, confpassword) {
+	let emailTest = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	if (username === undefined || username == "")
 		return (2);
-	// if (!(/^[A-Za-z0-9-_. ]+$/.test(username)))
-	// 	return (15);
+	if (username.length < 3)
+		return (10);
+	if (!(/^[A-Za-z0-9-_. ]+$/.test(username)))
+		return (15);
 	if (name === undefined || name == "")
 		return (3);
 	// if (!(/^[\w'\-,.]*[^_!¡?÷?¿\/\\+=@#$%ˆ&*(){}|~<>;:[\]]*$/.test(name)))
-	// 	return (16);
+		// 	return (16);
 	if (surname === undefined || surname == "")
 		return (4);
 	// if (!(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(surname)))
-	// 	return (17);
+		// 	return (17);
 	if (email === undefined || email == "")
 		return (5);
 	// if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)))
-	// 	return (9);
+		// 	return (9);
+	if (!(emailTest.test(String(email).toLowerCase())))
+		return (9);
 	if (password === undefined || password == "")
 		return (6);
 	// if (password.length < 8)
-	// 	return (10);
+		// 	return (10);
 	// if (!(/.*[a-zA-Z].*/.test(password)))
-	// 	return (11);
+		// 	return (11);
 	// if (!(/.*[1-9].*/.test(password)))
-	// 	return (12);
+		// 	return (12);
 	// if (!(/^[a-zA-Z0-9]*$/.test(password)))
-	// 	return (13);
+		// 	return (13);
 	if (confpassword === undefined || confpassword == "")
 		return (7);
 	if (password != confpassword)
@@ -75,7 +80,7 @@ $("input[type='text'], input[type='password'], input[type='email']").on("keyup",
 			$("#emailError").text("Email is Invalid");
 			break;
 		case 10:
-			$("#passError").text("Password is too short");
+			$("#userNameError").text("Username is too short");
 			break;
 		case 11:
 			$("#passError").text("Password is too long");
