@@ -53,14 +53,21 @@ html
 						//- 	| #{lookingFor}
 						input#users.sexualPreference(type='text' placeholder='sexualPreference' name='sexualPreference')
 						hr
-						h4.card-title Interests
-						input#users.interests(type='text' placeholder='interests' name='interests')
-						hr
+						//- h4.card-title Interests
+						//- input#users.interests(type='text' placeholder='interests' name='interests')
+						//- hr
 						h4.card-title Bio
 						//- p.card-text
 						//- 	| #{bio}
 						textarea#users.bio(placeholder='Biography' name='bio' form="userPrefs" rows='3')
 						button#UpdatePref.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update Profile
+
+			.container.mx-auto.my-5(style='max-width: 1500px;')
+				.card.mx-auto(style='max-width: 1500px;')
+					.card-body
+						h4.card-title Interests
+							input#users.interests(type='text' placeholder='interests' name='interests')
+				
 
 		//- .container.mx-auto
 		//- 	.row
