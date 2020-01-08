@@ -38,34 +38,37 @@ html
 					a#UpdateImg.btn.btn-success.btn-block.btn-lg(href='/user/images') Change Image(s)
 		
 					.card-body
-						input#users.firstName(type='text' placeholder='Name' name='firstName')
-						h4.card-subtitle.mb-2.text-muted 69
-						p.card-text
-							| 420kms away
-						input#users.gender(type='text' placeholder='gender' name='gender')
-						input#users.sexualPreference(type='text' placeholder='sexualPreference' name='sexualPreference')
-						hr
-						h4.card-title Bio
-						textarea#users.bio(placeholder='Biography' name='bio' form="userPrefs" rows='3')
-						hr
-						h4.card-title Location
-						input#pac-input(type='text' placeholder='Enter a location')
-						#map
-						//- #infowindow-content
-							img#place-icon(src='' width='16' height='16')
-							span#place-name.title
-							br
-							span#place-address
+						form#account(name="account", action='', method='POST' novalidate)
+							input#userName(type='text' placeholder='First Name' name='userName')
+							input#userSurname(type='text' placeholder='Last Name' name='userSurname')
+							h4.card-subtitle.mb-2.text-muted 69
+							p.card-text
+								| 420kms away
+							input#userGender(type='text' placeholder='gender' name='userGender')
+							input#userSexPref(type='text' placeholder='sexualPreference' name='userSexPref')
+							hr
+							h4.card-title Bio
+							textarea#userBio(placeholder='Biography' name='userBio' form="account" rows='3')
+							hr
+							h4.card-title Location
+							input#pac-input(type='text' placeholder='Enter a location')
+							#map
+							//- #infowindow-content
+								img#place-icon(src='' width='16' height='16')
+								span#place-name.title
+								br
+								span#place-address
 
-						button#UpdateAcc.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update Profile
+							button#UpdateAcc.btn.btn-success.btn-block.btn-lg(type='submit', value='account') Update Profile
 
 			.container.mx-auto.my-5(style='max-width: 1500px;')
 				.card.mx-auto(style='max-width: 1500px;')
 					.card-body
 						h4.card-title Interests
 						hr
-						input#users.interests(type='text' placeholder='Interests' name='interests')
-						button#UpdateInterest.btn.btn-success.btn-block.btn-lg(type='submit', value='interests') Update Interests
+						form#interests(name="interests", action='', method='POST' novalidate)
+							input#userInterests(type='text' placeholder='Interests' name='userInterests')
+							button#UpdateInterest.btn.btn-success.btn-block.btn-lg(type='submit', value='interests') Update Interests
 				
 
 		//- .container.mx-auto
