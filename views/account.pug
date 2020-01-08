@@ -1,9 +1,6 @@
 doctype html
 html
 	head
-		if !userLogged
-			script.
-				window.location.replace = "/user/login";
 		title Matcha | #{title}
 		include header_items.pug
 		link(rel='stylesheet', href='/account.css')
@@ -43,19 +40,17 @@ html
 						form#account(name="account", action='', method='POST' novalidate)
 							.form-group
 								label(for='name') Name
-								input#userName(type='text' placeholder='First Name' name='userName')
+								input#userName(type='text' placeholder='First Name' name='userName' value= userName)
 								p#firstNameError
-								input#userSurname(type='text' placeholder='Last Name' name='userSurname')
+								input#userSurname(type='text' placeholder='Last Name' name='userSurname' value=userSurname)
 								p#surnameError
 
 							h4.card-subtitle.mb-2.text-muted 69
-							p.card-text
-								| 420kms away
 							//- input#userGender(type='text' placeholder='gender' name='userGender')
 
 							.form-group
 								label(for='gender') Gender
-								select#userGender.custom-select(name='gender')
+								select#userGender.custom-select(name='gender' value=userGender)
 									option(value='male') Male
 									option(value='female') Female
 									option(value='other') Other
@@ -70,7 +65,7 @@ html
 									option(value='homo') Homosexual
 							hr
 							h4.card-title Bio
-							textarea#userBio(placeholder='Biography' name='userBio' form="account" rows='3')
+							textarea#userBio(placeholder='Biography' name='userBio' form="account" rows='3' value=userBio)
 							hr
 							h4.card-title Location
 							input#pac-input(type='text' placeholder='Enter a location')

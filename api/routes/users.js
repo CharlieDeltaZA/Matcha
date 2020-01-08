@@ -9,6 +9,9 @@ app.use(express.static('/../../styles'));
 app.use(express.static('/../../images'));
 app.use(express.static('/../../scripts'));
 
+var DB = new database;
+var current_user = DB.get_user('tront');
+
 router.get('/login/:error?', (req, res, next) => {
 	if (req.session.user)
 	{
@@ -102,6 +105,13 @@ router.get('/account', (req, res, next) => {
 	res.render('account', {
 		title:'Account',
 		user: (req.session.user === undefined ? "Username" : req.session.user),
+		userLogin: current_user.userlogin,
+		userName: current_user.username,
+		userSurname: current_user.usersurname,
+		userGender: current_user.userGender,
+		userBio: current_user.userBio,
+		userLat: current_user.userLat,
+		userLng: current_user.userLng,
 		userLogged: (req.session.user === undefined ? false : true)
 	});
 });
