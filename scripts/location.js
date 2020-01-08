@@ -7,8 +7,6 @@ function initMap() {
 
 	var card = document.getElementById('pac-card');
 	var input = document.getElementById('pac-input');
-	var types = document.getElementById('type-selector');
-	var strictBounds = document.getElementById('strict-bounds-selector');
 	var options = {
 		componentRestrictions: {country: "za"}
 	};
