@@ -26,7 +26,7 @@ app.use(session({
 // let DB = new database;
 // let user = DB.get_user('tront');
 // user.then(function (ret) {
-// 	console.log(ret[0]);
+// 	console.log(ret[0].username);
 // }, function (err) {
 // 	console.log(`Failed to retrieve user.\nReason: ${err}`);
 // })
