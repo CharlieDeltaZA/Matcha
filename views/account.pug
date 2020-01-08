@@ -40,7 +40,9 @@ html
 					.card-body
 						form#account(name="account", action='', method='POST' novalidate)
 							input#userName(type='text' placeholder='First Name' name='userName')
+							p#firstNameError
 							input#userSurname(type='text' placeholder='Last Name' name='userSurname')
+							p#surnameError
 							h4.card-subtitle.mb-2.text-muted 69
 							p.card-text
 								| 420kms away
@@ -69,6 +71,7 @@ html
 						form#interests(name="interests", action='', method='POST' novalidate)
 							input#userInterests(type='text' placeholder='Interests' name='userInterests')
 							button#UpdateInterest.btn.btn-success.btn-block.btn-lg(type='submit', value='interests') Update Interests
+						p#interestError
 				
 
 		//- .container.mx-auto
