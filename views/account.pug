@@ -35,42 +35,40 @@ html
 						a.carousel-control-next(href='#carouselControls', role='button', data-slide='next')
 							span.carousel-control-next-icon(aria-hidden='true')
 							span.sr-only Next 
-					button#UpdatePref.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Change Image
+					a#UpdateImg.btn.btn-success.btn-block.btn-lg(href='/user/images') Change Image(s)
 		
 					.card-body
-						//- h1.display-4.card-title #{name}
-						input#users.firstName(type='text' placeholder='Name' name='firstName')
-						P#firstNameError
-						//- h4.card-subtitle.mb-2.text-muted #{age}
-						h4.card-subtitle.mb-2.text-muted 69
-						//- p.card-text
-						//- 	| #{distance}   <--- Maybe use something to generalize the distance based on how far away they are. So instead of numbers,
-													it's something like: Close, Nearby, Distant, Far etc. idk
-						p.card-text
-							| 420kms away
-						//- p.card-text
-						//- 	| #{orientation}, #{gender}
-						input#users.gender(type='text' placeholder='gender' name='gender')
-						//- p.card-text
-						//- 	| #{lookingFor}
-						input#users.sexualPreference(type='text' placeholder='sexualPreference' name='sexualPreference')
-						hr
-						//- h4.card-title Interests
-						//- input#users.interests(type='text' placeholder='interests' name='interests')
-						//- hr
-						h4.card-title Bio
-						//- p.card-text
-						//- 	| #{bio}
-						textarea#users.bio(placeholder='Biography' name='bio' form="userPrefs" rows='3')
-						button#UpdatePref.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update Profile
+						form#account(name="account", action='', method='POST' novalidate)
+							input#userName(type='text' placeholder='First Name' name='userName')
+							input#userSurname(type='text' placeholder='Last Name' name='userSurname')
+							h4.card-subtitle.mb-2.text-muted 69
+							p.card-text
+								| 420kms away
+							input#userGender(type='text' placeholder='gender' name='userGender')
+							input#userSexPref(type='text' placeholder='sexualPreference' name='userSexPref')
+							hr
+							h4.card-title Bio
+							textarea#userBio(placeholder='Biography' name='userBio' form="account" rows='3')
+							hr
+							h4.card-title Location
+							input#pac-input(type='text' placeholder='Enter a location')
+							#map
+							//- #infowindow-content
+								img#place-icon(src='' width='16' height='16')
+								span#place-name.title
+								br
+								span#place-address
+
+							button#UpdateAcc.btn.btn-success.btn-block.btn-lg(type='submit', value='account') Update Profile
 
 			.container.mx-auto.my-5(style='max-width: 1500px;')
 				.card.mx-auto(style='max-width: 1500px;')
 					.card-body
 						h4.card-title Interests
-							input#users.interests(type='text' placeholder='interests' name='interests')
-						button#UpdatePref.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update Interests
-						p#interestError
+						hr
+						form#interests(name="interests", action='', method='POST' novalidate)
+							input#userInterests(type='text' placeholder='Interests' name='userInterests')
+							button#UpdateInterest.btn.btn-success.btn-block.btn-lg(type='submit', value='interests') Update Interests
 				
 
 		//- .container.mx-auto
@@ -130,6 +128,7 @@ html
 		//- 	//- SCRIPTS
 		include js_includes.pug
 		script(src="/location.js")
+		script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBbM1RQ9usKaBQ8uIWG2QwbfEYy9lFdOF8&libraries=places&callback=initMap' async='' defer='')
 		//- script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
 		//- //- PROFILE
 		//- script.
