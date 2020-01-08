@@ -7,54 +7,54 @@ html
 		include navbar.pug
 		
 		h2.mt-white.text-center.mt-5 Recommendations
-		.container(style='max-width: 1400px;')
+		.container(style='max-width: 1100px;')
 			
 			.card
-				.container.mx-auto.my-5(style='max-width: 1400px;')
+				.container.mx-auto.my-5(style='max-width: 1100px;')
 					.row.mx-auto
-						.card.text-black.mb-5(style='max-width: 300px; max-height: 300px;')
-							a.nav-link(href='#')
-								img.img-fluid(src='/images.jpeg', alt='...')
+						.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
+							a(href='#')
+								img.img-fluid(src='/images.jpeg', alt='...', style='max-width: 300px; max-height: 300px;')
 							.card.mbg-light-grey
 								h5.card-title Till, 25
-						.card.text-black.mb-5(style='max-width: 300px; max-height: 300px;')
-							a.nav-link(href='#')
-								img.img-fluid(src='/images2.jpeg', alt='...')
+						.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
+							a(href='#')
+								img.img-fluid(src='/images2.jpeg', alt='...', style='max-width: 300px; max-height: 300px;')
 							.card.mbg-light-grey
 								h5.card-title John, 20
-						a.nav-link.mb-5(href='#')
-							.card.bg-dark.text-black(style='max-width: 300px; max-height: 300px;')
-								img.img-fluid(src='/images3.jpg', alt='...')
-								.card.mbg-light-grey
-									h5.card-title Tom, 42
-						a.nav-link.mb-5(href='#')
-							.card.bg-dark.text-black(style='max-width: 300px; max-height: 300px;')
-								img.img-fluid(src='/images.jpeg', alt='...')
-								.card.mbg-light-grey
-									h5.card-title Jeff, 69
+						.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
+							a(href='#')
+								img.img-fluid(src='/images3.jpg', alt='...', style='max-width: 300px; max-height: 300px;')
+							.card.mbg-light-grey
+								h5.card-title Tom, 42
+						//- .card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
+						//- 	a(href='#')
+						//- 		img.img-fluid(src='/images.jpeg', alt='...', style='max-width: 300px; max-height: 300px;')
+						//- 	.card.mbg-light-grey
+						//- 		h5.card-title Jeff, 69
 			
 															//- .container-fluid.mx-auto.my-5(style='width: 1400px;')
 					.row.mx-auto
-						a.nav-link.mb-5(href='#')
-							.card.bg-dark.text-black.mx-auto(style='max-width: 300px; max-height: 300px;')
-								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 300px; height: 300px;')
-								.card.mbg-light-grey
-									h5.card-title Till, 25
-						a.nav-link.mb-5(href='#')
-							.card.bg-dark.text-black.mx-auto(style='max-width: 300px; max-height: 300px;')
-								img.img-fluidd-block.w-100(src='/images3.jpg', alt='...', style='width: 300px; height: 300px;')
-								.card.mbg-light-grey
-									h5.card-title Fred, 21
-						a.nav-link.mb-5(href='#')
-							.card.bg-dark.text-black.mx-auto(style='max-width: 300px; max-height: 300px;')
-								img.img-fluidd-block.w-100(src='/images2.jpeg', alt='...', style='width: 300px; height: 300px;')
-								.card.mbg-light-grey
-									h5.card-title John, 20
-						a.nav-link.mb-5(href='#')
-							.card.bg-dark.text-black.mx-auto(style='max-width: 300px; max-height: 300px;')
-								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 300px; height: 300px;')
-								.card.mbg-light-grey
-									h5.card-title Bob, 19
+						.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
+							a(href='#')
+								img.img-fluid(src='/images.jpeg', alt='...', style='max-width: 300px; max-height: 300px;')
+							.card.mbg-light-grey
+								h5.card-title Zed, 50
+						.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
+							a(href='#')
+								img.img-fluid(src='/images3.jpg', alt='...', style='max-width: 300px; max-height: 300px;')
+							.card.mbg-light-grey
+								h5.card-title Tim, 5
+						.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
+							a(href='#')
+								img.img-fluid(src='/images2.jpeg', alt='...', style='max-width: 300px; max-height: 300px;')
+							.card.mbg-light-grey
+								h5.card-title Problems, 99
+						//- .card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
+						//- 	a(href='#')
+						//- 		img.img-fluid(src='/images.jpeg', alt='...', style='max-width: 300px; max-height: 300px;')
+						//- 	.card.mbg-light-grey
+						//- 		h5.card-title JeffJeff, 420
 
 		include js_includes.pug
 		include footer.pug
