@@ -86,7 +86,7 @@ router.post('/register', (req, res, next) => {
 router.get('/profile', (req, res, next) => {
 	if (req.session.user === undefined)
 	{
-		res.redirect('/');
+		res.redirect('/user/login');
 		return ;
 	}
 	res.render('profile', {
@@ -96,10 +96,23 @@ router.get('/profile', (req, res, next) => {
 	});
 });
 
+router.get('/images', (req, res, next) => {
+	if (req.session.user === undefined)
+	{
+		res.redirect('/user/login');
+		return ;
+	}
+	res.render('images', {
+		title:'Images',
+		user: (req.session.user === undefined ? "Username" : req.session.user),
+		userLogged: (req.session.user === undefined ? false : true)
+	});
+});
+
 router.get('/account', (req, res, next) => {
 	if (req.session.user === undefined)
 	{
-		res.redirect('/');
+		res.redirect('/user/login');
 		return ;
 	}
 	res.render('account', {
