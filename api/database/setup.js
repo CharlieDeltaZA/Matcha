@@ -128,5 +128,36 @@ var setupTables = function setupTables() {
 			}
 		});
 	});
+	var conn = mysql.createConnection( {
+		host: `${db.servername}`,
+		user: `${db.dbusername}`,
+		password: `${db.dbpassword}`,
+		database: `${db.dbname}`
+	});
+	conn.connect(function(err) {
+		if (err) throw err;
+		conn.query(`SELECT * FROM information_schema.tables
+					WHERE table_schema = 'matcha'
+					AND table_name = 'notifications'`,
+		function (err, result) {
+			if (err) throw err;
+			if (result.length > 0) {
+				// console.log('images table already exists');
+			}
+			else
+			{
+				console.log('images table not found.');
+				var sql = `CREATE TABLE IF NOT EXISTS notifications (
+					user TINYTEXT,
+					subject TINYTEXT,
+					content LONGTEXT
+					);`
+				conn.query(sql, function (err, result) {
+					if (err) throw err;
+					console.log("images table created");
+				});
+			}
+		});
+	});
 }
 module.exports.setupDB = setupDB;
