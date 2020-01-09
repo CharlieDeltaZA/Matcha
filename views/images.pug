@@ -7,40 +7,40 @@ html
 		include navbar.pug
 		
 		h2.mt-white.text-center.mt-5 yes
-		.container(style='max-width: 1400px;')
+		.container(style='max-width: 700px;')
 			
 			.card
-				.container.mx-auto.my-5(style='max-width: 1400px;')
+				.container.mx-auto.my-5(style='max-width: 700px;')
 					.row.mx-auto(style='max-height: 180px;')
 						a.nav-link.mb-5(href='#')
 							.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
 								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
-						input#profileImg(type='file', style='width: 150px; height: 150px;')
+						input#profileImg(type='file', name='filename2', style='width: 250px; height: 40px;')
 
 
 					.row.mx-auto
 						a.nav-link.mb-5(href='#')
 							.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
 								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
-						input#imgOne(type='file', name='filename2', style='width: 150px; height: 150px;')
+						input#myFile(type='file', name='filename2', style='width: 250px; height: 40px;')
 
 					.row.mx-auto
 						a.nav-link.mb-5(href='#')
 							.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
 								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
-						input#imgTwo(type='file', name='filename2')
+						input#myFile(type='file', name='filename2', style='width: 250px; height: 40px;')
 
 					.row.mx-auto
 						a.nav-link.mb-5(href='#')
 							.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
 								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
-						input#imgThree(type='file', name='filename2')
+						input#myFile(type='file', name='filename2', style='width: 250px; height: 40px;')
 					
 					.row.mx-auto
 						a.nav-link.mb-5(href='#')
 							.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
 								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
-						input#myFile(type='file', name='filename2')
+						input#myFile(type='file', name='filename2', style='width: 250px; height: 40px;')
 
 					button#submit.btn.btn-lg.btn-success(onclick='postProfileImage()') UPDATE IMAGES BOI
 
