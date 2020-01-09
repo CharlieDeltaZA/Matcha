@@ -20,9 +20,9 @@ input[type=text], input[type=password], input[type=email] {
 	width: 100%;
 	padding: 10px;
 	margin: 5px 0 8px 0;
-	border: none;
+	/* border: none; */
 	color: black;
-	background: #edf0f2;
+	/* background: #edf0f2; */
 }
 
 input[type=button]{
