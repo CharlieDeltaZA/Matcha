@@ -1,4 +1,4 @@
-function registrationValid(username, name, surname, email, password, confpassword) {
+function registrationValid2(username, name, surname, email, password, confpassword) {
 	return new Promise ( (resolve, reject) => {
 		let emailTest = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		if (username === undefined || username == "")
@@ -60,16 +60,16 @@ function registerPost() {
 		userPass: document.getElementById('userPass').value,
 		userConfPass: document.getElementById('userConfPass').value,
 	}
-	let valid = (registrationValid(form.userLogin, form.userName, form.userSurname, form.userEmail, form.userPass, form.userConfPass));
-	valid.then( function (data) {
+	let valid = registrationValid2(form.userLogin, form.userName, form.userSurname, form.userEmail, form.userPass, form.userConfPass);
+	valid.then( function (ret) {
 		$.ajax({
 			type: "POST", 
 			url : '/user/register',
 			data: JSON.stringify(form),
 			contentType: "application/json; charset=utf-8",
 			dataType: "json",
-			success: function(data) {
-				registrationHandler(data);
+			success: function(ret) {
+				registrationHandler(ret);
 			}
 		})
 	}, function (err) {

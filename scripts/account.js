@@ -16,7 +16,7 @@ function postPublicDetails() {
 		} else {
 			$.ajax({
 				type: "POST", 
-				url : '/user/account',
+				url : '/user/account/public',
 				data: JSON.stringify(form),
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
@@ -26,4 +26,18 @@ function postPublicDetails() {
 			});
 		}
 	}
+}
+
+// Requires image to be posted as 'userImage'
+function postProfileImage() {
+	$.ajax({
+		type: "POST", 
+		url : '/user/account',
+		data: JSON.stringify(image),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(data) {
+			console.log('Image uploaded');
+		}
+	});
 }
