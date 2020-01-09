@@ -3,6 +3,7 @@ const router = express.Router();
 const app = express();
 const database = require('../../api/database/database');
 const validation = require('../../scripts/formValidation.js');
+const mysql = require('mysql');
 
 app.set('view engine', 'pug');
 app.use(express.static('/../../styles'));
@@ -123,12 +124,27 @@ router.get('/account', (req, res, next) => {
 			userFirstName: data[0].userFirstName,
 			userLastName: data[0].userLastName,
 			userGender: data[0].userGender,
+			userOrientation: data[0].userOrientation,
 			userEmail: data[0].userEmail,
-			userBio: data[0].userBio,
+			userBio: data[0].userBiography,
 			userLat: data[0].userLat,
 			userLng: data[0].userLng,
 			userLogged: (req.session.user === undefined ? false : true)
 		});
+	})
+});
+
+router.post('/account', (req, res, next) => {
+	let db = new database;
+
+	let sql = 'UPDATE users SET userFirstName=?, userLastName=?, userGender=?, userOrientation=?, userBiography=? WHERE username=?'
+	let inserts = [req.body.userName, req.body.userSurname, req.body.userGender, req.body.userSexPref, req.body.userBio, req.session.user];
+	sql = mysql.format(sql, inserts);
+	let accountUpdate = db.query(sql);
+	accountUpdate.then( function (data) {
+		console.log(`Success: ${data}`);
+	}, function (err) {
+		console.log(`ERROR: ${err}`);
 	})
 });
 

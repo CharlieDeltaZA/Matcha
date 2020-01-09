@@ -5,6 +5,7 @@ html
 		include header_items.pug
 		link(rel='stylesheet', href='/account.css')
 		link(rel='stylesheet', href='/location.css')
+		link(rel='stylesheet', href='sweetalert2.css')
 	body
 		include navbar.pug
 
@@ -54,22 +55,36 @@ html
 
 							.form-group
 								label(for='gender') Gender
-								select#userGender.custom-select(name='gender' value=userGender)
-									option(value='male') Male
-									option(value='female') Female
-									option(value='other') Other
-									option(value='attackheli') Attack Helicopter 
+								if userGender === 'Male'
+									select#userGender.custom-select(name='gender')
+										option(value='Male') Male
+										option(value='Female') Female
+								else
+									select#userGender.custom-select(name='gender')
+										option(value='Female') Female
+										option(value='Male') Male
 							
 							.form-group
 								label(for='orientation') Sexual Orientation
 								//- input#userSexPref(type='text' placeholder='sexualPreference' name='userSexPref')
-								select#userSexPref.custom-select(name='sexPref')
-									option(value='bi') Bisexual
-									option(value='hetero') Heterosexual
-									option(value='homo') Homosexual
+								if userOrientation === 'hetero'
+									select#userSexPref.custom-select(name='sexPref')
+										option(value='hetero') Heterosexual
+										option(value='bi') Bisexual
+										option(value='homo') Homosexual
+								else if userOrientation === 'bi'
+									select#userSexPref.custom-select(name='sexPref')
+										option(value='bi') Bisexual
+										option(value='hetero') Heterosexual
+										option(value='homo') Homosexual
+								else
+									select#userSexPref.custom-select(name='sexPref')
+										option(value='homo') Homosexual
+										option(value='bi') Bisexual
+										option(value='hetero') Heterosexual
 							hr
 							h4.card-title Bio
-							textarea#userBio(placeholder='Biography' name='userBio' form="account" rows='3' value=userBio)
+							textarea#userBio(placeholder='Biography' name='userBio' form="account" rows='3').form-control= userBio
 							hr
 							h4.card-title Location
 							input#pac-input(type='text' placeholder='Enter a location')
@@ -80,7 +95,7 @@ html
 								br
 								span#place-address
 
-							button#UpdateAcc.btn.btn-success.btn-block.btn-lg(type='submit', value='account') Update Profile
+							button#UpdateAcc.btn.btn-success.btn-block.btn-lg(type='button', onclick='postPublicDetails()', value='account') Update Profile
 
 			.container.mx-auto.my-3(style='max-width: 1500px;')
 				.card.mx-auto(style='max-width: 1500px;')
@@ -175,7 +190,9 @@ html
 		//- 	//- SCRIPTS
 		include js_includes.pug
 		script(src="/location.js")
+		script(src="/account.js")
 		script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBbM1RQ9usKaBQ8uIWG2QwbfEYy9lFdOF8&libraries=places&callback=initMap' async='' defer='')
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js")
 		//- script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
 		//- //- PROFILE
 		//- script.
