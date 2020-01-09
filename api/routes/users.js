@@ -152,7 +152,7 @@ router.post('/images', (req, res, next) => {
 	let db = new database;
 	console.log('Click');
 
-	let sql = 'UPDATE images SET userImage=?, imageOwner=?, active=1'
+	let sql = 'UPDATE images SET userImage=?, imageOwner=?'
 	let inserts = [req.body.userImage, req.session.user];
 	sql = mysql.format(sql, inserts);
 	let accountUpdate = db.query(sql);
@@ -162,6 +162,20 @@ router.post('/images', (req, res, next) => {
 	}, function (err) {
 		console.log(`ERROR: ${err}`);
 	})
+});
+
+router.get('/notifications', (req, res, next) => {
+	// if (req.session.user === undefined)
+	// {
+	// 	res.redirect('/user/login');
+	// 	return ;
+	// }
+	res.render('notifications', {
+	});
+});
+
+router.post('/notifications', (req, res, next) => {
+	res.json('K');
 });
 
 router.get('/preferences', (req, res, next) => {
