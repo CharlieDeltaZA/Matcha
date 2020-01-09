@@ -41,5 +41,8 @@ html
 							.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
 								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
 
-		include js_includes.pug
+					button#submit.btn.btn-lg.btn-success(onclick='postProfileImage()') UPDATE IMAGES BOI
+
 		include footer.pug
+		include js_includes.pug
+		script(src="/images.js")
