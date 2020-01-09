@@ -126,7 +126,7 @@ router.post('/account/public', (req, res, next) => {
 router.post('/account/images', (req, res, next) => {
 	let db = new database;
 
-	let sql = 'UPDATE images SET userImage=?, imageOwner=?'
+	let sql = 'UPDATE images SET userImage=?, imageOwner=?, active=1'
 	let inserts = [req.body.userImage, req.session.user];
 	sql = mysql.format(sql, inserts);
 	let accountUpdate = db.query(sql);
