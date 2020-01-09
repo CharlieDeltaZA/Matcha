@@ -148,14 +148,16 @@ router.post('/account/public', (req, res, next) => {
 	})
 });
 
-router.post('/account/images', (req, res, next) => {
+router.post('/images', (req, res, next) => {
 	let db = new database;
+	console.log('Click');
 
 	let sql = 'UPDATE images SET userImage=?, imageOwner=?, active=1'
 	let inserts = [req.body.userImage, req.session.user];
 	sql = mysql.format(sql, inserts);
 	let accountUpdate = db.query(sql);
 	accountUpdate.then( function (data) {
+		res.json('yes');
 		console.log(`Success: ${data}`);
 	}, function (err) {
 		console.log(`ERROR: ${err}`);

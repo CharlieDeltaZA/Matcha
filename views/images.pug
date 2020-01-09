@@ -44,5 +44,8 @@ html
 								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
 						input#myFile(type='file', name='filename2')
 
-		include js_includes.pug
+					button#submit.btn.btn-lg.btn-success(onclick='postProfileImage()') UPDATE IMAGES BOI
+
 		include footer.pug
+		include js_includes.pug
+		script(src="/images.js")
