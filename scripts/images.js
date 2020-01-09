@@ -4,7 +4,7 @@ function postProfileImage() {
 	$.ajax({
 		type: "POST", 
 		url : '/user/images',
-		data: JSON.stringify(image),
+		data: JSON.stringify(profileImg),
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: function(data) {

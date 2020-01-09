@@ -15,26 +15,26 @@ html
 						a.nav-link.mb-5(href='#')
 							.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
 								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
-						input#myFile(type='file', name='filename2', style='width: 150px; height: 150px;')
+						input#profileImg(type='file', style='width: 150px; height: 150px;')
 
 
 					.row.mx-auto
 						a.nav-link.mb-5(href='#')
 							.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
 								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
-						input#myFile(type='file', name='filename2', style='width: 150px; height: 150px;')
+						input#imgOne(type='file', name='filename2', style='width: 150px; height: 150px;')
 
 					.row.mx-auto
 						a.nav-link.mb-5(href='#')
 							.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
 								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
-						input#myFile(type='file', name='filename2')
+						input#imgTwo(type='file', name='filename2')
 
 					.row.mx-auto
 						a.nav-link.mb-5(href='#')
 							.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
 								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
-						input#myFile(type='file', name='filename2')
+						input#imgThree(type='file', name='filename2')
 					
 					.row.mx-auto
 						a.nav-link.mb-5(href='#')
@@ -47,3 +47,11 @@ html
 		include footer.pug
 		include js_includes.pug
 		script(src="/images.js")
+		script.
+			$("#submit").click( () => {
+				let profileImg = $("#profileImg").prop('files')[0];
+				//- reader = new FileReader();
+				//- reader.readDataAsUrl(profileImg);
+				//- profileImg = reader.result;
+				postProfileImage();
+			});
