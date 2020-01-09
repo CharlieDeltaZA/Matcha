@@ -16,7 +16,7 @@ html
 							.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
 								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
 						.custom-file-d-inline.mb-3
-							input#customFile.custom-file-input(type='file', name='filename')
+							input#customFile.custom-file-input(type='file', name='filename', style='max-width: 300px;')
 							label.custom-file-label(for='customFile') Choose file
 
 
@@ -30,16 +30,19 @@ html
 						a.nav-link.mb-5(href='#')
 							.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
 								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
+						input#myFile(type='file', name='filename2')
 
 					.row.mx-auto
 						a.nav-link.mb-5(href='#')
 							.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
 								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
+						input#myFile(type='file', name='filename2')
 					
 					.row.mx-auto
 						a.nav-link.mb-5(href='#')
 							.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
 								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
+						input#myFile(type='file', name='filename2')
 
 		include js_includes.pug
 		include footer.pug
