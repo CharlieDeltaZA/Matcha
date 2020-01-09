@@ -10,11 +10,12 @@
 		// contentType: "application/json; charset=utf-8",
 		// dataType: "json",
 		success: function(data) {
-			console.log(data);
+			// console.log(data);
+			document.getElementById('NotifDiv').innerHTML = data;
 		},
 		complete: function() {
 			setTimeout(worker, 500);
-			console.log('Complete');
+			// console.log('Complete');
 		}
 	});
 })();
