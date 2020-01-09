@@ -109,36 +109,25 @@ router.get('/images', (req, res, next) => {
 	});
 });
 
-router.get('/account', (req, res, next) => {
-	if (req.session.user === undefined)
-	{
-		res.redirect('/user/login');
-		return ;
-	}
-	var current_user = DB.get_user(req.session.user);
-	current_user.then(function (data) {
-		res.render('account', {
-			title:'Account',
-			user: (req.session.user === undefined ? "Username" : req.session.user),
-			username: req.session.user,
-			userFirstName: data[0].userFirstName,
-			userLastName: data[0].userLastName,
-			userGender: data[0].userGender,
-			userOrientation: data[0].userOrientation,
-			userEmail: data[0].userEmail,
-			userBio: data[0].userBiography,
-			userLat: data[0].userLat,
-			userLng: data[0].userLng,
-			userLogged: (req.session.user === undefined ? false : true)
-		});
-	})
-});
-
-router.post('/account', (req, res, next) => {
+router.post('/account/public', (req, res, next) => {
 	let db = new database;
 
 	let sql = 'UPDATE users SET userFirstName=?, userLastName=?, userGender=?, userOrientation=?, userBiography=? WHERE username=?'
 	let inserts = [req.body.userName, req.body.userSurname, req.body.userGender, req.body.userSexPref, req.body.userBio, req.session.user];
+	sql = mysql.format(sql, inserts);
+	let accountUpdate = db.query(sql);
+	accountUpdate.then( function (data) {
+		console.log(`Success: ${data}`);
+	}, function (err) {
+		console.log(`ERROR: ${err}`);
+	})
+});
+
+router.post('/account/images', (req, res, next) => {
+	let db = new database;
+
+	let sql = 'UPDATE images SET userImage=?, imageOwner=?'
+	let inserts = [req.body.userImage, req.session.user];
 	sql = mysql.format(sql, inserts);
 	let accountUpdate = db.query(sql);
 	accountUpdate.then( function (data) {
