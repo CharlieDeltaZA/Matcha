@@ -63,7 +63,10 @@ html
 							else
 								p.card-text Men
 						else if userOrientation === 'homo'
-							p.card-text #{userGender}
+							if userGender === 'Male'
+								p.card-text Men
+							else
+								p.card-text Women
 						else
 							p.card-text Men OR Women
 						hr
