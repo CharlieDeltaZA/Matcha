@@ -208,34 +208,10 @@ html
 
 		include footer.pug	
 			
-		//- 	//- SCRIPTS
+		//- SCRIPTS
 		include js_includes.pug
 		script(src="/location.js")
 		script(src="/account.js")
 		script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBbM1RQ9usKaBQ8uIWG2QwbfEYy9lFdOF8&libraries=places&callback=initMap' async='' defer='')
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js")
 		//- script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-		//- //- PROFILE
-		//- script.
-		//- 	$(document).ready(function(){
-		//- 		var user,pass;
-		//- 		//- $("#UpdatePro").click(function(){
-		//- 		user=$("#userLogin").val();
-		//- 		pass=$("#userPass").val();
-		//- 		$.post("/",{user: user,password: pass}, function(data){
-		//- 		});
-		//- 		window.location.replace("http://localhost:8080?action=updatePro");
-		//- 		});
-		//- 	});
-		//- //- PREFERENCES
-		//- script.
-		//- 	$(document).ready(function(){
-		//- 		var user,pass;
-		//- 		//- $("#UpdatePref").click(function(){
-		//- 		user=$("#userLogin").val();
-		//- 		pass=$("#userPass").val();
-		//- 		$.post("/",{user: user,password: pass}, function(data){
-		//- 		});
-		//- 		window.location.replace("http://localhost:8080?action=updatePref");
-		//- 		});
-		//- 	});
