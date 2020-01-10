@@ -102,6 +102,32 @@ class Database {
 		});
 	}
 
+	change_username(username, newUsername) {
+		return new Promise ( (resolve, reject) => {
+			var a = this;
+			if (!username || !newUsername)
+				reject ("Blank input passed to function.");
+
+			let userTaken = this.get_user(newUsername);
+
+			userTaken.then(function (ret) {
+				if (!ret[0]) {
+					reject (`Error: ${err}`);
+				}
+			}, function (err) {
+				let sql = "UPDATE users SET username=? WHERE username=?";
+				let inserts = [newUsername, username];
+				sql = mysql.format(sql, inserts);
+				let update = a.query(sql);
+				update.then(function(ret) {
+					resolve ("Username updated.");
+				}, function (err) {
+					reject ("Failed to update username.");
+				})
+			})
+		})
+	}
+
     close() {
         return new Promise( (resolve, reject) => {
             this.connection.end(err => {

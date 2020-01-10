@@ -146,7 +146,7 @@ var setupTables = function setupTables() {
 			}
 			else
 			{
-				console.log('images table not found.');
+				console.log('notifications table not found.');
 				var sql = `CREATE TABLE IF NOT EXISTS notifications (
 					user TINYTEXT,
 					subject TINYTEXT,
@@ -154,7 +154,7 @@ var setupTables = function setupTables() {
 					);`
 				conn.query(sql, function (err, result) {
 					if (err) throw err;
-					console.log("images table created");
+					console.log("notifications table created");
 				});
 			}
 		});
