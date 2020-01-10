@@ -46,7 +46,7 @@ function changeUsername() {
 			contentType: "application/json; charset=utf-8",
 			dataType: "json",
 			success: function(data) {
-				document.getElementById('unamePara').innerHTML = data;
+				document.location.href = "/user/account";
 			}
 		});
 	}
