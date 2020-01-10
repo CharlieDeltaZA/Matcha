@@ -7,60 +7,53 @@ html
 		include navbar.pug
 		
 		h2.mt-white.text-center.mt-5 Recommendations
-		.container(style='max-width: 1100px;')
+		.container(style='max-width: 1100px;min-width:350px;')
 			//- Use col-x-x stuff for this, should get it resizing better I think
 			.card
-				.container.mx-auto.my-5(style='max-width: 1100px;')
-					.row
-						.col-md-4
-							.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
+				//- .container.mx-auto.my-5(style='max-width: 1100px;')
+				.row
+					.col-lg-4.col-md-6.col-sm
+						.container.my-4
+							.card.text-black.mx-auto(style='max-width: 300px; max-height: 300px;min-width: 300px; min-height: 300px;')
 								a(href='#')
-									img.img-fluid(src='/images.jpeg', alt='...', style='max-width: 300px; max-height: 300px;')
+									img.img-fluid(src='/images.jpeg', alt='...', style='max-width: 300px; max-height: 300px;min-width: 200px; min-height: 200px;')
 								.card.mbg-light-grey
 									h5.card-title Till, 25
-						.col-md-4
-							.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
+					.col-lg-4.col-md-6.col-sm
+						.container.my-4
+							.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;min-width: 300px; min-height: 300px;')
 								a(href='#')
-									img.img-fluid(src='/images2.jpeg', alt='...', style='max-width: 300px; max-height: 300px;')
+									img.img-fluid(src='/images2.jpeg', alt='...', style='max-width: 300px; max-height: 300px;min-width: 200px; min-height: 200px;')
 								.card.mbg-light-grey
 									h5.card-title John, 20
-						.col-md-4
-							.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
+					.col-lg-4.col-md-6.col-sm
+						.container.my-4
+							.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;min-width: 300px; min-height: 300px;')
 								a(href='#')
-									img.img-fluid(src='/images3.jpg', alt='...', style='max-width: 300px; max-height: 300px;')
+									img.img-fluid(src='/images3.jpg', alt='...', style='max-width: 300px; max-height: 300px;min-width: 200px; min-height: 200px;')
 								.card.mbg-light-grey
 									h5.card-title Tom, 42
-						//- .card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
-						//- 	a(href='#')
-						//- 		img.img-fluid(src='/images.jpeg', alt='...', style='max-width: 300px; max-height: 300px;')
-						//- 	.card.mbg-light-grey
-						//- 		h5.card-title Jeff, 69
-			
-															//- .container-fluid.mx-auto.my-5(style='width: 1400px;')
-					.row
-						.col-md-4
-							.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
+					.col-lg-4.col-md-6.col-sm
+						.container.my-4
+							.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;min-width: 300px; min-height: 300px;')
 								a(href='#')
-									img.img-fluid(src='/images.jpeg', alt='...', style='max-width: 300px; max-height: 300px;')
+									img.img-fluid(src='/images.jpeg', alt='...', style='max-width: 300px; max-height: 300px;min-width: 200px; min-height: 200px;')
 								.card.mbg-light-grey
 									h5.card-title Zed, 50
-						.col-md-4
-							.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
+					.col-lg-4.col-md-6.col-sm
+						.container.my-4
+							.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;min-width: 300px; min-height: 300px;')
 								a(href='#')
-									img.img-fluid(src='/images3.jpg', alt='...', style='max-width: 300px; max-height: 300px;')
+									img.img-fluid(src='/images3.jpg', alt='...', style='max-width: 300px; max-height: 300px;min-width: 200px; min-height: 200px;')
 								.card.mbg-light-grey
 									h5.card-title Tim, 5
-						.col-md-4
-							.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
+					.col-lg-4.col-md-6.col-sm
+						.container.my-4
+							.card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;min-width: 300px; min-height: 300px;')
 								a(href='#')
-									img.img-fluid(src='/images2.jpeg', alt='...', style='max-width: 300px; max-height: 300px;')
+									img.img-fluid(src='/images2.jpeg', alt='...', style='max-width: 300px; max-height: 300px;min-width: 200px; min-height: 200px;')
 								.card.mbg-light-grey
 									h5.card-title Problems, 99
-						//- .card.text-black.mb-5.mx-auto(style='max-width: 300px; max-height: 300px;')
-						//- 	a(href='#')
-						//- 		img.img-fluid(src='/images.jpeg', alt='...', style='max-width: 300px; max-height: 300px;')
-						//- 	.card.mbg-light-grey
-						//- 		h5.card-title JeffJeff, 420
 
 		include js_includes.pug
 		include footer.pug
