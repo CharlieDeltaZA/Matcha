@@ -52,6 +52,30 @@ function changeUsername() {
 	}
 }
 
+function changeEmail() {
+	let form = {
+		userEmail: document.getElementById('userEmail').value
+	}
+	if (!form.userEmail) {
+		swal(
+			'Error!',
+			`Email can't be blank.`,
+			'error'
+		)
+	} else {
+		$.ajax({
+			type: "POST", 
+			url : '/user/account/email',
+			data: JSON.stringify(form),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function(data) {
+				document.getElementById('emailPara').innerHTML = data;
+			}
+		});
+	}
+}
+
 // Requires image to be posted as 'userImage'
 function postProfileImage() {
 	$.ajax({

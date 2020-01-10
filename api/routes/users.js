@@ -169,10 +169,19 @@ router.post('/account/username', (req, res, next) => {
 
 	let usernameUpdate = db.change_username(req.session.user, req.body.userLogin);
 	usernameUpdate.then( function (data) {
-		console.log(data);
 		res.json(data);
 	}, function (err) {
-		console.log(err);
+		res.json(err);
+	})
+});
+
+router.post('/account/email', (req, res, next) => {
+	let db = new database;
+
+	let emailUpdate = db.change_email(req.session.user, req.body.userEmail);
+	emailUpdate.then( function (data) {
+		res.json(data);
+	}, function (err) {
 		res.json(err);
 	})
 });

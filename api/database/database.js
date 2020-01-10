@@ -128,6 +128,24 @@ class Database {
 		})
 	}
 
+	change_email(username, change_email) {
+		return new Promise ( (resolve, reject) => {
+			var a = this;
+			if (!username || !change_email)
+				reject ("Blank input passed to function.");
+
+			let sql = "UPDATE users SET userEmail=? WHERE username=?";
+			let inserts = [change_email, username];
+			sql = mysql.format(sql, inserts);
+			let update = a.query(sql);
+			update.then(function(ret) {
+				resolve ("Email updated.");
+			}, function (err) {
+				reject ("Failed to update email.");
+			})
+		})
+	}
+
     close() {
         return new Promise( (resolve, reject) => {
             this.connection.end(err => {
