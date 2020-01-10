@@ -12,10 +12,16 @@ html
 			.card
 				.container.mx-auto.my-5(style='max-width: 700px;')
 					.row.mx-auto(style='max-height: 180px;')
-						a.nav-link.mb-5(href='#')
-							.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
-								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
-						input#myFile(type='file', name='filename2', style='width: 250px; height: 40px;')
+						.col
+							a.nav-link.mb-5(href='#')
+								.card.bg-dark.text-black.mx-auto(style='max-width: 150px; max-height: 150px;')
+									img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
+						.col
+							.row.mx-auto(style='max-height: 42px;')
+								input#myFile(type='file', name='filename2', style='width: 250px; height: 40px;')
+							.row.mx-auto(style='max-height: 42px;')
+								a.btn.btn-md(href='#', style='height: 40px;')
+								i.fa.fa-trash
 
 
 					.row.mx-auto
