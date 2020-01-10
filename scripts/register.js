@@ -43,7 +43,7 @@ function registrationHandler(data) {
 	if (data !== 'success') {
         swal(
             'Error!',
-            `${data}`,
+            `Username already in use`,
             'error'
         )
 	} else {
