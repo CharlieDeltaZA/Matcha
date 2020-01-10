@@ -13,8 +13,8 @@ html
 		.container
 			h1.mt-white.text-center.mt-5.display-3 Profile
 			
-			.container.mx-auto.my-3(style='max-width: 1500px;')
-				.card.mx-auto(style='max-width: 1500px;')
+			.container.mx-auto.my-3(style='max-width: 1200px;')
+				.card.mx-auto(style='max-width: 1200px;')
 					#carouselControls.carousel.slide(data-ride='carousel', data-interval="false")
 						ol.carousel-indicators
 							li.active(data-target='#carouselIndicators', data-slide-to='0')
@@ -35,23 +35,42 @@ html
 							span.sr-only Next 
 		
 					.card-body
-						//- h1.display-4.card-title #{name}
-						h1.display-4.card-title Jeff Society
-						//- h4.card-subtitle.mb-2.text-muted #{age}
-						h4.card-subtitle.mb-2.text-muted 69
+						//- h1.display-4.card-title Jeff Society
+						h1.display-4.card-title #{userFirstName} #{userLastName}
+						//- h4.card-subtitle.mb-2 #{age}
+						h4.card-subtitle.mb-2 Age: 69
+						h4.card-subtitle.mb-2 Fame Rating: ???
 						//- p.card-text
 						//- 	| #{distance}   <--- Maybe use something to generalize the distance based on how far away they are. So instead of numbers,
-													it's something like: Close, Nearby, Distant, Far etc. idk
+												it's something like: Close, Nearby, Distant, Far etc. idk
+						label.h6 Distance:						
 						p.card-text
 							| 420kms away
 						//- p.card-text
 						//- 	| #{orientation}, #{gender}
-						p.card-text
-							| straight, male
-						//- p.card-text
-						//- 	| #{lookingFor}
-						p.card-text
-							| looking for a whamens
+						label.h6 I am:
+						if userOrientation === 'hetero'
+							p.card-text
+								|  Heterosexual, #{userGender}
+						else if userOrientation === 'homo'
+							p.card-text
+								|  Homosexual, #{userGender}
+						else
+							p.card-text
+								|  Bisexual, #{userGender}
+						label.h6 Looking For:
+						if userOrientation === 'hetero'
+							if userGender === 'Male'
+								p.card-text Women 
+							else
+								p.card-text Men
+						else if userOrientation === 'homo'
+							if userGender === 'Male'
+								p.card-text Men
+							else
+								p.card-text Women
+						else
+							p.card-text Men OR Women
 						hr
 						h4.card-title Interests
 						//- p.card-text
@@ -60,10 +79,10 @@ html
 							| #programs #memes #gangweed
 						hr
 						h4.card-title Bio
-						//- p.card-text
-						//- 	| #{bio}
 						p.card-text
-							| Is a gamer who lives in a society, programs the programs, is very hastag relatables, has a N-word pass.
+							| #{userBio}
+						//- p.card-text
+						//- 	| Is a gamer who lives in a society, programs the programs, is very hastag relatables, has a N-word pass.
 
 		include footer.pug
 
