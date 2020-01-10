@@ -170,6 +170,7 @@ router.post('/account/username', (req, res, next) => {
 	let usernameUpdate = db.change_username(req.session.user, req.body.userLogin);
 	usernameUpdate.then( function (data) {
 		res.json(data);
+		req.session.user = req.body.userLogin;
 	}, function (err) {
 		res.json(err);
 	})
