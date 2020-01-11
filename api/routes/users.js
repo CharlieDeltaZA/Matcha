@@ -113,27 +113,20 @@ router.get('/images', (req, res, next) => {
 		res.redirect('/user/login');
 		return ;
 	}
-	res.render('images', {
-		title:'Images',
-		user: (req.session.user === undefined ? "Username" : req.session.user),
-		userLogged: (req.session.user === undefined ? false : true)
-	});
-});
-
-router.post('/images', (req, res, next) => {
-	let db = new database;
-	console.log('Click');
-
-	let sql = 'UPDATE images SET userImage=?, imageOwner=?'
-	let inserts = [req.body.userImage, req.session.user];
-	console.log(`Sql = ${sql}`);
-	sql = mysql.format(sql, inserts);
-	let accountUpdate = db.query(sql);
-	accountUpdate.then( function (data) {
-		res.json('yes');
-		console.log(`Success: ${data}`);
+	var imageArray = new Array();;
+	let images = DB.getImages(req.session.user);
+	images.then(function (data) {
+		data.forEach(element => {
+			imageArray.push(element.image);
+		});
+		res.render('images', {
+			title:'Images',
+			imageArray: imageArray,
+			user: (req.session.user === undefined ? "Username" : req.session.user),
+			userLogged: (req.session.user === undefined ? false : true)
+		});
 	}, function (err) {
-		console.log(`ERROR: ${err}`);
+		res.redirect('/');
 	})
 });
 

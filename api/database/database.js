@@ -146,6 +146,19 @@ class Database {
 		})
 	}
 
+	getImages(username) {
+		return new Promise ( (resolve, reject) => {
+			let db = new Database();
+			let sql = `SELECT * FROM images WHERE imageOwner='${username}'`;
+			let result = db.query(sql);
+			result.then(function (data) {
+				resolve(data);
+			}, function (err){
+				reject (err);
+			})
+		})
+	}
+
 	uploadImage(username, imageURL) {
 		return new Promise ( (resolve, reject) => {
 			var a = this;
@@ -170,11 +183,8 @@ class Database {
 						reject ("Maximum uploaded images reached.");
 					}
 				}, function (err) {
-					console.log("Failure?");
-					console.log(err);
+					reject(err);
 				})
-				// sql = `INSERT INTO images (imageOwner, image1) VALUES (${imageURL} ,${username})`;
-				// a.query(sql);
 			}
 		})
 	}

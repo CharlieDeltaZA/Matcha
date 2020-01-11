@@ -105,9 +105,6 @@ router.post('/images', parser.array("image", 5), (req, res) => {
 		},function (err) {
 			console.log(err);
 		})
-		// Image.create(image) // save image information in database
-			// .then(newImage => res.json(newImage))
-			// .catch(err => console.log(err));
 	});
 });
 
