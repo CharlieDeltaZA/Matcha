@@ -91,19 +91,17 @@ router.post('/email', (req, res) => {
 });
 
 router.post('/images', parser.array("image", 5), (req, res) => {
-	// console.log(req.body.image1) // to see what is returned to you
 	var db = new database();
 	var file = req.files;
 	Object.keys(file).forEach( function(key) {
-		// console.log(file[key]);
 		const image = {};
 		image.url = file[key].url;
-
 		let upload = db.uploadImage(req.session.user, image.url);
 		upload.then( function (data) {
-
+			res.redirect('/user/images');
 		},function (err) {
 			console.log(err);
+			res.sendStatus(204).end();
 		})
 	});
 });
