@@ -9,6 +9,7 @@ const searchRoutes = require('./api/routes/search');
 const recommendRoutes = require('./api/routes/recommend');
 const locationRoutes = require('./api/routes/location');
 const viewRoutes = require('./api/routes/profileviews');
+const accountRoutes = require('./api/routes/account');
 
 // Session and DB setup
 app.use(session({
@@ -53,6 +54,7 @@ app.use(express.static('images'));
 app.use(express.static('scripts'));
 
 // URL handling routers
+app.use('/user/account', accountRoutes);
 app.use('/user', userRoutes);
 app.use('/search', searchRoutes);
 app.use('/recommendations', recommendRoutes);
@@ -79,7 +81,6 @@ app.post('/', (req, res) => {
 	},
 	function(err){
 		console.log(`Failed log in attempt.\nReason: ${err}`);
-		// Remove this if you get weird errors. 
 		db.close();
 		res.status(204).end();
 	})

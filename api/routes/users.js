@@ -105,11 +105,6 @@ router.get('/profile', (req, res, next) => {
 			userLogged: (req.session.user === undefined ? false : true)
 		});
 	});
-	// res.render('profile', {
-	// 	title:'Profile',
-	// 	user: (req.session.user === undefined ? "Username" : req.session.user),
-	// 	userLogged: (req.session.user === undefined ? false : true)
-	// });
 });
 
 router.get('/images', (req, res, next) => {
@@ -123,68 +118,6 @@ router.get('/images', (req, res, next) => {
 		user: (req.session.user === undefined ? "Username" : req.session.user),
 		userLogged: (req.session.user === undefined ? false : true)
 	});
-});
-
-router.get('/account', (req, res, next) => {
-	if (req.session.user === undefined)
-	{
-		res.redirect('/user/login');
-		return ;
-	}
-	var current_user = DB.get_user(req.session.user);
-	current_user.then(function (data) {
-		res.render('account', {
-			title:'Account',
-			user: (req.session.user === undefined ? "Username" : req.session.user),
-			username: req.session.user,
-			userFirstName: data[0].userFirstName,
-			userLastName: data[0].userLastName,
-			userGender: data[0].userGender,
-			userOrientation: data[0].userOrientation,
-			userEmail: data[0].userEmail,
-			userBio: data[0].userBiography,
-			userLat: data[0].userLat,
-			userLng: data[0].userLng,
-			userLogged: (req.session.user === undefined ? false : true)
-		});
-	});
-});
-
-router.post('/account/public', (req, res, next) => {
-	let db = new database;
-
-	let sql = 'UPDATE users SET userFirstName=?, userLastName=?, userGender=?, userOrientation=?, userBiography=? WHERE username=?'
-	let inserts = [req.body.userName, req.body.userSurname, req.body.userGender, req.body.userSexPref, req.body.userBio, req.session.user];
-	sql = mysql.format(sql, inserts);
-	let accountUpdate = db.query(sql);
-	accountUpdate.then( function (data) {
-		console.log(`Success: ${data}`);
-	}, function (err) {
-		console.log(`ERROR: ${err}`);
-	})
-});
-
-router.post('/account/username', (req, res, next) => {
-	let db = new database;
-
-	let usernameUpdate = db.change_username(req.session.user, req.body.userLogin);
-	usernameUpdate.then( function (data) {
-		req.session.user = req.body.userLogin;
-		res.json(data);
-	}, function (err) {
-		res.json(err);
-	})
-});
-
-router.post('/account/email', (req, res, next) => {
-	let db = new database;
-
-	let emailUpdate = db.change_email(req.session.user, req.body.userEmail);
-	emailUpdate.then( function (data) {
-		res.json(data);
-	}, function (err) {
-		res.json(err);
-	})
 });
 
 router.post('/images', (req, res, next) => {
