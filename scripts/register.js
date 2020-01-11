@@ -3,7 +3,7 @@ function registrationValid2(username, name, surname, email, password, confpasswo
 		let emailTest = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		if (username === undefined || username == "")
 			reject ('Username empty.');
-		if (username.length < 3)
+		if (username.length < 4)
 			reject ('Username too short.');
 		if (!(/^[A-Za-z0-9-_. ]+$/.test(username)))
 			reject ('Username contains special characters.');

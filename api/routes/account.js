@@ -3,6 +3,23 @@ const router = express.Router();
 const app = express();
 const database = require('../database/database');
 const mysql = require('mysql');
+const multer = require("multer");
+const cloudinary = require("cloudinary");
+const cloudinaryStorage = require("multer-storage-cloudinary");
+
+cloudinary.config({
+	cloud_name: 'matchawtc',
+	api_key: '939787686612891',
+	api_secret: '3pbLbXEAT4CgZ20R5DMUeo5jTvQ'
+	});
+	const storage = cloudinaryStorage({
+	cloudinary: cloudinary,
+	folder: "userImages",
+	allowedFormats: ["jpg", "png"],
+	transformation: [{ width: 500, height: 500, crop: "limit" }]
+});
+
+const parser = multer({ storage: storage });
 
 app.set('view engine', 'pug');
 app.use(express.static('/../../styles'));
@@ -11,7 +28,7 @@ app.use(express.static('/../../scripts'));
 
 var DB = new database;
 
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
 	if (req.session.user === undefined)
 	{
 		res.redirect('/user/login');
@@ -36,7 +53,7 @@ router.get('/', (req, res, next) => {
 	});
 });
 
-router.post('/public', (req, res, next) => {
+router.post('/public', (req, res) => {
 	let db = new database;
 
 	let sql = 'UPDATE users SET userFirstName=?, userLastName=?, userGender=?, userOrientation=?, userBiography=? WHERE username=?'
@@ -50,7 +67,7 @@ router.post('/public', (req, res, next) => {
 	})
 });
 
-router.post('/username', (req, res, next) => {
+router.post('/username', (req, res) => {
 	let db = new database;
 
 	let usernameUpdate = db.change_username(req.session.user, req.body.userLogin);
@@ -62,7 +79,7 @@ router.post('/username', (req, res, next) => {
 	})
 });
 
-router.post('/email', (req, res, next) => {
+router.post('/email', (req, res) => {
 	let db = new database;
 
 	let emailUpdate = db.change_email(req.session.user, req.body.userEmail);
@@ -71,6 +88,27 @@ router.post('/email', (req, res, next) => {
 	}, function (err) {
 		res.json(err);
 	})
+});
+
+router.post('/images', parser.array("image", 5), (req, res) => {
+	// console.log(req.body.image1) // to see what is returned to you
+	var db = new database();
+	var file = req.files;
+	Object.keys(file).forEach( function(key) {
+		// console.log(file[key]);
+		const image = {};
+		image.url = file[key].url;
+
+		let upload = db.uploadImage(req.session.user, image.url);
+		upload.then( function (data) {
+
+		},function (err) {
+			console.log(err);
+		})
+		// Image.create(image) // save image information in database
+			// .then(newImage => res.json(newImage))
+			// .catch(err => console.log(err));
+	});
 });
 
 module.exports = router;

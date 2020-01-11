@@ -10,71 +10,19 @@ html
 		.container(style='max-width: 700px;')
 			.card
 				.container.mx-auto.my-5(style='max-width: 700px;')
-					.row.mx-auto(style='max-height: 180px;')
-						.col
-							.card.bg-dark.text-black.mx-auto.mb-5(style='max-width: 150px; max-height: 150px;')
-								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
-						.col-8
-							.row.mx-auto
-								input#profileImg(type='file', name='image1', style='width: 250px; height: 40px;')
-							.row.mx-auto(style='max-height: 42px;')
-								button.btn.btn-danger.mt-2(href='#')
-									i.fa.fa-trash
-
-					.row.mx-auto(style='max-height: 180px;')
-						.col
-							.card.bg-dark.text-black.mx-auto.mb-5(style='max-width: 150px; max-height: 150px;')
-								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
-						.col-8
-							.row.mx-auto(style='max-height: 42px;')
-								input#profileImg(type='file', name='image2', style='width: 250px; height: 40px;')
-							.row.mx-auto(style='max-height: 42px;')
-								button.btn.btn-danger.mt-2(href='#')
-									i.fa.fa-trash
-
-					.row.mx-auto(style='max-height: 180px;')
-						.col
-							.card.bg-dark.text-black.mx-auto.mb-5(style='max-width: 150px; max-height: 150px;')
-								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
-						.col-8
-							.row.mx-auto(style='max-height: 42px;')
-								input#profileImg(type='file', name='image3', style='width: 250px; height: 40px;')
-							.row.mx-auto(style='max-height: 42px;')
-								button.btn.btn-danger.mt-2(href='#')
-									i.fa.fa-trash
-
-					.row.mx-auto(style='max-height: 180px;')
-						.col
-							.card.bg-dark.text-black.mx-auto.mb-5(style='max-width: 150px; max-height: 150px;')
-								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
-						.col-8
-							.row.mx-auto(style='max-height: 42px;')
-								input#profileImg(type='file', name='image4', style='width: 250px; height: 40px;')
-							.row.mx-auto(style='max-height: 42px;')
-								button.btn.btn-danger.mt-2(href='#')
-									i.fa.fa-trash
-					
-					.row.mx-auto(style='max-height: 180px;')
-						.col
-							.card.bg-dark.text-black.mx-auto.mb-5(style='max-width: 150px; max-height: 150px;')
-								img.img-fluidd-block.w-100(src='/images.jpeg', alt='...', style='width: 150px; height: 150px;')
-						.col-8
-							.row.mx-auto(style='max-height: 42px;')
-								input#profileImg(type='file', name='image5', style='width: 250px; height: 40px;')
-							.row.mx-auto(style='max-height: 42px;')
-								button.btn.btn-danger.mt-2(href='#')
-									i.fa.fa-trash
-
-					button#submit.btn.btn-lg.btn-success(type='submit') UPDATE IMAGES BOI
+					form#account(name="images", action='/user/account/images', method='POST', enctype="multipart/form-data")
+						.row.mx-auto(style='max-height: 180px;')
+							.col
+								.card.bg-dark.text-black.mx-auto.mb-5(style='max-width: 150px; max-height: 150px;')
+									img.img-fluidd-block.w-100(src='/images.png', alt='...', style='width: 150px; height: 150px;')
+							.col-8
+								.row.mx-auto
+									input#profileImg(type='file', name='image', style='width: 250px; height: 40px;')
+								.row.mx-auto(style='max-height: 42px;')
+									button.btn.btn-danger.mt-2(href='#')
+										i.fa.fa-trash
+						button#submit.btn.btn-lg.btn-success(type='submit') UPDATE IMAGES BOI
 
 		include footer.pug
 		include js_includes.pug
 		//- script(src="/images.js")
-		script.
-			$("#submit").click( () => {
-				let profileImg = $("#profileImg").prop('files')[0];
-				//- reader = new FileReader();
-				//- reader.readDataAsUrl(profileImg);
-				//- profileImg = reader.result;
-				postProfileImage();
-			});

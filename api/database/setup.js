@@ -118,7 +118,7 @@ var setupTables = function setupTables() {
 				console.log('images table not found.');
 				var sql = `CREATE TABLE IF NOT EXISTS images (
 					imageOwner LONGTEXT,
-					userImage varbinary(10000),
+					image VARCHAR(2083),
 					active BOOLEAN
 					);`
 				conn.query(sql, function (err, result) {

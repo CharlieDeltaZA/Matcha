@@ -146,6 +146,39 @@ class Database {
 		})
 	}
 
+	uploadImage(username, imageURL) {
+		return new Promise ( (resolve, reject) => {
+			var a = this;
+			if (!username)
+				reject ("There is no logged in session.");
+			else if (!imageURL)
+				reject ("Failed to generate URL");
+			else {
+				let sql = `SELECT COUNT(*) AS imageCount FROM images WHERE imageOwner='${username}'`;
+				let rowCount = a.query(sql);
+				rowCount.then( function(data) {
+					if((data[0].imageCount) < 5)
+					{
+						let sql = `INSERT INTO images (imageOwner, image, active) VALUES ('${username}', '${imageURL}', 0)`
+						let upload = a.query(sql);
+						upload.then (function (data) {
+							resolve ("Successfully uploaded image");
+						}, function (err) {
+							reject (err);
+						})
+					} else {
+						reject ("Maximum uploaded images reached.");
+					}
+				}, function (err) {
+					console.log("Failure?");
+					console.log(err);
+				})
+				// sql = `INSERT INTO images (imageOwner, image1) VALUES (${imageURL} ,${username})`;
+				// a.query(sql);
+			}
+		})
+	}
+
     close() {
         return new Promise( (resolve, reject) => {
             this.connection.end(err => {
