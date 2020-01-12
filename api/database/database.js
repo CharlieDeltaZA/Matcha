@@ -34,15 +34,15 @@ class Database {
 				console.log(data[0].userEmail);
 				let confirmation = email_handler.confirm_email(data[0].userEmail, data[0].userCode);
 				confirmation.then( function (ret){
-					console.log(`Email sent.`);
+					// console.log(`Email sent.`);
 				}, function (err) {
-					console.log(`Failed to send email.\nReason: ${err}`);
+					// console.log(`Failed to send email.\nReason: ${err}`);
 				})
 			}, function(err){
-				
+				// 
 			}) 
 		}, function (err) {
-			console.log(`Err ${err}`);
+			// console.log(`Err ${err}`);
 		})
 	}
 

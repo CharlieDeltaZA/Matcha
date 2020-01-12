@@ -21,7 +21,8 @@ function postPublicDetails() {
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
 				success: function(data) {
-					registrationHandler(data);
+					// registrationHandler(data);
+					location.reload();
 				}
 			});
 		}

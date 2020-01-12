@@ -69,7 +69,16 @@ function registerPost() {
 			contentType: "application/json; charset=utf-8",
 			dataType: "json",
 			success: function(ret) {
-				registrationHandler(ret);
+				if (ret == 'success')
+				{
+					registrationHandler(ret);
+				} else {
+					swal(
+						'Error!',
+						`${ret}`,
+						'error'
+					)
+				}
 			}
 		})
 	}, function (err) {

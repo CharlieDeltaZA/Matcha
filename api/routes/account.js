@@ -61,9 +61,9 @@ router.post('/public', (req, res) => {
 	sql = mysql.format(sql, inserts);
 	let accountUpdate = db.query(sql);
 	accountUpdate.then( function (data) {
-		console.log(`Success: ${data}`);
+		res.json('Success');
 	}, function (err) {
-		console.log(`ERROR: ${err}`);
+		res.json('Failure');
 	})
 });
 

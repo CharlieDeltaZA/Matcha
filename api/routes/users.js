@@ -65,7 +65,7 @@ router.get('/register/:error?', (req, res, next) => {
 router.post('/register', (req, res, next) => {
 	let db = new database;
 	if (validation.registrationFormValid(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass) != true) {
-		console.log(validation.registrationFormValid(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass));
+		// console.log(validation.registrationFormValid(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass));
 	} else
 	{
 		var registerAttempt = db.register(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass);
@@ -75,7 +75,7 @@ router.post('/register', (req, res, next) => {
 			// db.close();
 		},
 		function (err) {
-			res.json('err');
+			res.json('error');
 			console.log(`Failed registration.\nReason: ${err}`);
 			// db.close();
 		})
