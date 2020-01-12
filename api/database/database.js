@@ -134,7 +134,7 @@ class Database {
 
 	update_username(username, newUsername) {
 		return new Promise ( (resolve, reject) => {
-			var sql = "UPDATE users SET username=? WHERE username=?";;
+			var sql = "UPDATE users SET username=? WHERE username=?";
 			var inserts =[newUsername, username];
 			var a = this;
 
@@ -255,7 +255,11 @@ class Database {
 			let rowCount = a.query(sql);
 			rowCount.then( function(data) {
 				if (data[0].codeExists == 1)
+				{
+					let sql = `UPDATE users SET userVerified=1 WHERE userCode='${code}'`
+					a.query(sql);
 					resolve();
+				}
 				else
 					reject();
 			}, function (err) {
