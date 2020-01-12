@@ -12,7 +12,7 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-var confirm_email = function confirm_email(email) {
+var confirm_email = function confirm_email(email, code) {
 	return new Promise ( (resolve, reject) => {
 		if (!email || email == undefined)
 			reject ("No valid email given.");
@@ -20,8 +20,8 @@ var confirm_email = function confirm_email(email) {
 		var mailOptions = {
 			from: 'noreply.matchaWTC@gmail.com',
 			to: `${email}`,
-			subject: 'Sending Email using Node.js',
-			text: 'That was easy!'
+			subject: 'Please verify your email',
+			text: `Please verify your email using this link: http://localhost:8080/user/account/${code}`
 		};
 		
 		transporter.sendMail(mailOptions, function(error, info) {

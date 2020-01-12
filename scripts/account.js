@@ -32,7 +32,15 @@ function changeUsername() {
 	let form = {
 		userLogin: document.getElementById('userLogin').value
 	}
-	if (!form.userLogin) {
+	if (form.userLogin < 3)
+	{
+		swal(
+			'Error!',
+			`Username must contain at least 3 characters.`,
+			'error'
+		)
+	}
+	else if (!form.userLogin) {
 		swal(
 			'Error!',
 			`Username can't be blank.`,
@@ -46,7 +54,18 @@ function changeUsername() {
 			contentType: "application/json; charset=utf-8",
 			dataType: "json",
 			success: function(data) {
-				document.location.href = "/user/account";
+				console.log(data);
+				if (data === 'Success')
+				{
+					location.reload();
+				} else
+				{
+					swal(
+						'Error!',
+						`Username already taken.`,
+						'error'
+					)
+				}
 			}
 		});
 	}
@@ -56,7 +75,15 @@ function changeEmail() {
 	let form = {
 		userEmail: document.getElementById('userEmail').value
 	}
-	if (!form.userEmail) {
+	var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	if (re.test(String(form.userEmail).toLowerCase())) {
+		swal(
+			'Error!',
+			`Invalid email.`,
+			'error'
+		)
+	}
+	else if (!form.userEmail) {
 		swal(
 			'Error!',
 			`Email can't be blank.`,

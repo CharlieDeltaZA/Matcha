@@ -73,12 +73,12 @@ router.post('/register', (req, res, next) => {
 
 		registerAttempt.then(function(ret){
 			res.json("success");
-			db.close();
+			// db.close();
 		},
 		function (err) {
 			res.json('err');
 			console.log(`Failed registration.\nReason: ${err}`);
-			db.close();
+			// db.close();
 		})
 	}
 });

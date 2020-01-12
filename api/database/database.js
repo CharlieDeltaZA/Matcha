@@ -1,6 +1,8 @@
 const db = require('./config');
 const mysql = require('mysql');
 var encrypt = require('../encrypt');
+const crypto = require('crypto');
+const email_handler = require('../../api/email');
 
 class Database {
 
@@ -21,6 +23,27 @@ class Database {
                 return resolve(rows);
             });
         });
+	}
+
+	email_user(username) {
+		var a = this;
+		let valid_user = this.validate_user(username);
+		valid_user.then(function (data) {
+			let user = a.get_user(username);
+			user.then(function (data) {
+				console.log(data[0].userEmail);
+				let confirmation = email_handler.confirm_email(data[0].userEmail, data[0].userCode);
+				confirmation.then( function (ret){
+					console.log(`Email sent.`);
+				}, function (err) {
+					console.log(`Failed to send email.\nReason: ${err}`);
+				})
+			}, function(err){
+				
+			}) 
+		}, function (err) {
+			console.log(`Err ${err}`);
+		})
 	}
 
 	validate_user(username) {
@@ -66,7 +89,6 @@ class Database {
 		});
 	}
 
-	// All field validation will be done in front-end js. This exclusively handles the SQL.
 	register(username, name, surname, email, userPass, userConfPass) {
 		return new Promise ( (resolve, reject) => {
 			var a = this;
@@ -77,10 +99,18 @@ class Database {
 			function (err) {
 				let hash = encrypt.cryptPassword(userPass);
 				hash.then(function(ret){
-					let sql = `INSERT INTO users (username, userEmail, userPassword, userFirstName, userLastName) VALUES(?, ?, ?, ?, ?)`
-					let inserts = [username, email, ret, name, surname];
+					let current_date = new Date();
+					let sql = `INSERT INTO users (username, userEmail, userPassword, userFirstName, userLastName, userCode) VALUES(?, ?, ?, ?, ?, ?)`
+					let hash = crypto.createHash('md5').update(current_date + username).digest('hex');
+					let inserts = [username, email, ret, name, surname, hash];
 					sql = mysql.format(sql, inserts);
-					a.query(sql);
+					let registered = a.query(sql);
+					registered.then(function(data) {
+						a.email_user(username);
+					}, function(err) {
+						console.log(err);
+					})
+
 					return resolve();
 				})	
 			})
@@ -102,27 +132,54 @@ class Database {
 		});
 	}
 
+	update_username(username, newUsername) {
+		return new Promise ( (resolve, reject) => {
+			var sql = "UPDATE users SET username=? WHERE username=?";;
+			var inserts =[newUsername, username];
+			var a = this;
+
+			sql = mysql.format(sql, inserts);
+			let update = a.query(sql);
+			update.then(function(ret) {
+				sql = `UPDATE images SET imageOwner=? WHERE imageOwner='${username}'`
+				inserts = [newUsername];
+				sql = mysql.format(sql, inserts);
+				let imagesTable = a.query(sql);
+				imagesTable.then (function(data) {
+					imagesTable.then(function(data) {
+						resolve();
+					}, function (err) {
+					reject(err)
+				})
+				}, function (err) {
+					reject(err);
+				})
+			}, function (err) {
+				reject ("Failed to update username.");
+			})
+		})
+	}
+
 	change_username(username, newUsername) {
 		return new Promise ( (resolve, reject) => {
-			var a = this;
 			if (!username || !newUsername)
+			{
+				console.log(`Username: ${username}, newUsername: ${newUsername}`);
 				reject ("Blank input passed to function.");
-
+			}
+			
 			let userTaken = this.get_user(newUsername);
-
+			var a = this;
 			userTaken.then(function (ret) {
 				if (!ret[0]) {
-					reject (`Error: ${err}`);
+					reject (`Error: "Username already taken"`);
 				}
 			}, function (err) {
-				let sql = "UPDATE users SET username=? WHERE username=?";
-				let inserts = [newUsername, username];
-				sql = mysql.format(sql, inserts);
-				let update = a.query(sql);
-				update.then(function(ret) {
-					resolve ("Username updated.");
+				let update = a.update_username(username,newUsername);
+				update.then(function(data){
+					resolve();
 				}, function (err) {
-					reject ("Failed to update username.");
+					reject(err);
 				})
 			})
 		})

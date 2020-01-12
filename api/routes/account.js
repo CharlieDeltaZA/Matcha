@@ -67,18 +67,6 @@ router.post('/public', (req, res) => {
 	})
 });
 
-router.post('/username', (req, res) => {
-	let db = new database;
-
-	let usernameUpdate = db.change_username(req.session.user, req.body.userLogin);
-	usernameUpdate.then( function (data) {
-		req.session.user = req.body.userLogin;
-		res.json(data);
-	}, function (err) {
-		res.json(err);
-	})
-});
-
 router.post('/email', (req, res) => {
 	let db = new database;
 
@@ -104,6 +92,33 @@ router.post('/images', parser.array("image", 5), (req, res) => {
 			res.sendStatus(204).end();
 		})
 	});
+});
+
+router.post('/removeImage', (req, res) => {
+	var db = new database();
+	
+	let sql = "DELETE FROM images WHERE image = ?"
+	let inserts = [req.body.imageurl];
+	sql = mysql.format(sql, inserts);
+	let result = db.query(sql);
+	result.then(function (data) {
+		res.json("Success");
+	}, function (err) {
+		res.json("Failure");
+	})
+});
+
+router.post('/username', (req, res) => {
+	let db = new database;
+	let usernameUpdate = db.change_username(req.session.user, req.body.userLogin);
+
+	usernameUpdate.then( function (data) {
+		req.session.user = req.body.userLogin;
+		res.json("Success");
+	}, function (err) {
+		res.json(err);
+		console.log("Error");
+	})
 });
 
 module.exports = router;

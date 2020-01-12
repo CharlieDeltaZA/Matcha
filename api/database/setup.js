@@ -56,7 +56,9 @@ var setupTables = function setupTables() {
 					userBiography LONGTEXT,
 					userLocationlat FLOAT,
 					userLocationlng FLOAT,
-					userFame int(11)
+					userFame int(11),
+					userCode LONGTEXT,
+					userVerified BOOLEAN
 					);`
 				conn.query(sql, function (err, result) {
 					if (err) throw err;
