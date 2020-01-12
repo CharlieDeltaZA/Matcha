@@ -1,6 +1,9 @@
-const nodemailer = require('nodemailer');
 // noreply.matchaWTC@gmail.com
 // CaVJdFLYePnA9GLdrMsJ
+
+const nodemailer = require('nodemailer');
+const mysql = require('mysql');
+
 var transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
@@ -21,7 +24,7 @@ var confirm_email = function confirm_email(email, code) {
 			from: 'noreply.matchaWTC@gmail.com',
 			to: `${email}`,
 			subject: 'Please verify your email',
-			text: `Please verify your email using this link: http://localhost:8080/user/account/${code}`
+			text: `Please verify your email using this link: http://localhost:8080/${code}`
 		};
 		
 		transporter.sendMail(mailOptions, function(error, info) {

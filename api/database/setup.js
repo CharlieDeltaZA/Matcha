@@ -52,13 +52,16 @@ var setupTables = function setupTables() {
 					userLastName LONGTEXT,
 					userGender LONGTEXT,
 					userAge int(11),
+					userLikes int(11),
+					userDislikes int(11),
 					userOrientation LONGTEXT,
 					userBiography LONGTEXT,
 					userLocationlat FLOAT,
 					userLocationlng FLOAT,
 					userFame int(11),
 					userCode LONGTEXT,
-					userVerified BOOLEAN
+					userVerified BOOLEAN,
+					accountComplete BOOLEAN
 					);`
 				conn.query(sql, function (err, result) {
 					if (err) throw err;

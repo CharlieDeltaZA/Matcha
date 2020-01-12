@@ -3,7 +3,6 @@ const router = express.Router();
 const app = express();
 const database = require('../../api/database/database');
 const validation = require('../../scripts/formValidation.js');
-const mysql = require('mysql');
 
 app.set('view engine', 'pug');
 app.use(express.static('/../../styles'));

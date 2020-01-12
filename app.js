@@ -10,6 +10,7 @@ const recommendRoutes = require('./api/routes/recommend');
 const locationRoutes = require('./api/routes/location');
 const viewRoutes = require('./api/routes/profileviews');
 const accountRoutes = require('./api/routes/account');
+const email_handler = require('./api/email');
 
 // Session and DB setup
 app.use(session({
@@ -32,16 +33,6 @@ app.use(session({
 // 	console.log(`Failed to retrieve user.\nReason: ${err}`);
 // })
 
-// TEMPOARY CODE. Emails any email given. 
-
-// const email_handler = require('./api/email');
-// let confirmation = email_handler.confirm_email('cameronstaljaard@gmail.com');
-// confirmation.then( function (ret){
-// 	console.log(`Email sent.`);
-// }, function (err) {
-// 	console.log(`Failed to send email.\nReason: ${err}`);
-// })
-
 // Body parser
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -61,12 +52,44 @@ app.use('/recommendations', recommendRoutes);
 app.use('/location', locationRoutes);
 app.use('/profileviews', viewRoutes);
 
-app.get("/", (req, res) => {
-    res.render('index', {
-		title:'Home',
-		user: (req.session.user === undefined ? "Username" : req.session.user),
-		userLogged: (req.session.user === undefined ? false : true)
-    });
+
+// let confirmation = email_handler.confirm_email('cameronstaljaard@gmail.com');
+// confirmation.then( function (ret){
+// 	console.log(`Email sent.`);
+// }, function (err) {
+// 	console.log(`Failed to send email.\nReason: ${err}`);
+// })
+
+app.get("/:code?", (req, res) => {
+	var userNotification;
+	let db = new database;
+
+	if (req.params.code) {
+		var activation = db.activate_account(req.params.code);
+		activation.then( function(data) {
+			userNotification = 'valid';
+			res.render('index', {
+				title:'Home',
+				user: (req.session.user === undefined ? "Username" : req.session.user),
+				notification: userNotification,
+				userLogged: (req.session.user === undefined ? false : true)
+			});
+		}, function(err) {
+			userNotification = 'invalid';
+			res.render('index', {
+				title:'Home',
+				user: (req.session.user === undefined ? "Username" : req.session.user),
+				notification: userNotification,
+				userLogged: (req.session.user === undefined ? false : true)
+			});
+		})
+	} else {
+		res.render('index', {
+			title:'Home',
+			user: (req.session.user === undefined ? "Username" : req.session.user),
+			userLogged: (req.session.user === undefined ? false : true)
+		});
+	}
 });
 
 app.post('/', (req, res) => {

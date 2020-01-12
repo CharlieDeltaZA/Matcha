@@ -246,6 +246,24 @@ class Database {
 		})
 	}
 
+	activate_account = function(code) {
+		var a = this;
+		return new Promise ( (resolve, reject) => {
+			let sql = `SELECT COUNT(*) AS codeExists FROM users WHERE userCode=?`;
+			let inserts = [code];
+			sql = mysql.format(sql, inserts);
+			let rowCount = a.query(sql);
+			rowCount.then( function(data) {
+				if (data[0].codeExists == 1)
+					resolve();
+				else
+					reject();
+			}, function (err) {
+				reject (err);
+			})
+		})
+	}
+
     close() {
         return new Promise( (resolve, reject) => {
             this.connection.end(err => {

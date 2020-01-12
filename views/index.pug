@@ -25,6 +25,7 @@ html
 
 		include footer
 
+
 			//- SCRIPTS
 		//- script(src="test.js")
 		//- script(src="auth.js")
@@ -34,5 +35,19 @@ html
 		//- script(src="https://unpkg.com/sweetalert/dist/sweetalert.min.js")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js")
 		script(src="popup.js")
+		if notification === 'valid'
+			script.
+				swal(
+					'Success!',
+					'Email confirmed.',
+					'success'
+				)
+		if notification === 'invalid'
+			script.
+				swal(
+					'Invalid!',
+					'Invalid code given in url.',
+					'error'
+				)
 		
 		include js_includes.pug
