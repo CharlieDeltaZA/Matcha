@@ -26,7 +26,10 @@ html
 							li(data-target='#carouselIndicators', data-slide-to='2')
 						.carousel-inner
 							.carousel-item.active(data-interval="false")
-								img.img-fluidd-block.w-100(src='/images.png', alt='...')
+								if (userImage)
+									img.img-fluidd-block.w-100(src=userImage, alt='...')
+								if (!userImage)
+									img.img-fluidd-block.w-100(src='/../../images/images.png', alt='...')
 							.carousel-item(data-interval="false")
 								img.d-block.w-100(src='/images2.jpeg', alt='...')
 							.carousel-item(data-interval="false")

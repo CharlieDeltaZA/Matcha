@@ -43,6 +43,7 @@ router.get('/', (req, res) => {
 			userFirstName: data[0].userFirstName,
 			userLastName: data[0].userLastName,
 			userGender: data[0].userGender,
+			userImage: data[0].userImage,
 			userOrientation: data[0].userOrientation,
 			userEmail: data[0].userEmail,
 			userBio: data[0].userBiography,
@@ -84,6 +85,7 @@ router.post('/images', parser.array("image", 5), (req, res) => {
 	Object.keys(file).forEach( function(key) {
 		const image = {};
 		image.url = file[key].url;
+		image.id = file[key].id;
 		let upload = db.uploadImage(req.session.user, image.url);
 		upload.then( function (data) {
 			res.redirect('/user/images');
@@ -103,6 +105,28 @@ router.post('/removeImage', (req, res) => {
 	let result = db.query(sql);
 	result.then(function (data) {
 		res.json("Success");
+	}, function (err) {
+		res.json("Failure");
+	})
+});
+
+router.post('/setImage', (req, res) => {
+	var db = new database();
+
+	let sql = "UPDATE images SET active=1 WHERE image = ?"
+	let inserts = [req.body.imageurl];
+	sql = mysql.format(sql, inserts);
+	let result = db.query(sql);
+	result.then(function (data) {
+		let sql = `UPDATE users SET userImage=? WHERE username='${req.session.user}'`
+		let inserts = [req.body.imageurl];
+		sql = mysql.format(sql, inserts);
+		let result = db.query(sql);
+		result.then( function(data) {
+			res.json("Success");
+		}, function(err) {
+			res.json("Failure");
+		})
 	}, function (err) {
 		res.json("Failure");
 	})

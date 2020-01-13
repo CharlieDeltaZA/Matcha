@@ -29,6 +29,7 @@ html
 									.row.mx-auto(style='max-height: 42px;')
 										button.btn.btn-danger.mt-2(value=value, onclick='deleteImage(this.value)')
 											i.fa.fa-trash
+										button.btn.btn-success.mt-2(value=value, onclick='setActiveImage(this.value)') Set as Active
 
 		script(src="/images.js")
 		include footer.pug

@@ -215,7 +215,7 @@ class Database {
 		})
 	}
 
-	uploadImage(username, imageURL) {
+	uploadImage(username, imageURL, imageID) {
 		return new Promise ( (resolve, reject) => {
 			var a = this;
 			if (!username)
