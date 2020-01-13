@@ -104,7 +104,15 @@ router.post('/removeImage', (req, res) => {
 	sql = mysql.format(sql, inserts);
 	let result = db.query(sql);
 	result.then(function (data) {
-		res.json("Success");
+		let sql = `UPDATE users SET userImage=NULL WHERE userImage=?`
+		let inserts = [req.body.imageurl];
+		sql = mysql.format(sql, inserts);
+		let result = db.query(sql);
+		result.then(function (data) {
+			res.json("Success");
+		}), function (err) {
+			res.json("Failure");
+		}
 	}, function (err) {
 		res.json("Failure");
 	})
