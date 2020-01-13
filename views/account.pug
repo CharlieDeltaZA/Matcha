@@ -87,14 +87,15 @@ html
 							button#UpdateAcc.btn.btn-success.btn-block.btn-lg(type='button', onclick='postPublicDetails()', value='account') Update Profile
 							p#deetsPara.text-success.pl-3
 							
-			.container.mx-auto.my-3(style='max-width: 1500px;')
-				.card.mx-auto(style='max-width: 1500px;')
-					.card-body
-						h4.card-title Date of Birth
-						hr
-						input#userDOB(type="date" name="DOB")
-						button#UpdateDOB.btn.btn-success.btn-block.btn-lg(type='button', onclick='', value='dob') Set Date of Birth
-						p#dobPara.text-success.pl-3
+			if !DOB
+				.container.mx-auto.my-3(style='max-width: 1500px;')
+					.card.mx-auto(style='max-width: 1500px;')
+						.card-body
+							h4.card-title Date of Birth
+							hr
+							input#userDOB(type="date" name="DOB")
+							button#UpdateDOB.btn.btn-success.btn-block.btn-lg(type='button', onclick='', value='dob') Set Date of Birth
+							p#dobPara.text-success.pl-3
 
 			.container.mx-auto.my-3(style='max-width: 1500px;')
 				.card.mx-auto(style='max-width: 1500px;')
