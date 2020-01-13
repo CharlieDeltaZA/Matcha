@@ -49,6 +49,7 @@ router.get('/', (req, res) => {
 			userBio: data[0].userBiography,
 			userLat: data[0].userLat,
 			userLng: data[0].userLng,
+			DOB: data[0].userBirthday,
 			userLogged: (req.session.user === undefined ? false : true)
 		});
 	});

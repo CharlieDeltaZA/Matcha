@@ -9,10 +9,6 @@ html
 	body
 		include navbar.pug
 
-		if userName
-			.script
-				alert()
-
 		.container.text-center
 			h1.mt-white.text-center.mt-5.display-3 Edit Profile
 
@@ -55,7 +51,6 @@ html
 
 							label(for='age') Age
 							p#AgeDisplay.pl-3.text-small 69
-							//- input#userGender(type='text' placeholder='gender' name='userGender')
 
 							.form-group
 								label(for='gender') Gender
@@ -70,7 +65,6 @@ html
 							
 							.form-group
 								label(for='orientation') Sexual Orientation
-								//- input#userSexPref(type='text' placeholder='sexualPreference' name='userSexPref')
 								if userOrientation === 'hetero'
 									select#userSexPref.custom-select(name='sexPref')
 										option(value='hetero') Heterosexual
@@ -93,6 +87,15 @@ html
 							button#UpdateAcc.btn.btn-success.btn-block.btn-lg(type='button', onclick='postPublicDetails()', value='account') Update Profile
 							p#deetsPara.text-success.pl-3
 							
+			if !DOB
+				.container.mx-auto.my-3(style='max-width: 1500px;')
+					.card.mx-auto(style='max-width: 1500px;')
+						.card-body
+							h4.card-title Date of Birth
+							hr
+							input#userDOB.form-control(type="date" name="DOB")
+							button#UpdateDOB.btn.btn-success.btn-block.btn-lg(type='button', onclick='', value='dob') Set Date of Birth
+							p#dobPara.text-success.pl-3
 
 			.container.mx-auto.my-3(style='max-width: 1500px;')
 				.card.mx-auto(style='max-width: 1500px;')
@@ -102,11 +105,6 @@ html
 						input#pac-input.form-control(type='text' placeholder='Enter a location')
 						#map
 						p#locPara.text-success.pl-3
-						//- #infowindow-content
-							img#place-icon(src='' width='16' height='16')
-							span#place-name.title
-							br
-							span#place-address
 
 			.container.mx-auto.my-3(style='max-width: 1500px;')
 				.card.mx-auto(style='max-width: 1500px;')
@@ -144,70 +142,11 @@ html
 					.card-body
 						h4.card-title Password
 						hr
-						label(for='oldpass') Current Password
-						input#userPass.form-control(type='password' placeholder='Current Password' name='userPass')
-
 						label(for='pass') New Password
 						input#userNewPass.form-control(type='password' placeholder='New Password' name='userNewPass')
-
-						label(for='confpass') Confirm New Password
-						input#userConfNew.form-control(type='password' placeholder='Confirm New Password' name='userNewConf')
-
 						p#pwPara.text-success.pl-3
 						button#UpdateDetails.btn.btn-success.btn-block.btn-lg(type='submit', value='password') Update Password
 				
-
-		//- .container.mx-auto
-		//- 	.row
-		//- 		.col
-		//- 			.card.my-5.mx-auto(style='max-width:400px')
-		//- 				.card-body
-		//- 					block content
-		//- 						h1 Profile
-		//- 						hr
-		//- 						form#addUser(name="adduser",action='api/update', method='POST')
-		//- 							label(for='userName') Change Username
-		//- 							input#users.userName(type='text' placeholder='userName' name='userName')
-
-		//- 							label(for='firstName') Change First Name
-		//- 							input#users.firstName(type='text' placeholder='firstName' name='firstName')
-
-		//- 							label(for='lastName') Change Last Name
-		//- 							input#users.lastName(type='text' placeholder='lastName' name='lastName')
-
-		//- 							label(for='email') Change Email
-		//- 							input#users.email(type='text' placeholder='email' name='email')
-
-		//- 							label(for='password') Change Password
-		//- 							input#users.password(type='password' placeholder='password' name='password')
-
-		//- 							label(for='confirmPassword') Confirm New Password
-		//- 							input#users.confirmPassword(type='password' placeholder='confirmPassword' name='confirmPassword')
-									
-		//- 							button#UpdatePro.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update Profile
-		//- 		.col
-		//- 			.card.my-5.mx-auto(style='max-width:400px')
-		//- 				.card-body
-		//- 					block content
-		//- 						h1 Preferences
-		//- 						hr
-		//- 						form#addUser(name="adduser",action='', method='POST')
-		//- 							label(for='gender') Change Gender
-		//- 							input#users.gender(type='text' placeholder='gender' name='gender')
-
-		//- 							label(for='location') Change Location
-		//- 							input#users.location(type='text' placeholder='location' name='location')
-
-		//- 							label(for='sexualPreference') Change Sexual Preference
-		//- 							input#users.sexualPreference(type='text' placeholder='sexualPreference' name='sexualPreference')
-
-		//- 							label(for='interests') Change Interests
-		//- 							input#users.interests(type='text' placeholder='interests' name='interests')
-
-		//- 							label(for='bio') Change Bio
-		//- 							textarea#users.bio(placeholder='Biography' name='bio' form="userPrefs" rows='3')
-
-		//- 							button#UpdatePref.btn.btn-success.btn-block.btn-lg(type='submit', value='register') Update Preferences
 
 		include footer.pug	
 			
