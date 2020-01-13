@@ -134,14 +134,16 @@ router.get('/notifications', (req, res, next) => {
 	});
 });
 
-router.get('/preferences', (req, res, next) => {
-	if (req.session.user === undefined)
+router.get('/pass_reset', (req, res, next) => {
+	if (req.session.user !== undefined)
 	{
-		res.redirect('/user/login');
+		res.redirect('/');
 		return ;
 	}
-	res.render('preferences', {
-		title:'Preferences',
+	res.render('pass_reset', {
+		title:'Reset Password',
+		user: (req.session.user === undefined ? "Username" : req.session.user),
+		userLogged: (req.session.user === undefined ? false : true)
 	});
 });
 

@@ -1,0 +1,33 @@
+doctype html
+html
+	head
+		title Matcha | #{title}
+		include header_items.pug
+		link(rel='stylesheet', href='/pass_reset.css')
+		link(rel='stylesheet', href='sweetalert2.css')
+	body
+		include navbar.pug
+
+		.container.mx-auto
+			.card.my-5.mx-auto(style='max-width:600px')
+				.card-body
+					block content
+						h1 Reset Password
+						small#passwordHelpBlock.form-text.text-muted
+							| A password reset link will be emailed to you.
+						hr
+						form#userPrefs(name="adduser",action='', method='POST')
+							.form-group
+								label(for='email') Email									
+								input#userEmail.form-control(type='email' placeholder='Enter Email' name='userEmail')
+								p#emailError.errorMsg
+
+							input#submit.btn.btn-success.btn-block.btn-lg(type='button', value='Update' onclick='' style="background-color:#28a745")
+						p#error.mt-3
+
+		include footer.pug
+
+			//- SCRIPTS
+		include js_includes.pug
+		script(src="/pw.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js")
