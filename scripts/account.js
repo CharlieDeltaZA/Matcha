@@ -104,7 +104,44 @@ function changeEmail() {
 	}
 }
 
-// Requires image to be posted as 'userImage'
+function updateDoB() {
+	if (!(document.getElementById('userDOB').value))
+	{
+		swal(
+			'Error!',
+			`Date input incomplete`,
+			'error'
+		)
+		return;
+	}
+	var entered = new Date(document.getElementById('userDOB').value);
+	let ageDifMs = Date.now() - entered.getTime();
+	let ageDate = new Date(ageDifMs);
+	var age = Math.abs(ageDate.getUTCFullYear() - 1970);
+	if (age < 18) {
+		swal(
+			'Error!',
+			`You must be over 16 to use this site.`,
+			'error'
+		)
+	} else {
+		let form = {
+			age: age,
+			birthDate: entered.toISOString().slice(0, 19).replace('T', ' ')
+		}
+		$.ajax({
+			type: "POST", 
+			url : '/user/account/age',
+			data: JSON.stringify(form),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function(data) {
+				Location.reload();
+			}
+		});
+	}
+}
+
 function postProfileImage() {
 	$.ajax({
 		type: "POST", 
@@ -116,4 +153,30 @@ function postProfileImage() {
 			console.log('Image uploaded');
 		}
 	});
+}
+
+function changePassword() {
+	console.log("entered");
+	let form = 
+	{
+		password: document.getElementById("userNewPass").value
+	}
+	if (document.getElementById("userNewPass").value)
+	{
+		$.ajax({
+			type: "POST", 
+			url : '/user/account/password',
+			data: JSON.stringify(form),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function(data) {
+				swal(
+					'Updated!',
+					`Your password has been updated.`,
+					'success'
+				)
+			}
+		});
+	} else
+	console.log("No password?");
 }

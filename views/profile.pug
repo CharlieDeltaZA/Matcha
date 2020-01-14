@@ -22,10 +22,14 @@ html
 							li(data-target='#carouselIndicators', data-slide-to='2')
 						.carousel-inner
 							.carousel-item.active(data-interval="false")
-								img.img-fluidd-block.w-100(src='/images.png', alt='...')
-							.carousel-item(data-interval="false")
+								if imageExists
+									img.img-fluidd-block.w-100(src=userImage, alt='...')
+								else
+									img.img-fluidd-block.w-100(src='/images.png', alt='...')
+
+							//- .carousel-item(data-interval="false")
 								img.d-block.w-100(src='/images2.jpeg', alt='...')
-							.carousel-item(data-interval="false")
+							//- .carousel-item(data-interval="false")
 								img.d-block.w-100(src='/images3.jpg', alt='...')
 						a.carousel-control-prev(href='#carouselControls', role='button', data-slide='prev')
 							span.carousel-control-prev-icon(aria-hidden='true')
@@ -39,13 +43,14 @@ html
 						h1.display-4.card-title #{userFirstName} #{userLastName}
 						//- h4.card-subtitle.mb-2 #{age}
 						h4.card-subtitle.mb-2 Age: 69
-						h4.card-subtitle.mb-2 Fame Rating: ???
+						h4.card-subtitle.mb-2 Fame Rating: #{userFame}
 						//- p.card-text
 						//- 	| #{distance}   <--- Maybe use something to generalize the distance based on how far away they are. So instead of numbers,
 												it's something like: Close, Nearby, Distant, Far etc. idk
-						label.h6 Distance:						
-						p.card-text
-							| 420kms away
+						if(sameUser != 1)
+							label.h6 Distance:						
+							p.card-text
+								| 420kms away
 						//- p.card-text
 						//- 	| #{orientation}, #{gender}
 						label.h6 I am:
@@ -70,7 +75,7 @@ html
 							else
 								p.card-text Women
 						else
-							p.card-text Men OR Women
+							p.card-text Men or Women
 						hr
 						h4.card-title Interests
 						//- p.card-text

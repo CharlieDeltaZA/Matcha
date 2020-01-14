@@ -35,13 +35,13 @@ class Database {
 				confirmation.then( function (ret){
 					// console.log(`Email sent.`);
 				}, function (err) {
-					// console.log(`Failed to send email.\nReason: ${err}`);
+					// reject (err);
 				})
 			}, function(err){
-				// 
+				// reject (err);
 			}) 
 		}, function (err) {
-			// console.log(`Err ${err}`);
+			// reject (err);
 		})
 	}
 
@@ -121,12 +121,13 @@ class Database {
 			let sql = "SELECT * FROM users WHERE username = ?";
 			let inserts = [username];
 			sql = mysql.format(sql, inserts);
-			
 			let userExists = this.query(sql);
 			userExists.then(function(ret) {
 				if (!ret[0])
-					reject("User does not exist.");
+					return reject("User does not exist.");
 				resolve(ret);
+			}, function (err) {
+				reject(err);
 			});
 		});
 	}
@@ -146,7 +147,46 @@ class Database {
 				let imagesTable = a.query(sql);
 				imagesTable.then (function(data) {
 					imagesTable.then(function(data) {
-						resolve();
+						let sql = `UPDATE messages SET sender=? WHERE sender='${username}'`
+						inserts = [newUsername];
+						sql = mysql.format(sql, inserts);
+						let messageSender = a.query(sql);
+						messageSender.then( function(data) {
+							let sql = `UPDATE messages SET receiver=? WHERE receiver='${username}'`
+							inserts = [newUsername];
+							sql = mysql.format(sql, inserts);
+							let messageReceiver = a.query(sql);
+							messageReceiver.then (function(data) {
+								let sql = `UPDATE likes SET liked=? WHERE liked='${username}'`
+								inserts = [newUsername];
+								sql = mysql.format(sql, inserts);
+								let likedUser = a.query(sql);
+								likedUser.then (function(data) {
+									let sql = `UPDATE views SET viewed=? WHERE viewed='${username}'`
+									inserts = [newUsername];
+									sql = mysql.format(sql, inserts);
+									let likedUser = a.query(sql);
+									likedUser.then( function(data) {
+										let sql = `UPDATE views SET viewer=? WHERE viewer='${username}'`
+										inserts = [newUsername];
+										sql = mysql.format(sql, inserts);
+										let likedUser = a.query(sql);
+										likedUser.then( function(data) {
+											resolve();
+										}, function (err) {
+											reject(err);
+										})
+
+									})
+								}, function(err) {
+									reject (err);
+								})
+							}, function(err) {
+								reject (err);
+							})
+						}, function (err) {
+							reject (err);
+						})
 					}, function (err) {
 					reject(err)
 				})

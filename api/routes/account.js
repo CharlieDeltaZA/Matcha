@@ -6,6 +6,7 @@ const mysql = require('mysql');
 const multer = require("multer");
 const cloudinary = require("cloudinary");
 const cloudinaryStorage = require("multer-storage-cloudinary");
+var encrypt = require('../encrypt');
 
 cloudinary.config({
 	cloud_name: 'matchawtc',
@@ -44,12 +45,13 @@ router.get('/', (req, res) => {
 			userLastName: data[0].userLastName,
 			userGender: data[0].userGender,
 			userImage: data[0].userImage,
+			imageExists: data[0].userImage ? 1 : 0,
 			userOrientation: data[0].userOrientation,
 			userEmail: data[0].userEmail,
 			userBio: data[0].userBiography,
 			userLat: data[0].userLat,
 			userLng: data[0].userLng,
-			DOB: data[0].userBirthday,
+			age: data[0].userAge,
 			userLogged: (req.session.user === undefined ? false : true)
 		});
 	});
@@ -152,6 +154,33 @@ router.post('/username', (req, res) => {
 		res.json(err);
 		console.log("Error");
 	})
+});
+
+router.post('/age', (req, res) => {
+	let db = new database;
+
+	let sql = `UPDATE users SET userAge = ? WHERE username = '${req.session.user}'`;
+	let inserts = [req.body.age, req.body.birthDate];
+	sql = mysql.format(sql, inserts);
+	let ageUpdate = db.query(sql);
+	res.json("Success");
+});
+
+router.post('/password', (req, res) => {
+	if (req.body.password && req.session.user)
+	{
+		let db = new database;
+
+		console.log(req.body.password);
+		let hash = encrypt.cryptPassword(req.body.password);
+		hash.then( function(data) {
+			let sql = `UPDATE users SET userPassword='${data}' WHERE username='${req.session.user}'`
+			db.query(sql);
+			res.json("Success");
+		}, function(err) {
+			res.json("Failure");
+		})
+	}
 });
 
 module.exports = router;

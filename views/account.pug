@@ -22,20 +22,10 @@ html
 							li(data-target='#carouselIndicators', data-slide-to='2')
 						.carousel-inner
 							.carousel-item.active(data-interval="false")
-								if (userImage)
+								if imageExists
 									img.img-fluidd-block.w-100(src=userImage, alt='...')
 								else
-									img.img-fluidd-block.w-100(src='/../../images/images.png', alt='...')
-							.carousel-item(data-interval="false")
-								img.d-block.w-100(src='/images2.jpeg', alt='...')
-							.carousel-item(data-interval="false")
-								img.d-block.w-100(src='/images3.jpg', alt='...')
-						a.carousel-control-prev(href='#carouselControls', role='button', data-slide='prev')
-							span.carousel-control-prev-icon(aria-hidden='true')
-							span.sr-only Previous
-						a.carousel-control-next(href='#carouselControls', role='button', data-slide='next')
-							span.carousel-control-next-icon(aria-hidden='true')
-							span.sr-only Next 
+									img.img-fluidd-block.w-100(src='/images.png', alt='...')
 					a#UpdateImg.btn.btn-success.btn-block.btn-lg(href='/user/images') Change Image(s)
 		
 					.card-body
@@ -48,9 +38,9 @@ html
 								p#firstNameError
 								input#userSurname.form-control(type='text' placeholder='Last Name' name='userSurname' value=userLastName)
 								p#surnameError
-
-							label(for='age') Age
-							p#AgeDisplay.pl-3.text-small 69
+							if (age)
+								label(for='age') Age
+								p#AgeDisplay.pl-3.text-small #{age}
 
 							.form-group
 								label(for='gender') Gender
@@ -87,14 +77,14 @@ html
 							button#UpdateAcc.btn.btn-success.btn-block.btn-lg(type='button', onclick='postPublicDetails()', value='account') Update Profile
 							p#deetsPara.text-success.pl-3
 							
-			if !DOB
+			if !age
 				.container.mx-auto.my-3(style='max-width: 1500px;')
 					.card.mx-auto(style='max-width: 1500px;')
 						.card-body
 							h4.card-title Date of Birth
 							hr
 							input#userDOB.form-control(type="date" name="DOB")
-							button#UpdateDOB.btn.btn-success.btn-block.btn-lg(type='button', onclick='', value='dob') Set Date of Birth
+							button#UpdateDOB.btn.btn-success.btn-block.btn-lg(type='button', onclick='updateDoB()', value='dob') Set Date of Birth
 							p#dobPara.text-success.pl-3
 
 			.container.mx-auto.my-3(style='max-width: 1500px;')
@@ -145,7 +135,7 @@ html
 						label(for='pass') New Password
 						input#userNewPass.form-control(type='password' placeholder='New Password' name='userNewPass')
 						p#pwPara.text-success.pl-3
-						button#UpdateDetails.btn.btn-success.btn-block.btn-lg(type='submit', value='password') Update Password
+						button#UpdatePassword.btn.btn-success.btn-block.btn-lg(type='button', onclick='changePassword()', name='password') Update Password
 				
 
 		include footer.pug	

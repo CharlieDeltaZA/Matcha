@@ -53,14 +53,14 @@ var setupTables = function setupTables() {
 					userGender LONGTEXT,
 					userImage LONGTEXT,
 					userAge int(11),
-					userBirthday DATE,
+					userBirthday DateTime,
 					userLikes int(11) default 0,
 					userDislikes int(11) default 0,
 					userOrientation LONGTEXT,
 					userBiography LONGTEXT,
 					userLocationlat FLOAT,
 					userLocationlng FLOAT,
-					userFame int(11),
+					userFame int(11) default 0,
 					userCode LONGTEXT,
 					userVerified BOOLEAN default 0,
 					accountComplete BOOLEAN default 0
@@ -95,6 +95,7 @@ var setupTables = function setupTables() {
 					receiver LONGTEXT NOT NULL,
 					sender LONGTEXT NOT NULL,
 					message LONGTEXT NOT NULL,
+					unread BOOLEAN DEFAULT 1,
 					date TIMESTAMP default CURRENT_TIMESTAMP
 					);`
 				conn.query(sql, function (err, result) {
@@ -145,7 +146,7 @@ var setupTables = function setupTables() {
 		if (err) throw err;
 		conn.query(`SELECT * FROM information_schema.tables
 					WHERE table_schema = 'matcha'
-					AND table_name = 'notifications'`,
+					AND table_name = 'likes'`,
 		function (err, result) {
 			if (err) throw err;
 			if (result.length > 0) {
@@ -153,15 +154,46 @@ var setupTables = function setupTables() {
 			}
 			else
 			{
-				console.log('notifications table not found.');
-				var sql = `CREATE TABLE IF NOT EXISTS notifications (
-					user TINYTEXT,
-					subject TINYTEXT,
-					content LONGTEXT
+				console.log('likes table not found.');
+				var sql = `CREATE TABLE IF NOT EXISTS likes (
+					liked LONGTEXT,
+					liker LONGTEXT,
+					unread BOOLEAN default 1
 					);`
 				conn.query(sql, function (err, result) {
 					if (err) throw err;
-					console.log("notifications table created");
+					console.log("likes table created");
+				});
+			}
+		});
+	});
+	var conn = mysql.createConnection( {
+		host: `${db.servername}`,
+		user: `${db.dbusername}`,
+		password: `${db.dbpassword}`,
+		database: `${db.dbname}`
+	});
+	conn.connect(function(err) {
+		if (err) throw err;
+		conn.query(`SELECT * FROM information_schema.tables
+					WHERE table_schema = 'matcha'
+					AND table_name = 'views'`,
+		function (err, result) {
+			if (err) throw err;
+			if (result.length > 0) {
+				// console.log('images table already exists');
+			}
+			else
+			{
+				console.log('views table not found.');
+				var sql = `CREATE TABLE IF NOT EXISTS views (
+					viewed LONGTEXT,
+					viewer LONGTEXT,
+					unread BOOLEAN default 1
+					);`
+				conn.query(sql, function (err, result) {
+					if (err) throw err;
+					console.log("views table created");
 				});
 			}
 		});

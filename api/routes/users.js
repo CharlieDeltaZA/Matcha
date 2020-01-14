@@ -82,28 +82,65 @@ router.post('/register', (req, res, next) => {
 	}
 });
 
-router.get('/profile', (req, res, next) => {
+router.get('/profile/:user?', (req, res, next) => {
 	if (req.session.user === undefined)
 	{
 		res.redirect('/user/login');
 		return ;
 	}
-	var current_user = DB.get_user(req.session.user);
-	current_user.then(function (data) {
-		res.render('profile', {
-			title:'Profile',
-			user: (req.session.user === undefined ? "Username" : req.session.user),
-			username: req.session.user,
-			userFirstName: data[0].userFirstName,
-			userLastName: data[0].userLastName,
-			userGender: data[0].userGender,
-			userOrientation: data[0].userOrientation,
-			userBio: data[0].userBiography,
-			userLat: data[0].userLat,
-			userLng: data[0].userLng,
-			userLogged: (req.session.user === undefined ? false : true)
+	if (req.params.user)
+	{
+		user = DB.get_user(req.params.user);
+		user.then( function(data) {
+			res.render('profile', {
+				title:'Profile',
+				user: (req.session.user === undefined ? "Username" : req.session.user),
+				username: req.session.user,
+				userFirstName: data[0].userFirstName,
+				userLastName: data[0].userLastName,
+				userGender: data[0].userGender,
+				userFame: data[0].userFame,
+				userImage: data[0].userImage,
+				imageExists: data[0].userImage ? 1 : 0,
+				userOrientation: data[0].userOrientation,
+				userBio: data[0].userBiography,
+				userLat: data[0].userLat,
+				userLng: data[0].userLng,
+				userLogged: (req.session.user === undefined ? false : true),
+				sameUser: 0
+			});
+		}, function(err) {
+			res.redirect('/user/error');
+			return;	
 		});
-	});
+	}
+	else
+	{
+		current_user = DB.get_user(req.session.user);
+		current_user.then( function(data) {
+			console.log(data[0].userImage);
+			res.render('profile', {
+				title:'Profile',
+				user: (req.session.user === undefined ? "Username" : req.session.user),
+				username: req.session.user,
+				userFirstName: data[0].userFirstName,
+				userLastName: data[0].userLastName,
+				userGender: data[0].userGender,
+				userFame: data[0].userFame,
+				userImage: data[0].userImage,
+				imageExists: data[0].userImage ? 1 : 0,
+				userOrientation: data[0].userOrientation,
+				userBio: data[0].userBiography,
+				userLat: data[0].userLat,
+				userLng: data[0].userLng,
+				userLogged: (req.session.user === undefined ? false : true),
+				sameUser: 1
+			});
+		}, function(err) {
+			res.redirect('/user/error');
+			return;	
+		});
+	}
 });
 
 router.get('/images', (req, res, next) => {
@@ -129,11 +166,6 @@ router.get('/images', (req, res, next) => {
 	})
 });
 
-router.get('/notifications', (req, res, next) => {
-	res.render('notifications', {
-	});
-});
-
 router.get('/pass_reset', (req, res, next) => {
 	if (req.session.user !== undefined)
 	{
@@ -146,6 +178,40 @@ router.get('/pass_reset', (req, res, next) => {
 		userLogged: (req.session.user === undefined ? false : true)
 	});
 });
+
+router.post('/notifications', (req, res, next) => {
+	if (!req.session.user)
+		return ;
+
+	let response = {
+		messages: 0,
+		likes: 0,
+		views: 0
+	}
+
+	let sql = `SELECT COUNT(*) AS messageCount FROM messages WHERE receiver='${req.session.user}' AND unread=1`;
+	let result = DB.query(sql);
+	result.then( function(data) {
+		response.messages = data[0].messageCount;
+		let sql = `SELECT COUNT(*) AS viewCount FROM views WHERE viewed='${req.session.user}' AND unread=1`;
+		let result = DB.query(sql);
+		result.then( function(data) {
+			response.views = data[0].viewCount;
+			let sql = `SELECT COUNT(*) AS likeCount FROM likes WHERE liked='${req.session.user}' AND unread=1`;
+			let result = DB.query(sql);
+			result.then(function(data) {
+				response.likes = data[0].likeCount;
+				res.json(response);
+			}, function(err) {
+				res.json(err);
+			})
+		}, function(err) {
+			res.json(err);
+		})
+	}, function(err) {
+		res.json(err);
+	})
+})
 
 router.post('/logout', (req, res, next) => {
 	req.session.destroy();
