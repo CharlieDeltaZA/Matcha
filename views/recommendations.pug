@@ -7,77 +7,83 @@ html
 		include navbar.pug
 		
 		h2.mt-white.text-center.mt-5 Recommendations
-		.container(style='max-width: 1100px;min-width:350px;')
+		.container(style='max-width: 1100px;min-width:360px;')
 			//- Use col-x-x stuff for this, should get it resizing better I think
 			.card
 				//- .container.mx-auto.my-5(style='max-width: 1100px;')
 				.row
 					.col-lg-4.col-md-6.col-sm
 						.container.my-4
-							.card.text-black.mx-auto.mb-5(style='max-width: 300px; max-height: 340px;min-width: 300px; min-height: 340px;')
+							.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
 								a(href='#')
 									img.img-fluid(src='/images.png', alt='...', style='width: 300px; height: 300px')
-								.card.mbg-light-grey
-									h5.card-title Till, 25
-									.row(style='max-height: 40px; width: 300px;')
-										button.btn.btn-success.ml-3(value=value, onclick='deleteImage(this.value)')
+								.card-body.mbg-light-grey
+									h5.card-title Till
+									.row.mx-auto
+										button.btn.btn-success.w-50(value=value, onclick='deleteImage(this.value)')
 											i.fa.fa-heart
-										button.btn.btn-danger.mr-5(value=value, onclick='deleteImage(this.value)') NO
+										button.btn.btn-danger.w-50(value=value, onclick='deleteImage(this.value)')
+											i.fa.fa-thumbs-down
 					.col-lg-4.col-md-6.col-sm
 						.container.my-4
-							.card.text-black.mx-auto.mb-5(style='max-width: 300px; max-height: 340px;min-width: 300px; min-height: 340px;')
+							.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px;min-height: 340px;')
 								a(href='#')
 									img.img-fluid(src='/images2.jpeg', alt='...', style='width: 300px; height: 300px')
-								.card.mbg-light-grey
-									h5.card-title John, 20
-									.row.mx-auto(style='max-height: 40px;')
-										button.btn.btn-success(value=value, onclick='deleteImage(this.value)')
+								.card-body.mbg-light-grey
+									h5.card-title John
+									.row.mx-auto
+										button.btn.btn-success.w-50(value=value, onclick='deleteImage(this.value)')
 											i.fa.fa-heart
-										button.btn.btn-danger(value=value, onclick='deleteImage(this.value)') NO
+										button.btn.btn-danger.w-50(value=value, onclick='deleteImage(this.value)')
+											i.fa.fa-thumbs-down
 					.col-lg-4.col-md-6.col-sm
 						.container.my-4
-							.card.text-black.mx-auto.mb-5(style='max-width: 300px; max-height: 340px;min-width: 300px; min-height: 340px;')
+							.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
 								a(href='#')
 									img.img-fluid(src='/images3.jpg', alt='...', style='width: 300px; height: 300px;')
-								.card.mbg-light-grey
-									h5.card-title Tom, 42
-									.row.mx-auto(style='max-height: 40px;')
-										button.btn.btn-success(value=value, onclick='deleteImage(this.value)')
+								.card-body.mbg-light-grey
+									h5.card-title Tom
+									.row.mx-auto
+										button.btn.btn-success.w-50(value=value, onclick='deleteImage(this.value)')
 											i.fa.fa-heart
-										button.btn.btn-danger(value=value, onclick='deleteImage(this.value)') NO
+										button.btn.btn-danger.w-50(value=value, onclick='deleteImage(this.value)')
+											i.fa.fa-thumbs-down
 					.col-lg-4.col-md-6.col-sm
 						.container.my-4
-							.card.text-black.mx-auto.mb-5(style='max-width: 300px; max-height: 340px;min-width: 300px; min-height: 340px;')
+							.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
 								a(href='#')
 									img.img-fluid(src='/images.png', alt='...', style='width: 300px; height: 300px;')
-								.card.mbg-light-grey
-									h5.card-title Zed, 50
-									.row.mx-auto(style='max-height: 40px;')
-										button.btn.btn-success(value=value, onclick='deleteImage(this.value)')
+								.card-body.mbg-light-grey
+									h5.card-title Zed
+									.row.mx-auto
+										button.btn.btn-success.w-50(value=value, onclick='deleteImage(this.value)')
 											i.fa.fa-heart
-										button.btn.btn-danger(value=value, onclick='deleteImage(this.value)') NO
+										button.btn.btn-danger.w-50(value=value, onclick='deleteImage(this.value)')
+											i.fa.fa-thumbs-down
 					.col-lg-4.col-md-6.col-sm
 						.container.my-4
-							.card.text-black.mx-auto.mb-5(style='max-width: 300px; max-height: 340px;min-width: 300px; min-height: 340px;')
+							.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
 								a(href='#')
 									img.img-fluid(src='/images3.jpg', alt='...', style='width: 300px; height: 300px;')
-								.card.mbg-light-grey
-									h5.card-title Tim, 5
-									.row.mx-auto(style='max-height: 40px;')
-										button.btn.btn-success(value=value, onclick='deleteImage(this.value)')
+								.card-body.mbg-light-grey
+									h5.card-title Tim
+									.row.mx-auto
+										button.btn.btn-success.w-50(value=value, onclick='deleteImage(this.value)')
 											i.fa.fa-heart
-										button.btn.btn-danger(value=value, onclick='deleteImage(this.value)') NO
+										button.btn.btn-danger.w-50(value=value, onclick='deleteImage(this.value)')
+											i.fa.fa-thumbs-down
 					.col-lg-4.col-md-6.col-sm
 						.container.my-4
-							.card.text-black.mx-auto.mb-5(style='max-width: 300px; max-height: 340px;min-width: 300px; min-height: 340px;')
+							.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
 								a(href='#')
 									img.img-fluid(src='/images2.jpeg', alt='...', style='width: 300px; height: 300px;')
-								.card.mbg-light-grey
-									h5.card-title Problems, 99
-									.row.mx-auto(style='max-height: 40px;')
-										button.btn.btn-success(value=value, onclick='deleteImage(this.value)')
+								.card-body.mbg-light-grey
+									h5.card-title Problems
+									.row.mx-auto
+										button.btn.btn-success.w-50(value=value, onclick='deleteImage(this.value)')
 											i.fa.fa-heart
-										button.btn.btn-danger(value=value, onclick='deleteImage(this.value)') NO
+										button.btn.btn-danger.w-50(value=value, onclick='deleteImage(this.value)')
+											i.fa.fa-thumbs-down
 
 		include js_includes.pug
 		include footer.pug
