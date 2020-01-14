@@ -14,14 +14,15 @@ html
 				.row
 					.col-lg-4.col-md-6.col-sm
 						.container.my-4
-							.card.text-black.mx-auto.mb-5(style='max-width: 300px; max-height: 350px;min-width: 300px; min-height: 350px;')
+							.card.text-black.mx-auto.mb-5(style='max-width: 300px; max-height: 340px;min-width: 300px; min-height: 340px;')
 								a(href='#')
 									img.img-fluid(src='/images.png', alt='...', style='width: 300px; height: 300px')
 								.card.mbg-light-grey
 									h5.card-title Till, 25
-									.row.mx-auto(style='max-height: 42px;')
-										button.btn.btn-success.mt-2(value=value, onclick='deleteImage(this.value)')
-											i.fa.fa-pepper-hot
+									.row.mx-auto(style='max-height: 40px;')
+										button.btn.btn-success(value=value, onclick='deleteImage(this.value)')
+											i.fa.fa-heart
+										button.btn.btn-danger(value=value, onclick='deleteImage(this.value)') NO
 					.col-lg-4.col-md-6.col-sm
 						.container.my-4
 							.card.text-black.mx-auto.mb-5(style='max-width: 300px; max-height: 300px;min-width: 300px; min-height: 300px;')
