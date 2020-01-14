@@ -90,24 +90,33 @@ router.get('/profile/:user?', (req, res, next) => {
 	}
 	if (req.params.user)
 	{
+		var imagearray = new Array();
+
 		user = DB.get_user(req.params.user);
 		user.then( function(data) {
-			res.render('profile', {
-				title:'Profile',
-				user: (req.session.user === undefined ? "Username" : req.session.user),
-				username: req.session.user,
-				userFirstName: data[0].userFirstName,
-				userLastName: data[0].userLastName,
-				userGender: data[0].userGender,
-				userFame: data[0].userFame,
-				userImage: data[0].userImage,
-				imageExists: data[0].userImage ? 1 : 0,
-				userOrientation: data[0].userOrientation,
-				userBio: data[0].userBiography,
-				userLat: data[0].userLat,
-				userLng: data[0].userLng,
-				userLogged: (req.session.user === undefined ? false : true),
-				sameUser: 0
+			let userImages = DB.getImages(req.params.user);
+			userImages.then( function(newData) {
+				newData.forEach(element => {
+					imagearray.push(element.image);
+				});
+				res.render('profile', {
+					title:'Profile',
+					user: (req.session.user === undefined ? "Username" : req.session.user),
+					username: req.session.user,
+					userFirstName: data[0].userFirstName,
+					userLastName: data[0].userLastName,
+					userGender: data[0].userGender,
+					userFame: data[0].userFame,
+					userImage: data[0].userImage,
+					imageArray: imagearray,
+					imageExists: data[0].userImage ? 1 : 0,
+					userOrientation: data[0].userOrientation,
+					userBio: data[0].userBiography,
+					userLat: data[0].userLat,
+					userLng: data[0].userLng,
+					userLogged: (req.session.user === undefined ? false : true),
+					sameUser: 0
+				})
 			});
 		}, function(err) {
 			res.redirect('/user/error');
@@ -149,7 +158,7 @@ router.get('/images', (req, res, next) => {
 		res.redirect('/user/login');
 		return ;
 	}
-	var imageArray = new Array();;
+	var imageArray = new Array();
 	let images = DB.getImages(req.session.user);
 	images.then(function (data) {
 		data.forEach(element => {

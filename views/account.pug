@@ -26,6 +26,11 @@ html
 									img.img-fluidd-block.w-100(src=userImage, alt='...')
 								else
 									img.img-fluidd-block.w-100(src='/images.png', alt='...')
+							//- if imageArray
+								each value in imageArray
+									.carousel-item(data-interval="false")
+										img.d-block.w-100(src=value, alt='...')
+
 					a#UpdateImg.btn.btn-success.btn-block.btn-lg(href='/user/images') Change Image(s)
 		
 					.card-body
