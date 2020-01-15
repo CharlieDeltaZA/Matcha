@@ -13,19 +13,12 @@ html
 			h1.mt-white.text-center.mt-5.display-3 Edit Profile
 
 		.container
-			.container.mx-auto.my-3(style='max-width: 1500px;')
-				.card.mx-auto(style='max-width: 1500px;')
-					#carouselControls.carousel.slide(data-ride='carousel', data-interval="false")
-						ol.carousel-indicators
-							li.active(data-target='#carouselIndicators', data-slide-to='0')
-							li(data-target='#carouselIndicators', data-slide-to='1')
-							li(data-target='#carouselIndicators', data-slide-to='2')
-						.carousel-inner
-							.carousel-item.active(data-interval="false")
-								if imageExists
-									img.img-fluidd-block.w-100(src=userImage, alt='...')
-								else
-									img.img-fluidd-block.w-100(src='/images.png', alt='...')
+			.container.mx-auto.my-3(style='max-width: 1200px;')
+				.card.mx-auto(style='max-width: 1200px;')
+					if imageExists
+						img.img-fluid.w-100(src=userImage, alt='...')
+					else
+						img.img-fluid.w-100(src='/images.png', alt='...')
 							//- if imageArray
 								each value in imageArray
 									.carousel-item(data-interval="false")
