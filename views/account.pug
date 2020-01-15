@@ -72,6 +72,13 @@ html
 							h4.card-title Bio
 							textarea#userBio(placeholder='Biography' name='userBio' form="account" rows='3').form-control= userBio
 
+							hr
+							p.h5 Your current list of interests:
+							span.badge.badge-pill.badge-primary.mx-1 #programs
+							span.badge.badge-pill.badge-primary.mx-1 #memes
+							span.badge.badge-pill.badge-primary.mx-1 #gangweed
+							hr
+
 							button#UpdateAcc.btn.btn-success.btn-block.btn-lg(type='button', onclick='postPublicDetails()', value='account') Update Profile
 							p#deetsPara.text-success.pl-3
 							
