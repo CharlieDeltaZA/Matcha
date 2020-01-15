@@ -174,6 +174,18 @@ router.post('/age', (req, res) => {
 	res.json("Success");
 });
 
+router.post('/addinterest', (req, res) => {
+	let db = new database;
+	db.add_interest(req.session.user, req.body.interest);
+	res.json("Success");
+});
+
+router.post('/removeinterest', (req, res) => {
+	let db = new database;
+	db.remove_interest(req.session.user, req.body.interest);
+	res.json("Success");
+});
+
 router.post('/password', (req, res) => {
 	if (req.body.password && req.session.user)
 	{

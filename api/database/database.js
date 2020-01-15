@@ -307,6 +307,31 @@ class Database {
 		})
 	}
 
+	add_interest(username, interest) {
+		var a = this;
+		let sql = `SELECT COUNT(*) AS duplicates FROM interests WHERE user='${username}' AND interest=?`;
+		let inserts = [interest];
+		sql = mysql.format(sql, inserts);
+		let duplicate_check = this.query(sql);
+		duplicate_check.then( function(data) {
+			if (data[0].duplicates < 1)
+			{
+				let sql = `INSERT INTO interests (user, interest) VALUES ('${username}', ?);`
+				let inserts = [interest];
+				sql = mysql.format(sql, inserts);
+				a.query(sql);
+			}
+		}, function(err) {
+		});
+	}
+
+	remove_interest(username, interest) {
+		let sql = `DELETE FROM interests WHERE user='${username}' AND interest=?`;
+		let inserts = [interest];
+		sql = mysql.format(sql, inserts);
+		this.query(sql);
+	}
+
     close() {
         return new Promise( (resolve, reject) => {
             this.connection.end(err => {

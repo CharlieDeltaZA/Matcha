@@ -77,7 +77,7 @@ function changeEmail() {
 		userEmail: document.getElementById('userEmail').value
 	}
 	var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	if (re.test(String(form.userEmail).toLowerCase())) {
+	if (!(re.test(String(form.userEmail).toLowerCase()))) {
 		swal(
 			'Error!',
 			`Invalid email.`,
@@ -179,4 +179,78 @@ function changePassword() {
 		});
 	} else
 	console.log("No password?");
+}
+function	validInterest(interest)  {
+	var re = /^#[A-Za-z0-9-_.]+$/;
+	if (re.test(interest))
+		return true;
+	return false;
+}
+
+function	add_interest() {
+	var interests = document.getElementById('userInterests').value;
+	
+	interests = interests.split(" ");
+	interests.forEach(function (data) {
+		if (!validInterest(data))
+		{
+			swal(
+				'Error!',
+				`${data} is not a correctly formatted interest`,
+				'error'
+			)
+			return ;
+		}
+	});
+	interests.forEach(function (data) {
+		if (validInterest(data))
+		{
+			let form = 
+			{
+				interest: data
+			}
+			$.ajax({
+				type: "POST", 
+				url : '/user/account/addinterest',
+				data: JSON.stringify(form),
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+			});
+		}
+	});
+	document.getElementById("interestsPara").innerHTML = "Updated your interests";
+}
+
+function	remove_interest() {
+	var interests = document.getElementById('removedInterests').value;
+	
+	interests = interests.split(" ");
+	interests.forEach(function (data) {
+		if (!validInterest(data))
+		{
+			swal(
+				'Error!',
+				`${data} is not a correctly formatted interest`,
+				'error'
+			)
+			return ;
+		}
+	});
+	interests.forEach(function (data) {
+		if (validInterest(data))
+		{
+			let form = 
+			{
+				interest: data
+			}
+			$.ajax({
+				type: "POST", 
+				url : '/user/account/removeinterest',
+				data: JSON.stringify(form),
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+			});
+		}
+	});
+	document.getElementById("interestsRemovedPara").innerHTML = "Removed any matching interests";
 }

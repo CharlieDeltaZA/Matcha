@@ -45,7 +45,7 @@ var setupTables = function setupTables() {
 				console.log('user table not found.');
 				var sql = `CREATE TABLE IF NOT EXISTS users (
 					userID int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-					username LONGTEXT NOT NULL,
+					username TINYTEXT NOT NULL,
 					userEmail LONGTEXT NOT NULL,
 					userPassword LONGTEXT NOT NULL,
 					userFirstName LONGTEXT,
@@ -194,6 +194,36 @@ var setupTables = function setupTables() {
 				conn.query(sql, function (err, result) {
 					if (err) throw err;
 					console.log("views table created");
+				});
+			}
+		});
+	});
+	var conn = mysql.createConnection( {
+		host: `${db.servername}`,
+		user: `${db.dbusername}`,
+		password: `${db.dbpassword}`,
+		database: `${db.dbname}`
+	});
+	conn.connect(function(err) {
+		if (err) throw err;
+		conn.query(`SELECT * FROM information_schema.tables
+					WHERE table_schema = 'matcha'
+					AND table_name = 'interests'`,
+		function (err, result) {
+			if (err) throw err;
+			if (result.length > 0) {
+				// console.log('images table already exists');
+			}
+			else
+			{
+				console.log('interests table not found.');
+				var sql = `CREATE TABLE IF NOT EXISTS interests (
+					interest varchar(32),
+					user TINYTEXT
+					);`
+				conn.query(sql, function (err, result) {
+					if (err) throw err;
+					console.log("interests table created");
 				});
 			}
 		});
