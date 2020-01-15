@@ -85,8 +85,8 @@ html
 							button#UpdateDOB.btn.btn-success.btn-block.btn-lg(type='button', onclick='updateDoB()', value='dob') Set Date of Birth
 							p#dobPara.text-success.pl-3
 
-			.container.mx-auto.my-3(style='max-width: 1500px;')
-				.card.mx-auto(style='max-width: 1500px;')
+			.container.mx-auto.my-3(style='max-width: 1200px;')
+				.card.mx-auto(style='max-width: 1200px;')
 					.card-body
 						h4.card-title Location
 						hr
@@ -94,30 +94,31 @@ html
 						#map
 						p#locPara.text-success.pl-3
 
-			.container.mx-auto.my-3(style='max-width: 1500px;')
-				.card.mx-auto(style='max-width: 1500px;')
+			.container.mx-auto.my-3(style='max-width: 1200px;')
+				.card.mx-auto(style='max-width: 1200px;')
 					.card-body
 						h4.card-title Interests
 						hr
-						form#interests(name="interests", action='', method='POST' novalidate)
+						form#addInterests(name="interests", action='', method='POST' novalidate)
 							input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
-							button#UpdateInterest.btn.btn-success.btn-block.btn-lg(type='button', onclick='add_interest()' value='interests') Update Interests
-						p#interestError
+							button#AddInterest.btn.btn-success.btn-block.btn-lg(type='button', onclick='add_interest()' value='interests') Update Interests
+						p#interestAError
 						p#interestsPara.text-success.pl-3
-			.container.mx-auto.my-3(style='max-width: 1500px;')
-				.card.mx-auto(style='max-width: 1500px;')
+
+			.container.mx-auto.my-3(style='max-width: 1200px;')
+				.card.mx-auto(style='max-width: 1200px;')
 					.card-body
 						h4.card-title Remove Interests
 						hr
-						form#interests(name="interests", action='', method='POST' novalidate)
+						form#removeInterests(name="interests", action='', method='POST' novalidate)
 							input#removedInterests.form-control(type='text' placeholder='Interests' name='userInterests')
-							button#UpdateInterest.btn.btn-success.btn-block.btn-lg(type='button', onclick='remove_interest()' value='interests') Update Interests
-						p#interestError
+							button#RemoveInterest.btn.btn-success.btn-block.btn-lg(type='button', onclick='remove_interest()' value='interests') Update Interests
+						p#interestRError
 						p#interestsRemovedPara.text-success.pl-3
 
 
-			.container.mx-auto.my-3(style='max-width: 1500px;')
-				.card.mx-auto(style='max-width: 1500px;')
+			.container.mx-auto.my-3(style='max-width: 1200px;')
+				.card.mx-auto(style='max-width: 1200px;')
 					.card-body
 						h4.card-title Username
 						hr
@@ -125,8 +126,8 @@ html
 						p#unamePara.text-success.pl-3
 						button#UpdateUsername.btn.btn-success.btn-block.btn-lg(type='button', onclick='changeUsername()', value='username') Update Username
 
-			.container.mx-auto.my-3(style='max-width: 1500px;')
-				.card.mx-auto(style='max-width: 1500px;')
+			.container.mx-auto.my-3(style='max-width: 1200px;')
+				.card.mx-auto(style='max-width: 1200px;')
 					.card-body
 						h4.card-title Email
 						hr
@@ -135,8 +136,8 @@ html
 						button#UpdateUsername.btn.btn-success.btn-block.btn-lg(type='button', onclick='changeEmail()', value='email') Update Email
 
 
-			.container.mx-auto.my-3(style='max-width: 1500px;')
-				.card.mx-auto(style='max-width: 1500px;')
+			.container.mx-auto.my-3(style='max-width: 1200px;')
+				.card.mx-auto(style='max-width: 1200px;')
 					.card-body
 						h4.card-title Password
 						hr
