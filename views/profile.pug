@@ -1,9 +1,6 @@
 doctype html
 html
 	head
-		if !userLogged
-			script.
-				window.location.replace = "/user/login";
 		title Matcha | #{title}
 		include header_items.pug
 		link(rel='stylesheet', href='/profile.css')
@@ -43,11 +40,26 @@ html
 							span.sr-only Next 
 		
 					.card-body
-						//- h1.display-4.card-title Jeff Society
-						h1.display-4.card-title #{userFirstName} #{userLastName}
-						//- h4.card-subtitle.mb-2 #{age}
-						h4.card-subtitle.mb-2 Age: 69
+						hr
+						h1.display-4.card-title.text-capitalize #{userFirstName} #{userLastName}
+						if !sameUser
+							.row.mx-auto
+								button#BtnLike.btn.btn-success(value=value, onclick='deleteImage(this.value)')
+									i.fa.fa-heart.mr-2
+									| Like 
+								button#BtnDislike.btn.btn-danger(value=value, onclick='deleteImage(this.value)')
+									i.fa.fa-thumbs-down.mr-2
+									| Dislike 
+								button#BtnReport.btn.btn-info(value=value, onclick='deleteImage(this.value)')
+									i.fa.fa-exclamation-triangle.mr-2
+									| Report 
+								button#BtnBlock.btn.btn-warning(value=value, onclick='deleteImage(this.value)')
+									i.fa.fa-ban.mr-2
+									| Block 
+						hr
+						h4.card-subtitle.mb-2 Age: #{userAge}
 						h4.card-subtitle.mb-2 Fame Rating: #{userFame}
+						hr
 						//- p.card-text
 						//- 	| #{distance}   <--- Maybe use something to generalize the distance based on how far away they are. So instead of numbers,
 												it's something like: Close, Nearby, Distant, Far etc. idk
@@ -55,8 +67,6 @@ html
 							label.h6 Distance:						
 							p.card-text
 								| 420kms away
-						//- p.card-text
-						//- 	| #{orientation}, #{gender}
 						label.h6 I am:
 						if userOrientation === 'hetero'
 							p.card-text
@@ -82,16 +92,12 @@ html
 							p.card-text Men or Women
 						hr
 						h4.card-title Interests
-						//- p.card-text
-						//- 	| #{interests}
 						p.card-text
 							| #programs #memes #gangweed
 						hr
 						h4.card-title Bio
 						p.card-text
 							| #{userBio}
-						//- p.card-text
-						//- 	| Is a gamer who lives in a society, programs the programs, is very hastag relatables, has a N-word pass.
 
 		include footer.pug
 

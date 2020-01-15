@@ -116,6 +116,7 @@ router.get('/profile/:user?', (req, res, next) => {
 					userBio: data[0].userBiography,
 					userLat: data[0].userLat,
 					userLng: data[0].userLng,
+					userAge: data[0].userAge,
 					userLogged: (req.session.user === undefined ? false : true),
 					sameUser: 0
 				})
@@ -144,6 +145,7 @@ router.get('/profile/:user?', (req, res, next) => {
 				userBio: data[0].userBiography,
 				userLat: data[0].userLat,
 				userLng: data[0].userLng,
+				userAge: data[0].userAge,
 				userLogged: (req.session.user === undefined ? false : true),
 				sameUser: 1
 			});
