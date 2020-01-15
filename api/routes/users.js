@@ -99,6 +99,8 @@ router.get('/profile/:user?', (req, res, next) => {
 				newData.forEach(element => {
 					imagearray.push(element.image);
 				});
+				if (req.params.user !== req.session.user)
+					DB.view_profile(req.params.user, req.session.user);
 				res.render('profile', {
 					title:'Profile',
 					user: (req.session.user === undefined ? "Username" : req.session.user),

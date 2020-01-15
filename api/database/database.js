@@ -172,11 +172,18 @@ class Database {
 										sql = mysql.format(sql, inserts);
 										let likedUser = a.query(sql);
 										likedUser.then( function(data) {
-											resolve();
+											let sql = `UPDATE interests SET user=? WHERE user='${username}'`
+											inserts = [newUsername];
+											sql = mysql.format(sql, inserts);
+											let interests = a.query(sql);
+											interests.then( function(data) {
+												resolve();
+											}, function(err) {
+												reject(err);
+											})
 										}, function (err) {
 											reject(err);
 										})
-
 									})
 								}, function(err) {
 									reject (err);
@@ -328,6 +335,13 @@ class Database {
 	remove_interest(username, interest) {
 		let sql = `DELETE FROM interests WHERE user='${username}' AND interest=?`;
 		let inserts = [interest];
+		sql = mysql.format(sql, inserts);
+		this.query(sql);
+	}
+
+	view_profile(viewed, viewer) {
+		let sql = `INSERT into views (viewed, viewer, unread) VALUES (?, ?, 1)`
+		let inserts = [viewed, viewer];
 		sql = mysql.format(sql, inserts);
 		this.query(sql);
 	}

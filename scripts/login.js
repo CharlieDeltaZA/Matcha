@@ -15,7 +15,6 @@ function postLogin() {
 		userLogin: document.getElementById('userLogin').value.toLowerCase(),
 		userPass: document.getElementById('userPass').value
 	}
-	console.log(registrationForm);
     $.ajax({
 		type: "POST", 
 		url : '/user/login',
