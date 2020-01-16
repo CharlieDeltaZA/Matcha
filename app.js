@@ -10,6 +10,7 @@ const recommendRoutes = require('./api/routes/recommend');
 const locationRoutes = require('./api/routes/location');
 const viewRoutes = require('./api/routes/profileviews');
 const accountRoutes = require('./api/routes/account');
+const chatRoutes = require('./api/routes/chat');
 const email_handler = require('./api/email');
 
 // Session and DB setup
@@ -45,6 +46,7 @@ app.use(express.static('images'));
 app.use(express.static('scripts'));
 
 // URL handling routers
+app.use('/chat', chatRoutes);
 app.use('/user/account', accountRoutes);
 app.use('/user', userRoutes);
 app.use('/search', searchRoutes);
