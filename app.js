@@ -8,7 +8,7 @@ const userRoutes = require('./api/routes/users');
 const searchRoutes = require('./api/routes/search');
 const recommendRoutes = require('./api/routes/recommend');
 const locationRoutes = require('./api/routes/location');
-const viewRoutes = require('./api/routes/profileviews');
+const notificationRoutes = require('./api/routes/notifications');
 const accountRoutes = require('./api/routes/account');
 const chatRoutes = require('./api/routes/chat');
 const email_handler = require('./api/email');
@@ -52,7 +52,7 @@ app.use('/user', userRoutes);
 app.use('/search', searchRoutes);
 app.use('/recommendations', recommendRoutes);
 app.use('/location', locationRoutes);
-app.use('/profileviews', viewRoutes);
+app.use('/notifications', notificationRoutes);
 
 
 // let confirmation = email_handler.confirm_email('cameronstaljaard@gmail.com');
