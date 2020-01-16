@@ -29,6 +29,7 @@ img{ max-width:100%;}
     border: 1px solid #c4c4c4;
     clear: both;
     overflow: hidden;
+    background-color: white;
 }
 .top_spac{ margin: 20px 0 0;}
 .recent_heading {float: left; width:40%;}
@@ -102,6 +103,7 @@ img{ max-width:100%;}
     float: left;
     padding: 30px 15px 0 25px;
     width: 60%;
+    background-color: white;
 }
 .sent_msg p {
     background: #05728f none repeat scroll 0 0;
