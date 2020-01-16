@@ -2,42 +2,12 @@ doctype html
 
 html
 	head
+		title Matcha | #{title}
 		include header_items.pug
+		link(rel='stylesheet', href='/chat.css')
 	body
-		.container
-			br
-			.jumbotron
-				h1.display-4 Send Message
-				br
-				input#name.form-control(placeholder='Name')
-				br
-				textarea#message.form-control(placeholder='Your Message Here')
-				br
-				button#send.btn.btn-success Send
-			#messages
+		include navbar.pug
+
+		//- stuff here
+		include footer.pug	
 		include js_includes.pug
-		script.
-			$(() => {
-				$("#send").click(()=>{
-				sendMessage({
-					name: $("#name").val(), 
-					message:$("#message").val()});
-					})
-				getMessages()
-			});
-
-			function addMessages(message){
-				$("#messages").append(`
-					<h4> ${message.name} </h4>
-					<p>  ${message.message} </p>`)
-			}
-
-			function getMessages(){
-				$.get('/messages', (data) => {
-					data.forEach(addMessages);
-				})
-			}
-
-			function sendMessage(message){
-				$.post('/messages', message)
-			}
