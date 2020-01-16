@@ -1,14 +1,9 @@
 doctype html
 html
 	head
-		title Matcha | #{title}	
-		link#bootstrap-css(href='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css', rel='stylesheet')
-		script(src="https://code.jquery.com/jquery-3.4.1.js")
-		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js')
-		link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css', type='text/css', rel='stylesheet')
-		link(href='/chat.css', type='text/css', rel='stylesheet')
-		link(href='/colours.css', type='text/css', rel='stylesheet')
-
+		title Matcha | #{title}
+		include header_items.pug		
+		link(rel='stylesheet', href='/chat.css')
 	body
 		include navbar.pug
 
