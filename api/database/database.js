@@ -137,7 +137,6 @@ class Database {
 			var sql = "UPDATE users SET username=? WHERE username=?";
 			var inserts =[newUsername, username];
 			var a = this;
-
 			sql = mysql.format(sql, inserts);
 			let update = a.query(sql);
 			update.then(function(ret) {

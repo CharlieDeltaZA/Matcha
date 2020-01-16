@@ -24,7 +24,7 @@
 		// contentType: "application/json; charset=utf-8",
 		// dataType: "json",
 		success: function(data) {
-			// console.log(data);
+			console.log(data);
 			document.getElementById("Notif").innerHTML = data.messages + data.likes + data.views;
 			document.getElementById("NotifL").innerHTML = data.likes;
 			document.getElementById("NotifM").innerHTML = data.messages;
