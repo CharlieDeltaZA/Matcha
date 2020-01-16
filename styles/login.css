@@ -4,7 +4,8 @@ body {
 	background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(214,22,48,1) 48%, rgba(214,22,48,1) 68%, rgba(224,105,19,1) 100%);
 	min-height: 100vh;
     position: relative;
-    padding-bottom: 90px;
+	padding-bottom: 90px;
+    overflow-x: hidden;	
 }
 
 input[type=text], input[type=password] {
