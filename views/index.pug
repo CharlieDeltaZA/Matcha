@@ -13,7 +13,7 @@ html
 			if !userLogged
 				a.rounded-pill.btn.btn-lg.mbg-white.mx-auto.mt-5(href="/user/register") Join Us
 			//- button#JoinUs.rounded-pill.btn.btn-lg.mbg-white.mx-auto.mt-5(href="#") Join Us POP
-			a#ToastMe.rounded-pill.btn.btn-lg.mbg-white.mx-auto.mt-5(href="#" onclick="") ToastTest
+			button#ToastMe.rounded-pill.btn.btn-lg.mbg-white.mx-auto.mt-5(href="#" onclick="") ToastTest
 
 			.card.mx-auto.mt-5(style='max-width: 800px;')
 				h4.card-header Reviews:
@@ -21,18 +21,9 @@ html
 				.card-body
 					h3.card-title Happy Couple: 11/10
 
-			.toast(role='alert', aria-live='assertive', aria-atomic='true')
-				.toast-header
-					img.rounded.mr-2(src='...', alt='...')
-					strong.mr-auto Bootstrap
-					small.text-muted 11 mins ago
-					button.ml-2.mb-1.close(type='button', data-dismiss='toast', aria-label='Close')
-					span(aria-hidden='true') ×
-				.toast-body
-					| Hello, world! This is a toast message.
 
 		include footer
-		//- include notif
+		include toast
 
 
 			//- SCRIPTS
