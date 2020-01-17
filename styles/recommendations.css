@@ -1,4 +1,13 @@
-/* placeholder */
+#SortBtn, #FilterBtn {
+    width: 50%;
+}
+
+@media screen and (max-width: 767.98px) {
+    #SortBtn, #FilterBtn {
+		width: 100%;
+	}
+}
+
 .funkyradio div {
     clear: both;
     overflow: hidden;
