@@ -15,8 +15,31 @@ html
 				.row
 					.col-sm-11.py-2.mx-auto
 						#Sort.collapse.multi-collapse
-							.card.card-body HELLO
-								//- Put stuff here
+							.card.card-body Sort by:
+								hr
+								//- .col-md-4
+								//- 	.col-md-6
+								.funkyradio
+									.funkyradio-success
+										input#radio1(type='radio', name='radio')
+										label(for='radio1') Age, ascending
+									.funkyradio-success
+										input#radio2(type='radio', name='radio', checked='')
+										label(for='radio2') Age, descending
+									.funkyradio-success
+										input#radio3(type='radio', name='radio')
+										label(for='radio3') Fame, ascending
+									.funkyradio-success
+										input#radio4(type='radio', name='radio')
+										label(for='radio4') Fame, descending
+									.funkyradio-success
+										input#radio5(type='radio', name='radio')
+										label(for='radio5') Closer
+									.funkyradio-success
+										input#radio6(type='radio', name='radio')
+										label(for='radio6') Farther
+									br
+									input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
 					.col-sm-11.py-2.mx-auto
 						#Filter.collapse.multi-collapse
 							.card.card-body WORLD
