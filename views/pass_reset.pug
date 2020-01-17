@@ -20,11 +20,11 @@ html
 						hr
 						form#userPassReset(name="resetPW",action='', method='POST')
 							.form-group
-								label(for='email') Email									
+								label(for='email') Email:
 								input#userEmail.form-control(type='email' placeholder='Enter Email' name='userEmail')
 								p#emailError.errorMsg
 
-							input#submit.btn.btn-success.btn-block.btn-lg(type='button', value='Reset' onclick='' style="background-color:#28a745")
+							button#submit.btn.btn-success.btn-block.btn-lg(type='button', value='Reset' onclick='') Reset
 						p#error.mt-3
 
 		include footer.pug
