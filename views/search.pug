@@ -11,38 +11,40 @@ html
 			h1.text-center.my-3.mt-white.display-3 Search
 			.row
 				.col
-					.card.my-5.mx-auto(style='max-width:500px')
+					.card.mx-auto(style='max-width:500px')
 						.card-body
 							block content
-								h1 Search
+								h1 Search Criteria
 								hr
 
-								form#login.needs-validation(name="login", action='', method='POST' novalidate)
+								form#search(name="search", action='', method='POST' novalidate)
 									.form-group
-										label(for='location') Location:
-										input#userLogin.form-control(type='text' placeholder='Enter a Maximum Distance' name='Location' required)
+										label(for='distance') Distance:
+										input#searchDistance.form-control(type='text' placeholder='Enter a Maximum Distance' name='Location' required)
 
 									.form-group
 										label(for='interests') Interests:
-										input#userPass.form-control(type='text' placeholder='Enter Interests Tags' name='Interests' required)
+										input#searchInterests.form-control(type='text' placeholder='Enter Interests Tags' name='Interests' required)
+									
 									.form-group
 										label(for='age') Age Range:
 										.row.ml-1
 											br
-											input#yes.form-control.mx-2(type='text' placeholder='' name='ageFrom' required)
+											input#yes.form-control.mx-2.w-25(type='text' placeholder='' name='ageFrom' required)
 
 											p.mx-2 to
-											input#yes.form-control.mx-2(type='text' placeholder='' name='ageTo' required)
+											input#yes.form-control.mx-2.w-25(type='text' placeholder='' name='ageTo' required)
+									
 									.form-group
 										label(for='fame') Fame Range:
 										.row.ml-1
 											br
-											input#yes.form-control.mx-2(type='text' placeholder='' name='fameFrom' required)
+											input#yes.form-control.mx-2.w-25(type='text' placeholder='' name='fameFrom' required)
 
 											p.mx-2 to
-											input#yes.form-control.mx-2(type='text' placeholder='' name='fameTo' required)
+											input#yes.form-control.mx-2.w-25(type='text' placeholder='' name='fameTo' required)
 
-									button#SetPref.btn.btn-success.btn-block.btn-lg(type='submit', value='search') Search
+									button#SearchBtn.btn.btn-success.btn-block.btn-lg(type='submit', value='search') Search
 
 		include footer.pug
 

@@ -61,8 +61,7 @@ html
 										| Already have an account? 
 										a(href='/user/login') Login.
 									
-									//- button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='submit', value='register' disabled='disabled') Register
-									input#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Register', onclick='registerPost()', style="background-color:#28a745", disabled='disabled')
+									button#submit.btn.btn-success.btn-block.btn-lg.enableOnInput(type='button', value='Register', onclick='registerPost()', disabled='disabled') Register
 								p#error.mt-3
 
 		include footer.pug
@@ -75,19 +74,6 @@ html
 		//- annoying validation is currently disabled
 		//- script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
 
-		//- script(src="/submission.js")
-
-		//- script.
-		//- 	$('#userLogin, #userName, #userSurname, #userEmail, #userPassword, #userConfPass').keyup(function () {
-		//- 		if ($(this).val() == '') {
-		//- 			//Check to see if there is any text entered
-		//- 			// If there is no text within the input ten disable the button
-		//- 			$('.enableOnInput').prop('disabled', true);
-		//- 		} else {
-		//- 			//If there is text in the input, then enable the button
-		//- 			$('.enableOnInput').prop('disabled', false);
-		//- 		}
-		//- 	});
 		if error === 'invalidForm'
 			script.
 				swal(

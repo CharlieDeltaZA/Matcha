@@ -8,7 +8,10 @@ app.use(express.static('/../../scripts'));
 
 router.get('/views', (req, res, next) => {
 	if (req.session.user === undefined)
+	{
 		res.redirect('/user/login');
+		return ;
+	}
 	res.render('views', {
 		title:'Profile Views',
 		user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -18,7 +21,10 @@ router.get('/views', (req, res, next) => {
 
 router.get('/likes', (req, res, next) => {
 	if (req.session.user === undefined)
+	{
 		res.redirect('/user/login');
+		return ;
+	}
 	res.render('likes', {
 		title:'Profile Likes',
 		user: (req.session.user === undefined ? "Username" : req.session.user),
