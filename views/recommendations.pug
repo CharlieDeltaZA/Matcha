@@ -6,24 +6,31 @@ html
 	body
 		include navbar.pug
 		
-		h2.mt-white.text-center.mt-5 Recommendations
-		.container(style='max-width: 1100px;min-width:360px;')
-			//- Use col-x-x stuff for this, should get it resizing better I think
-			.card
-				//- .container.mx-auto.my-5(style='max-width: 1100px;')
+		h1.mt-white.text-center.mt-5 Recommendations
+		.container(style='max-width: 1100px;min-width:320px;')
+			.card(style='max-width: 1100px;min-width:320px;')
 				.row
+					//- start of loop
 					.col-lg-4.col-md-6.col-sm
 						.container.my-4
 							.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
-								a(href='#')
-									img.img-fluid(src='/images.png', alt='...', style='width: 300px; height: 300px')
+								//- Below 'a' to be updated with a var, to echo out username to take to profile on click
+								//- a(href='/user/profile/VAR') 
+								a(href='#') 
+									//- can probs remove the style from here
+									img.img-fluid(src='/images.png', alt='User Profile Image', style='width: 300px; height: 300px')
 								.card-body.mbg-light-grey
+									//- below 'h5' to be updated with the user's full name and surname, from vars, during loop
+									//- h5.card-title #{userName} #{userSurname}
 									h5.card-title Till
 									.row.mx-auto
-										button.btn.btn-success.w-50(value=value, onclick='deleteImage(this.value)')
+										//- below buttons need proper like and dislike functions
+										button.btn.btn-success.w-50(value=value, onclick='likeUser(this.value)')
 											i.fa.fa-heart
-										button.btn.btn-danger.w-50(value=value, onclick='deleteImage(this.value)')
+										button.btn.btn-danger.w-50(value=value, onclick='dislikeUser(this.value)')
 											i.fa.fa-thumbs-down
+					//- end of loop
+					//- BELOW : Extra cards to be commented out and killed later
 					.col-lg-4.col-md-6.col-sm
 						.container.my-4
 							.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px;min-height: 340px;')
