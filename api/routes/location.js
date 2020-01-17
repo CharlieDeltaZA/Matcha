@@ -9,6 +9,11 @@ app.use(express.static('/../../images'));
 app.use(express.static('/../../scripts'));
 
 router.get('/', (req, res, next) => {
+	// if (req.session.user === undefined)
+	// {
+	// 	res.redirect('/user/login');
+	// 	return ;
+	// }
 	res.render('location', {
 		title:'Location',
 		user: (req.session.user === undefined ? "Username" : req.session.user)
