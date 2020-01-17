@@ -18,7 +18,8 @@ html
 				.row
 					.col-sm-11.py-2.mx-auto
 						#Sort.collapse.multi-collapse
-							.card.card-body Sort by:
+							.card.card-body
+								h6 Sort By:
 								hr
 								//- .col-md-4
 								//- 	.col-md-6
@@ -45,29 +46,24 @@ html
 									input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
 					.col-sm-11.py-2.mx-auto
 						#Filter.collapse.multi-collapse
-							.card.card-body Filter by:
+							.card.card-body
 								.container
+									h6 Filter By:
 									hr
-									h2 
-        								small Fame range
+									small Minimum fame range
 									.range
 										input(type='range', name='range', min='1', max='100', value='50', onchange='range.value=value')
 										output#range 50
+									small Minimum age range
 									.range
 										input(type='range', name='range', min='1', max='100', value='50', onchange='rangePrimary.value=value')
 										output#rangePrimary 50
+									small Minimum distance range
 									.range
 										input(type='range', name='range', min='1', max='100', value='50', onchange='rangeSuccess.value=value')
 										output#rangeSuccess 50
-									.range
-										input(type='range', name='range', min='1', max='100', value='50', onchange='rangeInfo.value=value')
-										output#rangeInfo 50
-									.range
-										input(type='range', name='range', min='1', max='100', value='50', onchange='rangeWarning.value=value')
-										output#rangeWarning 50
-									.range
-										input(type='range', name='range', min='1', max='100', value='50', onchange='rangeDanger.value=value')
-										output#rangeDanger 50
+									br
+									input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
 
 
 			
