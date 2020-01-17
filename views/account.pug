@@ -12,147 +12,152 @@ html
 		.container.text-center
 			h1.mt-white.text-center.mt-5.display-3 Edit Profile
 
-		.container
-			.container.mx-auto.my-3(style='max-width: 1200px;')
-				.card.mx-auto(style='max-width: 1200px;')
-					if imageExists
-						img.img-fluid.w-100(src=userImage, alt='...')
-					else
-						img.img-fluid.w-100(src='/images.png', alt='...')
-							//- if imageArray
-								each value in imageArray
-									.carousel-item(data-interval="false")
-										img.d-block.w-100(src=value, alt='...')
+		.container.mx-auto.my-3(style='max-width: 1200px;')
+			.card.mx-auto(style='max-width: 1200px;')
+				if imageExists
+					img.img-fluid.w-100(src=userImage, alt='User Image')
+				else
+					img.img-fluid.w-100(src='/images.png', alt='No Image Available')
+						//- if imageArray
+							each value in imageArray
+								.carousel-item(data-interval="false")
+									img.d-block.w-100(src=value, alt='...')
 
-					a#UpdateImg.btn.btn-success.btn-block.btn-lg(href='/user/images') Change Image(s)
-		
-					.card-body
-						h4.card-title Public Details
+				a#UpdateImg.btn.btn-success.btn-block.btn-lg(href='/user/images') Change Image(s)
+	
+				//- Public Details
+				.card-body
+					h4.card-title Public Details
+					hr
+					form#account(name="account", action='', method='POST' novalidate)
+						.form-group
+							label(for='name') Name
+							input#userName.form-control(type='text' placeholder='First Name' name='userName' value=userFirstName)
+							p#firstNameError
+							input#userSurname.form-control(type='text' placeholder='Last Name' name='userSurname' value=userLastName)
+							p#surnameError
+						if (age)
+							label(for='age') Age
+							p#AgeDisplay.pl-3.text-small #{age}
+
+						.form-group
+							label(for='gender') Gender
+							if userGender === 'Male'
+								select#userGender.custom-select(name='gender')
+									option(value='Male') Male
+									option(value='Female') Female
+							else
+								select#userGender.custom-select(name='gender')
+									option(value='Female') Female
+									option(value='Male') Male
+						
+						.form-group
+							label(for='orientation') Sexual Orientation
+							if userOrientation === 'hetero'
+								select#userSexPref.custom-select(name='sexPref')
+									option(value='hetero') Heterosexual
+									option(value='homo') Homosexual
+									option(value='bi') Bisexual
+							else if userOrientation === 'homo'
+								select#userSexPref.custom-select(name='sexPref')
+									option(value='homo') Homosexual
+									option(value='hetero') Heterosexual
+									option(value='bi') Bisexual
+							else
+								select#userSexPref.custom-select(name='sexPref')
+									option(value='bi') Bisexual
+									option(value='homo') Homosexual
+									option(value='hetero') Heterosexual
 						hr
-						form#account(name="account", action='', method='POST' novalidate)
-							.form-group
-								label(for='name') Name
-								input#userName.form-control(type='text' placeholder='First Name' name='userName' value=userFirstName)
-								p#firstNameError
-								input#userSurname.form-control(type='text' placeholder='Last Name' name='userSurname' value=userLastName)
-								p#surnameError
-							if (age)
-								label(for='age') Age
-								p#AgeDisplay.pl-3.text-small #{age}
+						h4.card-title Bio
+						textarea#userBio(placeholder='Biography' name='userBio' form="account" rows='3').form-control= userBio
 
-							.form-group
-								label(for='gender') Gender
-								if userGender === 'Male'
-									select#userGender.custom-select(name='gender')
-										option(value='Male') Male
-										option(value='Female') Female
-								else
-									select#userGender.custom-select(name='gender')
-										option(value='Female') Female
-										option(value='Male') Male
-							
-							.form-group
-								label(for='orientation') Sexual Orientation
-								if userOrientation === 'hetero'
-									select#userSexPref.custom-select(name='sexPref')
-										option(value='hetero') Heterosexual
-										option(value='bi') Bisexual
-										option(value='homo') Homosexual
-								else if userOrientation === 'bi'
-									select#userSexPref.custom-select(name='sexPref')
-										option(value='bi') Bisexual
-										option(value='hetero') Heterosexual
-										option(value='homo') Homosexual
-								else
-									select#userSexPref.custom-select(name='sexPref')
-										option(value='homo') Homosexual
-										option(value='bi') Bisexual
-										option(value='hetero') Heterosexual
-							hr
-							h4.card-title Bio
-							textarea#userBio(placeholder='Biography' name='userBio' form="account" rows='3').form-control= userBio
+						hr
+						p.h5 Your current list of interests:
+						span.badge.badge-pill.badge-primary.mx-1 #programs
+						span.badge.badge-pill.badge-primary.mx-1 #memes
+						span.badge.badge-pill.badge-primary.mx-1 #gangweed
+						hr
 
-							hr
-							p.h5 Your current list of interests:
-							span.badge.badge-pill.badge-primary.mx-1 #programs
-							span.badge.badge-pill.badge-primary.mx-1 #memes
-							span.badge.badge-pill.badge-primary.mx-1 #gangweed
-							hr
-
-							button#UpdateAcc.btn.btn-success.btn-block.btn-lg(type='button', onclick='postPublicDetails()', value='account') Update Profile
-							p#deetsPara.text-success.pl-3
-							
-			if !age
-				.container.mx-auto.my-3(style='max-width: 1500px;')
-					.card.mx-auto(style='max-width: 1500px;')
-						.card-body
-							h4.card-title Date of Birth
-							hr
-							input#userDOB.form-control(type="date" name="DOB")
-							button#UpdateDOB.btn.btn-success.btn-block.btn-lg(type='button', onclick='updateDoB()', value='dob') Set Date of Birth
-							p#dobPara.text-success.pl-3
-
+						button#UpdateAcc.btn.btn-success.btn-block.btn-lg(type='button', onclick='postPublicDetails()', value='account') Update Profile
+						p#deetsPara.text-success.pl-3
+						
+			//- Date of Birth
+		if !age
 			.container.mx-auto.my-3(style='max-width: 1200px;')
 				.card.mx-auto(style='max-width: 1200px;')
 					.card-body
-						h4.card-title Location
+						h4.card-title Date of Birth
 						hr
-						input#pac-input.form-control(type='text' placeholder='Enter a location')
-						#map
-						p#locPara.text-success.pl-3
+						input#userDOB.form-control(type="date" name="DOB")
+						button#UpdateDOB.btn.btn-success.btn-block.btn-lg(type='button', onclick='updateDoB()', value='dob') Set Date of Birth
+						p#dobPara.text-success.pl-3
 
-			.container.mx-auto.my-3(style='max-width: 1200px;')
-				.card.mx-auto(style='max-width: 1200px;')
-					.card-body
-						h4.card-title Interests
-						hr
-						form#addInterests(name="interests", action='', method='POST' novalidate)
-							input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
-							button#AddInterest.btn.btn-success.btn-block.btn-lg(type='button', onclick='add_interest()' value='interests') Update Interests
-						p#interestAError
-						p#interestsPara.text-success.pl-3
+			//- Location - Auto Submits
+		.container.mx-auto.my-3(style='max-width: 1200px;')
+			.card.mx-auto(style='max-width: 1200px;')
+				.card-body
+					h4.card-title Location
+					hr
+					input#pac-input.form-control(type='text' placeholder='Enter a location')
+					#map
+					p#locPara.text-success.pl-3
 
-			.container.mx-auto.my-3(style='max-width: 1200px;')
-				.card.mx-auto(style='max-width: 1200px;')
-					.card-body
-						h4.card-title Remove Interests
-						hr
-						form#removeInterests(name="interests", action='', method='POST' novalidate)
-							input#removedInterests.form-control(type='text' placeholder='Interests' name='userInterests')
-							button#RemoveInterest.btn.btn-success.btn-block.btn-lg(type='button', onclick='remove_interest()' value='interests') Update Interests
-						p#interestRError
-						p#interestsRemovedPara.text-success.pl-3
+			//- Add Interests
+		.container.mx-auto.my-3(style='max-width: 1200px;')
+			.card.mx-auto(style='max-width: 1200px;')
+				.card-body
+					h4.card-title Interests
+					hr
+					form#addInterests(name="interests", action='', method='POST' novalidate)
+						input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
+						button#AddInterest.btn.btn-success.btn-block.btn-lg(type='button', onclick='add_interest()' value='interests') Update Interests
+					p#interestAError
+					p#interestsPara.text-success.pl-3
 
+			//- Remove Interests
+		.container.mx-auto.my-3(style='max-width: 1200px;')
+			.card.mx-auto(style='max-width: 1200px;')
+				.card-body
+					h4.card-title Remove Interests
+					hr
+					form#removeInterests(name="interests", action='', method='POST' novalidate)
+						input#removedInterests.form-control(type='text' placeholder='Interests' name='userInterests')
+						button#RemoveInterest.btn.btn-success.btn-block.btn-lg(type='button', onclick='remove_interest()' value='interests') Update Interests
+					p#interestRError
+					p#interestsRemovedPara.text-success.pl-3
 
-			.container.mx-auto.my-3(style='max-width: 1200px;')
-				.card.mx-auto(style='max-width: 1200px;')
-					.card-body
-						h4.card-title Username
-						hr
-						input#userLogin.form-control(type='text' placeholder='Username' name='userLogin' value=username)
-						p#unamePara.text-success.pl-3
-						button#UpdateUsername.btn.btn-success.btn-block.btn-lg(type='button', onclick='changeUsername()', value='username') Update Username
+			//- Change Username
+		.container.mx-auto.my-3(style='max-width: 1200px;')
+			.card.mx-auto(style='max-width: 1200px;')
+				.card-body
+					h4.card-title Username
+					hr
+					input#userLogin.form-control(type='text' placeholder='Username' name='userLogin' value=username)
+					button#UpdateUsername.btn.btn-success.btn-block.btn-lg(type='button', onclick='changeUsername()', value='username') Update Username
+					p#unamePara.text-success.pl-3
 
-			.container.mx-auto.my-3(style='max-width: 1200px;')
-				.card.mx-auto(style='max-width: 1200px;')
-					.card-body
-						h4.card-title Email
-						hr
-						input#userEmail.form-control(type='email' placeholder='Email' name='userEmail' value=userEmail)
-						p#emailPara.text-success.pl-3
-						button#UpdateUsername.btn.btn-success.btn-block.btn-lg(type='button', onclick='changeEmail()', value='email') Update Email
+			//- Change Email
+		.container.mx-auto.my-3(style='max-width: 1200px;')
+			.card.mx-auto(style='max-width: 1200px;')
+				.card-body
+					h4.card-title Email
+					hr
+					input#userEmail.form-control(type='email' placeholder='Email' name='userEmail' value=userEmail)
+					button#UpdateUsername.btn.btn-success.btn-block.btn-lg(type='button', onclick='changeEmail()', value='email') Update Email
+					p#emailPara.text-success.pl-3
 
-
-			.container.mx-auto.my-3(style='max-width: 1200px;')
-				.card.mx-auto(style='max-width: 1200px;')
-					.card-body
-						h4.card-title Password
-						hr
-						label(for='pass') New Password
-						input#userNewPass.form-control(type='password' placeholder='New Password' name='userNewPass')
-						p#pwPara.text-success.pl-3
-						button#UpdatePassword.btn.btn-success.btn-block.btn-lg(type='button', onclick='changePassword()', name='password') Update Password
-				
+			//- Change Password
+		.container.mx-auto.my-3(style='max-width: 1200px;')
+			.card.mx-auto(style='max-width: 1200px;')
+				.card-body
+					h4.card-title Password
+					hr
+					label(for='pass') New Password
+					input#userNewPass.form-control(type='password' placeholder='New Password' name='userNewPass')
+					button#UpdatePassword.btn.btn-success.btn-block.btn-lg(type='button', onclick='changePassword()', name='password') Update Password
+					p#pwPara.text-success.pl-3
+			
 
 		include footer.pug	
 			

@@ -10,97 +10,102 @@ html
 		.container
 			h1.mt-white.text-center.mt-5.display-3 Profile
 			
-			.container.mx-auto.my-3(style='max-width: 1200px;')
-				.card.mx-auto(style='max-width: 1200px;')
-					#carouselControls.carousel.slide(data-ride='carousel', data-interval="false")
-						ol.carousel-indicators
-							li.active(data-target='#carouselIndicators', data-slide-to='0')
-							li(data-target='#carouselIndicators', data-slide-to='1')
-							li(data-target='#carouselIndicators', data-slide-to='2')
-						.carousel-inner
-							.carousel-item.active(data-interval="false")
-								if imageExists
-									img.img-fluidd-block.w-100(src=userImage, alt='...')
-								else
-									img.img-fluidd-block.w-100(src='/images.png', alt='...')
-							if imageArray
-								each value in imageArray
-									if value != userImage
-										.carousel-item(data-interval="false")
-											img.d-block.w-100(src=value, alt='...')
-							//- .carousel-item(data-interval="false")
-								img.d-block.w-100(src='/images2.jpeg', alt='...')
-							//- .carousel-item(data-interval="false")
-								img.d-block.w-100(src='/images3.jpg', alt='...')
-						a.carousel-control-prev(href='#carouselControls', role='button', data-slide='prev')
-							span.carousel-control-prev-icon(aria-hidden='true')
-							span.sr-only Previous
-						a.carousel-control-next(href='#carouselControls', role='button', data-slide='next')
-							span.carousel-control-next-icon(aria-hidden='true')
-							span.sr-only Next 
-		
-					.card-body
-						hr
-						h1.display-4.card-title.text-capitalize #{userFirstName} #{userLastName}
-						if !sameUser
-							.row.mx-auto
-								button#BtnLike.btn.btn-success(value=value, onclick='deleteImage(this.value)')
-									i.fa.fa-heart.mr-2
-									| Like 
-								button#BtnDislike.btn.btn-danger(value=value, onclick='deleteImage(this.value)')
-									i.fa.fa-thumbs-down.mr-2
-									| Dislike 
-								button#BtnReport.btn.btn-info(value=value, onclick='deleteImage(this.value)')
-									i.fa.fa-exclamation-triangle.mr-2
-									| Report 
-								button#BtnBlock.btn.btn-warning(value=value, onclick='deleteImage(this.value)')
-									i.fa.fa-ban.mr-2
-									| Block 
-						hr
-						h4.card-subtitle.mb-2 Age: #{userAge}
-						h4.card-subtitle.mb-2 Fame Rating: #{userFame}
-						hr
-						//- p.card-text
-						//- 	| #{distance}   <--- Maybe use something to generalize the distance based on how far away they are. So instead of numbers,
-												it's something like: Close, Nearby, Distant, Far etc. idk
-						if(sameUser != 1)
-							label.h6 Distance:						
-							p.card-text
-								| 420kms away
-						label.h6 I am:
-						if userOrientation === 'hetero'
-							p.card-text
-								|  Heterosexual, #{userGender}
-						else if userOrientation === 'homo'
-							p.card-text
-								|  Homosexual, #{userGender}
-						else
-							p.card-text
-								|  Bisexual, #{userGender}
-						label.h6 Looking For:
-						if userOrientation === 'hetero'
-							if userGender === 'Male'
-								p.card-text Women 
+		.container.mx-auto.my-3(style='max-width: 1200px;')
+			.card.mx-auto(style='max-width: 1200px;')
+				#carouselControls.carousel.slide(data-ride='carousel', data-interval="false")
+					ol.carousel-indicators
+						li.active(data-target='#carouselIndicators', data-slide-to='0')
+						li(data-target='#carouselIndicators', data-slide-to='1')
+						li(data-target='#carouselIndicators', data-slide-to='2')
+					.carousel-inner
+						.carousel-item.active(data-interval="false")
+							if imageExists
+								img.img-fluidd-block.w-100(src=userImage, alt='User Image')
 							else
-								p.card-text Men
-						else if userOrientation === 'homo'
-							if userGender === 'Male'
-								p.card-text Men
-							else
-								p.card-text Women
-						else
-							p.card-text Men or Women
-						hr
-						h4.card-title Interests
-						//- p.badge.badge-pill.badge-info.card-text
-						//- 	| #programs #memes #gangweed
-						span.badge.badge-pill.badge-primary.mx-1 #programs
-						span.badge.badge-pill.badge-primary.mx-1 #memes
-						span.badge.badge-pill.badge-primary.mx-1 #gangweed
-						hr
-						h4.card-title Bio
+								img.img-fluidd-block.w-100(src='/images.png', alt='No Image Available')
+						if imageArray
+							each value in imageArray
+								if value != userImage
+									.carousel-item(data-interval="false")
+										img.d-block.w-100(src=value, alt='User Image')
+						//- .carousel-item(data-interval="false")
+							img.d-block.w-100(src='/images2.jpeg', alt='...')
+						//- .carousel-item(data-interval="false")
+							img.d-block.w-100(src='/images3.jpg', alt='...')
+					a.carousel-control-prev(href='#carouselControls', role='button', data-slide='prev')
+						span.carousel-control-prev-icon(aria-hidden='true')
+						span.sr-only Previous
+					a.carousel-control-next(href='#carouselControls', role='button', data-slide='next')
+						span.carousel-control-next-icon(aria-hidden='true')
+						span.sr-only Next 
+	
+				.card-body
+					hr
+					h1.display-4.card-title.text-capitalize #{userFirstName} #{userLastName}
+					if !sameUser
+						.row.mx-auto
+							button#BtnLike.btn.btn-success(value=value, onclick='likeUser(this.value)')
+								i.fa.fa-heart.mr-2
+								| Like 
+							button#BtnDislike.btn.btn-danger(value=value, onclick='dislikeUser(this.value)')
+								i.fa.fa-thumbs-down.mr-2
+								| Dislike 
+							button#BtnReport.btn.btn-info(value=value, onclick='reportUser(this.value)')
+								i.fa.fa-exclamation-triangle.mr-2
+								| Report 
+							button#BtnBlock.btn.btn-warning(value=value, onclick='blockUser(this.value)')
+								i.fa.fa-ban.mr-2
+								| Block 
+					hr
+					
+					h4.card-subtitle.mb-2 Age: #{userAge}
+					h4.card-subtitle.mb-2 Fame Rating: #{userFame}
+					hr
+					//- p.card-text
+					//- 	| #{distance}   <--- Maybe use something to generalize the distance based on how far away they are. So instead of numbers,
+											it's something like: Close, Nearby, Distant, Far etc. idk
+					if(sameUser != 1)
+						label.h6 Distance:						
 						p.card-text
-							| #{userBio}
+							| 420kms away
+					
+					label.h6 I am:
+					if userOrientation === 'hetero'
+						p.card-text
+							|  Heterosexual, #{userGender}
+					else if userOrientation === 'homo'
+						p.card-text
+							|  Homosexual, #{userGender}
+					else
+						p.card-text
+							|  Bisexual, #{userGender}
+					
+					label.h6 Looking For:
+					if userOrientation === 'hetero'
+						if userGender === 'Male'
+							p.card-text Women 
+						else
+							p.card-text Men
+					else if userOrientation === 'homo'
+						if userGender === 'Male'
+							p.card-text Men
+						else
+							p.card-text Women
+					else
+						p.card-text Men or Women
+					hr
+
+					h4.card-title Interests
+					//- p.badge.badge-pill.badge-info.card-text
+					//- 	| #programs #memes #gangweed
+					span.badge.badge-pill.badge-primary.mx-1 #programs
+					span.badge.badge-pill.badge-primary.mx-1 #memes
+					span.badge.badge-pill.badge-primary.mx-1 #gangweed
+					hr
+
+					h4.card-title Bio
+					p.card-text
+						| #{userBio}
 
 		include footer.pug
 
