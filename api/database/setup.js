@@ -240,6 +240,72 @@ var setupTables = function setupTables() {
 // (username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete)
 
 // VALUES
-// ("02","ZeroTwo@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579356468/userImages/tnb86gx1e8gnqkaurl0v.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Zero", "Two", 'bi', 'Female', 16, 1, 1)
+// ("02","ZeroTwo@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579356468/userImages/tnb86gx1e8gnqkaurl0v.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Zero", "Two", 'bi', 'Female', 16, 1, 1);
+
+// INSERT INTO users
+// (username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete)
+
+// VALUES
+// ("03","ZeroThree@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579357677/userImages/fzkxlcjthxhfk6bcmgue.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Zero", "Three", 'homo', 'Female', 4, 1, 1);
+
+// INSERT INTO users
+// (username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete)
+
+// VALUES
+// ("04","ZeroFour@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579357827/userImages/wgnzajozsj1t9ulwasci.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Zero", "Four", 'hetero', 'Female', 42, 1, 1);
+
+// INSERT INTO users
+// (username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete)
+
+// VALUES
+// ("05","ZeroFive@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579358508/userImages/mubt2gu7xoldsue4jmnd.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Zero", "Five", 'bi', 'Female', 1, 1, 1);
+
+// INSERT INTO users
+// (username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete)
+
+// VALUES
+// ("06","ZeroSix@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579358645/userImages/ysaqncvrewbvsqgwlhuj.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Zero", "Six", 'homo', 'Female', 69, 1, 1);
+
+// INSERT INTO users
+// (username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete)
+
+// VALUES
+// ("07","ZeroSeven@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579358780/userImages/njs4dtmunec0dtg7dghf.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Zero", "Seven", 'hetero', 'Female', 9, 1, 1);
+
+// INSERT INTO users
+// (username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete)
+
+// VALUES
+// ("12","OneTwo@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359392/userImages/mu9w6dd6is0lvdncqka7.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "One", "Two", 'bi', 'Male', 20, 1, 1);
+
+// INSERT INTO users
+// (username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete)
+
+// VALUES
+// ("13","OneThree@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359425/userImages/qhhixzr3zgefmlsjquqs.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "One", "Three", 'bi', 'Male', 3, 1, 1);
+
+// INSERT INTO users
+// (username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete)
+
+// VALUES
+// ("14","OneFour@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359462/userImages/grc6bwgqy67nvh3fcnpa.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "One", "Four", 'homo', 'Male', 25, 1, 1);
+
+// INSERT INTO users
+// (username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete)
+
+// VALUES
+// ("15","OneFive@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359493/userImages/jrkblgsuhlisoyyu9xlv.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "One", "Five", 'homo', 'Male', 30, 1, 1);
+
+// INSERT INTO users
+// (username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete)
+
+// VALUES
+// ("16","OneSix@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359528/userImages/x2vhqw4pswu7zrkiorup.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "One", "Six", 'hetero', 'Male', 0, 1, 1);
+
+// INSERT INTO users
+// (username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete)
+
+// VALUES
+// ("17","OneSeven@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359558/userImages/fju5dlijo6t3pr99tzjm.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "One", "Seven", 'hetero', 'Male', 44, 1, 1);
 
 module.exports.setupDB = setupDB;
