@@ -76,8 +76,8 @@ html
 				.row
 					//- start of loop
 					if arrayExists
-						.col-lg-4.col-md-6.col-sm
-							each val in userArray
+						each val in userArray
+							.col-lg-4.col-md-6.col-sm
 								.container.my-4
 									.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
 										//- Below 'a' to be updated with a var, to echo out username to take to profile on click
