@@ -229,4 +229,13 @@ var setupTables = function setupTables() {
 		});
 	});
 }
+
+// Fake Users
+
+// INSERT INTO users
+// (username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete)
+
+// VALUES
+// ("02","ZeroTwo@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579356468/userImages/tnb86gx1e8gnqkaurl0v.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Zero", "Two", 'bi', 'Female', 16, 1, 1)
+
 module.exports.setupDB = setupDB;
