@@ -21,6 +21,8 @@ router.get('/', (req, res, next) => {
 		var userGender = data[0].userGender;
 		var userArray = DB.get_matches(userOrientation, userGender, req.session.user);
 		var arrayExists = 1;
+		if (!userOrientation || !userGender)
+			res.redirect('/user/account');
 		userArray.then( function(data) {
 			// console.log(data);
 			if (!data[0])
