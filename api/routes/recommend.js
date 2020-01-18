@@ -45,6 +45,7 @@ router.get('/', (req, res, next) => {
 		var userAge = data[0].userAge;
 		if (!userOrientation || !userGender)
 			res.redirect('/user/account');
+		console.log(`Agediff = ${req.body.ageDiff}`);
 		var userArray = DB.get_matches(userOrientation, userGender, req.session.user, userAge, req.body.ageDiff);
 		userArray.then( function(data1) {
 			// console.log(data);
@@ -62,8 +63,9 @@ router.get('/', (req, res, next) => {
 	})
 });
 
-router.post('/notifications', (req, res, next) => {
-
+router.post('/', (req, res, next) => {
+	console.log(req.body.ageDiff);
+	res.redirect("/recommendations");
 });
 
 module.exports = router;
