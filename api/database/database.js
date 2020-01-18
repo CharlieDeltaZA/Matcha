@@ -151,7 +151,7 @@ class Database {
 					sql = `
 					SELECT * FROM users
 					WHERE
-					userOrientation = 'bi' AND userGender = 'Male' AND accountComplete = 1 AND username != '${username}''
+					userOrientation = 'bi' AND userGender = 'Male' AND accountComplete = 1 AND username != '${username}'
 					OR
 					userOrientation = 'hetero' AND userGender = 'Male' AND accountComplete = 1 AND username != '${username}'`
 				else

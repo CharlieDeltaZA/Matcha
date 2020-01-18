@@ -15,14 +15,14 @@ router.get('/', (req, res, next) => {
 		res.redirect('/user/login');
 		return ;
 	}
+	if (!userOrientation || !userGender)
+		res.redirect('/user/account');
 	var current_user = DB.get_user(req.session.user);
 	current_user.then( function(data) {
 		var userOrientation = data[0].userOrientation;
 		var userGender = data[0].userGender;
-		var userArray = DB.get_matches(userOrientation, userGender, req.session.user);
 		var arrayExists = 1;
-		if (!userOrientation || !userGender)
-			res.redirect('/user/account');
+		var userArray = DB.get_matches(userOrientation, userGender, req.session.user);
 		userArray.then( function(data) {
 			// console.log(data);
 			if (!data[0])
@@ -36,7 +36,10 @@ router.get('/', (req, res, next) => {
 			});
 		})
 	})
-	// var profileArray = DB.getProfiles(current_user);
+});
+
+router.post('/notifications', (req, res, next) => {
+	
 });
 
 module.exports = router;
