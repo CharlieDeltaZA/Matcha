@@ -1,6 +1,10 @@
 const db = require('./config');
 var mysql = require('mysql');
 
+//
+// INSERT INTO users (username, userEmail, userImage, userPassword, userFirstName, userLastName, userLikes, userVerified, accountComplete)
+// VALUES ("02","ZeroTwo@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579350438/userImages", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Zero", "Two", 16, 1, 1)
+//
 // Create needed database and tables.
 var setupDB = function setupDB() 
 {
@@ -53,8 +57,8 @@ var setupTables = function setupTables() {
 					userGender LONGTEXT,
 					userImage LONGTEXT,
 					userAge int(11),
-					userBirthday DateTime,
-					userLikes int(11) default 0,
+					userBirthday DATETIME,
+					userLikes int(11) default 1,
 					userDislikes int(11) default 0,
 					userOrientation LONGTEXT,
 					userBiography LONGTEXT,

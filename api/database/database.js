@@ -116,6 +116,78 @@ class Database {
 		});
 	}
 
+	get_matches(userOrientation, userGender, username) {
+		return new Promise ( (resolve, reject) => { 
+			// Filters for bi of either gender
+			var sql;
+			if (userOrientation == 'bi')
+			{
+				if (userGender == "Female")
+				{
+					sql = `
+					SELECT * FROM users
+					WHERE
+					userOrientation = 'bi' AND accountComplete = 1 AND username != '${username}'
+					OR
+					userOrientation = 'hetero' AND userGender = 'Male' AND accountComplete = 1 AND username != '${username}'
+					OR
+					userOrientation = 'homo' AND userGender = 'Female' AND accountComplete = 1 AND username != '${username}'`;
+				}
+				else
+				{
+					sql = `
+					SELECT * FROM users
+					WHERE
+					userOrientation = 'bi' AND accountComplete = 1 AND username != '${username}'
+					OR
+					userOrientation = 'hetero' AND userGender = 'Female' AND accountComplete = 1 AND username != '${username}'
+					OR
+					userOrientation = 'homo' AND userGender = 'Male' AND accountComplete = 1 AND username != '${username}'`;
+				}
+			}
+			else if (userOrientation == 'hetero')
+			{
+				if (userGender == 'Female')
+					sql = `
+					SELECT * FROM users
+					WHERE
+					userOrientation = 'bi' AND userGender = 'Male' AND accountComplete = 1 AND username != '${username}''
+					OR
+					userOrientation = 'hetero' AND userGender = 'Male' AND accountComplete = 1 AND username != '${username}'`
+				else
+					sql = `
+					SELECT * FROM users
+					WHERE
+					userOrientation = 'bi' AND userGender = 'Female' AND accountComplete = 1 AND username != '${username}'
+					OR
+					userOrientation = 'hetero' AND userGender = 'Female' AND accountComplete = 1 AND username != '${username}'`
+			}
+			else if (userOrientation == 'homo')
+			{
+				if (userGender == 'Female')
+					sql = `
+					SELECT * FROM users
+					WHERE
+					userOrientation = 'bi' AND userGender = 'Female' AND username != '${username}'
+					OR
+					userOrientation = 'homo' AND userGender = 'Female' AND username != '${username}'`
+				else
+					sql = `
+					SELECT * FROM users
+					WHERE
+					userOrientation = 'bi' AND userGender = 'Male' AND username != '${username}'
+					OR
+					userOrientation = 'homo' AND userGender = 'Male' AND username != '${username}'`
+			}
+			let result = this.query(sql);
+			result.then( function (data) {
+				resolve(data);
+			}, function(err) {
+				reject (err);
+			})
+		});
+	}
+
 	get_user(username) {
 		return new Promise ( (resolve, reject) => {
 			let sql = "SELECT * FROM users WHERE username = ?";

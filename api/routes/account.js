@@ -166,8 +166,7 @@ router.post('/username', (req, res) => {
 
 router.post('/age', (req, res) => {
 	let db = new database;
-
-	let sql = `UPDATE users SET userAge = ? WHERE username = '${req.session.user}'`;
+	let sql = `UPDATE users SET userAge = ?, userBirthday=? WHERE username = '${req.session.user}'`;
 	let inserts = [req.body.age, req.body.birthDate];
 	sql = mysql.format(sql, inserts);
 	let ageUpdate = db.query(sql);
