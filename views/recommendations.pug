@@ -10,10 +10,10 @@ html
 			h1.mt-white.text-center.mt-5 Recommendations
 
 		.container.my-3.mx-auto(style='max-width: 1100px;')
-			//- button#SortFilter.btn.btn-info.btn-block(type='button', data-toggle="collapse", data-target=".multi-collapse", aria-expanded="false", aria-controls="Filter Sort") Sort/Filter
-			.row.mx-auto
-				button#SortBtn.btn.btn-info(type='button', data-toggle="collapse", data-target="#Sort", aria-expanded="false", aria-controls="Sort") Sort
-				button#FilterBtn.btn.btn-primary(type='button', data-toggle="collapse", data-target="#Filter", aria-expanded="false", aria-controls="Filter") Filter
+			button#SortFilter.btn.btn-info.btn-block(type='button', data-toggle="collapse", data-target=".multi-collapse", aria-expanded="false", aria-controls="Filter Sort") Sort/Filter
+			//- .row.mx-auto
+			//- 	button#SortBtn.btn.btn-info(type='button', data-toggle="collapse", data-target="#Sort", aria-expanded="false", aria-controls="Sort") Sort
+			//- 	button#FilterBtn.btn.btn-primary(type='button', data-toggle="collapse", data-target="#Filter", aria-expanded="false", aria-controls="Filter") Filter
 			.row
 				.col-sm-11.py-2.mx-auto
 					#Sort.collapse.multi-collapse
@@ -41,8 +41,8 @@ html
 								.funkyradio-success
 									input#Far(type='radio', name='radio')
 									label(for='Far') Farther
-								br
-								input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
+								//- br
+								//- input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
 
 				.col-sm-11.py-2.mx-auto
 					#Filter.collapse.multi-collapse
@@ -68,6 +68,9 @@ html
 								br
 
 								input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
+				
+					button#Submit.btn.btn-success.btn-block.btn-lg(type='button', onclick='', name='filterSort') Apply
+
 
 
 			
