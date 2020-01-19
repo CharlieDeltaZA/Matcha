@@ -48,7 +48,7 @@ router.get('/', (req, res, next) => {
 		// console.log(`Order = ${req.session.sortOrder}`);
 		if (!userOrientation || !userGender)
 		res.redirect('/user/account');
-		var userArray = DB.get_matches(userOrientation, userGender, req.session.user, userAge, req.session.ageDiff, req.session.sortType, req.session.sortType);
+		var userArray = DB.get_matches(userOrientation, userGender, req.session.user, userAge, req.session.ageDiff, req.session.minFame);
 		userArray.then( function(data1) {
 			if (!data1[0])
 				arrayExists = 0;
@@ -74,7 +74,9 @@ router.get('/', (req, res, next) => {
 				user: (req.session.user === undefined ? "Username" : req.session.user),
 				userArray: data1,
 				userLogged: (req.session.user === undefined ? false : true),
-				arrayExists: arrayExists
+				arrayExists: arrayExists,
+				maxDist: +req.session.maxDist,
+				maxDistEntered: req.session.maxDist ? 1 : 0
 			});
 		})
 	})
@@ -85,8 +87,16 @@ router.post('/', (req, res, next) => {
 		req.session.sortType = req.body.sortType;
 	if (req.body.ageDiff)
 		req.session.ageDiff = req.body.ageDiff;
+	else
+		req.session.ageDiff = undefined;
 	if (req.body.minFame)
 		req.session.minFame = req.body.minFame;
+	else
+		req.session.minFame = undefined;
+	if (req.body.maxDist)
+		req.session.maxDist = req.body.maxDist;
+	else
+		req.session.maxDist = undefined;
 	res.json('yes');
 });
 

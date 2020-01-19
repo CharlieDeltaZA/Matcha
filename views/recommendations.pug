@@ -33,13 +33,13 @@ html
 									input#FameUp(type='radio', name='radio' value="FameUp")
 									label(for='FameUp') Fame, ascending
 								.funkyradio-success
-									input#FameDown(type='radio', name='radio' value="FameDown")
+									input#FameDown(type='radio', name='radio', value="FameDown")
 									label(for='FameDown') Fame, descending
 								.funkyradio-success
-									input#Close(type='radio', name='radio' value="Closer")
+									input#Close(type='radio', name='radio', value="Closer")
 									label(for='Close') Closer
 								.funkyradio-success
-									input#Far(type='radio', name='radio' value="Further")
+									input#Far(type='radio', name='radio', value="Further")
 									label(for='Far') Farther
 								//- br
 								//- input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
@@ -50,15 +50,14 @@ html
 							.container
 								h6 Filter By:
 								hr
-
-								small Minimum fame
-									input#minFame(type='text')
-
-								small Minimum age range
-									input#ageDiff(type='text')
-
-								small Minimum distance range
-									input#DistanceDiff(type='text')
+								//- small Minimum fame
+								input#minFame.form-control(type='text', placeholder='Minimum Fame', name='fameMin')
+								br
+								//- small Minimum age range
+								input#ageDiff.form-control(type='text', placeholder='Minimum Age', name='ageDiff')
+								br
+								//- small Minimum distance range
+								input#DistanceDiff.form-control(type='text', placeholder='Minimum Distance', name='DistanceDiff')
 								br
 
 								input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
@@ -74,29 +73,55 @@ html
 					//- start of loop
 					if arrayExists
 						each val in userArray
-							.col-lg-4.col-md-6.col-sm
-								.container.my-4
-									.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
-										//- Below 'a' to be updated with a var, to echo out username to take to profile on click
-										//- a(href='/user/profile/VAR') 
-										a(href="http://localhost:8080/user/profile/"+val.username) 
-										if val.distance == 9999
-											p Distance = unknown
-										else	
-											p Distance = #{val.distance}
-										p Fame = #{val.fame}
-											//- can probs remove the style from here
-											img.img-fluid(src=val.userImage, alt='User Profile Image', style='width: 300px; height: 300px')
-										.card-body.mbg-light-grey
-											//- below 'h5' to be updated with the user's full name and surname, from vars, during loop
-											//- h5.card-title #{userName} #{userSurname}
-											h5.card-title #{val.userFirstName} #{val.userLastName}
-											.row.mx-auto
-												//- below buttons need proper like and dislike functions
-												button.btn.btn-success.w-50(value=val.username, onclick='likeUser(this.value)')
-													i.fa.fa-heart
-												button.btn.btn-danger.w-50(value=val.username, onclick='dislikeUser(this.value)')
-													i.fa.fa-thumbs-down
+							if maxDistEntered
+								if (val.distance < maxDist)
+									.col-lg-4.col-md-6.col-sm
+										.container.my-4
+											.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
+												//- Below 'a' to be updated with a var, to echo out username to take to profile on click
+												//- a(href='/user/profile/VAR') 
+												if val.distance == 9999
+													p Distance = unknown
+												else	
+													p Distance = #{val.distance}
+												p Fame = #{val.fame}
+													//- can probs remove the style from here
+												a(href="http://localhost:8080/user/profile/"+val.username) 
+													img.img-fluid(src=val.userImage, alt='User Profile Image', style='width: 300px; height: 300px')
+												.card-body.mbg-light-grey
+													//- below 'h5' to be updated with the user's full name and surname, from vars, during loop
+													//- h5.card-title #{userName} #{userSurname}
+													h5.card-title #{val.userFirstName} #{val.userLastName}
+													.row.mx-auto
+														//- below buttons need proper like and dislike functions
+														button.btn.btn-success.w-50(value=val.username, onclick='likeUser(this.value)')
+															i.fa.fa-heart
+														button.btn.btn-danger.w-50(value=val.username, onclick='dislikeUser(this.value)')
+															i.fa.fa-thumbs-down
+							else
+								.col-lg-4.col-md-6.col-sm
+									.container.my-4
+										.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
+											//- Below 'a' to be updated with a var, to echo out username to take to profile on click
+											//- a(href='/user/profile/VAR') 
+											if val.distance == 9999
+												p Distance = unknown
+											else	
+												p Distance = #{val.distance}
+											p Fame = #{val.fame}
+												//- can probs remove the style from here
+											a(href="http://localhost:8080/user/profile/"+val.username) 
+												img.img-fluid(src=val.userImage, alt='User Profile Image', style='width: 300px; height: 300px')
+											.card-body.mbg-light-grey
+												//- below 'h5' to be updated with the user's full name and surname, from vars, during loop
+												//- h5.card-title #{userName} #{userSurname}
+												h5.card-title #{val.userFirstName} #{val.userLastName}
+												.row.mx-auto
+													//- below buttons need proper like and dislike functions
+													button.btn.btn-success.w-50(value=val.username, onclick='likeUser(this.value)')
+														i.fa.fa-heart
+													button.btn.btn-danger.w-50(value=val.username, onclick='dislikeUser(this.value)')
+														i.fa.fa-thumbs-down
 
 		script(src='/recommendations.js')
 		include js_includes.pug

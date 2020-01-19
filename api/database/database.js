@@ -123,8 +123,8 @@ class Database {
 			var ageMin = 0;
 			var ageMax = 100;
 			if (ageDiff && userAge) {
-				ageMin = userAge - ageDiff;
-				ageMax = userAge + ageDiff;
+				ageMin = userAge - +ageDiff;
+				ageMax = userAge + +ageDiff;
 			}
 			if (!minFame)
 				minFame = 0;
