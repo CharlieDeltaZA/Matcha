@@ -13,21 +13,21 @@ function toRad(Value)
 {
 	return Value * Math.PI / 180;
 }
-function deg2rad(deg) {
-	return deg * (Math.PI/180)
-}
 
-function sortByDistance(lat1, lon1, lat2, lon2) {
-	var R = 6371; // Radius of the earth in km
-	var dLat = deg2rad(lat2-lat1);  // deg2rad below
-	var dLon = deg2rad(lon2-lon1); 
-	var a = 
-	Math.sin(dLat/2) * Math.sin(dLat/2) +
-	Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-	Math.sin(dLon/2) * Math.sin(dLon/2); 
+function appendDistance(user1, user2) {
+	if (!user2.userLocationlat || !user2.userLocationlng)
+		return (9999);
+	var R = 6371; // km
+	var dLat = toRad(user2.userLocationlat - user1.userLocationlat);
+	var dLon = toRad(user2.userLocationlng - user1.userLocationlng);
+	var lat1 = toRad(user1.userLocationlat);
+	var lat2 = toRad(user2.userLocationlat);
+
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
 	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-	var d = R * c; // Distance in km
-	return (d);
+	var d = R * c;
+	// console.log(d);
+	return d.toFixed(2);
 }
 
 router.get('/', (req, res, next) => {
@@ -43,15 +43,32 @@ router.get('/', (req, res, next) => {
 		var userGender = data[0].userGender;
 		var arrayExists = 1;
 		var userAge = data[0].userAge;
+
+		// console.log(`Type = ${req.session.sortType}`);
+		// console.log(`Order = ${req.session.sortOrder}`);
 		if (!userOrientation || !userGender)
-			res.redirect('/user/account');
-		console.log(`Agediff = ${req.body.ageDiff}`);
-		var userArray = DB.get_matches(userOrientation, userGender, req.session.user, userAge, req.body.ageDiff);
+		res.redirect('/user/account');
+		var userArray = DB.get_matches(userOrientation, userGender, req.session.user, userAge, req.session.ageDiff, req.session.sortType, req.session.sortType);
 		userArray.then( function(data1) {
-			// console.log(data);
 			if (!data1[0])
 				arrayExists = 0;
-			sortByDistance(data[0].userLocationlat, data[0].userLocationlng, data1[0].userLocationlat, data1[0].userLocationlng);
+			else
+				data1.forEach(element => {
+					element.distance = appendDistance(data[0], element);
+					element.fame = element.userLikes - element.userDislikes;
+				});
+			if (req.session.sortType == 'Distance') {
+				if (req.session.sortOrder == 'ASC') {
+					data1 = data1.sort(function (a, b) {
+						return a.distance - b.distance;
+					});
+				} else {
+					data1 = data1.sort(function (a, b) {
+						return b.distance - a.distance;
+					});
+				}
+			}
+			// appendDistance(data[0], data1[0]);
 			res.render('recommendations', {
 				title:'Recommendations',
 				user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -64,8 +81,13 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-	console.log(req.body.ageDiff);
-	res.redirect("/recommendations");
+	if (req.body.sortType)
+		req.session.sortType = req.body.sortType;
+	if (req.body.ageDiff)
+		req.session.ageDiff = req.body.ageDiff;
+	if (req.body.minFame)
+		req.session.minFame = req.body.minFame;
+	res.json('yes');
 });
 
 module.exports = router;

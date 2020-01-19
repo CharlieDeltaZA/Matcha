@@ -118,70 +118,67 @@ class Database {
 
 	
 
-	get_matches(userOrientation, userGender, username, userAge, ageDiff, ordered, order) {
+	get_matches(userOrientation, userGender, username, userAge, ageDiff, minFame) {
 		return new Promise ( (resolve, reject) => { 			
 			var ageMin = 0;
 			var ageMax = 100;
-			if (!order || !ordered)
-			{
-				var ordered = 'userAge';
-				var order = 'DESC';
-			}
 			if (ageDiff && userAge) {
 				ageMin = userAge - ageDiff;
 				ageMax = userAge + ageDiff;
 			}
+			if (!minFame)
+				minFame = 0;
 			var sql;
 			if (userOrientation == 'bi') {
 				if (userGender == "Female")
 					sql = `
 					SELECT * FROM users
 					WHERE
-					userOrientation = 'bi' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax}
+					userOrientation = 'bi' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} AND userFame >= ${minFame}
 					OR
-					userOrientation = 'hetero' AND userGender = 'Male' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax}
+					userOrientation = 'hetero' AND userGender = 'Male' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} AND userFame >= ${minFame}
 					OR
-					userOrientation = 'homo' AND userGender = 'Female' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} ORDER BY ${ordered} ${order}`;
+					userOrientation = 'homo' AND userGender = 'Female' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} AND userFame >= ${minFame}`;
 				else
 					sql = `
 					SELECT * FROM users
 					WHERE
-					userOrientation = 'bi' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax}
+					userOrientation = 'bi' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} AND userFame > ${minFame}
 					OR
-					userOrientation = 'hetero' AND userGender = 'Female' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax}
+					userOrientation = 'hetero' AND userGender = 'Female' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} AND userFame >= ${minFame}
 					OR
-					userOrientation = 'homo' AND userGender = 'Male' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} ORDER BY ${ordered} ${order}`;
+					userOrientation = 'homo' AND userGender = 'Male' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} AND userFame >= ${minFame}`;
 			} else if (userOrientation == 'hetero') {
 				if (userGender == 'Female')
 					sql = `
 					SELECT * FROM users
 					WHERE
-					userOrientation = 'bi' AND userGender = 'Male' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax}
+					userOrientation = 'bi' AND userGender = 'Male' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} AND userFame >= ${minFame}
 					OR
-					userOrientation = 'hetero' AND userGender = 'Male' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} ORDER BY ${ordered} ${order}`
+					userOrientation = 'hetero' AND userGender = 'Male' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} AND userFame >= ${minFame}`
 				else
 					sql = `
 					SELECT * FROM users
 					WHERE
-					userOrientation = 'bi' AND userGender = 'Female' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax}
+					userOrientation = 'bi' AND userGender = 'Female' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} AND userFame >= ${minFame}
 					OR
-					userOrientation = 'hetero' AND userGender = 'Female' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} ORDER BY ${ordered} ${order}`
+					userOrientation = 'hetero' AND userGender = 'Female' AND accountComplete = 1 AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} AND userFame >= ${minFame}`
 			}
 			else if (userOrientation == 'homo') {
 				if (userGender == 'Female')
 					sql = `
 					SELECT * FROM users
 					WHERE
-					userOrientation = 'bi' AND userGender = 'Female' AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax}
+					userOrientation = 'bi' AND userGender = 'Female' AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} AND userFame >= ${minFame}
 					OR
-					userOrientation = 'homo' AND userGender = 'Female' AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} ORDER BY ${ordered} ${order}`
+					userOrientation = 'homo' AND userGender = 'Female' AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} AND userFame >= ${minFame}`
 				else
 					sql = `
 					SELECT * FROM users
 					WHERE
-					userOrientation = 'bi' AND userGender = 'Male' AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax}
+					userOrientation = 'bi' AND userGender = 'Male' AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} AND userFame >= ${minFame}
 					OR
-					userOrientation = 'homo' AND userGender = 'Male' AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} ORDER BY ${ordered} ${order}`
+					userOrientation = 'homo' AND userGender = 'Male' AND username != '${username}' AND userAge BETWEEN ${ageMin} AND ${ageMax} AND userFame >= ${minFame}`
 			}
 			let result = this.query(sql);
 			result.then( function (data) {

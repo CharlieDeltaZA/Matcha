@@ -22,24 +22,24 @@ html
 							hr
 							//- .col-md-4
 							//- 	.col-md-6
-							.funkyradio
+							.funkyradio#radio
 								.funkyradio-success
-									input#AgeUp(type='radio', name='radio')
+									input#AgeUp(type='radio', name='radio' value="AgeUp")
 									label(for='AgeUp') Age, ascending
 								.funkyradio-success
-									input#AgeDown(type='radio', name='radio', checked='')
+									input#AgeDown(type='radio', name='radio', checked='checked' value="AgeDown")
 									label(for='AgeDown') Age, descending
 								.funkyradio-success
-									input#FameUp(type='radio', name='radio')
+									input#FameUp(type='radio', name='radio' value="FameUp")
 									label(for='FameUp') Fame, ascending
 								.funkyradio-success
-									input#FameDown(type='radio', name='radio')
+									input#FameDown(type='radio', name='radio' value="FameDown")
 									label(for='FameDown') Fame, descending
 								.funkyradio-success
-									input#Close(type='radio', name='radio')
+									input#Close(type='radio', name='radio' value="Closer")
 									label(for='Close') Closer
 								.funkyradio-success
-									input#Far(type='radio', name='radio')
+									input#Far(type='radio', name='radio' value="Further")
 									label(for='Far') Farther
 								//- br
 								//- input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
@@ -51,25 +51,19 @@ html
 								h6 Filter By:
 								hr
 
-								small Minimum fame range
-								.range
-									input(type='range', name='range', min='1', max='100', value='50', onchange='range.value=value')
-									output#range 50
+								small Minimum fame
+									input#fameMin(type='text')
 
 								small Minimum age range
-								.range
-									input(type='range', name='range', min='1', max='100', value='50', onchange='rangePrimary.value=value')
-									output#rangePrimary 50
+									input#ageDiff(type='text')
 
 								small Minimum distance range
-								.range
-									input(type='range', name='range', min='1', max='100', value='50', onchange='rangeSuccess.value=value')
-									output#rangeSuccess 50
+									input#DistanceDiff(type='text')
 								br
 
 								input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
 				
-					button#Submit.btn.btn-success.btn-block.btn-lg(type='button', onclick='', name='filterSort') Apply
+					button#Submit.btn.btn-success.btn-block.btn-lg(type='button', onclick='sendParams();', name='filterSort') Apply
 
 
 
@@ -86,6 +80,11 @@ html
 										//- Below 'a' to be updated with a var, to echo out username to take to profile on click
 										//- a(href='/user/profile/VAR') 
 										a(href="http://localhost:8080/user/profile/"+val.username) 
+										if val.distance == 9999
+											p Distance = unknown
+										else	
+											p Distance = #{val.distance}
+										p Fame = #{val.fame}
 											//- can probs remove the style from here
 											img.img-fluid(src=val.userImage, alt='User Profile Image', style='width: 300px; height: 300px')
 										.card-body.mbg-light-grey
@@ -99,69 +98,6 @@ html
 												button.btn.btn-danger.w-50(value=val.username, onclick='dislikeUser(this.value)')
 													i.fa.fa-thumbs-down
 
-
-					//- end of loop
-					//- BELOW : Extra cards to be commented out and killed later
-					//- .col-lg-4.col-md-6.col-sm
-					//- 	.container.my-4
-					//- 		.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px;min-height: 340px;')
-					//- 			a(href='#')
-					//- 				img.img-fluid(src='/images2.jpeg', alt='...', style='width: 300px; height: 300px')
-					//- 			.card-body.mbg-light-grey
-					//- 				h5.card-title John
-					//- 				.row.mx-auto
-					//- 					button.btn.btn-success.w-50(value=value, onclick='deleteImage(this.value)')
-					//- 						i.fa.fa-heart
-					//- 					button.btn.btn-danger.w-50(value=value, onclick='deleteImage(this.value)')
-					//- 						i.fa.fa-thumbs-down
-					//- .col-lg-4.col-md-6.col-sm
-					//- 	.container.my-4
-					//- 		.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
-					//- 			a(href='#')
-					//- 				img.img-fluid(src='/images3.jpg', alt='...', style='width: 300px; height: 300px;')
-					//- 			.card-body.mbg-light-grey
-					//- 				h5.card-title Tom
-					//- 				.row.mx-auto
-					//- 					button.btn.btn-success.w-50(value=value, onclick='deleteImage(this.value)')
-					//- 						i.fa.fa-heart
-					//- 					button.btn.btn-danger.w-50(value=value, onclick='deleteImage(this.value)')
-					//- 						i.fa.fa-thumbs-down
-					//- .col-lg-4.col-md-6.col-sm
-					//- 	.container.my-4
-					//- 		.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
-					//- 			a(href='#')
-					//- 				img.img-fluid(src='/images.png', alt='...', style='width: 300px; height: 300px;')
-					//- 			.card-body.mbg-light-grey
-					//- 				h5.card-title Zed
-					//- 				.row.mx-auto
-					//- 					button.btn.btn-success.w-50(value=value, onclick='deleteImage(this.value)')
-					//- 						i.fa.fa-heart
-					//- 					button.btn.btn-danger.w-50(value=value, onclick='deleteImage(this.value)')
-					//- 						i.fa.fa-thumbs-down
-					//- .col-lg-4.col-md-6.col-sm
-					//- 	.container.my-4
-					//- 		.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
-					//- 			a(href='#')
-					//- 				img.img-fluid(src='/images3.jpg', alt='...', style='width: 300px; height: 300px;')
-					//- 			.card-body.mbg-light-grey
-					//- 				h5.card-title Tim
-					//- 				.row.mx-auto
-					//- 					button.btn.btn-success.w-50(value=value, onclick='deleteImage(this.value)')
-					//- 						i.fa.fa-heart
-					//- 					button.btn.btn-danger.w-50(value=value, onclick='deleteImage(this.value)')
-					//- 						i.fa.fa-thumbs-down
-					//- .col-lg-4.col-md-6.col-sm
-					//- 	.container.my-4
-					//- 		.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
-					//- 			a(href='#')
-					//- 				img.img-fluid(src='/images2.jpeg', alt='...', style='width: 300px; height: 300px;')
-					//- 			.card-body.mbg-light-grey
-					//- 				h5.card-title Problems
-					//- 				.row.mx-auto
-					//- 					button.btn.btn-success.w-50(value=value, onclick='deleteImage(this.value)')
-					//- 						i.fa.fa-heart
-					//- 					button.btn.btn-danger.w-50(value=value, onclick='deleteImage(this.value)')
-					//- 						i.fa.fa-thumbs-down
-
+		script(src='/recommendations.js')
 		include js_includes.pug
 		include footer.pug
