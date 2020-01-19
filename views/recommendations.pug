@@ -33,13 +33,13 @@ html
 									input#FameUp(type='radio', name='radio' value="FameUp")
 									label(for='FameUp') Fame, ascending
 								.funkyradio-success
-									input#FameDown(type='radio', name='radio' value="FameDown")
+									input#FameDown(type='radio', name='radio', value="FameDown")
 									label(for='FameDown') Fame, descending
 								.funkyradio-success
-									input#Close(type='radio', name='radio' value="Closer")
+									input#Close(type='radio', name='radio', value="Closer")
 									label(for='Close') Closer
 								.funkyradio-success
-									input#Far(type='radio', name='radio' value="Further")
+									input#Far(type='radio', name='radio', value="Further")
 									label(for='Far') Farther
 								//- br
 								//- input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
@@ -51,14 +51,14 @@ html
 								h6 Filter By:
 								hr
 
-								small Minimum fame
-									input#fameMin(type='text')
-
-								small Minimum age range
-									input#ageDiff(type='text')
-
-								small Minimum distance range
-									input#DistanceDiff(type='text')
+								//- small Minimum fame
+								input#fameMin.form-control(type='text', placeholder='Minimum Fame', name='fameMin')
+								br
+								//- small Minimum age range
+								input#ageDiff.form-control(type='text', placeholder='Minimum Age', name='ageDiff')
+								br
+								//- small Minimum distance range
+								input#DistanceDiff.form-control(type='text', placeholder='Minimum Distance', name='DistanceDiff')
 								br
 
 								input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
