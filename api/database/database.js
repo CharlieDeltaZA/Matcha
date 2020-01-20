@@ -128,6 +128,7 @@ class Database {
 			}
 			if (!minFame)
 				minFame = 0;
+			console.log(`Fame: ${minFame}, ageDiff: ${ageMin}-${ageMax}`);
 			var sql;
 			if (userOrientation == 'bi') {
 				if (userGender == "Female")
