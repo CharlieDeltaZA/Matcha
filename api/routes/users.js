@@ -148,6 +148,7 @@ router.get('/profile/:user?', (req, res, next) => {
 				userImage: data[0].userImage,
 				imageExists: data[0].userImage ? 1 : 0,
 				userOrientation: data[0].userOrientation,
+				userInterests: 0,
 				userBio: data[0].userBiography,
 				userLikes: data[0].userLikes,
 				userLat: data[0].userLat,
