@@ -10,45 +10,12 @@ html
 		h1.text-center.my-3.mt-white.display-3 Profile Views
 		.container(style='max-width: 1100px;min-width:360px;')
 			.card
-				.row
-					//- start of loop
-					.col-lg-4.col-md-6.col-sm
-						.container.my-4
-							.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
-								//- Below 'a' to be updated with a var, to echo out username to take to profile on click
-								//- a(href='/user/profile/VAR') 
-								a(href='#')
-									img.img-fluid(src='/images.png', alt='User Image', style='width: 300px; height: 300px')
-								.card-body.mbg-light-grey
-									//- below 'h5' to be updated with the user's full name and surname, from vars, during loop
-									//- h5.card-title #{userName} #{userSurname}
-									h5.card-title Till
-					//- end of loop
-
-					//- BELOW : Extra cards to be commented out and killed later
-					.col-lg-4.col-md-6.col-sm
-						.container.my-4
-							.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px;min-height: 340px;')
-								a(href='#')
-									img.img-fluid(src='/images2.jpeg', alt='...', style='width: 300px; height: 300px')
-								.card-body.mbg-light-grey
-									h5.card-title John
-									
-					.col-lg-4.col-md-6.col-sm
-						.container.my-4
-							.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
-								a(href='#')
-									img.img-fluid(src='/images3.jpg', alt='...', style='width: 300px; height: 300px;')
-								.card-body.mbg-light-grey
-									h5.card-title Tom
-									
-					.col-lg-4.col-md-6.col-sm
-						.container.my-4
-							.card.text-black.mx-auto.mb-5(style='max-width: 300px;min-width: 300px; min-height: 340px;')
-								a(href='#')
-									img.img-fluid(src='/images.png', alt='...', style='width: 300px; height: 300px;')
-								.card-body.mbg-light-grey
-									h5.card-title Zed
-
+				a.nav-link(href='#') Till viewed your profile
+				hr
+				a.nav-link(href='#') Bob viewed your profile
+				hr
+				a.nav-link(href='#') Elizabeth viewed your profile
+				hr
+				a.nav-link(href='#') Barnaby viewed your profile
 	include footer.pug
 	include js_includes.pug
