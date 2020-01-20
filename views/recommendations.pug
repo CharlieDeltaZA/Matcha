@@ -85,11 +85,11 @@ html
 											//- h5.card-title #{userName} #{userSurname}
 											h5.card-title #{val.userFirstName} #{val.userLastName}
 											if val.distance == 9999
-												p Distance = unknown
+												p Distance : unknown
 											else	
-												p Distance = #{val.distance}
-											p Fame = #{val.fame}
-											p Age = #{val.userAge}
+												p Distance : #{val.distance}
+											p Fame : #{val.fame}
+											p Age : #{val.userAge}
 											.row.mx-auto
 												//- below buttons need proper like and dislike functions
 												button.btn.btn-success.w-50(value=val.username, onclick='likeUser(this.value)')
@@ -111,11 +111,11 @@ html
 										//- h5.card-title #{userName} #{userSurname}
 										h5.card-title #{val.userFirstName} #{val.userLastName}
 										if val.distance == 9999
-											p Distance = unknown
+											p Distance : unknown
 										else	
-											p Distance = #{val.distance}
-										p Fame = #{val.fame}
-										p Age = #{val.userAge}
+											p Distance : #{val.distance}
+										p Fame : #{val.fame}
+										p Age : #{val.userAge}
 										.row.mx-auto
 											//- below buttons need proper like and dislike functions
 											button.btn.btn-success.w-50(value=val.username, onclick='likeUser(this.value)')
