@@ -3,15 +3,15 @@ html
 		title Matcha | #{title}
 		include header_items.pug
 		link(rel='stylesheet', href='/recommendations.css')
-		script(src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js")
-		script(src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js")
+		//- script(src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js")
+		//- script(src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js")
 	body
 		include navbar.pug
 		
 		.container.text-center
 			h1.mt-white.text-center.mt-5 Recommendations
 
-		.container.my-3.mx-auto(style='max-width: 1100px;')
+		.container.my-3.mx-auto(style="max-width:750px")
 			button#SortFilter.btn.btn-info.btn-block(type='button', data-toggle="collapse", data-target=".multi-collapse", aria-expanded="false", aria-controls="Filter Sort") Sort/Filter
 			//- .row.mx-auto
 			//- 	button#SortBtn.btn.btn-info(type='button', data-toggle="collapse", data-target="#Sort", aria-expanded="false", aria-controls="Sort") Sort
@@ -24,13 +24,13 @@ html
 							hr
 							#radio.funkyradio
 								.funkyradio-success
-									input#AgeUp(type='radio', name='radio' value="AgeUp")
+									input#AgeUp(type='radio', name='radio', value="AgeUp")
 									label(for='AgeUp') Age, ascending
 								.funkyradio-success
-									input#AgeDown(type='radio', name='radio', checked='checked' value="AgeDown")
+									input#AgeDown(type='radio', name='radio', value="AgeDown")
 									label(for='AgeDown') Age, descending
 								.funkyradio-success
-									input#FameUp(type='radio', name='radio' value="FameUp")
+									input#FameUp(type='radio', name='radio', value="FameUp")
 									label(for='FameUp') Fame, ascending
 								.funkyradio-success
 									input#FameDown(type='radio', name='radio', value="FameDown")
@@ -63,16 +63,35 @@ html
 						button#Submit.btn.btn-success.btn-block.btn-lg(type='button', onclick='sendParams();', name='filterSort') Apply
 
 
-		.card
-			.grid
-				if arrayExists
-					each val in userArray
-						if maxDistEntered
-							if (val.distance < maxDist)
+			.container(style="max-width:750px")
+				.grid
+					if arrayExists
+						each val in userArray
+							if maxDistEntered
+								if (val.distance < maxDist)
+									.grid-item
+										.card.text-black
+											a(href="http://localhost:8080/user/profile/"+val.username) 
+												img.card-img-top.img-fluid(src=val.userImage, alt='User Profile Image')
+											.card-body.mbg-light-grey
+												h5.card-title #{val.userFirstName} #{val.userLastName}
+												if val.distance == 9999
+													p Distance : unknown
+												else	
+													p Distance : #{val.distance}km
+												p Fame : #{val.fame}
+												p Age : #{val.userAge}
+												.row.mx-auto
+													//- below buttons need proper like and dislike functions
+													button.btn.btn-success.w-50(value=val.username, onclick='likeUser(this.value)')
+														i.fa.fa-heart
+													button.btn.btn-danger.w-50(value=val.username, onclick='dislikeUser(this.value)')
+														i.fa.fa-thumbs-down
+							else
 								.grid-item
 									.card.text-black
 										a(href="http://localhost:8080/user/profile/"+val.username) 
-											img.card-img-top(src=val.userImage, alt='User Profile Image')
+											img.card-img-top.img-fluid(src=val.userImage, alt='User Profile Image')
 										.card-body.mbg-light-grey
 											h5.card-title #{val.userFirstName} #{val.userLastName}
 											if val.distance == 9999
@@ -87,25 +106,6 @@ html
 													i.fa.fa-heart
 												button.btn.btn-danger.w-50(value=val.username, onclick='dislikeUser(this.value)')
 													i.fa.fa-thumbs-down
-						else
-							.grid-item
-								.card.text-black
-									a(href="http://localhost:8080/user/profile/"+val.username) 
-										img.card-img-top(src=val.userImage, alt='User Profile Image')
-									.card-body.mbg-light-grey
-										h5.card-title #{val.userFirstName} #{val.userLastName}
-										if val.distance == 9999
-											p Distance : unknown
-										else	
-											p Distance : #{val.distance}km
-										p Fame : #{val.fame}
-										p Age : #{val.userAge}
-										.row.mx-auto
-											//- below buttons need proper like and dislike functions
-											button.btn.btn-success.w-50(value=val.username, onclick='likeUser(this.value)')
-												i.fa.fa-heart
-											button.btn.btn-danger.w-50(value=val.username, onclick='dislikeUser(this.value)')
-												i.fa.fa-thumbs-down
 
 
 			//- .container(style='max-width: 1100px;min-width:320px;')
@@ -159,10 +159,10 @@ html
 
 		script(src='/recommendations.js')
 		include js_includes.pug
-		script.
-			var $grid = $(".grid").ImagesLoaded(function() {
-				$grid.masonry({
-					itemSelector: ".grid-item"
-				});
-			});
+		//- script.
+		//- 	var $grid = $(".grid").imagesLoaded(function() {
+		//- 		$grid.masonry({
+		//- 			itemSelector: ".grid-item"
+		//- 		});
+		//- 	});
 		include footer.pug

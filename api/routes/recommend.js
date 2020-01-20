@@ -80,7 +80,7 @@ router.get('/', (req, res, next) => {
 				}
 				else if ((req.session.sortType == 'Closer')) {
 					data1 = data1.sort(function (a, b) {
-						return b.distance - a.distance;
+						return a.distance - b.distance;
 					});
 				}
 				else if ((req.session.sortType == 'Further')) {
