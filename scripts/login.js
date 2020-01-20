@@ -36,3 +36,9 @@ $("input[type='text'], input[type='password'], input[type='email']").on("keyup",
 	else
 		$("#submit").prop("disabled", true);
 });
+
+$("#userPass").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#submit").click();
+    }
+});
