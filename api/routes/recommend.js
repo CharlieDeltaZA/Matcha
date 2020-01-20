@@ -18,7 +18,7 @@ function appendDistance(user1, user2) {
 	if (!user2.userLocationlat || !user2.userLocationlng)
 		return (9999);
 	var R = 6371; // km
-	var dLat = toRad(user2.userLocationlat - user1.userLocationlat);
+	var dLat = toRad(user2.userLocationlat - user1.userLocationlat); 
 	var dLon = toRad(user2.userLocationlng - user1.userLocationlng);
 	var lat1 = toRad(user1.userLocationlat);
 	var lat2 = toRad(user2.userLocationlat);
@@ -43,9 +43,7 @@ router.get('/', (req, res, next) => {
 		var userGender = data[0].userGender;
 		var arrayExists = 1;
 		var userAge = data[0].userAge;
-
-		// console.log(`Type = ${req.session.sortType}`);
-		// console.log(`Order = ${req.session.sortOrder}`);
+		
 		if (!userOrientation || !userGender)
 		res.redirect('/user/account');
 		var userArray = DB.get_matches(userOrientation, userGender, req.session.user, userAge, req.session.ageDiff, req.session.minFame);
@@ -57,12 +55,35 @@ router.get('/', (req, res, next) => {
 					element.distance = appendDistance(data[0], element);
 					element.fame = element.userLikes - element.userDislikes;
 				});
-			if (req.session.sortType == 'Distance') {
-				if (req.session.sortOrder == 'ASC') {
+			if (req.session.sortType)
+				{
+				console.log(`sort = ${req.session.sortType}`);
+				if (req.session.sortType == 'AgeUp') {
+					data1 = data1.sort(function (a, b) {
+						return a.userAge - b.userAge;
+					});
+				}
+				else if ((req.session.sortType == 'AgeDown')) {
+					data1 = data1.sort(function (a, b) {
+						return b.userAge - a.userAge;
+					});
+				}
+				else if ((req.session.sortType == 'FameUp')) {
+					data1 = data1.sort(function (a, b) {
+						return b.userFame - a.userFame;
+					});
+				}
+				else if ((req.session.sortType == 'FameDown')) {
+					data1 = data1.sort(function (a, b) {
+						return b.userFame - a.userFame;
+					});
+				}
+				else if ((req.session.sortType == 'Closer')) {
 					data1 = data1.sort(function (a, b) {
 						return a.distance - b.distance;
 					});
-				} else {
+				}
+				else if ((req.session.sortType == 'Further')) {
 					data1 = data1.sort(function (a, b) {
 						return b.distance - a.distance;
 					});
@@ -83,6 +104,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
+	// console.log(`sort = ${req.body.sortType}`);
 	if (req.body.sortType)
 		req.session.sortType = req.body.sortType;
 	if (req.body.ageDiff)

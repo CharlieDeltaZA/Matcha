@@ -3,11 +3,13 @@ function sendParams() {
 		// sortType: sortType,
 		ageDiff: 100,
 		minFame: 0,
-		maxDist: 100
+		maxDist: 100,
+		sortType: 0
 	}
 	form.ageDiff = document.getElementById('ageDiff').value;
 	form.minFame = document.getElementById('minFame').value;
 	form.maxDist = document.getElementById('DistanceDiff').value;
+
 	// form.ageDiff = document.getElementById("ageDiff").value();
 	// form.minFame = document.getElementById("minFame").value();
 	// console.log(`minFame: ${form.minFame}`);
@@ -15,6 +17,7 @@ function sendParams() {
 	// console.log(`maxDist: ${form.maxDist}`);
 	// var n = $('#radio input:radio:checked').val();
 	// console.log(`sort = ${n}`);
+	form.sortType = $('#radio input:radio:checked').val();
 
 	$.ajax({
 		type: "POST", 
