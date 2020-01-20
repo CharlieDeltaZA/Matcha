@@ -74,7 +74,7 @@ html
 											a(href="http://localhost:8080/user/profile/"+val.username) 
 												img.card-img-top.img-fluid(src=val.userImage, alt='User Profile Image')
 											.card-body.mbg-light-grey
-												h5.card-title #{val.userFirstName} #{val.userLastName}
+												h5.card-title.text-capitalize #{val.userFirstName} #{val.userLastName}
 												if val.distance == 9999
 													p Distance : unknown
 												else	
@@ -93,7 +93,7 @@ html
 										a(href="http://localhost:8080/user/profile/"+val.username) 
 											img.card-img-top.img-fluid(src=val.userImage, alt='User Profile Image')
 										.card-body.mbg-light-grey
-											h5.card-title #{val.userFirstName} #{val.userLastName}
+											h5.card-title.text-capitalize #{val.userFirstName} #{val.userLastName}
 											if val.distance == 9999
 												p Distance : unknown
 											else	
