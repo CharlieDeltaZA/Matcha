@@ -101,7 +101,7 @@ router.get('/profile/:user?', (req, res, next) => {
 				});
 				if (req.params.user !== req.session.user)
 					DB.view_profile(req.params.user, req.session.user);
-					let interests = DB.query(`SELECT * FROM interests WHERE user=${req.params.user}`)
+					let interests = DB.query(`SELECT * FROM interests WHERE user='${req.params.user}'`)
 					interests.then(function (data1) {
 						res.render('profile', {
 							title:'Profile',

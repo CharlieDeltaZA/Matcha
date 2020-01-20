@@ -43,7 +43,7 @@ router.get('/', (req, res) => {
 			newData.forEach(element => {
 				imagearray.push(element.image);
 			});
-			let interests = DB.query(`SELECT * FROM interests WHERE user=${req.session.user}`)
+			let interests = DB.query(`SELECT * FROM interests WHERE user='${req.session.user}'`)
 			interests.then( function(data1) {
 				res.render('account', {
 					title:'Account',
