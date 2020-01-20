@@ -101,26 +101,31 @@ router.get('/profile/:user?', (req, res, next) => {
 				});
 				if (req.params.user !== req.session.user)
 					DB.view_profile(req.params.user, req.session.user);
-				res.render('profile', {
-					title:'Profile',
-					user: (req.session.user === undefined ? "Username" : req.session.user),
-					username: req.session.user,
-					userFirstName: data[0].userFirstName,
-					userLastName: data[0].userLastName,
-					userGender: data[0].userGender,
-					userFame: data[0].userFame,
-					userImage: data[0].userImage,
-					imageArray: imagearray,
-					imageExists: data[0].userImage ? 1 : 0,
-					userOrientation: data[0].userOrientation,
-					userBio: data[0].userBiography,
-					userLikes: data[0].userLikes,
-					userLat: data[0].userLat,
-					userLng: data[0].userLng,
-					userAge: data[0].userAge,
-					userLogged: (req.session.user === undefined ? false : true),
-					sameUser: 0
-				})
+					let interests = DB.query(`SELECT * FROM interests WHERE user=${req.params.user}`)
+					interests.then(function (data1) {
+						res.render('profile', {
+							title:'Profile',
+							user: (req.session.user === undefined ? "Username" : req.session.user),
+							username: req.session.user,
+							userFirstName: data[0].userFirstName,
+							userLastName: data[0].userLastName,
+							userGender: data[0].userGender,
+							userFame: data[0].userFame,
+							userImage: data[0].userImage,
+							imageArray: imagearray,
+							imageExists: data[0].userImage ? 1 : 0,
+							userOrientation: data[0].userOrientation,
+							userBio: data[0].userBiography,
+							userLikes: data[0].userLikes,
+							userInterests: data1,
+							userLat: data[0].userLat,
+							userLng: data[0].userLng,
+							userAge: data[0].userAge,
+							userLogged: (req.session.user === undefined ? false : true),
+							sameUser: 0
+						})
+					}, function(err) {
+					})
 			});
 		}, function(err) {
 			res.redirect('/user/error');
