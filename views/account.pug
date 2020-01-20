@@ -74,9 +74,8 @@ html
 
 						hr
 						p.h5 Your current list of interests:
-						span.badge.badge-pill.badge-primary.mx-1 #programs
-						span.badge.badge-pill.badge-primary.mx-1 #memes
-						span.badge.badge-pill.badge-primary.mx-1 #gangweed
+						each val in userInterests
+							span.badge.badge-pill.badge-primary.mx-1 #{val.interest}
 						hr
 
 						button#UpdateAcc.btn.btn-success.btn-block.btn-lg(type='button', onclick='postPublicDetails()', value='account') Update Profile

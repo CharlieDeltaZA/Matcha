@@ -43,24 +43,28 @@ router.get('/', (req, res) => {
 			newData.forEach(element => {
 				imagearray.push(element.image);
 			});
-			res.render('account', {
-				title:'Account',
-				user: (req.session.user === undefined ? "Username" : req.session.user),
-				username: req.session.user,
-				userFirstName: data[0].userFirstName,
-				userLastName: data[0].userLastName,
-				userGender: data[0].userGender,
-				userImage: data[0].userImage,
-				imageArray: imagearray,
-				imageExists: data[0].userImage ? 1 : 0,
-				userOrientation: data[0].userOrientation,
-				userEmail: data[0].userEmail,
-				userBio: data[0].userBiography,
-				userLat: data[0].userLat,
-				userLng: data[0].userLng,
-				age: data[0].userAge,
-				userLogged: (req.session.user === undefined ? false : true)
-			});
+			let interests = DB.query(`SELECT * FROM interests WHERE user=${req.session.user}`)
+			interests.then( function(data1) {
+				res.render('account', {
+					title:'Account',
+					user: (req.session.user === undefined ? "Username" : req.session.user),
+					username: req.session.user,
+					userFirstName: data[0].userFirstName,
+					userLastName: data[0].userLastName,
+					userGender: data[0].userGender,
+					userImage: data[0].userImage,
+					imageArray: imagearray,
+					imageExists: data[0].userImage ? 1 : 0,
+					userOrientation: data[0].userOrientation,
+					userEmail: data[0].userEmail,
+					userBio: data[0].userBiography,
+					userLat: data[0].userLat,
+					userInterests: data1,
+					userLng: data[0].userLng,
+					age: data[0].userAge,
+					userLogged: (req.session.user === undefined ? false : true)
+				});
+			})
 		})
 	});
 });

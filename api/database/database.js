@@ -250,7 +250,23 @@ class Database {
 											sql = mysql.format(sql, inserts);
 											let interests = a.query(sql);
 											interests.then( function(data) {
-												resolve();
+												let sql = `UPDATE friends SET user1=? WHERE user1='${username}'`;
+												inserts = [newUsername];
+												sql = mysql.format(sql, inserts);
+												let friends1 = a.query(sql);
+												friends1.then(function (data) {
+													let sql = `UPDATE friends SET user2=? WHERE user2='${username}'`;
+													inserts = [newUsername];
+													sql = mysql.format(sql, inserts);
+													let friends2 = a.query(sql);
+													friends2.then( function(data) {
+														resolve();
+													}, function (err) {
+														reject(err);
+													})
+												}, function (err) {
+													reject(err);
+												})
 											}, function(err) {
 												reject(err);
 											})
