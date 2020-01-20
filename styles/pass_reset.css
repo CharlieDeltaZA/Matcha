@@ -5,3 +5,7 @@ input[type=text], input[type=password], input[type=email] {
 	color: black;
 	background: #edf0f2;
 }
+
+.errorMsg {
+	color: red;
+}

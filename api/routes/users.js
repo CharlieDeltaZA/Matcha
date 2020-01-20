@@ -239,4 +239,9 @@ router.post('/logout', (req, res, next) => {
 	res.json('Received');
 })
 
+router.post('/forgot_pass', (req, res, next) => {
+	//i summon the cameron to inject thine code to maketh work
+	
+})
+
 module.exports = router;
