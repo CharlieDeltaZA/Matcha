@@ -78,15 +78,13 @@ var setupTables = function setupTables() {
 	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame)
 	
 	VALUES
-	("17","OneSeven@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359558/userImages/fju5dlijo6t3pr99tzjm.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Bob", "Musk", 'hetero', 'Male', 44, 1, 1, 23, 3, 41)
-`);
+	("17","OneSeven@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359558/userImages/fju5dlijo6t3pr99tzjm.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Bob", "Musk", 'hetero', 'Male', 44, 1, 1, 23, 3, 41)`);
 
 	DB.query(`INSERT INTO users
 	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame)
 	
 	VALUES
-	("02","ZeroTwo@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579356468/userImages/tnb86gx1e8gnqkaurl0v.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Emma", "Perkins", 'bi', 'Female', 16, 1, 1, 32, 1, 15)
-	`);
+	("02","ZeroTwo@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579356468/userImages/tnb86gx1e8gnqkaurl0v.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Emma", "Perkins", 'bi', 'Female', 16, 1, 1, 32, 1, 15)	`);
 
 	DB.query(`INSERT INTO users
 	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame)
