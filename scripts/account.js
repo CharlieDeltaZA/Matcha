@@ -254,3 +254,33 @@ function	remove_interest() {
 	});
 	document.getElementById("interestsRemovedPara").innerHTML = "Removed any matching interests";
 }
+
+$("#userInterests").keyup(function(event) {
+    if (event.keyCode === 13) {
+        add_interest();
+    }
+});
+
+$("#removedInterests").keyup(function(event) {
+    if (event.keyCode === 13) {
+        remove_interest();
+    }
+});
+
+$("#userLogin").keyup(function(event) {
+    if (event.keyCode === 13) {
+        change_username();
+    }
+});
+
+$("#userEmail").keyup(function(event) {
+    if (event.keyCode === 13) {
+        change_email();
+    }
+});
+
+$("#userNewPass").keyup(function(event) {
+    if (event.keyCode === 13) {
+        change_password();
+    }
+});
