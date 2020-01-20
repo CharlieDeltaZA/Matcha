@@ -70,7 +70,7 @@ router.get('/', (req, res, next) => {
 				}
 				else if ((req.session.sortType == 'FameUp')) {
 					data1 = data1.sort(function (a, b) {
-						return b.userFame - a.userFame;
+						return a.userFame - b.userFame;
 					});
 				}
 				else if ((req.session.sortType == 'FameDown')) {
