@@ -102,14 +102,14 @@ html
 											h5.card-title.text-capitalize #{val.userFirstName} #{val.userLastName}
 											if val.distance == 9999
 												p
-													i.fa.fa-map-marker.mx-2
+													i.fa.fa-map-marker.mx-2.text-danger
 													|  Distance : unknown
 											else	
 												p
-													i.fa.fa-map-marker.mx-2
+													i.fa.fa-map-marker.mx-2.text-danger
 													|  Distance : #{val.distance}km
 											p
-												i.fa.fa-trophy.mx-2
+												i.fa.fa-trophy.mx-2.text-warning
 												|  Fame : #{val.fame}
 											p
 												i.fa.fa-birthday-cake.mx-2
