@@ -40,8 +40,6 @@ router.get('/', (req, res) => {
 					});
 				}
 			});
-			// result.then( function(data2) {
-			// })
 		});
 	})
 });
