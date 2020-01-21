@@ -10,14 +10,7 @@ html
 		h1.text-center.my-3.mt-white.display-3#heading Profile Likes
 		.container(style='max-width: 900px;min-width:360px;')
 			.card
-				br
-				button.btn.btn-outline.text-left Till liked your profile
-				hr
-				a.nav-link(href='#') Bob liked your profile
-				hr
-				a.nav-link(href='#') Elizabeth liked your profile
-				hr
-				a.nav-link(href='#') Barnaby liked your profile
-				br
+				each val in userList
+					a.nav-link(href='/user/profile/'+val.liker) #{val.liker} liked your profile
 	include footer.pug
 	include js_includes.pug

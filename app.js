@@ -4,13 +4,13 @@ const app = express();
 const database = require('./api/database/database');
 
 // URL handling
+const chatRoutes = require('./api/routes/chat');
 const userRoutes = require('./api/routes/users');
 const searchRoutes = require('./api/routes/search');
 const recommendRoutes = require('./api/routes/recommend');
 const locationRoutes = require('./api/routes/location');
 const notificationRoutes = require('./api/routes/notifications');
 const accountRoutes = require('./api/routes/account');
-const chatRoutes = require('./api/routes/chat');
 const email_handler = require('./api/email');
 
 // Session and DB setup

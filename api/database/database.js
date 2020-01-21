@@ -441,10 +441,19 @@ class Database {
 	}
 
 	view_profile(viewed, viewer) {
-		let sql = `INSERT into views (viewed, viewer, unread) VALUES (?, ?, 1)`
-		let inserts = [viewed, viewer];
+		var a = this;
+		let sql = 'SELECT * FROM views WHERE viewer = ? AND viewed = ?'
+		let inserts = [viewer, viewed];
 		sql = mysql.format(sql, inserts);
-		this.query(sql);
+		let checked = this.query(sql);
+		checked.then( function(data) {
+			if (!data[0]) {
+				let sql = `INSERT into views (viewed, viewer, unread) VALUES (?, ?, 1)`
+				let inserts = [viewed, viewer];
+				sql = mysql.format(sql, inserts);
+				a.query(sql);
+			}
+		})
 	}
 
     close() {

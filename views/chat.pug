@@ -12,64 +12,19 @@ html
 			.messaging
 				.inbox_msg
 					.inbox_people
-						.headind_srch
-							.recent_heading
-								h4 Recent
 						.inbox_chat
-							.chat_list.active_chat
-								.chat_people
-									.chat_img
-										img(src='https://ptetutorials.com/images/user-profile.png', alt='sunil')
-									.chat_ib
-										h5
-											| Sunil Rajput 
-							.chat_list
-								.chat_people
-									.chat_img
-										img(src='https://ptetutorials.com/images/user-profile.png', alt='sunil')
-									.chat_ib
-										h5
-											| Sunil Rajput 
-							.chat_list
-								.chat_people
-									.chat_img
-										img(src='https://ptetutorials.com/images/user-profile.png', alt='sunil')
-									.chat_ib
-										h5
-											| Sunil Rajput 
-							.chat_list
-								.chat_people
-									.chat_img
-										img(src='https://ptetutorials.com/images/user-profile.png', alt='sunil')
-									.chat_ib
-										h5
-											| Sunil Rajput 
-							.chat_list
-								.chat_people
-									.chat_img
-										img(src='https://ptetutorials.com/images/user-profile.png', alt='sunil')
-									.chat_ib
-										h5
-											| Sunil Rajput 
-							.chat_list
-								.chat_people
-									.chat_img
-										img(src='https://ptetutorials.com/images/user-profile.png', alt='sunil')
-									.chat_ib
-										h5
-											| Sunil Rajput 
-							.chat_list
-								.chat_people
-									.chat_img
-										img(src='https://ptetutorials.com/images/user-profile.png', alt='sunil')
-									.chat_ib
-										h5
-											| Sunil Rajput 
+							each user in friendList
+								.chat_list(id=user.liker)
+									.chat_people(onclick="setActive('"+user.liker+"');")
+										.chat_img
+											img(src='https://ptetutorials.com/images/user-profile.png', alt='sunil')
+										.chat_ib
+											h5
+												| #{user.liker}
 					.mesgs
 						.msg_history
 							.incoming_msg
 								.incoming_msg_img
-									img(src='https://ptetutorials.com/images/user-profile.png', alt='sunil')
 								.received_msg
 									.received_withd_msg
 										p
@@ -83,8 +38,6 @@ html
 										| solutions
 									span.time_date  11:01 AM | June 9
 							.incoming_msg
-								.incoming_msg_img
-									img(src='https://ptetutorials.com/images/user-profile.png', alt='sunil')
 								.received_msg
 									.received_withd_msg
 										p Test, which is a new approach to have
@@ -93,49 +46,12 @@ html
 								.sent_msg
 									p Apollo University, Delhi, India Test
 									span.time_date  11:01 AM | Today
-							.incoming_msg
-								.incoming_msg_img
-									img(src='https://ptetutorials.com/images/user-profile.png', alt='sunil')
-								.received_msg
-									.received_withd_msg
-										p
-											| We work directly with our designers and suppliers,
-											| and sell direct to you, which means quality, exclusive
-											| products, at a price anyone can afford.
-										span.time_date  11:01 AM | Today
-							.outgoing_msg
-								.sent_msg
-									p Apollo University, Delhi, India Test
-									span.time_date  11:01 AM | Today
-							.incoming_msg
-								.incoming_msg_img
-									img(src='https://ptetutorials.com/images/user-profile.png', alt='sunil')
-								.received_msg
-									.received_withd_msg
-										p
-											| We work directly with our designers and suppliers,
-											| and sell direct to you, which means quality, exclusive
-											| products, at a price anyone can afford.
-										span.time_date  11:01 AM | Today
-							.outgoing_msg
-								.sent_msg
-									p Apollo University, Delhi, India Test
-									span.time_date  11:01 AM | Today
-							.incoming_msg
-								.incoming_msg_img
-									img(src='https://ptetutorials.com/images/user-profile.png', alt='sunil')
-								.received_msg
-									.received_withd_msg
-										p
-											| We work directly with our designers and suppliers,
-											| and sell direct to you, which means quality, exclusive
-											| products, at a price anyone can afford.
-										span.time_date  11:01 AM | Today
 						.type_msg
 							.input_msg_write
 								input.write_msg(type='text', placeholder='Type a message')
 								button.msg_send_btn(type='button')
 									i.fa.fa-paper-plane-o(aria-hidden='true')
 
+	script(src="/chat.js")
 	include footer.pug
 	include js_includes.pug

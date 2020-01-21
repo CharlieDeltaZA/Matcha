@@ -17,7 +17,7 @@ function toRad(Value)
 function appendDistance(user1, user2) {
 	if (!user2.userLocationlat || !user2.userLocationlng)
 		return (9999);
-	var R = 6371; // km
+	var R = 6371;
 	var dLat = toRad(user2.userLocationlat - user1.userLocationlat); 
 	var dLon = toRad(user2.userLocationlng - user1.userLocationlng);
 	var lat1 = toRad(user1.userLocationlat);
@@ -57,7 +57,6 @@ router.get('/', (req, res, next) => {
 				});
 			if (req.session.sortType)
 				{
-				console.log(`sort = ${req.session.sortType}`);
 				if (req.session.sortType == 'AgeUp') {
 					data1 = data1.sort(function (a, b) {
 						return a.userAge - b.userAge;
@@ -104,7 +103,6 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-	// console.log(`sort = ${req.body.sortType}`);
 	if (req.body.sortType)
 		req.session.sortType = req.body.sortType;
 	if (req.body.ageDiff)
