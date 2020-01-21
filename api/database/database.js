@@ -128,7 +128,6 @@ class Database {
 			}
 			if (!minFame)
 				minFame = 0;
-			console.log(`Fame: ${minFame}, ageDiff: ${ageMin}-${ageMax}`);
 			var sql;
 			if (userOrientation == 'bi') {
 				if (userGender == "Female")
@@ -311,7 +310,6 @@ class Database {
 		return new Promise ( (resolve, reject) => {
 			if (!username || !newUsername)
 			{
-				console.log(`Username: ${username}, newUsername: ${newUsername}`);
 				reject ("Blank input passed to function.");
 			}
 			

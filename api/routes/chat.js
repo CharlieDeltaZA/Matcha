@@ -32,12 +32,35 @@ router.get('/', (req, res) => {
 					data.splice(index, 1);
 				if (index === data.length - 1)
 				{
-					res.render('chat', {
-						title:'Chat Messages',
-						user: (req.session.user === undefined ? "Username" : req.session.user),
-						friendList: data,
-						userLogged: (req.session.user === undefined ? false : true)
-					});
+					if (req.session.chatter)
+					{
+						let sql = `
+						SELECT * FROM messages WHERE receiver = '${req.session.user}' AND sender = '${req.session.chatter}'
+						OR 
+						sender = '${req.session.user}' AND receiver = '${req.session.chatter}'`;
+						let attempt = DB.query(sql);
+						attempt.then( function(messageLog) {
+							console.log(messageLog);
+							res.render('chat', {
+								title:'Chat Messages',
+								user: (req.session.user === undefined ? "Username" : req.session.user),
+								friendList: data,
+								activeChat: req.session.chatter,
+								messages: messageLog,
+								userLogged: (req.session.user === undefined ? false : true)
+							});
+						})
+					}
+					else {
+						res.render('chat', {
+							title:'Chat Messages',
+							user: (req.session.user === undefined ? "Username" : req.session.user),
+							friendList: data,
+							activeChat: req.session.chatter,
+							messages: 0,
+							userLogged: (req.session.user === undefined ? false : true)
+						});
+					}
 				}
 			});
 		});
@@ -48,6 +71,26 @@ router.post('/', (req, res) => {
 	if (req.body.chatter)
 		req.session.chatter = req.body.chatter;
 	res.json('sure');
+});
+
+router.post('/message', (req, res) => {
+	// console.log(req.body.to);
+	if (!req.body.message || req.body.to == 'undefined' || !req.session.user)
+	{
+		res.json("No");
+		return ;
+	}
+	else
+	{
+		let sql = `INSERT INTO messages VALUES (?, ?, ?, ?, CURDATE())`;
+		
+		let inserts = [req.body.to, req.session.user, req.body.message, 1]
+		sql = mysql.format(sql, inserts);
+		let test = DB.query(sql);
+		test.then( function(test) {
+		})
+		res.json('sure');
+	}
 });
 
 module.exports = router;
