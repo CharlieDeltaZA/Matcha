@@ -17,7 +17,7 @@ cloudinary.config({
 	cloudinary: cloudinary,
 	folder: "userImages",
 	allowedFormats: ["jpg", "png"],
-	transformation: [{ width: 500, height: 500, crop: "limit" }]
+	transformation: [{ width: 750, height: 750, crop: "limit" }]
 });
 
 const parser = multer({ storage: storage });
