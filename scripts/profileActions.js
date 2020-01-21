@@ -11,14 +11,14 @@ function dislikeUser(user) {
 		success: function(data) {
 			if (data == 'disliked') {
 				swal(
-					'disliked!',
+					'Disliked!',
 					`You disliked this user.`,
 					'success'
 				)
 			}
 			else if (data == 'undisliked') {
 				swal(
-					'Dislike removed!!',
+					'Dislike Removed!',
 					`You removed your dislike on this user.`,
 					'success'
 				)
