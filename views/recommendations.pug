@@ -53,13 +53,15 @@ html
 								input#minFame.form-control(type='text', placeholder='Minimum Fame', name='fameMin')
 								br
 								
-								input#ageDiff.form-control(type='text', placeholder='Minimum Age', name='ageDiff')
+								input#ageDiff.form-control(type='text', placeholder='Age Range', name='ageDiff')
 								br
 								
-								input#DistanceDiff.form-control(type='text', placeholder='Minimum Distance', name='DistanceDiff')
+								input#DistanceDiff.form-control(type='text', placeholder='Max Distance', name='DistanceDiff')
 								br
 
-								input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
+								input#userInterests.form-control(type='text' placeholder='Interest' name='userInterests')
+								small#usernameHelpBlock.form-text.text-muted
+									| Only one interest
 				
 						button#Submit.btn.btn-success.btn-block.btn-lg(type='button', onclick='sendParams();', name='filterSort') Apply
 
