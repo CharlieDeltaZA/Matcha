@@ -258,7 +258,13 @@ router.post('/like', (req, res, next) => {
 			sql = mysql.format(sql, inserts);
 			let like = DB.query(sql);
 			like.then( function(data) {
-				res.json('liked');
+				let sql = "DELETE FROM dislikes WHERE liker = ? and liked =?";
+				let inserts = [req.session.user, res.body.disliked];
+				sql = mysql.format(sql, inserts);
+				let finalization = DB.query(sql);
+				finalization.then( function(data) {
+					res.json('liked');
+				})
 			})
 		}
 		else
@@ -274,7 +280,39 @@ router.post('/like', (req, res, next) => {
 	})
 })
 router.post('/dislike', (req, res, next) => {
-	//i summon the cameron to inject thine code to maketh work
+	let sql = "SELECT * FROM dislikes WHERE disliker = ? AND disliked = ?"
+	let inserts = [req.session.user, req.body.disliked];
+	sql = mysql.format(sql, inserts);
+
+	let check = DB.query(sql);
+	check.then( function(data) {
+		if (!data[0]) {
+			let sql = `INSERT INTO dislikes (disliker, disliked)
+			VALUES (?, ?)`;
+			let inserts = [req.session.user, req.body.disliked];
+			sql = mysql.format(sql, inserts);
+			let like = DB.query(sql);
+			like.then( function(data) {
+				let sql = "DELETE FROM likes WHERE liker = ? and liked =?";
+				let inserts = [req.session.user, res.body.disliked];
+				sql = mysql.format(sql, inserts);
+				let finalization = DB.query(sql);
+				finalization.then( function(data) {
+					res.json('disliked');
+				})
+			})
+		}
+		else
+		{
+			let sql = `DELETE FROM dislikes WHERE disliker = ? AND disliked = ?`;
+			let inserts = [req.session.user, req.body.disliked];
+			sql = mysql.format(sql, inserts);
+			let like = DB.query(sql);
+			like.then( function(data) {
+				res.json('undisliked');
+			})
+		}
+	})
 })
 
 module.exports = router;

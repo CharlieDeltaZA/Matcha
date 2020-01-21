@@ -260,7 +260,19 @@ class Database {
 													sql = mysql.format(sql, inserts);
 													let friends2 = a.query(sql);
 													friends2.then( function(data) {
-														resolve();
+														let sql = `UPDATE dislikes SET disliked=? WHERE disliked='${username}'`;
+														inserts = [newUsername];
+														sql = mysql.format(sql, inserts);
+														let disliked1 = a.query(sql);
+														disliked1.then( function(data) {
+															let sql = `UPDATE dislikes SET disliker=? WHERE disliker='${username}'`;
+															inserts = [newUsername];
+															sql = mysql.format(sql, inserts);
+															let disliked2 = a.query(sql);
+															disliked2.then( function(data) {
+																resolve();
+															})
+														})
 													}, function (err) {
 														reject(err);
 													})

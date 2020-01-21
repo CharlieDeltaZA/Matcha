@@ -5,11 +5,29 @@ function dislikeUser(user) {
     $.ajax({
 		type: "POST", 
 		url : '/user/dislike',
-		data: JSON.stringify(registrationForm),
+		data: JSON.stringify(form),
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: function(data) {
-			console.log('disliked');
+			if (data == 'disliked') {
+				swal(
+					'disliked!',
+					`You disliked this user.`,
+					'success'
+				)
+			}
+			else if (data == 'undisliked') {
+				swal(
+					'Dislike removed!!',
+					`You removed your dislike on this user.`,
+					'success'
+				)
+			} else
+			swal(
+				'Error!',
+				`Unknown error`,
+				'error'
+			)
 		}
 	})
 }
