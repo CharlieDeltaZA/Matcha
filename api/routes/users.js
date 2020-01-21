@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const app = express();
 const database = require('../../api/database/database');
+const mysql = require('mysql');
 const validation = require('../../scripts/formValidation.js');
 
 app.set('view engine', 'pug');
@@ -240,8 +241,40 @@ router.post('/logout', (req, res, next) => {
 })
 
 router.post('/forgot_pass', (req, res, next) => {
+	//I HAVE BEEN SUMMONED TO DO SOMETHING HERE
+})
+
+router.post('/like', (req, res, next) => {
+	let sql = "SELECT * FROM likes WHERE liker = ? AND liked = ?"
+	let inserts = [req.session.user, req.body.liked];
+	sql = mysql.format(sql, inserts);
+
+	let check = DB.query(sql);
+	check.then( function(data) {
+		if (!data[0]) {
+			let sql = `INSERT INTO likes (liker, liked)
+			VALUES (?, ?)`;
+			let inserts = [req.session.user, req.body.liked];
+			sql = mysql.format(sql, inserts);
+			let like = DB.query(sql);
+			like.then( function(data) {
+				res.json('liked');
+			})
+		}
+		else
+		{
+			let sql = `DELETE FROM likes WHERE liker = ? AND liked = ?`;
+			let inserts = [req.session.user, req.body.liked];
+			sql = mysql.format(sql, inserts);
+			let like = DB.query(sql);
+			like.then( function(data) {
+				res.json('unliked');
+			})
+		}
+	})
+})
+router.post('/dislike', (req, res, next) => {
 	//i summon the cameron to inject thine code to maketh work
-	
 })
 
 module.exports = router;
