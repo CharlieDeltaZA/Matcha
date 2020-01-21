@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
 	}
 	let sql = "SELECT * FROM likes WHERE liked = ?"
 	let inserts = [req.session.user];
-	sql = mysql.format(sql, format);
+	sql = mysql.format(sql, inserts);
 	res.render('chat', {
 		title:'Chat Messages',
 		user: (req.session.user === undefined ? "Username" : req.session.user),
