@@ -24,24 +24,27 @@ html
 							h6 Sort By:
 							hr
 							#radio.funkyradio
-								.funkyradio-success
-									input#AgeUp(type='radio', name='radio', value="AgeUp")
-									label(for='AgeUp') Age, ascending
-								.funkyradio-success
-									input#AgeDown(type='radio', name='radio', value="AgeDown")
-									label(for='AgeDown') Age, descending
-								.funkyradio-success
-									input#FameUp(type='radio', name='radio', value="FameUp")
-									label(for='FameUp') Fame, ascending
-								.funkyradio-success
-									input#FameDown(type='radio', name='radio', value="FameDown")
-									label(for='FameDown') Fame, descending
-								.funkyradio-success
-									input#Close(type='radio', name='radio', value="Closer")
-									label(for='Close') Closer
-								.funkyradio-success
-									input#Far(type='radio', name='radio', value="Further")
-									label(for='Far') Farther
+								.form-group
+									.funkyradio-success
+										input#AgeUp(type='radio', name='radio', value="AgeUp")
+										label(for='AgeUp') Age, ascending
+									.funkyradio-success
+										input#AgeDown(type='radio', name='radio', value="AgeDown")
+										label(for='AgeDown') Age, descending
+								.form-group
+									.funkyradio-success
+										input#FameUp(type='radio', name='radio', value="FameUp")
+										label(for='FameUp') Fame, ascending
+									.funkyradio-success
+										input#FameDown(type='radio', name='radio', value="FameDown")
+										label(for='FameDown') Fame, descending
+								.form-group
+									.funkyradio-success
+										input#Close(type='radio', name='radio', value="Closer")
+										label(for='Close') Closer
+									.funkyradio-success
+										input#Far(type='radio', name='radio', value="Further")
+										label(for='Far') Farther
 
 				.col-sm-11.py-2.mx-auto
 					#Filter.collapse.multi-collapse
