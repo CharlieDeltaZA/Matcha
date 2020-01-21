@@ -23,7 +23,6 @@ function	setActive(id) {
 }
 
 function	sendMessage(id){
-	console.log(`ID: ${id}`);
 	let form = {
 		to : id,
 		message : document.getElementById("messageField").value
@@ -42,3 +41,19 @@ function	sendMessage(id){
 		}
 	});
 }
+
+(function worker2() {
+	$.ajax({
+		type: "POST",
+		url: '/chat/message/refresh',
+		// data: JSON.stringify(send),
+		// contentType: "application/json; charset=utf-8",
+		// dataType: "json",
+		success: function(data) {
+			$('#populateme').html(data);
+		},
+		complete: function() {
+			setTimeout(worker2, 500);
+		}
+	});
+})();

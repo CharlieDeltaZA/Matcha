@@ -16,15 +16,16 @@ html
 							each user in friendList
 								.chat_list(id=user.liker)
 									.chat_people(onclick="setActive('"+user.liker+"');")
-										.chat_img
+										//- .chat_img
 											img(src='https://ptetutorials.com/images/user-profile.png', alt='sunil')
 										.chat_ib
 											h5
 												| #{user.liker}
 					.mesgs
-						.msg_history
-							each message in messages
+						.msg_history#populateme
+							//- each message in messages
 								p #{message.sender} : #{message.message}
+								
 							//- .incoming_msg
 							//- 	.incoming_msg_img
 							//- 	.received_msg

@@ -40,7 +40,6 @@ router.get('/', (req, res) => {
 						sender = '${req.session.user}' AND receiver = '${req.session.chatter}'`;
 						let attempt = DB.query(sql);
 						attempt.then( function(messageLog) {
-							console.log(messageLog);
 							res.render('chat', {
 								title:'Chat Messages',
 								user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -91,6 +90,23 @@ router.post('/message', (req, res) => {
 		})
 		res.json('sure');
 	}
+});
+
+router.post('/message/refresh', (req, res) => {
+	let sql = `
+		SELECT * FROM messages WHERE receiver = '${req.session.user}' AND sender = '${req.session.chatter}'
+		OR 
+		sender = '${req.session.user}' AND receiver = '${req.session.chatter}'`;
+	if (!req.session.chatter)
+		return ;
+	let messages = DB.query(sql);
+	messages.then( function (data) {
+		var result = new Array;
+		data.forEach(element => {
+			result += element.sender + ' : ' + element.message + "\n";
+		});
+		res.json(result);
+	})
 });
 
 module.exports = router;
