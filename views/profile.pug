@@ -58,42 +58,65 @@ html
 								| Block 
 					hr
 
-					h4.card-subtitle.mb-2 Age: #{userAge}
-					h4.card-subtitle.mb-2 Likes: #{userLikes}
-					h4.card-subtitle.mb-2 Fame Rating: #{userFame}
+					h4.card-subtitle.mb-2
+						i.fa.mx-2.fa-birthday-cake
+						|  Age: #{userAge}
+					h4.card-subtitle.mb-2 
+						i.fa.mx-2.fa-thumbs-up
+						|  Likes: #{userLikes}
+					h4.card-subtitle.mb-2
+						i.fa.mx-2.fa-trophy
+						| Fame Rating: #{userFame}
 					hr
 					//- p.card-text
 					//- 	| #{distance}   <--- Maybe use something to generalize the distance based on how far away they are. So instead of numbers,
 											it's something like: Close, Nearby, Distant, Far etc. idk
 					if(sameUser != 1)
 						label.h6 Distance:						
-						p.card-text
+						p
 							| 420kms away
 					
-					label.h6 I am:
+					label.h4 I am:
 					if userOrientation === 'hetero'
-						p.card-text
+						p
 							|  Heterosexual, #{userGender}
 					else if userOrientation === 'homo'
-						p.card-text
+						p
 							|  Homosexual, #{userGender}
 					else
-						p.card-text
+						p
 							|  Bisexual, #{userGender}
 					
-					label.h6 Looking For:
+					label.h4 Looking For:
 					if userOrientation === 'hetero'
 						if userGender === 'Male'
-							p.card-text Women 
+							p
+								i.fa.mx-2.fa-female.pink
+								|  Women 
 						else
-							p.card-text Men
+							p
+								i.fa.mx-2.fa-male.blue
+								|  Men
 					else if userOrientation === 'homo'
 						if userGender === 'Male'
-							p.card-text Men
+							p
+								i.fa.mx-2.fa-male.blue
+								|  Men
 						else
-							p.card-text Women
+							p
+								i.fa.mx-2.fa-female.pink
+								|  Women
 					else
-						p.card-text Men or Women
+						p
+							i.fa.ml-2.fa-male.blue
+							i.fa.mr-2.fa-female.pink
+							|  Men or Women
+
+					label.h4 Distance:
+					p
+						i.fa.mx-2.fa-map-marker
+						| 'insert distance function here'km
+
 					hr
 
 					h4.card-title Interests
