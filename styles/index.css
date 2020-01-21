@@ -1,12 +1,15 @@
-#NotifDiv.hide {
-    opacity: 0;
+#heading {
+	font-size: 5.5rem;
 }
 
-#NotifDiv {
-    transition: opacity 3s ease-in-out;
-    -webkit-transition: opacity 3s ease-in-out;
-    -moz-transition: opacity 3s ease-in-out;
-    -ms-transition: opacity 3s ease-in-out;
-    -o-transition: opacity 3s ease-in-out;
-     opacity: 1;
+@media screen and (max-width: 767.98px) {
+    #heading {
+		font-size: 2.5rem;
+	}
+}
+
+@media screen and (max-width: 991.98px) {
+    #heading {
+		font-size: 3.5rem;
+	}
 }
