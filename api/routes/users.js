@@ -258,8 +258,8 @@ router.post('/like', (req, res, next) => {
 			sql = mysql.format(sql, inserts);
 			let like = DB.query(sql);
 			like.then( function(data) {
-				let sql = "UPDATE users SET userLikes=userLikes+1, userFame=userFame+1 WHERE userLogin=?";
-				let inserts = [req.session.user];
+				let sql = "UPDATE users SET userLikes = userLikes + 1, userFame = userFame + 1 WHERE username=?";
+				let inserts = [req.body.liked];
 				sql = mysql.format(sql, inserts);
 				let finalization = DB.query(sql);
 				finalization.then( function(data) {
@@ -293,8 +293,8 @@ router.post('/dislike', (req, res, next) => {
 			sql = mysql.format(sql, inserts);
 			let like = DB.query(sql);
 			like.then( function(data) {
-				let sql = "UPDATE users SET userLikes=userLikes-1, userFame=userFame-1 WHERE userLogin=?";
-				let inserts = [req.session.user];
+				let sql = "UPDATE users SET userLikes = userLikes - 1, userFame = userFame - 1 WHERE username = ?";
+				let inserts = [req.body.disliked];
 				sql = mysql.format(sql, inserts);
 				let finalization = DB.query(sql);
 				finalization.then( function(data) {
@@ -309,7 +309,13 @@ router.post('/dislike', (req, res, next) => {
 			sql = mysql.format(sql, inserts);
 			let like = DB.query(sql);
 			like.then( function(data) {
-				res.json('undisliked');
+				let sql = "UPDATE users SET userLikes = userLikes + 1, userFame = userFame + 1 WHERE username = ?";
+				let inserts = [req.body.disliked];
+				sql = mysql.format(sql, inserts);
+				let finalization = DB.query(sql);
+				finalization.then( function(data) {
+					res.json('undisliked');
+				})
 			})
 		}
 	})
