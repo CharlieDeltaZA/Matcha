@@ -219,6 +219,7 @@ function	add_interest() {
 		}
 	});
 	document.getElementById("interestsPara").innerHTML = "Updated your interests";
+	$('#userInterests').val('');
 }
 
 function	remove_interest() {
@@ -253,6 +254,7 @@ function	remove_interest() {
 		}
 	});
 	document.getElementById("interestsRemovedPara").innerHTML = "Removed any matching interests";
+	$('#removedInterests').val('');
 }
 
 $("#userInterests").keyup(function(event) {
