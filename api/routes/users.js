@@ -274,7 +274,33 @@ router.post('/like', (req, res, next) => {
 	})
 })
 router.post('/dislike', (req, res, next) => {
-	//i summon the cameron to inject thine code to maketh work
+	let sql = "SELECT * FROM dislikes WHERE disliker = ? AND disliked = ?"
+	let inserts = [req.session.user, req.body.disliked];
+	sql = mysql.format(sql, inserts);
+
+	let check = DB.query(sql);
+	check.then( function(data) {
+		if (!data[0]) {
+			let sql = `INSERT INTO dislikes (disliker, disliked)
+			VALUES (?, ?)`;
+			let inserts = [req.session.user, req.body.disliked];
+			sql = mysql.format(sql, inserts);
+			let like = DB.query(sql);
+			like.then( function(data) {
+				res.json('disliked');
+			})
+		}
+		else
+		{
+			let sql = `DELETE FROM dislikes WHERE disliker = ? AND disliked = ?`;
+			let inserts = [req.session.user, req.body.disliked];
+			sql = mysql.format(sql, inserts);
+			let like = DB.query(sql);
+			like.then( function(data) {
+				res.json('undisliked');
+			})
+		}
+	})
 })
 
 module.exports = router;
