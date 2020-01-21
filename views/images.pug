@@ -6,7 +6,7 @@ html
 	body
 		include navbar.pug
 		
-		h2.mt-white.text-center.mt-5 Edit Images
+		h2.mt-white.text-center.mt-5.display-3#heading Edit Images
 		.container(style='max-width: 700px;')
 			.card
 				.col
@@ -14,7 +14,7 @@ html
 						form#account(name="images", action='/user/account/images', method='POST', enctype="multipart/form-data")
 							input#profileImg.custom-file-input(type="file", name='image')
 							label.custom-file-label.mx-auto(for='profileImg') Choose File
-							button#submit.btn.btn-success.w-100.mx-auto(type='submit') Upload
+							button#submit.btn.btn-success.btn-block.mx-auto.my-2(type='submit') Upload
 					each value in imageArray
 						hr
 						.container.mx-auto.my-3(style='max-width: 700px;')
@@ -22,6 +22,7 @@ html
 							button.btn.btn-lg.btn-success.mt-2.mx-2(value=value, onclick='setActiveImage(this.value)') Set as Active
 							button.btn.btn-lg.btn-danger.mt-2.mx-2(value=value, onclick='deleteImage(this.value)')
 								i.fa.fa-trash
+				br
 
 		script(src="/images.js")
 		include footer.pug
