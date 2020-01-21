@@ -101,11 +101,19 @@ html
 										.card-body.mbg-light-grey
 											h5.card-title.text-capitalize #{val.userFirstName} #{val.userLastName}
 											if val.distance == 9999
-												p Distance : unknown
+												p
+													i.fa.fa-map-marker.mx-2
+													|  Distance : unknown
 											else	
-												p Distance : #{val.distance}km
-											p Fame : #{val.fame}
-											p Age : #{val.userAge}
+												p
+													i.fa.fa-map-marker.mx-2
+													|  Distance : #{val.distance}km
+											p
+												i.fa.fa-trophy.mx-2
+												|  Fame : #{val.fame}
+											p
+												i.fa.fa-birthday-cake.mx-2
+												|  Age : #{val.userAge}
 											.row.mx-auto
 												//- below buttons need proper like and dislike functions
 												button.btn.btn-success.w-50(value=val.username, onclick='likeUser(this.value)')
