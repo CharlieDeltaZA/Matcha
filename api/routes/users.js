@@ -258,8 +258,8 @@ router.post('/like', (req, res, next) => {
 			sql = mysql.format(sql, inserts);
 			let like = DB.query(sql);
 			like.then( function(data) {
-				let sql = "DELETE FROM dislikes WHERE liker = ? and liked =?";
-				let inserts = [req.session.user, res.body.disliked];
+				let sql = "UPDATE users SET userLikes=userLikes+1, userFame=userFame+1 WHERE userLogin=?";
+				let inserts = [req.session.user];
 				sql = mysql.format(sql, inserts);
 				let finalization = DB.query(sql);
 				finalization.then( function(data) {
@@ -293,8 +293,8 @@ router.post('/dislike', (req, res, next) => {
 			sql = mysql.format(sql, inserts);
 			let like = DB.query(sql);
 			like.then( function(data) {
-				let sql = "DELETE FROM likes WHERE liker = ? and liked =?";
-				let inserts = [req.session.user, res.body.disliked];
+				let sql = "UPDATE users SET userLikes=userLikes-1, userFame=userFame-1 WHERE userLogin=?";
+				let inserts = [req.session.user];
 				sql = mysql.format(sql, inserts);
 				let finalization = DB.query(sql);
 				finalization.then( function(data) {
