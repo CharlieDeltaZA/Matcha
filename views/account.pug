@@ -135,6 +135,8 @@ html
 			.card.mx-auto(style='max-width: 1200px;')
 				.card-body
 					h4.card-title Username
+					small#usernameHelpBlock.form-text.text-muted
+						| All usernames will be forced to lower case.
 					hr
 					input#userLogin.form-control(type='text' placeholder='Username' name='userLogin' value=username)
 					button#updateUsername.btn.btn-success.btn-block.btn-lg(type='button', onclick='changeUsername()', value='username') Update Username
