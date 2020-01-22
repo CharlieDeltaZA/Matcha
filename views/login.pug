@@ -20,15 +20,11 @@ html
 								form#login.needs-validation(name="login", action='', method='POST' novalidate)
 									.form-group
 										label(for='userName') Username:
-										input#userLogin.form-control(type='text' placeholder='Enter Username' name='userLogin' required)
-										.valid-feedback Valid.
-										.invalid-feedback Please fill out this field.
+										input#userLogin.form-control(type='text' placeholder='Enter Username' name='userLogin' required autofocus)
 
 									.form-group
 										label(for='password') Password:
 										input#userPass.form-control(type='password' placeholder='Enter Password' name='userPass' required)
-										.valid-feedback Valid.
-										.invalid-feedback Please fill out this field.
 									
 									p.text-right
 										| New User? 
