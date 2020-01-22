@@ -17,6 +17,9 @@ nav.navbar.navbar-expand-lg.navbar-light.mbg-white.sticky-top
 			if userLogged
 				li#Recomm.nav-item
 				a.nav-link(href='/recommendations') Recommendations
+			if userLogged
+				li#Chat.nav-item
+				a.nav-link(href='/chat') Chat
 				
 		if userLogged
 			ul.navbar-nav.ml-auto.mt-2.mt-lg-0.nav-flex-auto
