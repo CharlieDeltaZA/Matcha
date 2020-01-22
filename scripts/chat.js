@@ -36,8 +36,10 @@ function	sendMessage(id){
 		success: function(data) {
 			if (data == 'No')
 				console.log("No active chat");
-			else
+			else {
+				document.getElementById("messageField").value = '';
 				location.reload();
+			}
 		}
 	});
 }

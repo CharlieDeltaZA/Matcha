@@ -104,9 +104,11 @@ router.post('/message/refresh', (req, res) => {
 	messages.then( function (data) {
 		var result = new Array;
 		data.forEach(element => {
+			let temp = element.message;
+			let mess = temp.replace(/(.{120})/g, "$1<br>");
 			result += ((element.sender != req.session.user) ? 
-				`<div class=\"incoming_msg\"><div class=\"received_msg\"><div class=\"received_withd_msg\"><small class="text-muted">${element.sender}</small><p>${element.message}</p></div></div></div>` :
-				`<div class=\"outgoing_msg\"><div class=\"sent_msg\"><p>${element.message}</p></div></div>`);
+				`<div class=\"d-flex justify-content-start mb-4\"><div class=\"msg_container\">${mess}</div></div>` :
+				`<div class=\"d-flex justify-content-end mb-4\"><div class=\"msg_container_send\">${mess}</div></div>`);
 		});
 		res.json(result);
 	})
