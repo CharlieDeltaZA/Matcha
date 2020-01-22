@@ -23,7 +23,7 @@ html
 								form#register(name="register", action='', method='POST' novalidate)
 									.form-group
 										label(for='userName') * Username:
-										input#userLogin.form-control(type='text' placeholder='Enter Username' name='userLogin')
+										input#userLogin.form-control(type='text' placeholder='Enter Username' name='userLogin' autofocus)
 										small#usernameHelpBlock.form-text.text-muted
 											| All usernames will be forced to lower case.
 										p#userNameError.errorMsg
