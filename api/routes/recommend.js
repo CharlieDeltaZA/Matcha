@@ -44,7 +44,7 @@ router.get('/', (req, res, next) => {
 		var userAge = data[0].userAge;
 		
 		if (!userOrientation || !userGender)
-		res.redirect('/user/account');
+		res.redirect('/user/account/incomplete');
 		var userArray = DB.get_matches(userOrientation, userGender, req.session.user, userAge, req.session.ageDiff, req.session.minFame);
 		userArray.then( function(data1) {
 			if (!data1[0])

@@ -17,7 +17,7 @@ router.get('/views', (req, res, next) => {
 	}
 	var userViews = DB.query(`SELECT * FROM views WHERE viewed = '${req.session.user}'`);
 	userViews.then( function (data) {
-		DB.query("UPDATE views SET unread = 0 WHERE unread = 1");
+		DB.query(`UPDATE views SET unread = 0 WHERE unread = 1 AND viewed = '${req.session.user}'`);
 		res.render('views', { 
 			title:'Profile Views',
 			user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -35,7 +35,7 @@ router.get('/likes', (req, res, next) => {
 	}
 	var userLikes = DB.query(`SELECT * FROM likes WHERE liked = '${req.session.user}'`);
 	userLikes.then( function (data) {
-		DB.query("UPDATE likes SET unread = 0 WHERE unread = 1");
+		DB.query(`UPDATE likes SET unread = 0 WHERE unread = 1 AND liked = '${req.session.user}'`);
 		res.render('likes', {
 			title:'Profile Likes',
 			user: (req.session.user === undefined ? "Username" : req.session.user),

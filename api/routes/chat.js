@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
 		res.redirect('/user/login');
 		return ;
 	}
+	DB.query(`UPDATE messages SET unread = 0 WHERE unread = 1 AND receiver = '${req.session.user}'`);
 	let sql = "SELECT * FROM likes WHERE liked = ?"
 	let inserts = [req.session.user];
 	sql = mysql.format(sql, inserts);
