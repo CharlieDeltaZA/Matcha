@@ -12,6 +12,9 @@ html
 			.messaging
 				.inbox_msg
 					.inbox_people
+						.headind_srch
+							.recent_heading
+								h4 Recent Conversations
 						.inbox_chat
 							each user in friendList
 								.chat_list(id=user.liker)
@@ -21,7 +24,7 @@ html
 										.chat_ib
 											h5
 												| #{user.liker}
-					.mesgs
+					.mesgs#msgWrap
 						.msg_history#populateme
 							//- each message in messages
 								p #{message.sender} : #{message.message}
