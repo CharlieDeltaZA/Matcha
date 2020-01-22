@@ -57,3 +57,9 @@ function	sendMessage(id){
 		}
 	});
 })();
+
+$("#messageField").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $('#sendMsg').click();
+    }
+});
