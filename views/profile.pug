@@ -43,6 +43,13 @@ html
 					hr
 					h1.display-4.card-title.text-capitalize #{userFirstName} #{userLastName}
 					if !sameUser
+						if (!userIsOnline)
+							small#lastOnline Last Seen: #{userLastOnline}
+						else
+							small#lastOnline
+								i.fa.mx-2.text-green.fa-circle
+								|  Online
+						//lastonline sockio thing
 						.row.mx-auto
 							button#BtnLike.btn.btn-success(value=value, onclick='likeUser(this.value)')
 								i.fa.fa-heart.mr-2

@@ -25,6 +25,7 @@ router.get('/login/:error?', (req, res, next) => {
 		userLogged: (req.session.user === undefined ? false : true)
 	});
 });
+
 router.post('/login', (req, res, next) => {
 	var res2 = res;
 	var req2 = req;
@@ -36,6 +37,7 @@ router.post('/login', (req, res, next) => {
 		let loginAttempt = db.login(req.body.userLogin, req.body.userPass);
 		loginAttempt.then(function(res){
 			req2.session.user = req.body.userLogin;
+			db.query(`UPDATE users SET isOnline = 1 WHERE username = '${req2.session.user}'`);
 			res2.json('success');
 		},
 		function(err){
@@ -122,6 +124,8 @@ router.get('/profile/:user?', (req, res, next) => {
 							userLat: data[0].userLat,
 							userLng: data[0].userLng,
 							userAge: data[0].userAge,
+							userIsOnline: data[0].isOnline,
+							userLastOnline: data[0].lastOnline,
 							userLogged: (req.session.user === undefined ? false : true),
 							sameUser: 0
 						})
@@ -236,6 +240,17 @@ router.post('/notifications', (req, res, next) => {
 })
 
 router.post('/logout', (req, res, next) => {
+	let db = new database;
+	let d = new Date();
+	let date_ob = new Date();
+	let date = ("0" + date_ob.getDate()).slice(-2);
+	let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+	let year = date_ob.getFullYear();
+	let hours = ((date_ob.getHours() < 10) ? '0' : '') + date_ob.getHours();
+	let minutes = ((date_ob.getMinutes() < 10) ? '0' : '') + date_ob.getMinutes();
+	let seconds = ((date_ob.getSeconds() < 10) ? '0' : '') + date_ob.getSeconds();
+	let datestr = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
+	db.query(`UPDATE users SET isOnline = 0, lastOnline = '${datestr}' WHERE username = '${req.session.user}'`);
 	req.session.destroy();
 	res.json('Received');
 })

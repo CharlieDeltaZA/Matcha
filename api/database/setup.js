@@ -70,7 +70,9 @@ var setupTables = function setupTables() {
 					userFame int(11) default 0,
 					userCode LONGTEXT,
 					userVerified BOOLEAN default 0,
-					accountComplete BOOLEAN default 0
+					accountComplete BOOLEAN default 0,
+					isOnline BOOLEAN default 0,
+					lastOnline LONGTEXT
 					);`
 				conn.query(sql, function (err, result) {
 					if (err) throw err;
