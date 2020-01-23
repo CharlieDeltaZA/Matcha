@@ -493,6 +493,35 @@ class Database {
 		})
 	}
 
+	blockUser(blocker, blocked) {
+		return new Promise ( (resolve, reject) => {
+			var a = this;
+			let sql = `SELECT * FROM blocks WHERE blocker = ? AND blocked = ?`;
+			let inserts = [blocker, blocked];
+			sql = mysql.format(sql, inserts);
+			let blockCheck = this.query(sql);
+			blockCheck.then( function(data) {
+				if (!data[0]) {
+					let sql = `INSERT INTO blocks (blocker, blocked) VALUES (?, ?)`;
+					let inserts = [blocker, blocked];
+					sql = mysql.format(sql, inserts);
+					let blockUser = a.query(sql);
+					blockUser.then( function(data) {
+						resolve('blocked');
+					});
+				} else {
+					let sql = `DELETE FROM blocks WHERE blocker = ? AND blocked = ?`;
+					let inserts = [blocker, blocked];
+					sql = mysql.format(sql, inserts);
+					let blockUser = a.query(sql);
+					blockUser.then( function(data) {
+						resolve('unblocked');
+					});
+				}
+			});
+		});
+	}
+
     close() {
         return new Promise( (resolve, reject) => {
             this.connection.end(err => {

@@ -45,7 +45,6 @@
 				$('.toast').toast('show');
 			}
 
-			console.log(data);
 			document.getElementById("Notif").innerHTML = data.messages + data.likes + data.views;
 			document.getElementById("NotifL").innerHTML = data.likes;
 			document.getElementById("NotifM").innerHTML = data.messages;

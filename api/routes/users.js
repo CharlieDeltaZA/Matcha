@@ -291,20 +291,32 @@ router.post('/like', (req, res, next) => {
 						res.json('liked');
 					})
 				})
-			}
-			else
-			{
-				let sql = `DELETE FROM likes WHERE liker = ? AND liked = ?`;
-				let inserts = [req.session.user, req.body.liked];
-				sql = mysql.format(sql, inserts);
-				let like = DB.query(sql);
-				like.then( function(data) {
-					let sql = `INSERT INTO likes (type, liker, liked) VALUES (2, ?, ?)`;
+			} else {
+				if (data[0].type == 1){
+					let sql = `DELETE FROM likes WHERE liker = ? AND liked = ?`;
 					let inserts = [req.session.user, req.body.liked];
 					sql = mysql.format(sql, inserts);
-					DB.query(sql);
-					res.json('unliked');
-				})
+					let like = DB.query(sql);
+					like.then( function(data) {
+						let sql = `INSERT INTO likes (type, liker, liked) VALUES (2, ?, ?)`;
+						let inserts = [req.session.user, req.body.liked];
+						sql = mysql.format(sql, inserts);
+						DB.query(sql);
+						res.json('unliked');
+					})
+				} else {
+					let sql = `DELETE FROM likes WHERE liker = ? AND liked = ?`;
+					let inserts = [req.session.user, req.body.liked];
+					sql = mysql.format(sql, inserts);
+					let like = DB.query(sql);
+					like.then( function(data) {
+						let sql = `INSERT INTO likes (type, liker, liked) VALUES (1, ?, ?)`;
+						let inserts = [req.session.user, req.body.liked];
+						sql = mysql.format(sql, inserts);
+						DB.query(sql);
+						res.json('liked');
+					})
+				}
 			}
 		})
 	}
@@ -355,5 +367,17 @@ router.post('/dislike', (req, res, next) => {
 		})
 	}
 })
+
+router.post('/block', (req, res, next) => {
+	let block = DB.blockUser(req.session.user, req.body.blocked);
+	block.then( function(data) {
+		if (data == 'blocked')
+			res.json('blocked');
+		else
+			res.json('unblocked');
+	}, function(err) {
+		res.json('failure');
+	})
+});
 
 module.exports = router;

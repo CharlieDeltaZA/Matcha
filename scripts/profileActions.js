@@ -66,3 +66,31 @@ function likeUser(user) {
 		}
 	})
 }
+
+function	blockUser(user) {
+	let form = {
+		blocked: user
+	}
+	$.ajax({
+		type: "POST", 
+		url : '/user/block',
+		data: JSON.stringify(form),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(data) {
+			if (data == 'blocked') {
+				swal(
+					'Blocked user!',
+					`You blocked this user.`,
+					'success'
+				)
+			} else {
+				swal(
+					'User unblocked',
+					`You removed your block on this user.`,
+					'success'
+				)
+			}
+		}
+	});
+}

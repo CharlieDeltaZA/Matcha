@@ -322,7 +322,7 @@ var setupTables = function setupTables() {
 		if (err) throw err;
 		conn.query(`SELECT * FROM information_schema.tables
 					WHERE table_schema = 'matcha'
-					AND table_name = 'friends'`,
+					AND table_name = 'blocks'`,
 		function (err, result) {
 			if (err) throw err;
 			if (result.length > 0) {
@@ -330,14 +330,14 @@ var setupTables = function setupTables() {
 			}
 			else
 			{
-				console.log('friends table not found.');
-				var sql = `CREATE TABLE IF NOT EXISTS friends (
-					user1 LONGTEXT,
-					user2 LONGTEXT
+				console.log('blocks table not found.');
+				var sql = `CREATE TABLE IF NOT EXISTS blocks (
+					blocker LONGTEXT,
+					blocked LONGTEXT
 					);`
 				conn.query(sql, function (err, result) {
 					if (err) throw err;
-					console.log("friends table created");
+					console.log("blocks table created");
 				});
 			}
 		});
