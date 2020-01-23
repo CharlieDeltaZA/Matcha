@@ -17,57 +17,59 @@ router.get('/', (req, res) => {
 		res.redirect('/user/login');
 		return ;
 	}
-	if (!DB.verified(req.session.user)) {
-		res.redirect('/incomplete');
-		return ;
-	}
-	DB.query(`UPDATE messages SET unread = 0 WHERE unread = 1 AND receiver = '${req.session.user}'`);
-	let sql = "SELECT * FROM likes WHERE liked = ?"
-	let inserts = [req.session.user];
-	sql = mysql.format(sql, inserts);
-	let potentialFriends = DB.query(sql);
-	potentialFriends.then( function(data){
-		data.forEach(function(item, index) {
-			let sql = `SELECT * FROM likes WHERE liker = '${req.session.user}' AND liked = ?`;
-			let inserts = [item.liker];
-			sql = mysql.format(sql, inserts);
-			let result = DB.query(sql);
-			result.then( function(data1) {
-				if (!data1[0])
-					data.splice(index, 1);
-				if (index === data.length - 1)
-				{
-					if (req.session.chatter)
+	let complete = DB.verified(req.session.user);
+	complete.then( function(data) {
+		DB.query(`UPDATE messages SET unread = 0 WHERE unread = 1 AND receiver = '${req.session.user}'`);
+		let sql = "SELECT * FROM likes WHERE liked = ?"
+		let inserts = [req.session.user];
+		sql = mysql.format(sql, inserts);
+		let potentialFriends = DB.query(sql);
+		potentialFriends.then( function(data){
+			data.forEach(function(item, index) {
+				let sql = `SELECT * FROM likes WHERE liker = '${req.session.user}' AND liked = ?`;
+				let inserts = [item.liker];
+				sql = mysql.format(sql, inserts);
+				let result = DB.query(sql);
+				result.then( function(data1) {
+					if (!data1[0])
+						data.splice(index, 1);
+					if (index === data.length - 1)
 					{
-						let sql = `
-						SELECT * FROM messages WHERE receiver = '${req.session.user}' AND sender = '${req.session.chatter}'
-						OR 
-						sender = '${req.session.user}' AND receiver = '${req.session.chatter}'`;
-						let attempt = DB.query(sql);
-						attempt.then( function(messageLog) {
+						if (req.session.chatter)
+						{
+							let sql = `
+							SELECT * FROM messages WHERE receiver = '${req.session.user}' AND sender = '${req.session.chatter}'
+							OR 
+							sender = '${req.session.user}' AND receiver = '${req.session.chatter}'`;
+							let attempt = DB.query(sql);
+							attempt.then( function(messageLog) {
+								res.render('chat', {
+									title:'Chat Messages',
+									user: (req.session.user === undefined ? "Username" : req.session.user),
+									friendList: data,
+									activeChat: req.session.chatter,
+									messages: messageLog,
+									userLogged: (req.session.user === undefined ? false : true)
+								});
+							})
+						}
+						else {
 							res.render('chat', {
 								title:'Chat Messages',
 								user: (req.session.user === undefined ? "Username" : req.session.user),
 								friendList: data,
 								activeChat: req.session.chatter,
-								messages: messageLog,
+								messages: 0,
 								userLogged: (req.session.user === undefined ? false : true)
 							});
-						})
+						}
 					}
-					else {
-						res.render('chat', {
-							title:'Chat Messages',
-							user: (req.session.user === undefined ? "Username" : req.session.user),
-							friendList: data,
-							activeChat: req.session.chatter,
-							messages: 0,
-							userLogged: (req.session.user === undefined ? false : true)
-						});
-					}
-				}
+				});
 			});
-		});
+		})
+	}, function (err){
+		res.redirect('/incomplete');
+		return ;
 	})
 });
 
