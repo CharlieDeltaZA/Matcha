@@ -8,7 +8,7 @@ html
 		include navbar.pug
 		
 		h1.text-center.my-3.mt-white.display-3#heading Profile Views
-		.container(style='max-width: 1100px;min-width:360px;')
+		.container(style='max-width: 900px;min-width:360px;')
 			.card
 				each val in userList
 					a.nav-link(href='/user/profile/'+val.viewer) #{val.viewer} viewed your profile
