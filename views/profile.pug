@@ -36,8 +36,6 @@ html
 						span.sr-only Next 
 	
 				.card-body
-					hr
-					h1.display-4.card-title.text-capitalize #{userFirstName} #{userLastName}
 					if !sameUser
 						if (!userIsOnline)
 							small#lastOnline Last Seen: #{userLastOnline}
@@ -45,6 +43,9 @@ html
 							small#lastOnline
 								i.fa.mx-2.text-green.fa-circle
 								|  Online
+					hr
+					h1.display-4.card-title.text-capitalize #{userFirstName} #{userLastName}
+					if !sameUser
 						//lastonline sockio thing
 						.row.mx-auto
 							button#BtnLike.btn.btn-success(value=username, onclick='likeUser(this.value)')
