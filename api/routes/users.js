@@ -270,8 +270,18 @@ router.post('/like', (req, res, next) => {
 		return ;
 	}
 	else {
-		let sql = "SELECT * FROM likes WHERE liker = ? AND liked = ?"
+		let sql = "SELECT * FROM blocks WHERE blocked = ? AND blocker = ?";
 		let inserts = [req.session.user, req.body.liked];
+		sql = mysql.format(sql, inserts);
+		let blocked = DB.query(sql);
+		blocked.then( function(blockedUsers) {
+			if (blockedUsers[0]) {
+				res.json('blocked');
+			}
+		})
+
+		sql = "SELECT * FROM likes WHERE liker = ? AND liked = ?"
+		inserts = [req.session.user, req.body.liked];
 		sql = mysql.format(sql, inserts);
 
 		let check = DB.query(sql);

@@ -57,10 +57,10 @@ function likeUser(user) {
 					`You unliked this user.`,
 					'success'
 				)
-			} else
+			} else if (data == 'blocked')
 			swal(
 				'Error!',
-				`Unknown error`,
+				`This user has blocked you.`,
 				'error'
 			)
 		}
