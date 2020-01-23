@@ -217,7 +217,7 @@ class Database {
 		sql = mysql.format(sql, inserts);
 		let verified = this.query(sql);
 		verified.then( function(data) {
-			if (data[0].userVerified == 1)
+			if (data[0].accountComplete == 1)
 				return (1);
 			else
 				return (0);

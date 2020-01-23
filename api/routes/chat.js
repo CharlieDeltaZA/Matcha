@@ -17,7 +17,8 @@ router.get('/', (req, res) => {
 		res.redirect('/user/login');
 		return ;
 	}
-	if (!DB.verified(req.session.user)) {
+	if (!(DB.verified(req.session.user) == 1)) {
+		console.log(DB.verified(req.session.user));
 		res.redirect('/incomplete');
 		return ;
 	}
