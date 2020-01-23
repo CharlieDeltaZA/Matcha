@@ -114,13 +114,12 @@ html
 							| 'insert distance function here'km
 
 					hr
-
-					h4.card-title Interests
 					//- p.badge.badge-pill.badge-info.card-text
 					//- 	| #programs #memes #gangweed
 					each val in userInterests
+						h4.card-title Interests
 						span.badge.badge-pill.badge-primary.mx-1 #{val.interest}
-					hr
+						hr
 
 					h4.card-title Bio
 					p.card-text
