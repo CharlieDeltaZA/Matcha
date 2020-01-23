@@ -9,8 +9,7 @@ app.use(express.static('/../../scripts'));
 
 var DB = new database;
 
-function toRad(Value) 
-{
+function toRad(Value) {
 	return Value * Math.PI / 180;
 }
 
@@ -18,37 +17,36 @@ function appendDistance(user1, user2) {
 	if (!user2.userLocationlat || !user2.userLocationlng)
 		return (9999);
 	var R = 6371;
-	var dLat = toRad(user2.userLocationlat - user1.userLocationlat); 
+	var dLat = toRad(user2.userLocationlat - user1.userLocationlat);
 	var dLon = toRad(user2.userLocationlng - user1.userLocationlng);
 	var lat1 = toRad(user1.userLocationlat);
 	var lat2 = toRad(user2.userLocationlat);
 
-	var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 	var d = R * c;
-	
+
 	return d.toFixed(2);
 }
 
 router.get('/', (req, res, next) => {
-	if (req.session.user === undefined)
-	{
+	if (req.session.user === undefined) {
 		res.redirect('/user/login');
-		return ;
+		return;
 	}
 	let complete = DB.verified(req.session.user);
-	complete.then( function(data) {
+	complete.then(function (data) {
 		var current_user = DB.get_user(req.session.user);
-		current_user.then( function(data) {
+		current_user.then(function (data) {
 			var userOrientation = data[0].userOrientation;
 			var userGender = data[0].userGender;
 			var arrayExists = 1;
 			var userAge = data[0].userAge;
-			
+
 			if (!userOrientation || !userGender)
-			res.redirect('/user/account/incomplete');
+				res.redirect('/user/account/incomplete');
 			var userArray = DB.get_matches(userOrientation, userGender, req.session.user, userAge, req.session.ageDiff, req.session.minFame);
-			userArray.then( function(data1) {
+			userArray.then(function (data1) {
 				if (!data1[0])
 					arrayExists = 0;
 				else
@@ -56,8 +54,7 @@ router.get('/', (req, res, next) => {
 						element.distance = appendDistance(data[0], element);
 						element.fame = element.userLikes - element.userDislikes;
 					});
-				if (req.session.sortType)
-					{
+				if (req.session.sortType) {
 					if (req.session.sortType == 'AgeUp') {
 						data1 = data1.sort(function (a, b) {
 							return a.userAge - b.userAge;
@@ -89,21 +86,30 @@ router.get('/', (req, res, next) => {
 						});
 					}
 				}
+				let removeBlockedUsers = DB.query(`SELECT * FROM blocks WHERE blocker = ${req.session.user}`);
+				removeBlockedUsers.then(function (blockedUsers) {
+					blockedUsers.forEach(element1 => {
+						data1.forEach(function(element2, index) {
+							if (element1.blocked == element2.username)
+								data1.splice(index, 1);
+						});
+					});
+					res.render('recommendations', {
+						title: 'Recommendations',
+						user: (req.session.user === undefined ? "Username" : req.session.user),
+						userArray: data1,
+						userLogged: (req.session.user === undefined ? false : true),
+						arrayExists: arrayExists,
+						maxDist: +req.session.maxDist,
+						maxDistEntered: req.session.maxDist ? 1 : 0
+					});
+				})
 				// appendDistance(data[0], data1[0]);
-				res.render('recommendations', {
-					title:'Recommendations',
-					user: (req.session.user === undefined ? "Username" : req.session.user),
-					userArray: data1,
-					userLogged: (req.session.user === undefined ? false : true),
-					arrayExists: arrayExists,
-					maxDist: +req.session.maxDist,
-					maxDistEntered: req.session.maxDist ? 1 : 0
-				});
 			})
 		})
 	}, function (err) {
 		res.redirect('/incomplete');
-		return ;
+		return;
 	})
 });
 
