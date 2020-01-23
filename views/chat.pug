@@ -4,6 +4,7 @@ html
 		title Matcha | #{title}
 		include header_items.pug		
 		link(rel='stylesheet', href='/chat.css')
+		link(rel='stylesheet', href='/sweetalert2.css')
 
 	body
 		include navbar.pug
@@ -50,6 +51,15 @@ html
 
 
 	script(src="/chat.js")
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js")
+	if friendList.length == 0
+		script.
+			swal(
+				'No Matches',
+				'You need matches to chat to!',
+				'error'
+			)
+
 	include footer.pug
 	include js_includes.pug
 	link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css')

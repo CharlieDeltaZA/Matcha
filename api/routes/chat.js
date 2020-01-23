@@ -63,9 +63,29 @@ router.get('/', (req, res) => {
 								userLogged: (req.session.user === undefined ? false : true)
 							});
 						}
+					} else {
+						res.render('chat', {
+							title:'Chat Messages',
+							user: (req.session.user === undefined ? "Username" : req.session.user),
+							friendList: data,
+							activeChat: req.session.chatter,
+							messages: 0,
+							userLogged: (req.session.user === undefined ? false : true)
+						});
 					}
 				});
 			});
+			if (!data[0])
+			{
+				res.render('chat', {
+					title:'Chat Messages',
+					user: (req.session.user === undefined ? "Username" : req.session.user),
+					friendList: data,
+					activeChat: req.session.chatter,
+					messages: 0,
+					userLogged: (req.session.user === undefined ? false : true)
+				});
+			}
 		})
 	}, function (err){
 		res.redirect('/incomplete');
