@@ -43,6 +43,13 @@ html
 					'Invalid code given in url.',
 					'error'
 				)
+		if notification === 'incomplete'
+			script.
+				swal(
+					'Incomplete',
+					'You have not completed your account information',
+					'error'
+				)
 		
 		script.
 			$( document ).ready(function() {

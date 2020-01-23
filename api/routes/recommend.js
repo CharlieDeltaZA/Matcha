@@ -36,6 +36,10 @@ router.get('/', (req, res, next) => {
 		res.redirect('/user/login');
 		return ;
 	}
+	if (!DB.verified(req.session.user)) {
+		res.redirect('/incomplete');
+		return ;
+	}
 	var current_user = DB.get_user(req.session.user);
 	current_user.then( function(data) {
 		var userOrientation = data[0].userOrientation;
