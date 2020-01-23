@@ -189,6 +189,28 @@ class Database {
 		});
 	}
 
+	userComplete(username) {
+		var a = this;
+		let sql = "SELECT * FROM users WHERE username = ?"
+		let inserts = [username];
+		sql = mysql.format(sql, inserts);
+		let completionCheck = this.query(sql);
+		completionCheck.then( function(data) {
+			if (data[0].userFirstName && data[0].userLastName && data[0].userImage && data[0].userGender && data[0].userAge && data[0].userLocationlat
+				 && data[0].userLocationlng && data[0].userOrientation && data[0].userBiography) {
+					 let sql = "UPDATE users SET accountComplete = 1 WHERE username = ?";
+					 let inserts = [username];
+					 sql = mysql.format(sql, inserts);
+					 a.query(sql);
+				} else {
+					let sql = "UPDATE users SET accountComplete = 0 WHERE username = ?";
+					 let inserts = [username];
+					 sql = mysql.format(sql, inserts);
+					 a.query(sql);
+				}
+		});
+	}
+
 	get_user(username) {
 		return new Promise ( (resolve, reject) => {
 			let sql = "SELECT * FROM users WHERE username = ?";

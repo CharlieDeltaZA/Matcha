@@ -77,6 +77,7 @@ router.post('/public', (req, res) => {
 	sql = mysql.format(sql, inserts);
 	let accountUpdate = db.query(sql);
 	accountUpdate.then( function (data) {
+		db.userComplete(req.session.user);
 		res.json('Success');
 	}, function (err) {
 		res.json('Failure');
@@ -88,6 +89,7 @@ router.post('/email', (req, res) => {
 
 	let emailUpdate = db.change_email(req.session.user, req.body.userEmail);
 	emailUpdate.then( function (data) {
+		db.userComplete(req.session.user);
 		res.json(data);
 	}, function (err) {
 		res.json(err);
@@ -103,6 +105,7 @@ router.post('/images', parser.array("image", 5), (req, res) => {
 		image.id = file[key].id;
 		let upload = db.uploadImage(req.session.user, image.url);
 		upload.then( function (data) {
+			db.userComplete(req.session.user);
 			res.redirect('/user/images');
 		},function (err) {
 			console.log(err);
@@ -124,6 +127,7 @@ router.post('/removeImage', (req, res) => {
 		sql = mysql.format(sql, inserts);
 		let result = db.query(sql);
 		result.then(function (data) {
+			db.userComplete(req.session.user);
 			res.json("Success");
 		}), function (err) {
 			res.json("Failure");
@@ -136,16 +140,17 @@ router.post('/removeImage', (req, res) => {
 router.post('/setImage', (req, res) => {
 	var db = new database();
 
-	let sql = "UPDATE images SET active=1 WHERE image = ?"
+	let sql = "UPDATE images SET active = 1 WHERE image = ?"
 	let inserts = [req.body.imageurl];
 	sql = mysql.format(sql, inserts);
 	let result = db.query(sql);
 	result.then(function (data) {
-		let sql = `UPDATE users SET userImage=? WHERE username='${req.session.user}'`
+		let sql = `UPDATE users SET userImage = ? WHERE username='${req.session.user}'`
 		let inserts = [req.body.imageurl];
 		sql = mysql.format(sql, inserts);
 		let result = db.query(sql);
 		result.then( function(data) {
+			db.userComplete(req.session.user);
 			res.json("Success");
 		}, function(err) {
 			res.json("Failure");
@@ -174,7 +179,11 @@ router.post('/age', (req, res) => {
 	let inserts = [req.body.age, req.body.birthDate];
 	sql = mysql.format(sql, inserts);
 	let ageUpdate = db.query(sql);
-	res.json("Success");
+	ageUpdate.then( function(data) {
+		db.userComplete(req.session.user);
+		res.json("Success");
+	}, function (err) {
+	})
 });
 
 router.post('/addinterest', (req, res) => {
