@@ -17,51 +17,37 @@ router.get('/', (req, res) => {
 		res.redirect('/user/login');
 		return ;
 	}
-	if (!(DB.verified(req.session.user) == 1)) {
-		console.log(DB.verified(req.session.user));
-		res.redirect('/incomplete');
-		return ;
-	}
+	// if (!(DB.verified(req.session.user) == 1)) {
+	// 	console.log(DB.verified(req.session.user));
+	// 	res.redirect('/incomplete');
+	// 	return ;
+	// }
 	DB.query(`UPDATE messages SET unread = 0 WHERE unread = 1 AND receiver = '${req.session.user}'`);
 	let sql = "SELECT * FROM likes WHERE liked = ?"
-	console.log('1');
 	let inserts = [req.session.user];
 	sql = mysql.format(sql, inserts);
 	let potentialFriends = DB.query(sql);
-	console.log('2');
 	potentialFriends.then( function(data){
 		data.forEach(function(item, index) {
-			console.log('3');
 			let sql = `SELECT * FROM likes WHERE liker = '${req.session.user}' AND liked = ?`;
 			let inserts = [item.liker];
 			sql = mysql.format(sql, inserts);
 			let result = DB.query(sql);
-			console.log('4');
 			result.then( function(data1) {
-				console.log('5');
 				if (!data1[0]) {
-					console.log('Help');
 					data.splice(index, 1);
-					console.log('Help2');
 				}
-				console.log('Monka');
-				console.log(index);
-				console.log(data.length - 1);
 				if (index === data.length - 1)
 				{
 					console.log('6');
 					if (req.session.chatter)
 					{	
-						if (!data[0])
-							console.log('Empty2');
-						console.log('7');
 						let sql = `
 						SELECT * FROM messages WHERE receiver = '${req.session.user}' AND sender = '${req.session.chatter}'
 						OR 
 						sender = '${req.session.user}' AND receiver = '${req.session.chatter}'`;
 						let attempt = DB.query(sql);
 						attempt.then( function(messageLog) {
-							console.log('8');
 							res.render('chat', {
 								title:'Chat Messages',
 								user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -73,9 +59,6 @@ router.get('/', (req, res) => {
 						})
 					}
 					else {
-						if (!data[0])
-							console.log('Empty');
-						console.log('9');						
 						res.render('chat', {
 							title:'Chat Messages',
 							user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -85,8 +68,16 @@ router.get('/', (req, res) => {
 							userLogged: (req.session.user === undefined ? false : true)
 						});
 					}
+				} else {
+					res.render('chat', {
+						title:'Chat Messages',
+						user: (req.session.user === undefined ? "Username" : req.session.user),
+						friendList: data,
+						activeChat: req.session.chatter,
+						messages: 0,
+						userLogged: (req.session.user === undefined ? false : true)
+					});
 				}
-				console.log('Giga');
 			});
 		});
 	})
