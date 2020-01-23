@@ -34,6 +34,7 @@ function dislikeUser(user) {
 
 function likeUser(user) {
 	let form = {
+		type: 1,
 		liked: user
 	}
     $.ajax({

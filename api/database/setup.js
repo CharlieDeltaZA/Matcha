@@ -238,8 +238,9 @@ var setupTables = function setupTables() {
 			{
 				console.log('likes table not found.');
 				var sql = `CREATE TABLE IF NOT EXISTS likes (
-					liked LONGTEXT,
-					liker LONGTEXT,
+					type INT(1) NOT NULL,
+					liked LONGTEXT NOT NULL,
+					liker LONGTEXT NOT NULL,
 					unread BOOLEAN default 1
 					);`
 				conn.query(sql, function (err, result) {

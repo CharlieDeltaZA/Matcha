@@ -277,8 +277,8 @@ router.post('/like', (req, res, next) => {
 		let check = DB.query(sql);
 		check.then( function(data) {
 			if (!data[0]) {
-				let sql = `INSERT INTO likes (liker, liked)
-				VALUES (?, ?)`;
+				let sql = `INSERT INTO likes (type, liker, liked)
+				VALUES (1, ?, ?)`;
 				let inserts = [req.session.user, req.body.liked];
 				sql = mysql.format(sql, inserts);
 				let like = DB.query(sql);
@@ -299,6 +299,10 @@ router.post('/like', (req, res, next) => {
 				sql = mysql.format(sql, inserts);
 				let like = DB.query(sql);
 				like.then( function(data) {
+					let sql = `INSERT INTO likes (type, liker, liked) VALUES (2, ?, ?)`;
+					let inserts = [req.session.user, req.body.liked];
+					sql = mysql.format(sql, inserts);
+					DB.query(sql);
 					res.json('unliked');
 				})
 			}
