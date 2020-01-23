@@ -11,6 +11,7 @@ html
 		.container(style='max-width: 900px;min-width:360px;')
 			.card
 				each val in userList
-					a.nav-link(href='/user/profile/'+val.viewer) #{val.viewer} viewed your profile
+					.card-body
+						a(href='/user/profile/'+val.viewer) #{val.viewer} viewed your profile
 	include footer.pug
 	include js_includes.pug
