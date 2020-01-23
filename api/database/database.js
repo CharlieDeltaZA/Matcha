@@ -212,6 +212,7 @@ class Database {
 	}
 
 	verified(username) {
+<<<<<<< HEAD
 		return new Promise( (resolve, reject) => {
 			let sql = "SELECT * FROM users WHERE username = ?"
 			let inserts = [username];
@@ -225,6 +226,19 @@ class Database {
 			}, function(err) {
 				reject (0);
 			})
+=======
+		let sql = "SELECT * FROM users WHERE username = ?"
+		let inserts = [username];
+		sql = mysql.format(sql, inserts);
+		let verified = this.query(sql);
+		verified.then( function(data) {
+			if (data[0].accountComplete == 1)
+				return (1);
+			else
+				return (0);
+		}, function(err) {
+			return (0);
+>>>>>>> 4141e0563e7306c1ff48e3c2bc92317b7b1d9ecc
 		})
 	}
 
