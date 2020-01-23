@@ -75,13 +75,6 @@ html
 						i.fa.mx-2.fa-trophy.text-warning
 						| Fame Rating: #{userFame}
 					hr
-					//- p.card-text
-					//- 	| #{distance}   <--- Maybe use something to generalize the distance based on how far away they are. So instead of numbers,
-											it's something like: Close, Nearby, Distant, Far etc. idk
-					if(sameUser != 1)
-						label.h6 Distance:						
-						p
-							| 420kms away
 					
 					label.h4 I am:
 					if userOrientation === 'hetero'
@@ -118,11 +111,11 @@ html
 							i.fa.ml-2.fa-male.blue
 							i.fa.mr-2.fa-female.pink
 							|  Men or Women
-
-					label.h4 Distance:
-					p
-						i.fa.mx-2.fa-map-marker.text-danger
-						| 'insert distance function here'km
+					if(sameUser != 1)
+						label.h4 Distance:
+						p
+							i.fa.mx-2.fa-map-marker.text-danger
+							| 'insert distance function here'km
 
 					hr
 
