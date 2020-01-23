@@ -67,24 +67,34 @@ app.get("/:code?", (req, res) => {
 	let db = new database;
 
 	if (req.params.code) {
-		var activation = db.activate_account(req.params.code);
-		activation.then( function(data) {
-			userNotification = 'valid';
+		if (req.params.code == 'incomplete')
+		{
 			res.render('index', {
 				title:'Home',
 				user: (req.session.user === undefined ? "Username" : req.session.user),
-				notification: userNotification,
+				notification: 'incomplete',
 				userLogged: (req.session.user === undefined ? false : true)
 			});
-		}, function(err) {
-			userNotification = 'invalid';
-			res.render('index', {
-				title:'Home',
-				user: (req.session.user === undefined ? "Username" : req.session.user),
-				notification: userNotification,
-				userLogged: (req.session.user === undefined ? false : true)
-			});
-		})
+		} else {
+			var activation = db.activate_account(req.params.code);
+			activation.then( function(data) {
+				userNotification = 'valid';
+				res.render('index', {
+					title:'Home',
+					user: (req.session.user === undefined ? "Username" : req.session.user),
+					notification: userNotification,
+					userLogged: (req.session.user === undefined ? false : true)
+				});
+			}, function(err) {
+				userNotification = 'invalid';
+				res.render('index', {
+					title:'Home',
+					user: (req.session.user === undefined ? "Username" : req.session.user),
+					notification: userNotification,
+					userLogged: (req.session.user === undefined ? false : true)
+				});
+			})
+		}
 	} else {
 		res.render('index', {
 			title:'Home',

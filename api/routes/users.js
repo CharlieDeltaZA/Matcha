@@ -91,6 +91,10 @@ router.get('/profile/:user?', (req, res, next) => {
 		res.redirect('/user/login');
 		return ;
 	}
+	if (!DB.verified(req.session.user)) {
+		res.redirect('/incomplete');
+		return ;
+	}
 	if (req.params.user)
 	{
 		var imagearray = new Array();
@@ -260,80 +264,90 @@ router.post('/forgot_pass', (req, res, next) => {
 })
 
 router.post('/like', (req, res, next) => {
-	let sql = "SELECT * FROM likes WHERE liker = ? AND liked = ?"
-	let inserts = [req.session.user, req.body.liked];
-	sql = mysql.format(sql, inserts);
+	if (!DB.verified(req.session.user)) {
+		return ;
+	}
+	else {
+		let sql = "SELECT * FROM likes WHERE liker = ? AND liked = ?"
+		let inserts = [req.session.user, req.body.liked];
+		sql = mysql.format(sql, inserts);
 
-	let check = DB.query(sql);
-	check.then( function(data) {
-		if (!data[0]) {
-			let sql = `INSERT INTO likes (liker, liked)
-			VALUES (?, ?)`;
-			let inserts = [req.session.user, req.body.liked];
-			sql = mysql.format(sql, inserts);
-			let like = DB.query(sql);
-			like.then( function(data) {
-				let sql = "UPDATE users SET userLikes = userLikes + 1, userFame = userFame + 1 WHERE username=?";
-				let inserts = [req.body.liked];
+		let check = DB.query(sql);
+		check.then( function(data) {
+			if (!data[0]) {
+				let sql = `INSERT INTO likes (liker, liked)
+				VALUES (?, ?)`;
+				let inserts = [req.session.user, req.body.liked];
 				sql = mysql.format(sql, inserts);
-				let finalization = DB.query(sql);
-				finalization.then( function(data) {
-					res.json('liked');
+				let like = DB.query(sql);
+				like.then( function(data) {
+					let sql = "UPDATE users SET userLikes = userLikes + 1, userFame = userFame + 1 WHERE username=?";
+					let inserts = [req.body.liked];
+					sql = mysql.format(sql, inserts);
+					let finalization = DB.query(sql);
+					finalization.then( function(data) {
+						res.json('liked');
+					})
 				})
-			})
-		}
-		else
-		{
-			let sql = `DELETE FROM likes WHERE liker = ? AND liked = ?`;
-			let inserts = [req.session.user, req.body.liked];
-			sql = mysql.format(sql, inserts);
-			let like = DB.query(sql);
-			like.then( function(data) {
-				res.json('unliked');
-			})
-		}
-	})
+			}
+			else
+			{
+				let sql = `DELETE FROM likes WHERE liker = ? AND liked = ?`;
+				let inserts = [req.session.user, req.body.liked];
+				sql = mysql.format(sql, inserts);
+				let like = DB.query(sql);
+				like.then( function(data) {
+					res.json('unliked');
+				})
+			}
+		})
+	}
 })
 router.post('/dislike', (req, res, next) => {
-	let sql = "SELECT * FROM dislikes WHERE disliker = ? AND disliked = ?"
-	let inserts = [req.session.user, req.body.disliked];
-	sql = mysql.format(sql, inserts);
+	if (!DB.verified(req.session.user)) {
+		return ;
+	}
+	else {
+		let sql = "SELECT * FROM dislikes WHERE disliker = ? AND disliked = ?"
+		let inserts = [req.session.user, req.body.disliked];
+		sql = mysql.format(sql, inserts);
 
-	let check = DB.query(sql);
-	check.then( function(data) {
-		if (!data[0]) {
-			let sql = `INSERT INTO dislikes (disliker, disliked)
-			VALUES (?, ?)`;
-			let inserts = [req.session.user, req.body.disliked];
-			sql = mysql.format(sql, inserts);
-			let like = DB.query(sql);
-			like.then( function(data) {
-				let sql = "UPDATE users SET userLikes = userLikes - 1, userFame = userFame - 1 WHERE username = ?";
-				let inserts = [req.body.disliked];
+		let check = DB.query(sql);
+		check.then( function(data) {
+			if (!data[0]) {
+				let sql = `INSERT INTO dislikes (disliker, disliked)
+				VALUES (?, ?)`;
+				let inserts = [req.session.user, req.body.disliked];
 				sql = mysql.format(sql, inserts);
-				let finalization = DB.query(sql);
-				finalization.then( function(data) {
-					res.json('disliked');
+				let like = DB.query(sql);
+				like.then( function(data) {
+					let sql = "UPDATE users SET userLikes = userLikes - 1, userFame = userFame - 1 WHERE username = ?";
+					let inserts = [req.body.disliked];
+					sql = mysql.format(sql, inserts);
+					let finalization = DB.query(sql);
+					finalization.then( function(data) {
+						res.json('disliked');
+					})
 				})
-			})
-		}
-		else
-		{
-			let sql = `DELETE FROM dislikes WHERE disliker = ? AND disliked = ?`;
-			let inserts = [req.session.user, req.body.disliked];
-			sql = mysql.format(sql, inserts);
-			let like = DB.query(sql);
-			like.then( function(data) {
-				let sql = "UPDATE users SET userLikes = userLikes + 1, userFame = userFame + 1 WHERE username = ?";
-				let inserts = [req.body.disliked];
+			}
+			else
+			{
+				let sql = `DELETE FROM dislikes WHERE disliker = ? AND disliked = ?`;
+				let inserts = [req.session.user, req.body.disliked];
 				sql = mysql.format(sql, inserts);
-				let finalization = DB.query(sql);
-				finalization.then( function(data) {
-					res.json('undisliked');
+				let like = DB.query(sql);
+				like.then( function(data) {
+					let sql = "UPDATE users SET userLikes = userLikes + 1, userFame = userFame + 1 WHERE username = ?";
+					let inserts = [req.body.disliked];
+					sql = mysql.format(sql, inserts);
+					let finalization = DB.query(sql);
+					finalization.then( function(data) {
+						res.json('undisliked');
+					})
 				})
-			})
-		}
-	})
+			}
+		})
+	}
 })
 
 module.exports = router;
