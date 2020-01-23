@@ -111,7 +111,7 @@ router.get('/profile/:user?', (req, res, next) => {
 							res.render('profile', {
 								title:'Profile',
 								user: (req.session.user === undefined ? "Username" : req.session.user),
-								username: req.session.user,
+								username: data[0].username,
 								userFirstName: data[0].userFirstName,
 								userLastName: data[0].userLastName,
 								userGender: data[0].userGender,
@@ -151,7 +151,7 @@ router.get('/profile/:user?', (req, res, next) => {
 			res.render('profile', {
 				title:'Profile',
 				user: (req.session.user === undefined ? "Username" : req.session.user),
-				username: req.session.user,
+				username: data[0].username,
 				userFirstName: data[0].userFirstName,
 				userLastName: data[0].userLastName,
 				userGender: data[0].userGender,

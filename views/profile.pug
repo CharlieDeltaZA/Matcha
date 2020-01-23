@@ -51,16 +51,16 @@ html
 								|  Online
 						//lastonline sockio thing
 						.row.mx-auto
-							button#BtnLike.btn.btn-success(value=value, onclick='likeUser(this.value)')
+							button#BtnLike.btn.btn-success(value=username, onclick='likeUser(this.value)')
 								i.fa.fa-heart.mr-2
 								| Like 
-							button#BtnDislike.btn.btn-danger(value=value, onclick='dislikeUser(this.value)')
+							button#BtnDislike.btn.btn-danger(value=username, onclick='dislikeUser(this.value)')
 								i.fa.fa-thumbs-down.mr-2
 								| Dislike 
-							button#BtnReport.btn.btn-info(value=value, onclick='reportUser(this.value)')
+							button#BtnReport.btn.btn-info(value=username, onclick='reportUser(this.value)')
 								i.fa.fa-exclamation-triangle.mr-2
 								| Report 
-							button#BtnBlock.btn.btn-warning(value=value, onclick='blockUser(this.value)')
+							button#BtnBlock.btn.btn-warning(value=username, onclick='blockUser(this.value)')
 								i.fa.fa-ban.mr-2
 								| Block 
 					hr

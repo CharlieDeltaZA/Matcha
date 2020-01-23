@@ -81,7 +81,7 @@ router.get('/', (req, res) => {
 					title:'Chat Messages',
 					user: (req.session.user === undefined ? "Username" : req.session.user),
 					friendList: data,
-					activeChat: req.session.chatter,
+					activeChat: 0,
 					messages: 0,
 					userLogged: (req.session.user === undefined ? false : true)
 				});
