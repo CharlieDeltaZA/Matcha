@@ -4,13 +4,10 @@ html
 		title Matcha | #{title}
 		include header_items.pug		
 		link(rel='stylesheet', href='/chat.css')
-		link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css')
-		script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js')
 
 	body
 		include navbar.pug
-		//- var uName = #{user.liker};
-		//- var uName2 = uName;
+
 		.container
 			h3.text-center.my-3.mt-white.display-3#heading Messaging
 
@@ -37,42 +34,9 @@ html
 							.d-flex.bd-highlight
 								
 								.user_info
-									//- span Chat with #{uName2}
 									span Chat history:
 									
 						.card-body.msg_card_body#populateme
-							//- .d-flex.justify-content-start.mb-4
-							//- 	.msg_cotainer
-							//- 		| Hi, how are you samim?
-									
-							//- .d-flex.justify-content-end.mb-4
-							//- 	.msg_cotainer_send
-							//- 		| Hi Khalid i am good tnx how about you?
-									
-							//- .d-flex.justify-content-start.mb-4
-								
-							//- 	.msg_cotainer
-							//- 		| I am good too, thank you for your chat template
-									
-							//- .d-flex.justify-content-end.mb-4
-							//- 	.msg_cotainer_send
-							//- 		| You are welcome
-									
-								
-							//- .d-flex.justify-content-start.mb-4
-								
-							//- 	.msg_cotainer
-							//- 		| I am looking for your next templates
-									
-							//- .d-flex.justify-content-end.mb-4
-							//- 	.msg_cotainer_send
-							//- 		| Ok, thank you have a good day
-									
-								
-							//- .d-flex.justify-content-start.mb-4
-							
-							//- 	.msg_cotainer
-							//- 		| Bye, see you
 									
 						.card-footer
 							.input-group
@@ -80,67 +44,13 @@ html
 									span.input-group-text.attach_btn
 										i.fa.fa-ellipsis-h
 								input#messageField.form-control.type_msg(type='text', placeholder='Type your message...')
-								//- textarea#messageField.form-control.type_msg(name='', placeholder='Type your message...')
 								.input-group-append
 									button#sendMsg.input-group-text.send_btn(type='button' onclick="sendMessage('"+activeChat+"');")
 										i.fa.fa-location-arrow(aria-hidden='true')
-									//- span#sendMsg.input-group-text.send_btn(type='button', onclick="sendMessage('"+activeChat+"');")
-									//- 	i.fa.fa-location-arrow
 
-
-
-
-
-
-			//- .messaging
-			//- 	.inbox_msg
-			//- 		.inbox_people
-			//- 			.headind_srch
-			//- 				.recent_heading
-			//- 					h4 Recent Conversations
-			//- 			.inbox_chat
-			//- 				each user in friendList
-			//- 					.chat_list(id=user.liker)
-			//- 						.chat_people(onclick="setActive('"+user.liker+"');")
-			//- 							//- .chat_img
-			//- 								img(src='https://ptetutorials.com/images/user-profile.png', alt='sunil')
-			//- 							.chat_ib
-			//- 								h5
-			//- 									| #{user.liker}
-			//- 		.mesgs#msgWrap
-			//- 			.msg_history#populateme
-			//- 				//- each message in messages
-			//- 					p #{message.sender} : #{message.message}
-								
-			//- 				//- .incoming_msg
-			//- 				//- 	.incoming_msg_img
-			//- 				//- 	.received_msg
-			//- 				//- 		.received_withd_msg
-			//- 				//- 			p
-			//- 				//- 				| Test which is a new approach to have all
-			//- 				//- 				| solutions
-			//- 				//- 			span.time_date  11:01 AM | June 9
-			//- 				//- .outgoing_msg
-			//- 				//- 	.sent_msg
-			//- 				//- 		p
-			//- 				//- 			| Test which is a new approach to have all
-			//- 				//- 			| solutions
-			//- 				//- 		span.time_date  11:01 AM | June 9
-			//- 				//- .incoming_msg
-			//- 				//- 	.received_msg
-			//- 				//- 		.received_withd_msg
-			//- 				//- 			p Test, which is a new approach to have
-			//- 				//- 			span.time_date  11:01 AM | Yesterday
-			//- 				//- .outgoing_msg
-			//- 				//- 	.sent_msg
-			//- 				//- 		p Apollo University, Delhi, India Test
-			//- 				//- 		span.time_date  11:01 AM | Today
-			//- 			.type_msg
-			//- 				.input_msg_write
-			//- 					input#messageField.write_msg(type='text', placeholder='Type a message')
-			//- 					button#sendMsg.msg_send_btn(type='button' onclick="sendMessage('"+activeChat+"');")
-			//- 						i.fa.fa-paper-plane-o(aria-hidden='true')
 
 	script(src="/chat.js")
 	include footer.pug
 	include js_includes.pug
+	link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css')
+	script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js')
