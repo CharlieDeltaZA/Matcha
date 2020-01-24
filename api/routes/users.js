@@ -128,7 +128,7 @@ router.get('/profile/:user?', (req, res, next) => {
 						DB.view_profile(req.params.user, req.session.user);
 						let interests = DB.query(`SELECT * FROM interests WHERE user='${req.params.user}'`)
 						interests.then(function (data1) {
-							let current_user = DB.query(`SELECT * FROM users WHERE username = ${req.session.user}`);
+							let current_user = DB.query(`SELECT * FROM users WHERE username = '${req.session.user}'`);
 							current_user.then( function(data2) {
 								data[0].distance = appendDistance(data2[0], data[0]);
 								res.render('profile', {

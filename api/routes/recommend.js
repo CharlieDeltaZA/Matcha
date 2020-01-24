@@ -86,7 +86,7 @@ router.get('/', (req, res, next) => {
 						});
 					}
 				}
-				let removeBlockedUsers = DB.query(`SELECT * FROM blocks WHERE blocker = ${req.session.user}`);
+				let removeBlockedUsers = DB.query(`SELECT * FROM blocks WHERE blocker = '${req.session.user}'`);
 				removeBlockedUsers.then(function (blockedUsers) {
 					blockedUsers.forEach(element1 => {
 						data1.forEach(function(element2, index) {

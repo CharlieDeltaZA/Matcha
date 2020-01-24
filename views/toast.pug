@@ -2,12 +2,12 @@
 //- #NotifDiv(style='height:120px; width:450px; border:thin; background-color:pink;overflow-y:auto;overflow-wrap:break-word;hyphens:auto;position:fixed;bottom:15px;right:15px')
 //- script(src="/notifications.js")
 
-.toast(role='alert', aria-live='assertive', aria-atomic='true', data-autohide='false', style="position: fixed; bottom: 15px; right: 15px;")
-    .toast-header
-        img.rounded.mr-2(src='/logo.png', alt='Logo' style="width:25px;")
-        strong.mr-auto Matcha
-        small.text-muted Now
-        button.ml-2.mb-1.close(type='button', data-dismiss='toast', aria-label='Close')
-            span(aria-hidden='true') ×
-    .toast-body
-        | Hello, world! This is a toast message.
+#Toasty.toast(role='alert', aria-live='assertive', aria-atomic='true', data-autohide='false')
+//-     .toast-header
+//-         img.rounded.mr-2(src='/logo.png', alt='Logo' style="width:25px;")
+//-         strong.mr-auto Matcha
+//-         small.text-muted Now
+//-         button.ml-2.mb-1.close(type='button', data-dismiss='toast', aria-label='Close')
+//-             span(aria-hidden='true') ×
+//-     .toast-body
+//-         | Hello, world! This is a toast message.

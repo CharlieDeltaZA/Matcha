@@ -19,6 +19,12 @@ body {
     height: 56px;
 }
 
+#Toasty {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
 .mbg-blue {
     background-color: #1cb3c8;
 }
