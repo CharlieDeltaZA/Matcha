@@ -19,9 +19,9 @@ app.use(session({
     secret: 'somerandonstuffs',
     resave: false,
     saveUninitialized: false,
-    // cookie: {
-	// 	expires: 600000
-    // }
+    cookie: {
+		expires: 600000000
+    }
 }));
 
 // TEMPORARY CODE. gets all information on a given user.
