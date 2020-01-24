@@ -130,7 +130,7 @@ router.get('/profile/:user?', (req, res, next) => {
 						interests.then(function (data1) {
 							let current_user = DB.query(`SELECT * FROM users WHERE username = ${req.session.user}`);
 							current_user.then( function(data2) {
-								data[0].distance = appendDistance(data[0], data2[0]);
+								data[0].distance = appendDistance(data2[0], data[0]);
 								res.render('profile', {
 									title:'Profile',
 									user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -146,10 +146,10 @@ router.get('/profile/:user?', (req, res, next) => {
 									userBio: (data[0].userBiography === undefined ? 0 : data[0].userBiography),
 									userLikes: data[0].userLikes,
 									userInterests: (data1.length === 0 ? 0 : data1),
-									userLat: data[0].userLat,
-									userLng: data[0].userLng,
+									// userLat: data[0].userLat,
+									// userLng: data[0].userLng,
 									userAge: data[0].userAge,
-									distance: (data[0].distance.length === 0 ? 0 : data[0].distance),
+									distance: data[0].distance,
 									userIsOnline: data[0].isOnline,
 									userLastOnline: data[0].lastOnline,
 									userLogged: (req.session.user === undefined ? false : true),
@@ -187,8 +187,8 @@ router.get('/profile/:user?', (req, res, next) => {
 				userInterests: 0,
 				userBio: (data[0].userBiography === undefined ? 0 : data[0].userBiography),
 				userLikes: data[0].userLikes,
-				userLat: data[0].userLat,
-				userLng: data[0].userLng,
+				// userLat: data[0].userLat,
+				// userLng: data[0].userLng,
 				userAge: data[0].userAge,
 				distance: 0,
 				userLogged: (req.session.user === undefined ? false : true),
