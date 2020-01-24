@@ -122,54 +122,10 @@ html
 													i.fa.fa-thumbs-down
 
 
-			//- .container(style='max-width: 1100px;min-width:320px;')
-			//- 	.card(style='max-width: 1100px;min-width:320px;')
-			//- 		.row
-			//- 			.card-columns
-			//- 				//- start of loop
-			//- 				if arrayExists
-			//- 					each val in userArray
-			//- 						if maxDistEntered
-			//- 							if (val.distance < maxDist)
-			//- 								//- .col-lg-4.col-md-6.col-sm
-			//- 									//- .container.my-4
-			//- 								.card.text-black(style='max-width: 300px;min-width: 300px; min-height: 340px;')
-			//- 									a(href="http://localhost:8080/user/profile/"+val.username) 
-			//- 										img.card-img-top.img-fluid(src=val.userImage, alt='User Profile Image')
-			//- 									.card-body.mbg-light-grey
-			//- 										h5.card-title #{val.userFirstName} #{val.userLastName}
-			//- 										if val.distance == 9999
-			//- 											p Distance : unknown
-			//- 										else	
-			//- 											p Distance : #{val.distance}km
-			//- 										p Fame : #{val.fame}
-			//- 										p Age : #{val.userAge}
-			//- 										.row.mx-auto
-			//- 											//- below buttons need proper like and dislike functions
-			//- 											button.btn.btn-success.w-50(value=val.username, onclick='likeUser(this.value)')
-			//- 												i.fa.fa-heart
-			//- 											button.btn.btn-danger.w-50(value=val.username, onclick='dislikeUser(this.value)')
-			//- 												i.fa.fa-thumbs-down
-			//- 						else
-			//- 							//- .col-lg-4.col-md-6.col-sm
-			//- 								//- .container.my-4
-			//- 							.card.text-black(style='max-width: 300px;min-width: 300px; min-height: 340px;')
-			//- 								a(href="http://localhost:8080/user/profile/"+val.username) 
-			//- 									img.card-img-top.img-fluid(src=val.userImage, alt='User Profile Image')
-			//- 								.card-body.mbg-light-grey
-			//- 									h5.card-title #{val.userFirstName} #{val.userLastName}
-			//- 									if val.distance == 9999
-			//- 										p Distance : unknown
-			//- 									else	
-			//- 										p Distance : #{val.distance}km
-			//- 									p Fame : #{val.fame}
-			//- 									p Age : #{val.userAge}
-			//- 									.row.mx-auto
-			//- 										//- below buttons need proper like and dislike functions
-			//- 										button.btn.btn-success.w-50(value=val.username, onclick='likeUser(this.value)')
-			//- 											i.fa.fa-heart
-			//- 										button.btn.btn-danger.w-50(value=val.username, onclick='dislikeUser(this.value)')
-			//- 											i.fa.fa-thumbs-down
+			
+		include footer.pug
+
+
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js")
 		script(src='/recommendations.js')
 		include js_includes.pug
@@ -180,4 +136,3 @@ html
 		//- 		});
 		//- 	});
 		script(src="/profileActions.js")
-		include footer.pug

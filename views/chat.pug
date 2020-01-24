@@ -50,6 +50,9 @@ html
 										i.fa.fa-location-arrow(aria-hidden='true')
 
 
+	include footer.pug
+
+	include js_includes.pug
 	script(src="/chat.js")
 	script(src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js")
 	if friendList.length == 0
@@ -60,7 +63,5 @@ html
 				'error'
 			)
 
-	include footer.pug
-	include js_includes.pug
 	link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css')
 	script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js')
