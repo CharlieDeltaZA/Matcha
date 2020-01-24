@@ -76,6 +76,9 @@ var setupTables = function setupTables() {
 					);`
 				conn.query(sql, function (err, result) {
 					if (err) throw err;
+
+					// USERS
+
 					DB.query(`INSERT INTO users
 	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
 	
@@ -172,6 +175,203 @@ var setupTables = function setupTables() {
 	
 	VALUES
 	("bwebb","bwebb@student.wethinkcode.co.za", "", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Ben", "Webb", 'hetero', 'Male', 17, 1, 1, 21, 3, 14, "Manga is life!", -33.9413, 18.4128, 2020-09-13 23:40)`);
+
+
+	// IMAGES - Profile Images
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("charlie","",1)`);
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("bwebb","",1)`);
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("yuuki","",1)`);
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("jeff","",1)`);
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("02","",1)`);
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("03","",1)`);
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("04","",1)`);
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("05","",1)`);
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("06","",1)`);
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("07","",1)`);
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("12","",1)`);
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("13","",1)`);
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("14","",1)`);
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("15","",1)`);
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("16","",1)`);
+
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
+
+	// VALUES
+	// ("17","",1)`);
+
+	// IMAGES - random 2nd test image
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("charlie","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("bwebb","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("yuuki","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("jeff","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("02","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("03","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("04","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("05","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("06","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("07","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("12","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("13","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("14","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("15","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("16","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
+
+	VALUES
+	("17","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
 
 				});
 			}
