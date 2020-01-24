@@ -374,6 +374,37 @@ var setupTables = function setupTables() {
 			}
 		});
 	});
+
+	var conn = mysql.createConnection( {
+		host: `${db.servername}`,
+		user: `${db.dbusername}`,
+		password: `${db.dbpassword}`,
+		database: `${db.dbname}`
+	});
+	conn.connect(function(err) {
+		if (err) throw err;
+		conn.query(`SELECT * FROM information_schema.tables
+					WHERE table_schema = 'matcha'
+					AND table_name = 'reports'`,
+		function (err, result) {
+			if (err) throw err;
+			if (result.length > 0) {
+				// console.log('images table already exists');
+			}
+			else
+			{
+				console.log('reports table not found.');
+				var sql = `CREATE TABLE IF NOT EXISTS reports (
+					reported LONGTEXT,
+					reporter LONGTEXT
+					);`
+				conn.query(sql, function (err, result) {
+					if (err) throw err;
+					console.log("reports table created");
+				});
+			}
+		});
+	});
 }
 
 // Fake Users

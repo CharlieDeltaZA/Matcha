@@ -94,3 +94,31 @@ function	blockUser(user) {
 		}
 	});
 }
+
+function	reportUser(user) {
+	let form = {
+		reported: user
+	}
+	$.ajax({
+		type: "POST", 
+		url : '/user/report',
+		data: JSON.stringify(form),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(data) {
+			if (data == 'reported') {
+				swal(
+					'You have reported this user',
+					`You blocked this user.`,
+					'success'
+				)
+			} else {
+				swal(
+					'Already reported',
+					`You have already reported this user.`,
+					'success'
+				)
+			}
+		}
+	});
+}

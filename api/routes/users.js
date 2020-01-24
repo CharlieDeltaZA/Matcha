@@ -415,4 +415,23 @@ router.post('/block', (req, res, next) => {
 	})
 });
 
+router.post('/report', (req, res, next) => {
+	let sql = "SELECT * FROM reports WHERE reported = ? AND reporter = ?"
+	let inserts = [req.body.reported, req.session.user];
+	sql = mysql.format(sql, inserts);
+	let reportCheck = DB.query(sql);
+	reportCheck.then( function(data) {
+		if (!data[0]) {
+			let sql = "INSERT INTO reports (reported, reporter) VALUES (?, ?)";
+			let inserts = [req.body.reported, req.session.user];
+			sql = mysql.format(sql, inserts);
+			let report = DB.query(sql);
+			report.then( function(data) {
+				res.json('reported');
+			})
+		} else {
+			res.json('Already reported');
+		}
+	})
+});
 module.exports = router;
