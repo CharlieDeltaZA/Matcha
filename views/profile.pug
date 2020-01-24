@@ -13,10 +13,6 @@ html
 		.container.mx-auto.my-3(style='max-width: 900px;')
 			.card.mx-auto(style='max-width: 1200px;')
 				#carouselControls.carousel.slide(data-ride='carousel', data-interval="5000")
-					//- ol.carousel-indicators
-					//- 	li.active(data-target='#carouselIndicators', data-slide-to='0')
-					//- 	li(data-target='#carouselIndicators', data-slide-to='1')
-					//- 	li(data-target='#carouselIndicators', data-slide-to='2')
 					.carousel-inner
 						.carousel-item.active(data-interval="false")
 							if imageExists
@@ -49,7 +45,6 @@ html
 					hr
 					h1.display-4.card-title.text-capitalize #{userFirstName} #{userLastName}
 					if !sameUser
-						//lastonline sockio thing
 						.row.mx-auto
 							button#BtnLike.btn.btn-success(value=username, onclick='likeUser(this.value)')
 								i.fa.fa-heart.mr-2
