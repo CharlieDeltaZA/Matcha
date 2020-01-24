@@ -9,7 +9,6 @@ html
 
 		.container
 			h1.mt-white.text-center.mt-5.display-3#heading Profile
-			h1 #{distance}
 			
 		.container.mx-auto.my-3(style='max-width: 900px;')
 			.card.mx-auto(style='max-width: 900px;')
@@ -111,7 +110,7 @@ html
 						label.h4 Distance:
 						p
 							i.fa.mx-2.fa-map-marker.text-danger
-							| 'insert distance function here'km
+							| #{distance}km
 
 					hr
 					if !sameUser
