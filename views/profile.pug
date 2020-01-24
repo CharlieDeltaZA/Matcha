@@ -108,9 +108,12 @@ html
 							|  Men or Women
 					if(sameUser != 1)
 						label.h4 Distance:
-						p
-							i.fa.mx-2.fa-map-marker.text-danger
-							| #{distance}km
+						if distance === 0
+							p This user has not set their location!
+						else
+							p
+								i.fa.mx-2.fa-map-marker.text-danger
+								| #{distance}km
 
 					hr
 					if !sameUser
