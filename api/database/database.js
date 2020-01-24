@@ -288,56 +288,50 @@ class Database {
 											sql = mysql.format(sql, inserts);
 											let interests = a.query(sql);
 											interests.then(function (data) {
-												let sql = `UPDATE friends SET user1=? WHERE user1='${username}'`;
+												let sql = `UPDATE dislikes SET disliked=? WHERE disliked='${username}'`;
 												inserts = [newUsername];
 												sql = mysql.format(sql, inserts);
-												let friends1 = a.query(sql);
-												friends1.then(function (data) {
-													let sql = `UPDATE friends SET user2=? WHERE user2='${username}'`;
+												let disliked1 = a.query(sql);
+												disliked1.then(function (data) {
+													let sql = `UPDATE dislikes SET disliker=? WHERE disliker='${username}'`;
 													inserts = [newUsername];
 													sql = mysql.format(sql, inserts);
-													let friends2 = a.query(sql);
-													friends2.then(function (data) {
-														let sql = `UPDATE dislikes SET disliked=? WHERE disliked='${username}'`;
+													let disliked2 = a.query(sql);
+													disliked2.then(function (data) {
+														let sql = `UPDATE reports SET reporter=? WHERE reporter='${username}'`;
 														inserts = [newUsername];
 														sql = mysql.format(sql, inserts);
-														let disliked1 = a.query(sql);
-														disliked1.then(function (data) {
-															let sql = `UPDATE dislikes SET disliker=? WHERE disliker='${username}'`;
+														let reports1 = a.query(sql);
+														reports1.then( function(data) {
+															let sql = `UPDATE reports SET reported=? WHERE reported='${username}'`;
 															inserts = [newUsername];
 															sql = mysql.format(sql, inserts);
-															let disliked2 = a.query(sql);
-															disliked2.then(function (data) {
-																resolve();
+															let reports2 = a.query(sql);
+															reports2.then( function(data) {
+																let sql = `UPDATE blocks SET blocked=? WHERE blocked='${username}'`;
+																inserts = [newUsername];
+																sql = mysql.format(sql, inserts);
+																let blocks1 = a.query(sql);
+																blocks1.then( function(data) {
+																	let sql = `UPDATE blocks SET blocker=? WHERE blocker='${username}'`;
+																	inserts = [newUsername];
+																	sql = mysql.format(sql, inserts);
+																	let reports2 = a.query(sql);
+																	reports2.then( function(data) {
+																		resolve();
+																	})
+																})
 															})
 														})
-													}, function (err) {
-														reject(err);
 													})
-												}, function (err) {
-													reject(err);
 												})
-											}, function (err) {
-												reject(err);
 											})
-										}, function (err) {
-											reject(err);
 										})
 									})
-								}, function (err) {
-									reject(err);
 								})
-							}, function (err) {
-								reject(err);
 							})
-						}, function (err) {
-							reject(err);
 						})
-					}, function (err) {
-						reject(err)
 					})
-				}, function (err) {
-					reject(err);
 				})
 			}, function (err) {
 				reject("Failed to update username.");

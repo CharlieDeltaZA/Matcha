@@ -33,11 +33,11 @@ function changeUsername() {
 	let form = {
 		userLogin: document.getElementById('userLogin').value
 	}
-	if (form.userLogin < 3)
+	if (form.userLogin < 4)
 	{
 		swal(
 			'Error!',
-			`Username must contain at least 3 characters.`,
+			`Username must contain at least 4 characters.`,
 			'error'
 		)
 	}
@@ -63,7 +63,7 @@ function changeUsername() {
 				{
 					swal(
 						'Error!',
-						`Username already taken.`,
+						`${data}`,
 						'error'
 					)
 				}

@@ -162,15 +162,24 @@ router.post('/setImage', (req, res) => {
 
 router.post('/username', (req, res) => {
 	let db = new database;
-	let usernameUpdate = db.change_username(req.session.user, req.body.userLogin);
 
-	usernameUpdate.then( function (data) {
-		req.session.user = req.body.userLogin;
-		res.json("Success");
-	}, function (err) {
-		res.json(err);
-		console.log("Error");
-	})
+	if (req.body.userLogin) {
+		if (req.body.userLogin.length < 4) {
+			res.json(`Username must have at least 4 characters`);
+		} else {
+			if (!(/^[A-Za-z0-9-_.]+$/.test(req.body.userLogin))) {
+				res.json('Username contains forbidden characters.');
+			} else {
+				let usernameUpdate = db.change_username(req.session.user, req.body.userLogin);
+				usernameUpdate.then( function (data) {
+					req.session.user = req.body.userLogin;
+					res.json("Success");
+				}, function (err) {
+					res.json(err);
+				})
+			}
+		}
+	}
 });
 
 router.post('/age', (req, res) => {
