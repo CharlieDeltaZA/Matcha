@@ -10,7 +10,11 @@ html
 		.container(style='max-width: 700px;')
 			.card
 				.col
-					.container.mx-auto.my-5.custom-file(style='max-width: 700px;')
+					h3.mx-auto.mt-2 Select an image to upload:
+					small.text-muted
+						| A maximum of 5 images are permitted.
+						| Set one as active for it to become your profile image.
+					.container.mx-auto.mb-5.mt-2.custom-file(style='max-width: 700px;')
 						form#account(name="images", action='/user/account/images', method='POST', enctype="multipart/form-data")
 							input#profileImg.custom-file-input(type="file", name='image')
 							label.custom-file-label.mx-auto(for='profileImg') Choose File
