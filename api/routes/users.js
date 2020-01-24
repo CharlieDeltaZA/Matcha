@@ -149,7 +149,7 @@ router.get('/profile/:user?', (req, res, next) => {
 									userLat: data[0].userLat,
 									userLng: data[0].userLng,
 									userAge: data[0].userAge,
-									distance: data[0].distance,
+									distance: (data[0].distance.length === 0 ? 0 : data[0].distance),
 									userIsOnline: data[0].isOnline,
 									userLastOnline: data[0].lastOnline,
 									userLogged: (req.session.user === undefined ? false : true),
