@@ -254,8 +254,7 @@ router.post('/logout', (req, res, next) => {
 	let year = date_ob.getFullYear();
 	let hours = ((date_ob.getHours() < 10) ? '0' : '') + date_ob.getHours();
 	let minutes = ((date_ob.getMinutes() < 10) ? '0' : '') + date_ob.getMinutes();
-	let seconds = ((date_ob.getSeconds() < 10) ? '0' : '') + date_ob.getSeconds();
-	let datestr = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds;
+	let datestr = year + "-" + month + "-" + date + " " + hours + ":" + minutes;
 	db.query(`UPDATE users SET isOnline = 0, lastOnline = '${datestr}' WHERE username = '${req.session.user}'`);
 	req.session.destroy();
 	res.json('Received');

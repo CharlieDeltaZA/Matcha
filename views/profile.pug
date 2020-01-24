@@ -38,11 +38,14 @@ html
 				.card-body
 					if !sameUser
 						if (!userIsOnline)
-							small#lastOnline Last Seen: #{userLastOnline}
+							small#lastOnline
+								i.fa.mx-2.text-danger.fa-circle
+								| Last Seen: #{userLastOnline}
+
 						else
 							small#lastOnline
-								i.fa.mx-2.text-green.fa-circle
-								|  Online
+								i.fa.mx-2.text-success.fa-circle
+								| Online
 					hr
 					h1.display-4.card-title.text-capitalize #{userFirstName} #{userLastName}
 					if !sameUser
