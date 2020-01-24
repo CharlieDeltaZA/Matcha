@@ -12,6 +12,26 @@ app.use(express.static('/../../scripts'));
 
 var DB = new database;
 
+function toRad(Value) {
+	return Value * Math.PI / 180;
+}
+
+function appendDistance(user1, user2) {
+	if (!user2.userLocationlat || !user2.userLocationlng)
+		return (9999);
+	var R = 6371;
+	var dLat = toRad(user2.userLocationlat - user1.userLocationlat);
+	var dLon = toRad(user2.userLocationlng - user1.userLocationlng);
+	var lat1 = toRad(user1.userLocationlat);
+	var lat2 = toRad(user2.userLocationlat);
+
+	var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+	var d = R * c;
+
+	return d.toFixed(2);
+}
+
 router.get('/login/:error?', (req, res, next) => {
 	if (req.session.user)
 	{
@@ -108,28 +128,33 @@ router.get('/profile/:user?', (req, res, next) => {
 						DB.view_profile(req.params.user, req.session.user);
 						let interests = DB.query(`SELECT * FROM interests WHERE user='${req.params.user}'`)
 						interests.then(function (data1) {
-							res.render('profile', {
-								title:'Profile',
-								user: (req.session.user === undefined ? "Username" : req.session.user),
-								username: data[0].username,
-								userFirstName: data[0].userFirstName,
-								userLastName: data[0].userLastName,
-								userGender: data[0].userGender,
-								userFame: data[0].userFame,
-								userImage: data[0].userImage,
-								imageArray: imagearray,
-								imageExists: data[0].userImage ? 1 : 0,
-								userOrientation: data[0].userOrientation,
-								userBio: (data[0].userBiography === undefined ? 0 : data[0].userBiography),
-								userLikes: data[0].userLikes,
-								userInterests: (data1.length === 0 ? 0 : data1),
-								userLat: data[0].userLat,
-								userLng: data[0].userLng,
-								userAge: data[0].userAge,
-								userIsOnline: data[0].isOnline,
-								userLastOnline: data[0].lastOnline,
-								userLogged: (req.session.user === undefined ? false : true),
-								sameUser: 0
+							let current_user = DB.query(`SELECT * FROM users WHERE username = ${req.session.user}`);
+							current_user.then( function(data2) {
+								data[0].distance = appendDistance(data[0], data2[0]);
+								res.render('profile', {
+									title:'Profile',
+									user: (req.session.user === undefined ? "Username" : req.session.user),
+									username: data[0].username,
+									userFirstName: data[0].userFirstName,
+									userLastName: data[0].userLastName,
+									userGender: data[0].userGender,
+									userFame: data[0].userFame,
+									userImage: data[0].userImage,
+									imageArray: imagearray,
+									imageExists: data[0].userImage ? 1 : 0,
+									userOrientation: data[0].userOrientation,
+									userBio: (data[0].userBiography === undefined ? 0 : data[0].userBiography),
+									userLikes: data[0].userLikes,
+									userInterests: (data1.length === 0 ? 0 : data1),
+									userLat: data[0].userLat,
+									userLng: data[0].userLng,
+									userAge: data[0].userAge,
+									distance: data[0].distance,
+									userIsOnline: data[0].isOnline,
+									userLastOnline: data[0].lastOnline,
+									userLogged: (req.session.user === undefined ? false : true),
+									sameUser: 0
+								})
 							})
 						}, function(err) {
 						})
@@ -165,6 +190,7 @@ router.get('/profile/:user?', (req, res, next) => {
 				userLat: data[0].userLat,
 				userLng: data[0].userLng,
 				userAge: data[0].userAge,
+				distance: 0,
 				userLogged: (req.session.user === undefined ? false : true),
 				sameUser: 1
 			});
