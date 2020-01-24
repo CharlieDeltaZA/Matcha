@@ -12,6 +12,10 @@ html
 			.card
 				each val in userList
 					.card-body
-						a(href='/user/profile/'+val.viewer) #{val.viewer} viewed your profile
+						.row.mx-auto
+							p
+								i.fa.fa-user.mx-2.text-secondary
+								a(href='/user/profile/'+val.viewer) #{val.viewer} 
+								| viewed your profile
 	include footer.pug
 	include js_includes.pug

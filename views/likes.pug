@@ -13,9 +13,17 @@ html
 				each val in userList
 					.card-body
 						if val.type == 1
-							a(href='/user/profile/'+val.liker) #{val.liker} liked your profile
+							.row.mx-auto
+								p
+									i.fa.fa-user.mx-2.text-secondary
+									a(href='/user/profile/'+val.liker) #{val.liker}
+									| liked your profile
 						else
-							a(href='/user/profile/'+val.liker) #{val.liker} unliked your profile
+							.row.mx-auto
+								p
+									i.fa.fa-user.mx-2.text-secondary
+									a(href='/user/profile/'+val.liker) #{val.liker} 
+									| unliked your profile
 
 	include footer.pug
 	include js_includes.pug
