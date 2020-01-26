@@ -73,14 +73,18 @@ class Database {
 				sql = mysql.format(sql, inserts);
 				let result = a.query(sql);
 				result.then(function (res) {
-					let pass = res[0];
-					let password_check = encrypt.comparePassword(password, pass.userPassword);
-					password_check.then(function (res) {
-						resolve(`Logged in user '${username}'`);
-					},
-						function (err) {
-							reject(`Incorrect password for '${username}'`);
+					if (res[0].userVerified == 1) {
+						let pass = res[0];
+						let password_check = encrypt.comparePassword(password, pass.userPassword);
+						password_check.then(function (res) {
+							resolve(`Logged in user '${username}'`);
+						},
+							function (err) {
+								reject(`Incorrect password for '${username}'`);
 						})
+					} else {
+						reject(`Please confirm your email with the link sent to continue.`)
+					}
 				})
 			}, function (err) {
 				reject(`'${username}' does not exist.`);
@@ -116,7 +120,17 @@ class Database {
 		});
 	}
 
-
+	get_interested(interest) {
+		return new Promise((resolve, reject) => {
+			let sql = "SELECT * FROM interests WHERE interest = ?"
+			let inserts = [interest];
+			sql = mysql.format(sql, inserts);
+			let getInterested = this.query(sql);
+			getInterested.then( function(data) {
+				resolve(data);
+			});
+		})
+	}
 
 	get_matches(userOrientation, userGender, username, userAge, ageDiff, minFame) {
 		return new Promise((resolve, reject) => {

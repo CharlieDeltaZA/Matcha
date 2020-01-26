@@ -94,15 +94,69 @@ router.get('/', (req, res, next) => {
 								data1.splice(index, 1);
 						});
 					});
-					res.render('recommendations', {
-						title: 'Recommendations',
-						user: (req.session.user === undefined ? "Username" : req.session.user),
-						userArray: data1,
-						userLogged: (req.session.user === undefined ? false : true),
-						arrayExists: arrayExists,
-						maxDist: +req.session.maxDist,
-						maxDistEntered: req.session.maxDist ? 1 : 0
-					});
+					var testArr = new Array();
+					if (req.session.interest) {
+						let interestedUsers = DB.get_interested(req.session.interest);
+						interestedUsers.then( function(interested) {
+							interested.forEach(element1 => {
+								data1.forEach(function(element2, index) {
+									if (element1.user == element2.username)
+										testArr.push(element2);
+								});
+							});
+							if (req.session.sortType) {
+								if (req.session.sortType == 'AgeUp') {
+									testArr = testArr.sort(function (a, b) {
+										return a.userAge - b.userAge;
+									});
+								}
+								else if ((req.session.sortType == 'AgeDown')) {
+									testArr = testArr.sort(function (a, b) {
+										return b.userAge - a.userAge;
+									});
+								}
+								else if ((req.session.sortType == 'FameUp')) {
+									testArr = testArr.sort(function (a, b) {
+										return a.userFame - b.userFame;
+									});
+								}
+								else if ((req.session.sortType == 'FameDown')) {
+									testArr = testArr.sort(function (a, b) {
+										return b.userFame - a.userFame;
+									});
+								}
+								else if ((req.session.sortType == 'Closer')) {
+									testArr = testArr.sort(function (a, b) {
+										return a.distance - b.distance;
+									});
+								}
+								else if ((req.session.sortType == 'Further')) {
+									testArr = testArr.sort(function (a, b) {
+										return b.distance - a.distance;
+									});
+								}
+								res.render('recommendations', {
+									title: 'Recommendations',
+									user: (req.session.user === undefined ? "Username" : req.session.user),
+									userArray: testArr,
+									userLogged: (req.session.user === undefined ? false : true),
+									arrayExists: arrayExists,
+									maxDist: +req.session.maxDist,
+									maxDistEntered: req.session.maxDist ? 1 : 0
+								});
+							}
+						})
+					} else {
+						res.render('recommendations', {
+							title: 'Recommendations',
+							user: (req.session.user === undefined ? "Username" : req.session.user),
+							userArray: data1,
+							userLogged: (req.session.user === undefined ? false : true),
+							arrayExists: arrayExists,
+							maxDist: +req.session.maxDist,
+							maxDistEntered: req.session.maxDist ? 1 : 0
+						});
+					}
 				})
 				// appendDistance(data[0], data1[0]);
 			})
@@ -128,6 +182,11 @@ router.post('/', (req, res, next) => {
 		req.session.maxDist = req.body.maxDist;
 	else
 		req.session.maxDist = undefined;
+	if (req.body.interest)
+		req.session.interest = req.body.interest
+	else
+		req.session.interest = undefined;
+
 	res.json('yes');
 });
 
