@@ -44,6 +44,13 @@ html
 					'Invalid code given in url.',
 					'error'
 				)
+		if notification === 'emailed'
+			script.
+				swal(
+					'Success!',
+					'An email with further instructions has been sent.',
+					'success'
+				)
 		if notification === 'incomplete'
 			script.
 				swal(

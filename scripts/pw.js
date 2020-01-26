@@ -73,10 +73,14 @@ function forgotPassHandler(data) {
 }
 
 function resetPass() {
+
+}
+
+function sendEmail() {
 	let form = {
 		userEmail: document.getElementById('userEmail').value,
 	}
-	let valid = emailValid(form.userEmail);
+	let valid = serverEmailValid(form.userEmail);
 	valid.then( function (ret) {
 		$.ajax({
 			type: "POST", 
@@ -85,16 +89,7 @@ function resetPass() {
 			contentType: "application/json; charset=utf-8",
 			dataType: "json",
 			success: function(ret) {
-				if (ret == 'success')
-				{
-					registrationHandler(ret);
-				} else {
-					swal(
-						'Error!',
-						`${ret}`,
-						'error'
-					)
-				}
+				// if ()
 			}
 		})
 	}, function (err) {

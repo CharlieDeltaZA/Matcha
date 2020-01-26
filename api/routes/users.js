@@ -4,6 +4,7 @@ const app = express();
 const database = require('../../api/database/database');
 const mysql = require('mysql');
 const validation = require('../../scripts/formValidation.js');
+const email_handler = require('../email');
 
 app.set('view engine', 'pug');
 app.use(express.static('/../../styles'));
@@ -224,17 +225,28 @@ router.get('/images', (req, res, next) => {
 	})
 });
 
-router.get('/pass_reset', (req, res, next) => {
+router.get('/pass_reset/:code?', (req, res, next) => {
 	if (req.session.user !== undefined)
 	{
 		res.redirect('/');
 		return ;
 	}
-	res.render('pass_reset', {
-		title:'Reset Password',
-		user: (req.session.user === undefined ? "Username" : req.session.user),
-		userLogged: (req.session.user === undefined ? false : true)
-	});
+	if (req.params.code) {
+		let codeCheck = DB.activate_account(req.params.code);
+		codeCheck.then(function(data) {
+			res.render('new_password', {
+				title:'new_password',
+				user: (req.session.user === undefined ? "Username" : req.session.user)
+			});
+		}, function(err) {
+			res.redirect('/');
+		})
+	} else {
+		res.render('pass_reset', {
+			title:'pass_reset',
+			user: (req.session.user === undefined ? "Username" : req.session.user)
+		});
+	}
 });
 
 router.post('/notifications', (req, res, next) => {
@@ -287,7 +299,21 @@ router.post('/logout', (req, res, next) => {
 })
 
 router.post('/forgot_pass', (req, res, next) => {
-	//I HAVE BEEN SUMMONED TO DO SOMETHING HERE
+	if (!req.body.userEmail)
+	{
+		res.json('Invalid');
+		return ;
+	}
+	else {
+		let sql = "SELECT * FROM users WHERE userEmail = ?";
+		let inserts = [req.body.userEmail];
+		sql = mysql.format(sql, inserts);
+		let getUser = DB.query(sql);
+		getUser.then(function(data) {
+			email_handler.reset_password(req.body.userEmail, data[0].userCode);
+			res.json('Sent');
+		})
+	}
 })
 
 router.post('/like', (req, res, next) => {
