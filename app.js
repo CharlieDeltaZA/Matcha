@@ -82,6 +82,14 @@ app.get("/:code?", (req, res) => {
 				notification: 'emailed',
 				userLogged: (req.session.user === undefined ? false : true)
 			});
+		} else if (req.params.code == 'changed') {
+			userNotification = 'changed';
+			res.render('index', {
+				title:'Home',
+				user: (req.session.user === undefined ? "Username" : req.session.user),
+				notification: userNotification,
+				userLogged: (req.session.user === undefined ? false : true)
+			});
 		} else {
 			var activation = db.activate_account(req.params.code);
 			activation.then( function(data) {

@@ -55,7 +55,7 @@ function changeUsername() {
 			contentType: "application/json; charset=utf-8",
 			dataType: "json",
 			success: function(data) {
-				console.log(data);
+				// console.log(data);
 				if (data === 'Success')
 				{
 					location.reload();
@@ -150,13 +150,12 @@ function postProfileImage() {
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: function(data) {
-			console.log('Image uploaded');
+			// console.log('Image uploaded');
 		}
 	});
 }
 
 function changePassword() {
-	console.log("entered");
 	let form = 
 	{
 		password: document.getElementById("userNewPass").value

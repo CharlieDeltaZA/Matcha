@@ -108,7 +108,6 @@ router.post('/images', parser.array("image", 5), (req, res) => {
 			db.userComplete(req.session.user);
 			res.redirect('/user/images');
 		},function (err) {
-			console.log(err);
 			res.sendStatus(204).end();
 		})
 	});
@@ -211,8 +210,6 @@ router.post('/password', (req, res) => {
 	if (req.body.password && req.session.user)
 	{
 		let db = new database;
-
-		console.log(req.body.password);
 		let hash = encrypt.cryptPassword(req.body.password);
 		hash.then( function(data) {
 			let sql = `UPDATE users SET userPassword='${data}' WHERE username='${req.session.user}'`

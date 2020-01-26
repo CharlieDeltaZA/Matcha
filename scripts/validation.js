@@ -103,7 +103,7 @@ $("input[type='text'], input[type='password'], input[type='email']").on("keyup",
 		case 17:
 			$("#lastNameError").text("Surname contains bad symbols");
 			break;
-		default :
-			console.log(registrationValid(userLogin, userName, userSurname, userEmail, userPass, userConfPass))
+		// default :
+			// console.log(registrationValid(userLogin, userName, userSurname, userEmail, userPass, userConfPass))
 	};
 });

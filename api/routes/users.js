@@ -5,6 +5,7 @@ const database = require('../../api/database/database');
 const mysql = require('mysql');
 const validation = require('../../scripts/formValidation.js');
 const email_handler = require('../email');
+const encrypt = require('../encrypt');
 
 app.set('view engine', 'pug');
 app.use(express.static('/../../styles'));
@@ -62,7 +63,7 @@ router.post('/login', (req, res, next) => {
 			res2.json('success');
 		},
 		function(err){
-			console.log(`Failed log in attempt.\nReason: ${err}`);
+			// console.log(`Failed log in attempt.\nReason: ${err}`);
 			res.json(err);
 			db.close();
 		})
@@ -100,7 +101,7 @@ router.post('/register', (req, res, next) => {
 		},
 		function (err) {
 			res.json('error');
-			console.log(`Failed registration.\nReason: ${err}`);
+			// console.log(`Failed registration.\nReason: ${err}`);
 			// db.close();
 		})
 	}
@@ -236,6 +237,7 @@ router.get('/pass_reset/:code?', (req, res, next) => {
 		codeCheck.then(function(data) {
 			res.render('new_password', {
 				title:'new_password',
+				code: req.params.code,
 				user: (req.session.user === undefined ? "Username" : req.session.user)
 			});
 		}, function(err) {
@@ -438,6 +440,25 @@ router.post('/block', (req, res, next) => {
 			res.json('unblocked');
 	}, function(err) {
 		res.json('failure');
+	})
+});
+
+router.post('/pass_change', (req, res, next) => {
+	let sql = "SELECT * FROM users WHERE userCode = ?";
+	let inserts = [req.body.userCode];
+	sql = mysql.format(sql, inserts);
+	let getUser = DB.query(sql);
+	getUser.then(function(data) {
+		let newPassword = encrypt.cryptPassword(req.body.newPassword);
+		newPassword.then(function(data) {
+			let sql = "UPDATE users SET userPassword = ? WHERE userCode = ?"
+			let inserts = [data, req.body.userCode];
+			sql = mysql.format(sql, inserts);
+			let passChange = DB.query(sql);
+			passChange.then(function(data) {
+				res.json('success');
+			})
+		})
 	})
 });
 

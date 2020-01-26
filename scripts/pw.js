@@ -72,8 +72,21 @@ function forgotPassHandler(data) {
 	}
 }
 
-function resetPass() {
-
+function resetPass(code) {
+	let form = {
+		userCode: code,
+		newPassword: document.getElementById('userPassword').value
+	}
+	$.ajax({
+		type: "POST", 
+		url : '/user/pass_change',
+		data: JSON.stringify(form),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function(ret) {
+			document.location.href = ("http://localhost:8080/changed");
+		}
+	})
 }
 
 function sendEmail() {
@@ -89,7 +102,7 @@ function sendEmail() {
 			contentType: "application/json; charset=utf-8",
 			dataType: "json",
 			success: function(ret) {
-				// if ()
+				
 			}
 		})
 	}, function (err) {

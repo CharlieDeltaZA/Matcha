@@ -37,6 +37,13 @@ html
 					'Email confirmed.',
 					'success'
 				)
+		if notification === 'changed'
+			script.
+				swal(
+					'Success!',
+					'Password changed. Please log in',
+					'success'
+				)
 		if notification === 'invalid'
 			script.
 				swal(

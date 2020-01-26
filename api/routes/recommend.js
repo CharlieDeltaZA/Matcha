@@ -135,6 +135,7 @@ router.get('/', (req, res, next) => {
 										return b.distance - a.distance;
 									});
 								}
+							}
 								res.render('recommendations', {
 									title: 'Recommendations',
 									user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -144,7 +145,6 @@ router.get('/', (req, res, next) => {
 									maxDist: +req.session.maxDist,
 									maxDistEntered: req.session.maxDist ? 1 : 0
 								});
-							}
 						})
 					} else {
 						res.render('recommendations', {

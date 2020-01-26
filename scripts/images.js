@@ -1,7 +1,3 @@
-function test(value) {
-	console.log(value);
-}
-
 function deleteImage(value) {
 	var form = {
 		imageurl: value
@@ -13,7 +9,6 @@ function deleteImage(value) {
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: function(data) {
-			console.log(data);
 			if (data === 'Success')
 			{
 				location.reload();
@@ -40,7 +35,6 @@ function setActiveImage(value) {
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: function(data) {
-			console.log(data);
 			if (data === 'Success')
 			{
 				document.location.href= ('http://localhost:8080/user/account');
