@@ -63,7 +63,6 @@ router.post('/login', (req, res, next) => {
 			res2.json('success');
 		},
 		function(err){
-			// console.log(`Failed log in attempt.\nReason: ${err}`);
 			res.json(err);
 			db.close();
 		})
@@ -90,19 +89,15 @@ router.get('/register/:error?', (req, res, next) => {
 router.post('/register', (req, res, next) => {
 	let db = new database;
 	if (validation.registrationFormValid(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass) != true) {
-		// console.log(validation.registrationFormValid(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass));
 	} else
 	{
 		var registerAttempt = db.register(req.body.userLogin, req.body.userName, req.body.userSurname, req.body.userEmail, req.body.userPass, req.body.userConfPass);
 
 		registerAttempt.then(function(ret){
 			res.json("success");
-			// db.close();
 		},
 		function (err) {
 			res.json('error');
-			// console.log(`Failed registration.\nReason: ${err}`);
-			// db.close();
 		})
 	}
 });
@@ -148,8 +143,6 @@ router.get('/profile/:user?', (req, res, next) => {
 									userBio: (data[0].userBiography === undefined ? 0 : data[0].userBiography),
 									userLikes: data[0].userLikes,
 									userInterests: (data1.length === 0 ? 0 : data1),
-									// userLat: data[0].userLat,
-									// userLng: data[0].userLng,
 									userAge: data[0].userAge,
 									distance: data[0].distance,
 									userIsOnline: data[0].isOnline,
@@ -174,7 +167,6 @@ router.get('/profile/:user?', (req, res, next) => {
 	{
 		current_user = DB.get_user(req.session.user);
 		current_user.then( function(data) {
-			// console.log(data[0].userImage);
 			res.render('profile', {
 				title:'Profile',
 				user: (req.session.user === undefined ? "Username" : req.session.user),
@@ -189,8 +181,6 @@ router.get('/profile/:user?', (req, res, next) => {
 				userInterests: 0,
 				userBio: (data[0].userBiography === undefined ? 0 : data[0].userBiography),
 				userLikes: data[0].userLikes,
-				// userLat: data[0].userLat,
-				// userLng: data[0].userLng,
 				userAge: data[0].userAge,
 				distance: 0,
 				userLogged: (req.session.user === undefined ? false : true),
