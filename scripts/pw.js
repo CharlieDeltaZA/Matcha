@@ -102,7 +102,11 @@ function sendEmail() {
 			contentType: "application/json; charset=utf-8",
 			dataType: "json",
 			success: function(ret) {
-				
+				swal(
+					'Something Happened',
+					`${ret}`,
+					'info'
+				)
 			}
 		})
 	}, function (err) {
@@ -116,7 +120,7 @@ function sendEmail() {
 
 $("#userEmail").keyup(function(event) {
     if (event.keyCode === 13) {
-        resetPass();
+        sendEmail();
     }
 });
 

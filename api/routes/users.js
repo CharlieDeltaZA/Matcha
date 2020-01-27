@@ -313,7 +313,9 @@ router.post('/forgot_pass', (req, res, next) => {
 		let getUser = DB.query(sql);
 		getUser.then(function(data) {
 			email_handler.reset_password(req.body.userEmail, data[0].userCode);
-			res.json('Sent');
+			res.json('Reset Email Sent');
+		}).catch(() => {
+			res.json('Email does not exist');
 		})
 	}
 })
