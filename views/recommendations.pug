@@ -4,8 +4,6 @@ html
 		include header_items.pug
 		link(rel='stylesheet', href='/recommendations.css')
 		link(rel='stylesheet', href='/sweetalert2.css')
-		//- script(src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js")
-		//- script(src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js")
 	body
 		include navbar.pug
 		
@@ -88,7 +86,6 @@ html
 												p Fame : #{val.fame}
 												p Age : #{val.userAge}
 												.row.mx-auto
-													//- below buttons need proper like and dislike functions
 													button.btn.btn-success.w-50(value=val.username, onclick='likeUser(this.value)')
 														i.fa.fa-heart
 													button.btn.btn-danger.w-50(value=val.username, onclick='dislikeUser(this.value)')
@@ -115,7 +112,6 @@ html
 												i.fa.fa-birthday-cake.mx-2
 												|  Age : #{val.userAge}
 											.row.mx-auto
-												//- below buttons need proper like and dislike functions
 												button.btn.btn-success.w-50(value=val.username, onclick='likeUser(this.value)')
 													i.fa.fa-heart
 												button.btn.btn-danger.w-50(value=val.username, onclick='dislikeUser(this.value)')
@@ -129,10 +125,4 @@ html
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js")
 		script(src='/recommendations.js')
 		include js_includes.pug
-		//- script.
-		//- 	var $grid = $(".grid").imagesLoaded(function() {
-		//- 		$grid.masonry({
-		//- 			itemSelector: ".grid-item"
-		//- 		});
-		//- 	});
 		script(src="/profileActions.js")
