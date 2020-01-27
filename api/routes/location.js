@@ -30,7 +30,7 @@ router.post('/', (req, res, next) => {
 	let query = db.query(sql);
 	var a = res;
 	query.then( function (res) {
-		db.close();
+		db.userComplete(req.session.user);
 		a.json('Received');
 	})
 });

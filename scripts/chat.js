@@ -34,12 +34,12 @@ function	sendMessage(id){
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: function(data) {
-			if (data == 'No')
-				console.log("No active chat");
-			else {
+			// if (data == 'No')
+				// console.log("No active chat");
+			// else {
 				document.getElementById("messageField").value = '';
 				location.reload();
-			}
+			// }
 		}
 	});
 }

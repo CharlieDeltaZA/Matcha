@@ -80,13 +80,13 @@ function	blockUser(user) {
 		success: function(data) {
 			if (data == 'blocked') {
 				swal(
-					'Blocked user!',
-					`You blocked this user.`,
+					'User Blocked!',
+					`You have successfully blocked this user.`,
 					'success'
 				)
 			} else {
 				swal(
-					'User unblocked',
+					'User Unblocked!',
 					`You removed your block on this user.`,
 					'success'
 				)
@@ -108,13 +108,13 @@ function	reportUser(user) {
 		success: function(data) {
 			if (data == 'reported') {
 				swal(
-					'You have reported this user',
-					`You blocked this user.`,
+					'User Reported!',
+					`You have successfully reported this user.`,
 					'success'
 				)
 			} else {
 				swal(
-					'Already reported',
+					'Already Reported',
 					`You have already reported this user.`,
 					'success'
 				)

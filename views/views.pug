@@ -10,13 +10,15 @@ html
 		h1.text-center.my-3.mt-white.display-3#heading Profile Views
 		.container(style='max-width: 900px;min-width:360px;')
 			.card
+				h4.mx-auto.mt-2 Your Notifications:
+				hr
 				each val in userList
 					.card-body
 						.row.mx-auto
 							p
 								i.fa.fa-user.mx-2.text-secondary
-								a(href='/user/profile/'+val.viewer) #{val.viewer} 
-								| viewed your profile
+								a(href='/user/profile/'+val.viewer) #{val.viewer}
+								|  viewed your profile
 	include footer.pug
 	
 	include js_includes.pug
