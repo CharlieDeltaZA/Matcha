@@ -18,7 +18,7 @@ html
 						small#passwordHelpBlock.form-text.text-muted
 							| A password reset link will be emailed to you.
 						hr
-						form#userPassReset(name="resetPW",action='', method='POST')
+						form#userPassReset(name="resetPW",action='', method='POST', onsubmit="return false")
 							.form-group
 								label(for='email') Email:
 								input#userEmail.form-control(type='email' placeholder='Enter Email' name='userEmail')
