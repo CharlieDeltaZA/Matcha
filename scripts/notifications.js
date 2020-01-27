@@ -22,7 +22,7 @@ $(document).ready(function(){
 				{
 					$('#Toasty').html(`<div class="toast-header"><img class="rounded mr-2" src="/logo.png" alt="Logo" style="width:25px;"/><strong class="mr-auto">Matcha</strong><small class="text-muted">Now</small><button class="ml-2 mb-1 close" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">×</span></button></div>
 					<div
-						class="toast-body">Someone liked your profile, go to the likes page to dismiss this popup</div>
+						class="toast-body">Someone liked your profile. Go to the <a href='/notifications/likes'>likes</a> page to dismiss this popup.</div>
 				</div>`);
 					$('#Toasty').toast('show');
 				}
@@ -30,7 +30,7 @@ $(document).ready(function(){
 				{
 					$('#Toasty').html(`<div class="toast-header"><img class="rounded mr-2" src="/logo.png" alt="Logo" style="width:25px;"/><strong class="mr-auto">Matcha</strong><small class="text-muted">Now</small><button class="ml-2 mb-1 close" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">×</span></button></div>
 					<div
-						class="toast-body">Someone viewed your profile. Go to views page to dismiss this popup</div>
+						class="toast-body">Someone viewed your profile. Go to the <a href='/notifications/views'>views</a> page to dismiss this popup.</div>
 				</div>`);
 					$('#Toasty').toast('show');
 				}
@@ -38,7 +38,7 @@ $(document).ready(function(){
 				{
 					$('#Toasty').html(`<div class="toast-header"><img class="rounded mr-2" src="/logo.png" alt="Logo" style="width:25px;"/><strong class="mr-auto">Matcha</strong><small class="text-muted">Now</small><button class="ml-2 mb-1 close" type="button" data-dismiss="toast" aria-label="Close"><span aria-hidden="true">×</span></button></div>
 					<div
-						class="toast-body">Someone sent you a message. Go to the chat page to dismiss this popup.</div>
+						class="toast-body">Someone sent you a message. Go to the <a href='/chat'>chat</a> page to dismiss this popup.</div>
 				</div>`);
 					$('#Toasty').toast('show');
 				}
