@@ -74,7 +74,6 @@ class Database {
 				let result = a.query(sql);
 				result.then(function (res) {
 					if (res[0].userVerified == 1) {
-						console.log(res[0]);
 						let pass = res[0];
 						let password_check = encrypt.comparePassword(password, pass.userPassword);
 						password_check.then(function (res) {
@@ -112,7 +111,7 @@ class Database {
 						registered.then(function (data) {
 							a.email_user(username);
 						}, function (err) {
-							console.log(err);
+							// console.log(err);
 						})
 
 						return resolve();

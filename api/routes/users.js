@@ -174,7 +174,7 @@ router.get('/profile/:user?', (req, res, next) => {
 	{
 		current_user = DB.get_user(req.session.user);
 		current_user.then( function(data) {
-			console.log(data[0].userImage);
+			// console.log(data[0].userImage);
 			res.render('profile', {
 				title:'Profile',
 				user: (req.session.user === undefined ? "Username" : req.session.user),
