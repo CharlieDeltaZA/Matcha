@@ -20,7 +20,7 @@ function sendParams() {
 		contentType: "application/json; charset=utf-8",
 		dataType: "json",
 		success: function(ret) {
-			document.location.href = ("http://localhost:8080/recommendations");
+			document.location.href = ("/recommendations");
 		}
 	})
 }

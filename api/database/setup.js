@@ -80,200 +80,200 @@ var setupTables = function setupTables() {
 					// USERS
 
 					DB.query(`INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("17","OneSeven@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359558/userImages/fju5dlijo6t3pr99tzjm.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Bob", "Musk", 'hetero', 'Male', 44, 1, 1, 23, 3, 41, "Lorem Ipsum", -33.9513, 18.3831, '2019-05-12 21:04')`);
+	("17","OneSeven@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359558/userImages/zuplqlxqvhgnmbmidcoi.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Bob", "Musk", 'hetero', 'Male', 44, 1, 1, 23, 3, 41, "Lorem Ipsum", -33.9513, 18.3831, '2019-05-12 21:04', '70efdf2ec9b086079795c442636b55fb')`);
 
 	DB.query(`INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("02","ZeroTwo@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579356468/userImages/tnb86gx1e8gnqkaurl0v.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Emma", "Perkins", 'bi', 'Female', 16, 1, 1, 32, 1, 15, "Lorem Ipsum", -33.917, 18.3875, '2020-01-03 04:20')`);
+	("02","ZeroTwo@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/cjigj5kilzo9ew1f45uw.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Emma", "Perkins", 'bi', 'Female', 16, 1, 1, 24, 1, 15, "Lorem Ipsum", -33.917, 18.3875, '2020-01-03 04:20', 'a2ef406e2c2351e0b9e80029c909242d')`);
 
 	DB.query(`INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("03","ZeroThree@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579357677/userImages/fzkxlcjthxhfk6bcmgue.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Anne", "Norris", 'homo', 'Female', 4, 1, 1, 42, 0, 4, "Lorem Ipsum", -33.9411, 18.4232, '2020-01-22 12:22')`);
+	("03","ZeroThree@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579357677/userImages/oqtftxxjmfpjqzxxjmev.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Anne", "Norris", 'homo', 'Female', 4, 1, 1, 27, 0, 4, "Lorem Ipsum", -33.9411, 18.4232, '2020-01-22 12:22', 'e45ee7ce7e88149af8dd32b27f9512ce')`);
 	
 	DB.query(`INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("04","ZeroFour@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579357827/userImages/wgnzajozsj1t9ulwasci.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Carolina", "Sainz", 'hetero', 'Female', 42, 1, 1, 30, 9, 31, "Lorem Ipsum", -33.8275, 18.6527, '2019-12-30 15:39')`);
+	("04","ZeroFour@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579357827/userImages/xuaiz8kzjxzbpoeycnqe.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Carolina", "Sainz", 'hetero', 'Female', 42, 1, 1, 20, 9, 31, "Lorem Ipsum", -33.8275, 18.6527, '2019-12-30 15:39', '7d0665438e81d8eceb98c1e31fca80c1')`);
 
 	DB.query(`INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("05","ZeroFive@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579358508/userImages/mubt2gu7xoldsue4jmnd.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Natalie", "Dormer", 'bi', 'Female', 1, 1, 1, 18, 0, 1, "Lorem Ipsum", -33.9249, 18.4241, '2019-12-25 18:44')`);
+	("05","ZeroFive@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579358508/userImages/cwwilqxqquidhbga2bij.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Natalie", "Dormer", 'bi', 'Female', 1, 1, 1, 18, 0, 1, "Lorem Ipsum", -33.9249, 18.4241, '2019-12-25 18:44', '751d31dd6b56b26b29dac2c0e1839e34')`);
 
 	DB.query(`INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("06","ZeroSix@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579358645/userImages/ysaqncvrewbvsqgwlhuj.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Samantha", "Russell", 'homo', 'Female', 69, 1, 1, 27, 12, 57, "Lorem Ipsum", -33.866, 18.5344, '2020-01-11 13:59')`);
+	("06","ZeroSix@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579358645/userImages/nndc2mrxlfdganrctysn.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Samantha", "Russell", 'homo', 'Female', 69, 1, 1, 25, 12, 57, "Lorem Ipsum", -33.866, 18.5344, '2020-01-11 13:59', 'faeac4e1eef307c2ab7b0a3821e6c667')`);
 
 	DB.query(`INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("07","ZeroSeven@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579358780/userImages/njs4dtmunec0dtg7dghf.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Abigail", "Smith", 'hetero', 'Female', 9, 1, 1, 35, 2, 7, "Lorem Ipsum", -34.0257, 20.4381, '2020-01-07 23:04')`);
+	("07","ZeroSeven@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579358780/userImages/axz7w06vbrkp3cybadd5.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Abigail", "Smith", 'hetero', 'Female', 9, 1, 1, 23, 2, 7, "Lorem Ipsum", -34.0257, 20.4381, '2020-01-07 23:04', 'd72d187df41e10ea7d9fcdc7f5909205')`);
 	
 	DB.query(`INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("12","OneTwo@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359392/userImages/mu9w6dd6is0lvdncqka7.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "John", "Wolf", 'bi', 'Male', 20, 1, 1, 30, 1, 19, "Lorem Ipsum", -33.8975, 19.1523, '2019-11-14 19:27')`);
+	("12","OneTwo@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359392/userImages/vkokehnnoalmpcvohs5p.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "John", "Wolf", 'bi', 'Male', 20, 1, 1, 30, 1, 19, "Lorem Ipsum", -33.8975, 19.1523, '2019-11-14 19:27', 'c20ad4d76fe97759aa27a0c99bff6710')`);
 	
 	DB.query(`
 	INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("13","OneThree@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359425/userImages/qhhixzr3zgefmlsjquqs.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Max", "Lopez", 'bi', 'Male', 3, 1, 1, 25, 0, 3, "Lorem Ipsum", -34.0258, 18.4231, '2020-01-04 18:45')`);
+	("13","OneThree@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359425/userImages/l3ryh11wsflhjiqlutdg.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Max", "Lopez", 'bi', 'Male', 3, 1, 1, 25, 0, 3, "Lorem Ipsum", -34.0258, 18.4231, '2020-01-04 18:45', 'c51ce410c124a10e0db5e4b97fc2af39')`);
 	
 	DB.query(`INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("14","OneFour@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359462/userImages/grc6bwgqy67nvh3fcnpa.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Mark", "Franks", 'homo', 'Male', 25, 1, 1, 32, 5, 20, "Lorem Ipsum", -34.0209, 18.3683, '2020-01-20 13:37')`);
+	("14","OneFour@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359462/userImages/taewpnk3qxte7ubvqeg0.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Mark", "Franks", 'homo', 'Male', 25, 1, 1, 32, 5, 20, "Lorem Ipsum", -34.0209, 18.3683, '2020-01-20 13:37', 'aab3238922bcc25a6f606eb525ffdc56')`);
 	
 	DB.query(`INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("15","OneFive@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359493/userImages/jrkblgsuhlisoyyu9xlv.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Peter", "Carson", 'homo', 'Male', 30, 1, 1, 27, 12, 18, "Lorem Ipsum", -33.9321, 18.8602, '2020-01-24 14:43')`);
+	("15","OneFive@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359493/userImages/ftowzroujru1nxu21jd4.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Peter", "Carson", 'homo', 'Male', 30, 1, 1, 27, 12, 18, "Lorem Ipsum", -33.9321, 18.8602, '2020-01-24 14:43', '9bf31c7ff062936a96d3c8bd1f8f2ff3')`);
 
 	DB.query(`INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("16","OneSix@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359528/userImages/x2vhqw4pswu7zrkiorup.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Fred", "Miller", 'hetero', 'Male', 0, 1, 1, 40, 0, 0, "Lorem Ipsum", -33.9036, 18.4205, '2020-01-18 01:39')`);
+	("16","OneSix@Gmail.com", "http://res.cloudinary.com/matchawtc/image/upload/v1579359528/userImages/hixuoduufhjcoiot5cyj.jpg", "$2b$10$bMG3yMTNIzvWzNC8zgiwkOOjGYjB0hVbBW5ec0F00z.mtR.r/Up8m", "Fred", "Miller", 'hetero', 'Male', 0, 1, 1, 40, 0, 0, "Lorem Ipsum", -33.9036, 18.4205, '2020-01-18 01:39', 'c74d97b01eae257e44aa9d5bade97baf')`);
 
 	DB.query(`INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("charlie","cdiogo@student.wethinkcode.co.za", "", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Calvin", "Diogo", 'hetero', 'Male', 5, 1, 1, 22, 0, 5, "I like planes", -33.9353, 18.4083, '2020-03-05 13:37')`);
+	("charlie","cdiogo@student.wethinkcode.co.za", "http://res.cloudinary.com/matchawtc/image/upload/v1580151769/userImages/o7kle5svkya3b4wye6hu.jpg", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Calvin", "Diogo", 'hetero', 'Male', 5, 1, 1, 22, 0, 5, "I like planes", -33.9353, 18.4083, '2020-03-05 13:37', 'bf779e0933a882808585d19455cd7937')`);
 
 	DB.query(`INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("jeff","jlimbada@student.wethinkcode.co.za", "", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Jeff", "Limbless", 'bi', 'Male', 69, 1, 1, 20, 42, 27, "We live in a society", -33.8943, 18.6294, '2020-01-29 04:20')`);
+	("jeff","jlimbada@student.wethinkcode.co.za", "http://res.cloudinary.com/matchawtc/image/upload/v1580153634/userImages/phouboxmblhq28vzi4qd.jpg", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Jeff", "Limbless", 'bi', 'Male', 69, 1, 1, 20, 42, 27, "We live in a society", -33.8943, 18.6294, '2020-01-29 04:20', '166ee015c0e0934a8781e0c86a197c6e')`);
 
 	DB.query(`INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("yuuki","ctaljaar@student.wethinkcode.co.za", "", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Cameron", "Taljaard", 'hetero', 'Male', 42, 1, 1, 24, 21, 21, "Sleep is for the weak.", -33.8333, 18.649, '2020-06-12 00:07')`);
+	("yuuki","ctaljaar@student.wethinkcode.co.za", "http://res.cloudinary.com/matchawtc/image/upload/v1580153645/userImages/ssgupuk4bo2lj45atsub.jpg", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Cameron", "Taljaard", 'hetero', 'Male', 42, 1, 1, 24, 21, 21, "Sleep is for the weak.", -33.8333, 18.649, '2020-06-12 00:07', 'bf8fbb366e7dfe389c6fbb8e39ef532b')`);
 
 	DB.query(`INSERT INTO users
-	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline)
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("bwebb","bwebb@student.wethinkcode.co.za", "", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Ben", "Webb", 'hetero', 'Male', 17, 1, 1, 21, 3, 14, "Manga is life!", -33.9413, 18.4128, '2020-09-13 23:40')`);
+	("bwebb","bwebb@student.wethinkcode.co.za", "http://res.cloudinary.com/matchawtc/image/upload/v1580153621/userImages/ogcjliuebcnuwmjlyl0s.jpg", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Ben", "Webb", 'hetero', 'Male', 17, 1, 1, 21, 3, 14, "Manga is life!", -33.9413, 18.4128, '2020-09-13 23:40', 'f2ce2daa60191398521de69ad5610409')`);
 
 
 	// IMAGES - Profile Images
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("charlie","",1)`);
+	VALUES
+	("charlie","http://res.cloudinary.com/matchawtc/image/upload/v1580151769/userImages/o7kle5svkya3b4wye6hu.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("bwebb","",1)`);
+	VALUES
+	("bwebb","http://res.cloudinary.com/matchawtc/image/upload/v1580153621/userImages/ogcjliuebcnuwmjlyl0s.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("yuuki","",1)`);
+	VALUES
+	("yuuki","http://res.cloudinary.com/matchawtc/image/upload/v1580153645/userImages/ssgupuk4bo2lj45atsub.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("jeff","",1)`);
+	VALUES
+	("jeff","http://res.cloudinary.com/matchawtc/image/upload/v1580153634/userImages/phouboxmblhq28vzi4qd.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("02","",1)`);
+	VALUES
+	("02","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/cjigj5kilzo9ew1f45uw.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("03","",1)`);
+	VALUES
+	("03","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/oqtftxxjmfpjqzxxjmev.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("04","",1)`);
+	VALUES
+	("04","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/xuaiz8kzjxzbpoeycnqe.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("05","",1)`);
+	VALUES
+	("05","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/cwwilqxqquidhbga2bij.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("06","",1)`);
+	VALUES
+	("06","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/nndc2mrxlfdganrctysn.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("07","",1)`);
+	VALUES
+	("07","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/axz7w06vbrkp3cybadd5.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("12","",1)`);
+	VALUES
+	("12","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/vkokehnnoalmpcvohs5p.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("13","",1)`);
+	VALUES
+	("13","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/l3ryh11wsflhjiqlutdg.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("14","",1)`);
+	VALUES
+	("14","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/taewpnk3qxte7ubvqeg0.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("15","",1)`);
+	VALUES
+	("15","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/ftowzroujru1nxu21jd4.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("16","",1)`);
+	VALUES
+	("16","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/hixuoduufhjcoiot5cyj.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("17","",1)`);
+	VALUES
+	("17","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/zuplqlxqvhgnmbmidcoi.jpg",1)`);
 
 	// IMAGES - random 2nd test image
 

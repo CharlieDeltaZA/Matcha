@@ -75,7 +75,7 @@ html
 								if (val.distance < maxDist)
 									.grid-item
 										.card.text-black
-											a(href="http://localhost:8080/user/profile/"+val.username) 
+											a(href="/user/profile/"+val.username) 
 												img.card-img-top.img-fluid(src=val.userImage, alt='User Profile Image')
 											.card-body.mbg-light-grey
 												h5.card-title.text-capitalize #{val.userFirstName} #{val.userLastName}
@@ -93,7 +93,7 @@ html
 							else
 								.grid-item
 									.card.text-black
-										a(href="http://localhost:8080/user/profile/"+val.username) 
+										a(href="/user/profile/"+val.username) 
 											img.card-img-top.img-fluid(src=val.userImage, alt='User Profile Image')
 										.card-body.mbg-light-grey
 											h5.card-title.text-capitalize #{val.userFirstName} #{val.userLastName}

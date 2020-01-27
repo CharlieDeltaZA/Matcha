@@ -123,11 +123,11 @@ app.post('/', (req, res) => {
 	var res2 = res;
 	var req2 = req;
 	let db = new database;
-
+	
 	let loginAttempt = db.login(req.body.userLogin, req.body.userPass);
 	loginAttempt.then(function(res){
 		req2.session.user = req.body.userLogin;
-		res2.redirect('http://localhost:8080');
+		res2.redirect('/');
 	},
 	function(err){
 		console.log(`Failed log in attempt.\nReason: ${err}`);

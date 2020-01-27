@@ -37,7 +37,7 @@ function setActiveImage(value) {
 		success: function(data) {
 			if (data === 'Success')
 			{
-				document.location.href= ('http://localhost:8080/user/account');
+				document.location.href= ('/user/account');
 			} else
 			{
 				swal(
