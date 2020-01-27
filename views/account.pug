@@ -110,7 +110,7 @@ html
 					small#HelpBlock.form-text.text-muted
 						| You can add multiple interests at a time, remember to add a hashtag and leave a space between.
 					hr
-					form#addInterests(name="interests", action='', method='POST' novalidate)
+					form#addInterests(name="interests", action='', method='POST' novalidate, onsubmit='return false')
 						input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
 						button#AddInterest.btn.btn-success.btn-block.btn-lg(type='button', onclick='add_interest()' value='interests') Update Interests
 					p#interestAError
@@ -124,7 +124,7 @@ html
 					small#HelpBlock.form-text.text-muted
 						| You can remove multiple interests at a time, remember to add a hashtag and leave a space between.
 					hr
-					form#removeInterests(name="interests", action='', method='POST' novalidate)
+					form#removeInterests(name="interests", action='', method='POST' novalidate, onsubmit='return false')
 						input#removedInterests.form-control(type='text' placeholder='Interests' name='userInterests')
 						button#RemoveInterest.btn.btn-success.btn-block.btn-lg(type='button', onclick='remove_interest()' value='interests') Update Interests
 					p#interestRError

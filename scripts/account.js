@@ -179,6 +179,7 @@ function changePassword() {
 	} else
 	console.log("No password?");
 }
+
 function	validInterest(interest)  {
 	var re = /^#[A-Za-z0-9-_.]+$/;
 	if (re.test(interest))
@@ -257,9 +258,9 @@ function	remove_interest() {
 }
 
 $("#userInterests").keyup(function(event) {
-    if (event.keyCode === 13) {
-        add_interest();
-    }
+	if (event.keyCode === 13) {
+		add_interest();
+	}
 });
 
 $("#removedInterests").keyup(function(event) {
@@ -270,18 +271,18 @@ $("#removedInterests").keyup(function(event) {
 
 $("#userLogin").keyup(function(event) {
     if (event.keyCode === 13) {
-        change_username();
+        changeUsername();
     }
 });
 
 $("#userEmail").keyup(function(event) {
     if (event.keyCode === 13) {
-        change_email();
+        changeEmail();
     }
 });
 
 $("#userNewPass").keyup(function(event) {
     if (event.keyCode === 13) {
-        change_password();
+        changePassword();
     }
 });
