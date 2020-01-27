@@ -128,27 +128,34 @@ router.get('/profile/:user?', (req, res, next) => {
 							let current_user = DB.query(`SELECT * FROM users WHERE username = '${req.session.user}'`);
 							current_user.then( function(data2) {
 								data[0].distance = appendDistance(data2[0], data[0]);
-								res.render('profile', {
-									title:'Profile',
-									user: (req.session.user === undefined ? "Username" : req.session.user),
-									username: data[0].username,
-									userFirstName: data[0].userFirstName,
-									userLastName: data[0].userLastName,
-									userGender: data[0].userGender,
-									userFame: data[0].userFame,
-									userImage: data[0].userImage,
-									imageArray: imagearray,
-									imageExists: data[0].userImage ? 1 : 0,
-									userOrientation: data[0].userOrientation,
-									userBio: (data[0].userBiography === undefined ? 0 : data[0].userBiography),
-									userLikes: data[0].userLikes,
-									userInterests: (data1.length === 0 ? 0 : data1),
-									userAge: data[0].userAge,
-									distance: data[0].distance,
-									userIsOnline: data[0].isOnline,
-									userLastOnline: data[0].lastOnline,
-									userLogged: (req.session.user === undefined ? false : true),
-									sameUser: 0
+								let sql = "SELECT * FROM likes WHERE liker = ? AND liked = ?";
+								let inserts = [data[0].username, data2[0].username];
+								sql = mysql.format(sql, inserts);
+								let likeCheck = DB.query(sql);
+								likeCheck.then( function(data3) {
+									res.render('profile', {
+										title:'Profile',
+										user: (req.session.user === undefined ? "Username" : req.session.user),
+										username: data[0].username,
+										userFirstName: data[0].userFirstName,
+										userLastName: data[0].userLastName,
+										userGender: data[0].userGender,
+										userFame: data[0].userFame,
+										userImage: data[0].userImage,
+										imageArray: imagearray,
+										imageExists: data[0].userImage ? 1 : 0,
+										userOrientation: data[0].userOrientation,
+										userBio: (data[0].userBiography === undefined ? 0 : data[0].userBiography),
+										userLikes: data[0].userLikes,
+										userInterests: (data1.length === 0 ? 0 : data1),
+										userAge: data[0].userAge,
+										distance: data[0].distance,
+										liked: data3.length > 0 ? 1 : 0 ? 1 : 0,
+										userIsOnline: data[0].isOnline,
+										userLastOnline: data[0].lastOnline,
+										userLogged: (req.session.user === undefined ? false : true),
+										sameUser: 0
+									})
 								})
 							})
 						}, function(err) {

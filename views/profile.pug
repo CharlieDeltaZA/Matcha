@@ -45,6 +45,9 @@ html
 								| Online
 					hr
 					h1.display-4.card-title.text-capitalize #{userFirstName} #{userLastName}
+					h5.card-subtitle.mb-2
+						//- i.fa.mx-2.fa-trophy.text-warning
+						| This user has liked you!
 					if !sameUser
 						.row.mx-auto
 							button#BtnLike.btn.btn-success(value=username, onclick='likeUser(this.value)')
