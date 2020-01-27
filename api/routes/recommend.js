@@ -158,7 +158,6 @@ router.get('/', (req, res, next) => {
 						});
 					}
 				})
-				// appendDistance(data[0], data1[0]);
 			})
 		})
 	}, function (err) {
