@@ -1,4 +1,4 @@
-function registrationValid2(username, name, surname, email, password, confpassword) {
+function registrationValid(username, name, surname, email, password, confpassword) {
 	return new Promise ( (resolve, reject) => {
 		let emailTest = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		if (username === undefined || username == "")
@@ -9,30 +9,28 @@ function registrationValid2(username, name, surname, email, password, confpasswo
 			reject ('Username contains special characters.');
 		if (name === undefined || name == "")
 			reject ('Name empty.');
-		// if (!(/^[\w'\-,.]*[^_!¡?÷?¿\/\\+=@#$%ˆ&*(){}|~<>;:[\]]*$/.test(name)))
-			// 	return (16);
+		if (!(/^[\w'\-,.]*[^_!¡?÷?¿\/\\+=@#$%ˆ&*(){}|~<>;:[\]]*$/.test(name)))
+				reject ('Illegal chars in name');
 		if (surname === undefined || surname == "")
 			reject ('Surname empty.');
-		// if (!(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(surname)))
-			// 	return (17);
+		if ((/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(surname)))
+				reject ('Illegal chars in surname');
 		if (email === undefined || email == "")
 			reject ('Email empty.');
-		// if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)))
-			// 	return (9);
 		if (!(emailTest.test(String(email).toLowerCase())))
 			reject ('Invalid email.');
 		if (password === undefined || password == "")
 			reject ('Password empty.');
-		// if (password.length < 8)
-			// 	return (10);
-		// if (!(/.*[a-zA-Z].*/.test(password)))
-			// 	return (11);
-		// if (!(/.*[1-9].*/.test(password)))
-			// 	return (12);
-		// if (!(/^[a-zA-Z0-9]*$/.test(password)))
-			// 	return (13);
+		if (password.length < 8)
+			reject ('password is too short');
+		if ((/[^A-Za-z0-9]+/.test(password)))
+			reject ('Password contains something other than numbers and letters');
+		if (!(/.*[1-9].*/.test(password)))
+			reject ('Password does not contain numbers');
+		if (!(/.*[a-zA-Z].*/.test(password)))
+			reject ('Password does not contain letters');
 		if (confpassword === undefined || confpassword == "")
-			reject ('Password empty');
+			reject ('Confirm Password empty');
 		if (password != confpassword)
 			reject ('Password mismatch');
 		resolve ('Valid');
@@ -60,7 +58,7 @@ function registerPost() {
 		userPass: document.getElementById('userPass').value,
 		userConfPass: document.getElementById('userConfPass').value,
 	}
-	let valid = registrationValid2(form.userLogin, form.userName, form.userSurname, form.userEmail, form.userPass, form.userConfPass);
+	let valid = registrationValid(form.userLogin, form.userName, form.userSurname, form.userEmail, form.userPass, form.userConfPass);
 	valid.then( function (ret) {
 		$.ajax({
 			type: "POST", 
@@ -89,6 +87,16 @@ function registerPost() {
         )
 	})
 }
+
+$("input[type='text'], input[type='password'], input[type='email']").keyup((event) => {
+	$(".errorMsg").text("");
+	$("#submit").prop("disabled", true);
+	registrationValid($('#userLogin').val(), $('#userName').val(), $('#userSurname').val(), $('#userEmail').val(), $('#userPass').val(), $('#userConfPass').val()).then(() => {
+		$("#submit").prop("disabled", false);
+	}, (err) => {
+		$(event.target).siblings(".errorMsg").text(err);
+	});
+});
 
 $("#userConfPass").keyup(function(event) {
     if (event.keyCode === 13) {
