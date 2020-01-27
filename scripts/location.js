@@ -46,7 +46,12 @@ function initMap() {
 				data: JSON.stringify(position),
 				contentType: "application/json; charset=utf-8",
 				dataType: "json",
-				success: function(){document.getElementById('locPara').innerHTML = 'Your location has been updated!';}
+				success: function() {
+					document.getElementById('locPara').innerHTML = 'Your location has been updated!';
+					setTimeout(() => {
+						$('#locPara').text('');
+					}, 3000);
+				}
 				
 		})
 	});
