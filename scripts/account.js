@@ -13,6 +13,9 @@ function postPublicDetails() {
 				`Invalid gender`,
 				'error'
 			)
+			setTimeout(() => {
+				swal.close();
+			}, 3000);
 		} else {
 			$.ajax({
 				type: "POST", 
@@ -40,6 +43,9 @@ function changeUsername() {
 			`Username must contain at least 4 characters.`,
 			'error'
 		)
+		setTimeout(() => {
+			swal.close();
+		}, 3000);
 	}
 	else if (!form.userLogin) {
 		swal(
@@ -47,6 +53,9 @@ function changeUsername() {
 			`Username can't be blank.`,
 			'error'
 		)
+		setTimeout(() => {
+			swal.close();
+		}, 3000);
 	} else {
 		$.ajax({
 			type: "POST", 
@@ -66,6 +75,9 @@ function changeUsername() {
 						`${data}`,
 						'error'
 					)
+					setTimeout(() => {
+						swal.close();
+					}, 3000);
 				}
 			}
 		});
@@ -82,7 +94,10 @@ function changeEmail() {
 			'Error!',
 			`Invalid email.`,
 			'error'
-		)
+		);
+		setTimeout(() => {
+			swal.close();
+		}, 3000);
 	}
 	else if (!form.userEmail) {
 		swal(
@@ -90,6 +105,9 @@ function changeEmail() {
 			`Email can't be blank.`,
 			'error'
 		)
+		setTimeout(() => {
+			swal.close();
+		}, 3000);
 	} else {
 		$.ajax({
 			type: "POST", 
@@ -99,6 +117,9 @@ function changeEmail() {
 			dataType: "json",
 			success: function(data) {
 				document.getElementById('emailPara').innerHTML = data;
+				setTimeout(() => {
+					$('#emailPara').text('');
+				}, 2000);
 			}
 		});
 	}
@@ -112,6 +133,9 @@ function updateDoB() {
 			`Date input incomplete`,
 			'error'
 		)
+		setTimeout(() => {
+			swal.close();
+		}, 3000);
 		return;
 	}
 	var entered = new Date(document.getElementById('userDOB').value);
@@ -124,6 +148,9 @@ function updateDoB() {
 			`You must be over 16 to use this site.`,
 			'error'
 		)
+		setTimeout(() => {
+			swal.close();
+		}, 3000);
 	} else {
 		let form = {
 			age: age,
@@ -174,6 +201,9 @@ function changePassword() {
 					`Your password has been updated.`,
 					'success'
 				)
+				setTimeout(() => {
+					swal.close();
+				}, 3000);
 			}
 		});
 	} else
@@ -199,6 +229,9 @@ function	add_interest() {
 				`${data} is not a correctly formatted interest`,
 				'error'
 			)
+			setTimeout(() => {
+				swal.close();
+			}, 3000);
 			return ;
 		}
 	});
@@ -219,6 +252,9 @@ function	add_interest() {
 		}
 	});
 	document.getElementById("interestsPara").innerHTML = "Updated your interests";
+	setTimeout(() => {
+		$('#interestsPara').text('');
+	}, 2000);
 	$('#userInterests').val('');
 }
 
@@ -234,6 +270,9 @@ function	remove_interest() {
 				`${data} is not a correctly formatted interest`,
 				'error'
 			)
+			setTimeout(() => {
+				swal.close();
+			}, 3000);
 			return ;
 		}
 	});
@@ -254,6 +293,9 @@ function	remove_interest() {
 		}
 	});
 	document.getElementById("interestsRemovedPara").innerHTML = "Removed any matching interests";
+	setTimeout(() => {
+		$('#interestsRemovedPara').text('');
+	}, 2000);
 	$('#removedInterests').val('');
 }
 
