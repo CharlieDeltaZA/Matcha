@@ -128,10 +128,10 @@ html
 
 					h4.card-title Bio
 					if userBio === 0
-						p.card-text
-							| 
-					else
 						p.card-text This user currently has no Bio set!
+					else
+						p.card-text
+							| #{userBio}
 
 					if sameUser == 1
 						hr
