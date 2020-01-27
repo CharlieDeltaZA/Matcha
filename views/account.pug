@@ -157,6 +157,8 @@ html
 			.card.mx-auto(style='max-width: 1200px;')
 				.card-body
 					h4.card-title Password
+					small#passwordHelpBlock.form-text.text-muted
+						| Your password must be 8 characters long and contain letters and numbers. It must not contain spaces, special characters, or emoji.
 					hr
 					label(for='pass') New Password
 					input#userNewPass.form-control(type='password' placeholder='New Password' name='userNewPass')
