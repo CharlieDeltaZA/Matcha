@@ -10,6 +10,8 @@ html
 		h1.text-center.my-3.mt-white.display-3#heading Profile Likes
 		.container(style='max-width: 900px;min-width:360px;')
 			.card
+				h4.mx-auto.mt-2 Your Notifications:
+				hr
 				each val in userList
 					.card-body
 						if val.type == 1
