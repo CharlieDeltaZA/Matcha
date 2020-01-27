@@ -12,7 +12,7 @@ html
 			
 		.container.mx-auto.my-3(style='max-width: 900px;')
 			.card.mx-auto(style='max-width: 900px;')
-				#carouselControls.carousel.slide(data-ride='carousel', data-interval="5000")
+				#carouselControls.carousel.slide(data-ride='carousel', data-interval="false")
 					.carousel-inner
 						.carousel-item.active(data-interval="false")
 							if imageExists
@@ -24,12 +24,13 @@ html
 								if value != userImage
 									.carousel-item(data-interval="false")
 										img.d-block.w-100(src=value, alt='User Image')
-					a.carousel-control-prev(href='#carouselControls', role='button', data-slide='prev')
-						span.carousel-control-prev-icon(aria-hidden='true')
-						span.sr-only Previous
-					a.carousel-control-next(href='#carouselControls', role='button', data-slide='next')
-						span.carousel-control-next-icon(aria-hidden='true')
-						span.sr-only Next 
+					if !sameUser
+						a.carousel-control-prev(href='#carouselControls', role='button', data-slide='prev')
+							span.carousel-control-prev-icon(aria-hidden='true')
+							span.sr-only Previous
+						a.carousel-control-next(href='#carouselControls', role='button', data-slide='next')
+							span.carousel-control-next-icon(aria-hidden='true')
+							span.sr-only Next 
 	
 				.card-body
 					if !sameUser
