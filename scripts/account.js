@@ -187,8 +187,8 @@ function changePassword() {
 	{
 		password: document.getElementById("userNewPass").value
 	}
-	if (document.getElementById("userNewPass").value)
-	{
+	checkPass($("#userNewPass").val()).then(() => {
+
 		$.ajax({
 			type: "POST", 
 			url : '/user/account/password',
@@ -206,8 +206,14 @@ function changePassword() {
 				}, 3000);
 			}
 		});
-	} else
-	console.log("No password?");
+	}, (err) => {
+		swal(
+			'Error!',
+			`${err}`,
+			'error'
+		)
+	});
+	$("#userNewPass").val("");
 }
 
 function	validInterest(interest)  {
@@ -328,3 +334,33 @@ $("#userNewPass").keyup(function(event) {
         changePassword();
     }
 });
+
+$("#userNewPass").on("keyup", function(){
+	$("#pwPara").text("");
+	$("#updatePassword").prop("disabled", true);
+	checkPass($("#userNewPass").val()).then((ret) => {
+		$("#updatePassword").prop("disabled", false);
+	}, (err) => {
+		$('#pwPara').text(err);
+	});
+});
+
+function checkPass(password/*, confpassword*/) {
+	return new Promise ( (resolve, reject) => {
+		if (password === undefined || password == "")
+			reject ('Password empty.');
+		if (password.length < 8)
+			reject ('Password too short');
+		if ((/[^A-Za-z0-9]+/.test(password)))
+			reject ('Password contains something other than numbers and letters');
+		if (!(/.*[1-9].*/.test(password)))
+			reject ('Password does not contain numbers');
+		if (!(/.*[a-zA-Z].*/.test(password)))
+			reject ('Password does not contain letters');
+		// if (confpassword === undefined || confpassword == "")
+		// 	reject ('Confirm Password empty');
+		// if (password != confpassword)
+		// 	reject ('Password mismatch');
+		resolve ('Valid');
+	});
+}
