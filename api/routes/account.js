@@ -169,12 +169,18 @@ router.post('/username', (req, res) => {
 			if (!(/^[A-Za-z0-9-_.]+$/.test(req.body.userLogin))) {
 				res.json('Username contains forbidden characters.');
 			} else {
-				let usernameUpdate = db.change_username(req.session.user, req.body.userLogin);
-				usernameUpdate.then( function (data) {
-					req.session.user = req.body.userLogin;
-					res.json("Success");
+				let usernameExists = DB.get_user(req.body.userLogin);
+				usernameExists.then( function(data) {
+					let usernameUpdate = db.change_username(req.session.user, req.body.userLogin);
+					usernameUpdate.then( function (data) {
+						req.session.user = req.body.userLogin;
+						res.json("Success");
+					}, function (err) {
+						res.json(err);
+					})
 				}, function (err) {
-					res.json(err);
+					res.json("Username taken");
+					return ;
 				})
 			}
 		}
