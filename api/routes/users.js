@@ -330,56 +330,56 @@ router.post('/like', (req, res, next) => {
 			if (blockedUsers[0]) {
 				res.json('blocked');
 				return ;
-			}
-		})
-
-		sql = "SELECT * FROM likes WHERE liker = ? AND liked = ?"
-		inserts = [req.session.user, req.body.liked];
-		sql = mysql.format(sql, inserts);
-
-		let check = DB.query(sql);
-		check.then( function(data) {
-			if (!data[0]) {
-				let sql = `INSERT INTO likes (type, liker, liked)
-				VALUES (1, ?, ?)`;
-				let inserts = [req.session.user, req.body.liked];
-				sql = mysql.format(sql, inserts);
-				let like = DB.query(sql);
-				like.then( function(data) {
-					let sql = "UPDATE users SET userLikes = userLikes + 1, userFame = userFame + 1 WHERE username=?";
-					let inserts = [req.body.liked];
-					sql = mysql.format(sql, inserts);
-					let finalization = DB.query(sql);
-					finalization.then( function(data) {
-						res.json('liked');
-					})
-				})
 			} else {
-				if (data[0].type == 1){
-					let sql = `DELETE FROM likes WHERE liker = ? AND liked = ?`;
-					let inserts = [req.session.user, req.body.liked];
-					sql = mysql.format(sql, inserts);
-					let like = DB.query(sql);
-					like.then( function(data) {
-						let sql = `INSERT INTO likes (type, liker, liked) VALUES (2, ?, ?)`;
+				sql = "SELECT * FROM likes WHERE liker = ? AND liked = ?"
+				inserts = [req.session.user, req.body.liked];
+				sql = mysql.format(sql, inserts);
+		
+				let check = DB.query(sql);
+				check.then( function(data) {
+					if (!data[0]) {
+						let sql = `INSERT INTO likes (type, liker, liked)
+						VALUES (1, ?, ?)`;
 						let inserts = [req.session.user, req.body.liked];
 						sql = mysql.format(sql, inserts);
-						DB.query(sql);
-						res.json('unliked');
-					})
-				} else {
-					let sql = `DELETE FROM likes WHERE liker = ? AND liked = ?`;
-					let inserts = [req.session.user, req.body.liked];
-					sql = mysql.format(sql, inserts);
-					let like = DB.query(sql);
-					like.then( function(data) {
-						let sql = `INSERT INTO likes (type, liker, liked) VALUES (1, ?, ?)`;
-						let inserts = [req.session.user, req.body.liked];
-						sql = mysql.format(sql, inserts);
-						DB.query(sql);
-						res.json('liked');
-					})
-				}
+						let like = DB.query(sql);
+						like.then( function(data) {
+							let sql = "UPDATE users SET userLikes = userLikes + 1, userFame = userFame + 1 WHERE username=?";
+							let inserts = [req.body.liked];
+							sql = mysql.format(sql, inserts);
+							let finalization = DB.query(sql);
+							finalization.then( function(data) {
+								res.json('liked');
+							})
+						})
+					} else {
+						if (data[0].type == 1){
+							let sql = `DELETE FROM likes WHERE liker = ? AND liked = ?`;
+							let inserts = [req.session.user, req.body.liked];
+							sql = mysql.format(sql, inserts);
+							let like = DB.query(sql);
+							like.then( function(data) {
+								let sql = `INSERT INTO likes (type, liker, liked) VALUES (2, ?, ?)`;
+								let inserts = [req.session.user, req.body.liked];
+								sql = mysql.format(sql, inserts);
+								DB.query(sql);
+								res.json('unliked');
+							})
+						} else {
+							let sql = `DELETE FROM likes WHERE liker = ? AND liked = ?`;
+							let inserts = [req.session.user, req.body.liked];
+							sql = mysql.format(sql, inserts);
+							let like = DB.query(sql);
+							like.then( function(data) {
+								let sql = `INSERT INTO likes (type, liker, liked) VALUES (1, ?, ?)`;
+								let inserts = [req.session.user, req.body.liked];
+								sql = mysql.format(sql, inserts);
+								DB.query(sql);
+								res.json('liked');
+							})
+						}
+					}
+				})
 			}
 		})
 	}
