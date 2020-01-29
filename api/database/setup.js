@@ -213,67 +213,67 @@ var setupTables = function setupTables() {
 	(imageOwner, image, active)
 
 	VALUES
-	("03","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/oqtftxxjmfpjqzxxjmev.jpg",1)`);
+	("03","http://res.cloudinary.com/matchawtc/image/upload/v1579357677/userImages/oqtftxxjmfpjqzxxjmev.jpg",1)`);
 
 	DB.query(`INSERT INTO images
 	(imageOwner, image, active)
 
 	VALUES
-	("04","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/xuaiz8kzjxzbpoeycnqe.jpg",1)`);
+	("04","http://res.cloudinary.com/matchawtc/image/upload/v1579357827/userImages/xuaiz8kzjxzbpoeycnqe.jpg",1)`);
 
 	DB.query(`INSERT INTO images
 	(imageOwner, image, active)
 
 	VALUES
-	("05","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/cwwilqxqquidhbga2bij.jpg",1)`);
+	("05","http://res.cloudinary.com/matchawtc/image/upload/v1579358508/userImages/cwwilqxqquidhbga2bij.jpg",1)`);
 
 	DB.query(`INSERT INTO images
 	(imageOwner, image, active)
 
 	VALUES
-	("06","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/nndc2mrxlfdganrctysn.jpg",1)`);
+	("06","http://res.cloudinary.com/matchawtc/image/upload/v1579358645/userImages/nndc2mrxlfdganrctysn.jpg",1)`);
 
 	DB.query(`INSERT INTO images
 	(imageOwner, image, active)
 
 	VALUES
-	("07","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/axz7w06vbrkp3cybadd5.jpg",1)`);
+	("07","http://res.cloudinary.com/matchawtc/image/upload/v1579358780/userImages/axz7w06vbrkp3cybadd5.jpg",1)`);
 
 	DB.query(`INSERT INTO images
 	(imageOwner, image, active)
 
 	VALUES
-	("12","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/vkokehnnoalmpcvohs5p.jpg",1)`);
+	("12","http://res.cloudinary.com/matchawtc/image/upload/v1579359392/userImages/vkokehnnoalmpcvohs5p.jpg",1)`);
 
 	DB.query(`INSERT INTO images
 	(imageOwner, image, active)
 
 	VALUES
-	("13","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/l3ryh11wsflhjiqlutdg.jpg",1)`);
+	("13","http://res.cloudinary.com/matchawtc/image/upload/v1579359425/userImages/l3ryh11wsflhjiqlutdg.jpg",1)`);
 
 	DB.query(`INSERT INTO images
 	(imageOwner, image, active)
 
 	VALUES
-	("14","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/taewpnk3qxte7ubvqeg0.jpg",1)`);
+	("14","http://res.cloudinary.com/matchawtc/image/upload/v1579359462/userImages/taewpnk3qxte7ubvqeg0.jpg",1)`);
 
 	DB.query(`INSERT INTO images
 	(imageOwner, image, active)
 
 	VALUES
-	("15","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/ftowzroujru1nxu21jd4.jpg",1)`);
+	("15","http://res.cloudinary.com/matchawtc/image/upload/v1579359493/userImages/ftowzroujru1nxu21jd4.jpg",1)`);
 
 	DB.query(`INSERT INTO images
 	(imageOwner, image, active)
 
 	VALUES
-	("16","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/hixuoduufhjcoiot5cyj.jpg",1)`);
+	("16","http://res.cloudinary.com/matchawtc/image/upload/v1579359528/userImages/hixuoduufhjcoiot5cyj.jpg",1)`);
 
 	DB.query(`INSERT INTO images
 	(imageOwner, image, active)
 
 	VALUES
-	("17","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/zuplqlxqvhgnmbmidcoi.jpg",1)`);
+	("17","http://res.cloudinary.com/matchawtc/image/upload/v1579359558/userImages/zuplqlxqvhgnmbmidcoi.jpg",1)`);
 
 	// IMAGES - random 2nd test image
 
