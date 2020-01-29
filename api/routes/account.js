@@ -171,6 +171,9 @@ router.post('/username', (req, res) => {
 			} else {
 				let usernameExists = DB.get_user(req.body.userLogin);
 				usernameExists.then( function(data) {
+					res.json("Username taken");
+					return ;
+				}, function (err) {
 					let usernameUpdate = db.change_username(req.session.user, req.body.userLogin);
 					usernameUpdate.then( function (data) {
 						req.session.user = req.body.userLogin;
@@ -178,9 +181,6 @@ router.post('/username', (req, res) => {
 					}, function (err) {
 						res.json(err);
 					})
-				}, function (err) {
-					res.json("Username taken");
-					return ;
 				})
 			}
 		}
