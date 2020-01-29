@@ -67,6 +67,14 @@ function changeUsername() {
 				// console.log(data);
 				if (data === 'Success')
 				{
+					swal(
+						'Success!',
+						`Username has been updated!`,
+						'success'
+					)
+					// setTimeout(() => {
+					// 	swal.close();
+					// }, 3000);
 					location.reload();
 				} else
 				{
