@@ -329,6 +329,7 @@ router.post('/like', (req, res, next) => {
 		blocked.then( function(blockedUsers) {
 			if (blockedUsers[0]) {
 				res.json('blocked');
+				return ;
 			}
 		})
 
@@ -433,10 +434,13 @@ router.post('/dislike', (req, res, next) => {
 router.post('/block', (req, res, next) => {
 	let block = DB.blockUser(req.session.user, req.body.blocked);
 	block.then( function(data) {
-		if (data == 'blocked')
+		if (data == 'blocked') {
 			res.json('blocked');
-		else
+			return ;
+		} else {
 			res.json('unblocked');
+			return ;
+		}
 	}, function(err) {
 		res.json('failure');
 	})
