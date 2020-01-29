@@ -344,12 +344,12 @@ $("#userNewPass").keyup(function(event) {
 });
 
 $("#userNewPass").on("keyup", function(){
-	$("#pwPara").text("");
+	$("#pwParaE").text("");
 	$("#updatePassword").prop("disabled", true);
 	checkPass($("#userNewPass").val()).then((ret) => {
 		$("#updatePassword").prop("disabled", false);
 	}, (err) => {
-		$('#pwPara').text(err);
+		$('#pwParaE').text(err);
 	});
 });
 

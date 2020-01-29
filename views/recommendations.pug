@@ -52,16 +52,22 @@ html
 								hr
 								
 								input#minFame.form-control(type='text', placeholder='Minimum Fame', name='fameMin')
+								small#fameHelpBlock.form-text.text-muted
+									| Minimum Fame level
 								br
 								
 								input#ageDiff.form-control(type='text', placeholder='Age Range', name='ageDiff')
+								small#ageHelpBlock.form-text.text-muted
+									| A maximum age range, to display x years above and below your age.
 								br
 								
 								input#DistanceDiff.form-control(type='text', placeholder='Max Distance', name='DistanceDiff')
+								small#distanceHelpBlock.form-text.text-muted
+									| The Maximum distance from you that you're willing to view people.
 								br
 
 								input#userInterests.form-control(type='text' placeholder='Interest' name='userInterests')
-								small#usernameHelpBlock.form-text.text-muted
+								small#interestHelpBlock.form-text.text-muted
 									| Only one interest
 				
 						button#Submit.btn.btn-success.btn-block.btn-lg(type='button', onclick='sendParams();', name='filterSort') Apply
