@@ -180,37 +180,37 @@ var setupTables = function setupTables() {
 	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("nharris","harrisn@legit-email.co.za", "", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Nadia", "Harris", 'bi', 'Female', 23, 1, 1, 29, 3, 20, "Lorem Ipsum", -33.9655, 18.4783, '2019-11-9 21:12', '8eb7fbd816cdf187605bbb3c9a9ae14e')`);
+	("nharris","harrisn@legit-email.co.za", "https://res.cloudinary.com/matchawtc/image/upload/v1580410924/userImages/oarnntonsjwflfh70vub.jpg", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Nadia", "Harris", 'bi', 'Female', 23, 1, 1, 29, 3, 20, "Lorem Ipsum", -33.9655, 18.4783, '2019-11-9 21:12', '8eb7fbd816cdf187605bbb3c9a9ae14e')`);
 
 	DB.query(`INSERT INTO users
 	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("vera","veronica@legit-email.co.za", "", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Veronica", "Clarke", 'hetero', 'Female', 30, 1, 1, 30, 12, 18, "Lorem Ipsum", -33.9518, 18.3825, '2019-12-17 10:09', '4341dfaa7259082022147afd371b69c3')`);
+	("vera","veronica@legit-email.co.za", "https://res.cloudinary.com/matchawtc/image/upload/v1580410710/userImages/rgbuhbk6pkh6zjdkdgsd.jpg", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Veronica", "Clarke", 'hetero', 'Female', 30, 1, 1, 30, 12, 18, "Lorem Ipsum", -33.9518, 18.3825, '2019-12-17 10:09', '4341dfaa7259082022147afd371b69c3')`);
 
 	DB.query(`INSERT INTO users
 	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("skyzer","skyzer@legit-email.co.za", "", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Skye", "Hubbard", 'homo', 'Female', 15, 1, 1, 43, 4, 11, "Lorem Ipsum", -34.0538, 24.923, '2020-01-02 01:12', 'f0dd736148864cbfadf0841c7f1b86ca')`);
+	("skyzer","skyzer@legit-email.co.za", "https://res.cloudinary.com/matchawtc/image/upload/v1580410457/userImages/tquzyuhf0g1kxhwk5c9x.jpg", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Skye", "Hubbard", 'homo', 'Female', 15, 1, 1, 43, 4, 11, "Lorem Ipsum", -34.0538, 24.923, '2020-01-02 01:12', 'f0dd736148864cbfadf0841c7f1b86ca')`);
 
 	DB.query(`INSERT INTO users
 	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("devon","dev@legit-email.co.za", "", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Devon", "Bolton", 'bi', 'Male', 26, 1, 1, 17, 26, 0, "Lorem Ipsum", -34.0502, 18.5036, '2020-01-15 03:40', '6fd72a631eae188cbf8b9b767a6b8a8b')`);
+	("devon","dev@legit-email.co.za", "https://res.cloudinary.com/matchawtc/image/upload/v1580410240/userImages/i9sbg5r3iwvkzifjd9qa.jpg", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Devon", "Bolton", 'bi', 'Male', 26, 1, 1, 17, 26, 0, "Lorem Ipsum", -34.0502, 18.5036, '2020-01-15 03:40', '6fd72a631eae188cbf8b9b767a6b8a8b')`);
 	
 	DB.query(`INSERT INTO users
 	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("johnnysilv","samurai@legit-email.co.za", "", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Johnny", "Silverhands", 'hetero', 'Male', 50, 1, 1, 26, 23, 37, "Lorem Ipsum", -33.8908, 18.5100, '2020-09-17 00:01', 'eb56c37a7f2efe27652d3ea6c16182e7')`);
+	("johnnysilv","samurai@legit-email.co.za", "https://res.cloudinary.com/matchawtc/image/upload/v1580410124/userImages/s1s2f0gq6pcxrdygea0k.jpg", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Johnny", "Silverhands", 'hetero', 'Male', 50, 1, 1, 26, 23, 37, "Lorem Ipsum", -33.8908, 18.5100, '2020-09-17 00:01', 'eb56c37a7f2efe27652d3ea6c16182e7')`);
 					// vvv FAKE USER vvv
 	DB.query(`INSERT INTO users
 	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
 	
 	VALUES
-	("bigboss","bossman@legit-email.co.za", "", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Big", "Boss", 'homo', 'Male', 18, 1, 1, 41, 38, -20, "Lorem Ipsum", 25.1179, 55.1333, '2020-01-29 09:21', '747bda46b83d0f642ccb846d9a8c1cbe')`);
+	("bigboss","bossman@legit-email.co.za", "https://res.cloudinary.com/matchawtc/image/upload/v1580409844/userImages/lzixreakf9yb5uht33ee.jpg", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Big", "Boss", 'homo', 'Male', 18, 1, 1, 41, 38, -20, "Lorem Ipsum", 25.1179, 55.1333, '2020-01-29 09:21', '747bda46b83d0f642ccb846d9a8c1cbe')`);
 
 	// IMAGES - Profile Images
 
@@ -262,41 +262,41 @@ var setupTables = function setupTables() {
 	DB.query(`INSERT INTO images VALUES
 	("17","http://res.cloudinary.com/matchawtc/image/upload/v1579359558/userImages/zuplqlxqvhgnmbmidcoi.jpg", 1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("nharris","",1)`);
+	VALUES
+	("nharris","https://res.cloudinary.com/matchawtc/image/upload/v1580410924/userImages/oarnntonsjwflfh70vub.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("vera","",1)`);
+	VALUES
+	("vera","https://res.cloudinary.com/matchawtc/image/upload/v1580410710/userImages/rgbuhbk6pkh6zjdkdgsd.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("skyzer","",1)`);
+	VALUES
+	("skyzer","https://res.cloudinary.com/matchawtc/image/upload/v1580410457/userImages/tquzyuhf0g1kxhwk5c9x.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("johnnysilv","",1)`);
+	VALUES
+	("johnnysilv","https://res.cloudinary.com/matchawtc/image/upload/v1580410124/userImages/s1s2f0gq6pcxrdygea0k.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("bigboss","",1)`);
+	VALUES
+	("bigboss","https://res.cloudinary.com/matchawtc/image/upload/v1580409844/userImages/lzixreakf9yb5uht33ee.jpg",1)`);
 
-	// DB.query(`INSERT INTO images
-	// (imageOwner, image, active)
+	DB.query(`INSERT INTO images
+	(imageOwner, image, active)
 
-	// VALUES
-	// ("devon","",1)`);
+	VALUES
+	("devon","https://res.cloudinary.com/matchawtc/image/upload/v1580410240/userImages/i9sbg5r3iwvkzifjd9qa.jpg",1)`);
 
 	// IMAGES - random 2nd test image
 
@@ -366,8 +366,8 @@ var setupTables = function setupTables() {
 	DB.query(`INSERT INTO images VALUES
 	("johnnysilv", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 					// vvv FAKE USER vvv
-	// DB.query(`INSERT INTO images VALUES
-	// ("bigboss", "", 0)`);
+	DB.query(`INSERT INTO images VALUES
+	("bigboss", "https://image.shutterstock.com/image-photo/dubai-uae-november-15-2017-600w-778759507.jpg", 0)`);
 
 
 	DB.query(`INSERT INTO interests VALUES ("#music", "01")`);
