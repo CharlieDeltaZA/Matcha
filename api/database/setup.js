@@ -196,236 +196,217 @@ var setupTables = function setupTables() {
 
 	// IMAGES - Profile Images
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("charlie","http://res.cloudinary.com/matchawtc/image/upload/v1580151769/userImages/o7kle5svkya3b4wye6hu.jpg", 1)`);
 
-	VALUES
-	("charlie","http://res.cloudinary.com/matchawtc/image/upload/v1580151769/userImages/o7kle5svkya3b4wye6hu.jpg",1)`);
+	DB.query(`INSERT INTO images VALUES
+	("bwebb","http://res.cloudinary.com/matchawtc/image/upload/v1580153621/userImages/ogcjliuebcnuwmjlyl0s.jpg", 1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("yuuki","http://res.cloudinary.com/matchawtc/image/upload/v1580153645/userImages/ssgupuk4bo2lj45atsub.jpg", 1)`);
 
-	VALUES
-	("bwebb","http://res.cloudinary.com/matchawtc/image/upload/v1580153621/userImages/ogcjliuebcnuwmjlyl0s.jpg",1)`);
+	DB.query(`INSERT INTO images VALUES
+	("jeff","http://res.cloudinary.com/matchawtc/image/upload/v1580153634/userImages/phouboxmblhq28vzi4qd.jpg", 1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("02","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/cjigj5kilzo9ew1f45uw.jpg", 1)`);
 
-	VALUES
-	("yuuki","http://res.cloudinary.com/matchawtc/image/upload/v1580153645/userImages/ssgupuk4bo2lj45atsub.jpg",1)`);
+	DB.query(`INSERT INTO images VALUES
+	("03","http://res.cloudinary.com/matchawtc/image/upload/v1579357677/userImages/oqtftxxjmfpjqzxxjmev.jpg", 1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("04","http://res.cloudinary.com/matchawtc/image/upload/v1579357827/userImages/xuaiz8kzjxzbpoeycnqe.jpg", 1)`);
 
-	VALUES
-	("jeff","http://res.cloudinary.com/matchawtc/image/upload/v1580153634/userImages/phouboxmblhq28vzi4qd.jpg",1)`);
+	DB.query(`INSERT INTO images VALUES
+	("05","http://res.cloudinary.com/matchawtc/image/upload/v1579358508/userImages/cwwilqxqquidhbga2bij.jpg", 1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("06","http://res.cloudinary.com/matchawtc/image/upload/v1579358645/userImages/nndc2mrxlfdganrctysn.jpg", 1)`);
 
-	VALUES
-	("02","http://res.cloudinary.com/matchawtc/image/upload/v1580151878/userImages/cjigj5kilzo9ew1f45uw.jpg",1)`);
+	DB.query(`INSERT INTO images VALUES
+	("07","http://res.cloudinary.com/matchawtc/image/upload/v1579358780/userImages/axz7w06vbrkp3cybadd5.jpg", 1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("12","http://res.cloudinary.com/matchawtc/image/upload/v1579359392/userImages/vkokehnnoalmpcvohs5p.jpg", 1)`);
 
-	VALUES
-	("03","http://res.cloudinary.com/matchawtc/image/upload/v1579357677/userImages/oqtftxxjmfpjqzxxjmev.jpg",1)`);
+	DB.query(`INSERT INTO images VALUES
+	("13","http://res.cloudinary.com/matchawtc/image/upload/v1579359425/userImages/l3ryh11wsflhjiqlutdg.jpg", 1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("14","http://res.cloudinary.com/matchawtc/image/upload/v1579359462/userImages/taewpnk3qxte7ubvqeg0.jpg", 1)`);
 
-	VALUES
-	("04","http://res.cloudinary.com/matchawtc/image/upload/v1579357827/userImages/xuaiz8kzjxzbpoeycnqe.jpg",1)`);
+	DB.query(`INSERT INTO images VALUES
+	("15","http://res.cloudinary.com/matchawtc/image/upload/v1579359493/userImages/ftowzroujru1nxu21jd4.jpg", 1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("16","http://res.cloudinary.com/matchawtc/image/upload/v1579359528/userImages/hixuoduufhjcoiot5cyj.jpg", 1)`);
 
-	VALUES
-	("05","http://res.cloudinary.com/matchawtc/image/upload/v1579358508/userImages/cwwilqxqquidhbga2bij.jpg",1)`);
+	DB.query(`INSERT INTO images VALUES
+	("17","http://res.cloudinary.com/matchawtc/image/upload/v1579359558/userImages/zuplqlxqvhgnmbmidcoi.jpg", 1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
 
-	VALUES
-	("06","http://res.cloudinary.com/matchawtc/image/upload/v1579358645/userImages/nndc2mrxlfdganrctysn.jpg",1)`);
+	// VALUES
+	// ("nharris","",1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
 
-	VALUES
-	("07","http://res.cloudinary.com/matchawtc/image/upload/v1579358780/userImages/axz7w06vbrkp3cybadd5.jpg",1)`);
+	// VALUES
+	// ("vera","",1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	// DB.query(`INSERT INTO images
+	// (imageOwner, image, active)
 
-	VALUES
-	("12","http://res.cloudinary.com/matchawtc/image/upload/v1579359392/userImages/vkokehnnoalmpcvohs5p.jpg",1)`);
-
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
-	("13","http://res.cloudinary.com/matchawtc/image/upload/v1579359425/userImages/l3ryh11wsflhjiqlutdg.jpg",1)`);
-
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
-	("14","http://res.cloudinary.com/matchawtc/image/upload/v1579359462/userImages/taewpnk3qxte7ubvqeg0.jpg",1)`);
-
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
-	("15","http://res.cloudinary.com/matchawtc/image/upload/v1579359493/userImages/ftowzroujru1nxu21jd4.jpg",1)`);
-
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
-	("16","http://res.cloudinary.com/matchawtc/image/upload/v1579359528/userImages/hixuoduufhjcoiot5cyj.jpg",1)`);
-
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
-	("17","http://res.cloudinary.com/matchawtc/image/upload/v1579359558/userImages/zuplqlxqvhgnmbmidcoi.jpg",1)`);
-
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
-	("nharris","",1)`);
-
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
-	("vera","",1)`);
-
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
-	("skyzer","",1)`);
+	// VALUES
+	// ("skyzer","",1)`);
 
 	// IMAGES - random 2nd test image
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("charlie", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	VALUES
-	("charlie","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	DB.query(`INSERT INTO images VALUES
+	("bwebb", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("yuuki", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	VALUES
-	("bwebb","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
-
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
-	("yuuki","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	DB.query(`INSERT INTO images VALUES
+	("jeff", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
 	DB.query(`INSERT INTO images
 	(imageOwner, image, active)
 
 	VALUES
-	("jeff","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	("02", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("03", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	VALUES
-	("02","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	DB.query(`INSERT INTO images VALUES
+	("04", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("05", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	VALUES
-	("03","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	DB.query(`INSERT INTO images VALUES
+	("06", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("07", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	VALUES
-	("04","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	DB.query(`INSERT INTO images VALUES
+	("12", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("13", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	VALUES
-	("05","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	DB.query(`INSERT INTO images VALUES
+	("14", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("15", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	VALUES
-	("06","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	DB.query(`INSERT INTO images VALUES
+	("16", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("17", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	VALUES
-	("07","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	DB.query(`INSERT INTO images VALUES
+	("nharris", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO images VALUES
+	("vera", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	VALUES
-	("12","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	DB.query(`INSERT INTO images VALUES
+	("skyzer", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO interests VALUES ("#music", "01")`);
+	DB.query(`INSERT INTO interests VALUES ("#sports", "01")`);
 
-	VALUES
-	("13","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	DB.query(`INSERT INTO interests VALUES ("#books", "02")`);
+	DB.query(`INSERT INTO interests VALUES ("#swimming", "02")`);
+	DB.query(`INSERT INTO interests VALUES ("#writing", "02")`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO interests VALUES ("#hiking", "03")`);
+	DB.query(`INSERT INTO interests VALUES ("#outdoors", "03")`);
+	DB.query(`INSERT INTO interests VALUES ("#adventure", "03")`);
 
-	VALUES
-	("14","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	DB.query(`INSERT INTO interests VALUES ("#music", "04")`);
+	DB.query(`INSERT INTO interests VALUES ("#programming", "04")`);
+	DB.query(`INSERT INTO interests VALUES ("#work", "04")`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO interests VALUES ("#outdoors", "05")`);
+	DB.query(`INSERT INTO interests VALUES ("#programming", "05")`);
+	DB.query(`INSERT INTO interests VALUES ("#food", "05")`);
 
-	VALUES
-	("15","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	DB.query(`INSERT INTO interests VALUES ("#outdoors", "06")`);
+	DB.query(`INSERT INTO interests VALUES ("#sports", "06")`);
+	DB.query(`INSERT INTO interests VALUES ("#movies", "06")`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO interests VALUES ("#music", "07")`);
+	DB.query(`INSERT INTO interests VALUES ("#cats", "07")`);
+	DB.query(`INSERT INTO interests VALUES ("#gaming", "07")`);
 
-	VALUES
-	("16","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	DB.query(`INSERT INTO interests VALUES ("#books", "08")`);
+	DB.query(`INSERT INTO interests VALUES ("#movies", "08")`);
+	DB.query(`INSERT INTO interests VALUES ("#food", "08")`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO interests VALUES ("#hiking", "09")`);
+	DB.query(`INSERT INTO interests VALUES ("#fishing", "09")`);
+	DB.query(`INSERT INTO interests VALUES ("#work", "09")`);
+	
+	DB.query(`INSERT INTO interests VALUES ("#programming", "10")`);
+	DB.query(`INSERT INTO interests VALUES ("#beer", "10")`);
+	DB.query(`INSERT INTO interests VALUES ("#dogs", "10")`);
+	DB.query(`INSERT INTO interests VALUES ("#hunting", "10")`);
 
-	VALUES
-	("17","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	DB.query(`INSERT INTO interests VALUES ("#programming", "11")`);
+	DB.query(`INSERT INTO interests VALUES ("#work", "11")`);
+	DB.query(`INSERT INTO interests VALUES ("#jokes", "11")`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO interests VALUES ("#gym", "12")`);
+	DB.query(`INSERT INTO interests VALUES ("#programming", "12")`);
+	DB.query(`INSERT INTO interests VALUES ("#outdoors", "12")`);
+	
+	DB.query(`INSERT INTO interests VALUES ("#family", "13")`);
+	DB.query(`INSERT INTO interests VALUES ("#pizza", "13")`);
+	DB.query(`INSERT INTO interests VALUES ("#gaming", "13")`);
+	
+	DB.query(`INSERT INTO interests VALUES ("#gaming", "14")`);
+	DB.query(`INSERT INTO interests VALUES ("#dogs", "14")`);
+	DB.query(`INSERT INTO interests VALUES ("#gaming", "14")`);
+	DB.query(`INSERT INTO interests VALUES ("#dancing", "14")`);
+	
+	DB.query(`INSERT INTO interests VALUES ("#netflix", "15")`);
+	DB.query(`INSERT INTO interests VALUES ("#movies", "15")`);
+	DB.query(`INSERT INTO interests VALUES ("#dancing", "15")`);
+	
+	DB.query(`INSERT INTO interests VALUES ("#netflix", "15")`);
+	DB.query(`INSERT INTO interests VALUES ("#movies", "15")`);
+	DB.query(`INSERT INTO interests VALUES ("#dancing", "15")`);
+	DB.query(`INSERT INTO interests VALUES ("#gaming", "15")`);
 
-	VALUES
-	("nharris","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
+	DB.query(`INSERT INTO interests VALUES ("#netflix", "16")`);
+	DB.query(`INSERT INTO interests VALUES ("#movies", "16")`);
+	DB.query(`INSERT INTO interests VALUES ("#gym", "16")`);
+	DB.query(`INSERT INTO interests VALUES ("#gaming", "16")`);
+	
+	DB.query(`INSERT INTO interests VALUES ("#gym", "17")`);
+	DB.query(`INSERT INTO interests VALUES ("#programming", "17")`);
+	DB.query(`INSERT INTO interests VALUES ("#outdoors", "17")`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
+	DB.query(`INSERT INTO interests VALUES ("#programming", "18")`);
+	DB.query(`INSERT INTO interests VALUES ("#movies", "18")`);
+	DB.query(`INSERT INTO interests VALUES ("#gaming", "18")`);
 
-	VALUES
-	("vera","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
-
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
-	("skyzer","https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg",0)`);
-
+	DB.query(`INSERT INTO interests VALUES ("#programming", "19")`);
+	DB.query(`INSERT INTO interests VALUES ("#beer", "19")`);
+	DB.query(`INSERT INTO interests VALUES ("#dogs", "19")`);
+	DB.query(`INSERT INTO interests VALUES ("#hunting", "19")`);
 				});
 			}
 		});
