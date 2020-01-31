@@ -16,7 +16,7 @@ html
 						| Set one as active for it to become your profile image.
 					.container.mx-auto.mb-5.mt-2.custom-file(style='max-width: 700px;')
 						form#account(name="images", action='/user/account/images', method='POST', enctype="multipart/form-data")
-							input#profileImg.custom-file-input(type="file", name='image')
+							input#profileImg.custom-file-input(type="file", name='image', accept="image/*")
 							label.custom-file-label.mx-auto(for='profileImg') Choose File
 							button#submit.btn.btn-success.btn-block.mx-auto.my-2(type='submit') Upload
 					each value in imageArray
