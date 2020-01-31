@@ -99,18 +99,22 @@ router.post('/email', (req, res) => {
 router.post('/images', parser.array("image", 5), (req, res) => {
 	var db = new database();
 	var file = req.files;
-	Object.keys(file).forEach( function(key) {
-		const image = {};
-		image.url = file[key].url;
-		image.id = file[key].id;
-		let upload = db.uploadImage(req.session.user, image.url);
-		upload.then( function (data) {
-			db.userComplete(req.session.user);
-			res.redirect('/user/images');
-		},function (err) {
-			res.sendStatus(204).end();
-		})
-	});
+	if (file[0]) {
+		Object.keys(file).forEach( function(key) {
+			const image = {};
+			image.url = file[key].url;
+			image.id = file[key].id;
+			let upload = db.uploadImage(req.session.user, image.url);
+			upload.then( function (data) {
+				db.userComplete(req.session.user);
+				res.redirect('/user/images');
+			},function (err) {
+				res.sendStatus(204).end();
+			})
+		});
+	} else {
+		res.sendStatus(204).end();
+	}
 });
 
 router.post('/removeImage', (req, res) => {

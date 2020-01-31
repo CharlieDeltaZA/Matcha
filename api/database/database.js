@@ -414,6 +414,8 @@ class Database {
 				reject("There is no logged in session.");
 			else if (!imageURL)
 				reject("Failed to generate URL");
+			else if (imageURL == "")
+				reject("Failed to generate URL");
 			else {
 				let sql = `SELECT COUNT(*) AS imageCount FROM images WHERE imageOwner='${username}'`;
 				let rowCount = a.query(sql);
