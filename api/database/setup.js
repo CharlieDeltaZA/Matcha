@@ -212,6 +212,24 @@ var setupTables = function setupTables() {
 	VALUES
 	("bigboss","bossman@legit-email.co.za", "https://res.cloudinary.com/matchawtc/image/upload/v1580409844/userImages/lzixreakf9yb5uht33ee.jpg", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Big", "Boss", 'homo', 'Male', 18, 1, 1, 41, 38, -20, "Lorem Ipsum", 25.1179, 55.1333, '2020-01-29 09:21', '747bda46b83d0f642ccb846d9a8c1cbe')`);
 
+	DB.query(`INSERT INTO users
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
+	
+	VALUES
+	("jfred","jfred@legit-email.co.za", "https://res.cloudinary.com/matchawtc/image/upload/v1580456266/userImages/ofxp56bfncmn3juvlifc.jpg", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "James", "Fredericks", 'homo', 'Male', 2, 1, 1, 21, 9, -7, "Lorem Ipsum", -33.8209, 18.4866, '2020-01-09 13:19', 'ee81ea764a4f36df36ebbd82778cf238')`);
+
+	DB.query(`INSERT INTO users
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
+	
+	VALUES
+	("qwerty","qwerty@legit-email.co.za", "https://res.cloudinary.com/matchawtc/image/upload/v1580456274/userImages/wdx6q8xwiwem2rswo4vg.png", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Patricia", "Jade", 'hetero', 'Female', 69, 1, 1, 42, 66, 3, "Lorem Ipsum", -33.9384, 18.4522, '2019-12-29 11:29', 'd8578edf8458ce06fbc5bb76a58c5ca4')`);
+
+	DB.query(`INSERT INTO users
+	(username, userEmail, userImage, userPassword, userFirstName, userLastName, userOrientation, userGender, userLikes, userVerified, accountComplete, userAge, userDislikes, userFame, userBiography, userLocationlat, userLocationlng, lastOnline, userCode)
+	
+	VALUES
+	("sally","mustangsally@legit-email.co.za", "https://res.cloudinary.com/matchawtc/image/upload/v1580456283/userImages/boml8ikgkdxkggmsoilz.jpg", "$2b$10$m1rtnpvWg.WSXjj3.Z./1uVvcV6rMyRzvtDiOaTrAuBBjvb5Y3XFu", "Sally", "Johnson", 'bi', 'Female', 10, 1, 1, 30, 5, 5, "Lorem Ipsum", -33.8951, 18.6294, '2020-01-27 17:34', 'b8bba2baae4c2a08fdff4e223458577d')`);
+
 	// IMAGES - Profile Images
 
 	DB.query(`INSERT INTO images VALUES
@@ -262,41 +280,32 @@ var setupTables = function setupTables() {
 	DB.query(`INSERT INTO images VALUES
 	("17","http://res.cloudinary.com/matchawtc/image/upload/v1579359558/userImages/zuplqlxqvhgnmbmidcoi.jpg", 1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
+	DB.query(`INSERT INTO images VALUES
 	("nharris","https://res.cloudinary.com/matchawtc/image/upload/v1580410924/userImages/oarnntonsjwflfh70vub.jpg",1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
+	DB.query(`INSERT INTO images VALUES
 	("vera","https://res.cloudinary.com/matchawtc/image/upload/v1580410710/userImages/rgbuhbk6pkh6zjdkdgsd.jpg",1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
+	DB.query(`INSERT INTO images VALUES
 	("skyzer","https://res.cloudinary.com/matchawtc/image/upload/v1580410457/userImages/tquzyuhf0g1kxhwk5c9x.jpg",1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
+	DB.query(`INSERT INTO images VALUES
 	("johnnysilv","https://res.cloudinary.com/matchawtc/image/upload/v1580410124/userImages/s1s2f0gq6pcxrdygea0k.jpg",1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
+	DB.query(`INSERT INTO images VALUES
 	("bigboss","https://res.cloudinary.com/matchawtc/image/upload/v1580409844/userImages/lzixreakf9yb5uht33ee.jpg",1)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
+	DB.query(`INSERT INTO images VALUES
 	("devon","https://res.cloudinary.com/matchawtc/image/upload/v1580410240/userImages/i9sbg5r3iwvkzifjd9qa.jpg",1)`);
+
+	DB.query(`INSERT INTO images VALUES
+	("jfred", "https://res.cloudinary.com/matchawtc/image/upload/v1580456266/userImages/ofxp56bfncmn3juvlifc.jpg",1)`);
+
+	DB.query(`INSERT INTO images VALUES
+	("qwerty", "https://res.cloudinary.com/matchawtc/image/upload/v1580456274/userImages/wdx6q8xwiwem2rswo4vg.png",1)`);
+
+	DB.query(`INSERT INTO images VALUES
+	("sally", "https://res.cloudinary.com/matchawtc/image/upload/v1580456283/userImages/boml8ikgkdxkggmsoilz.jpg",1)`);
 
 	// IMAGES - random 2nd test image
 
@@ -312,10 +321,7 @@ var setupTables = function setupTables() {
 	DB.query(`INSERT INTO images VALUES
 	("jeff", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
-	DB.query(`INSERT INTO images
-	(imageOwner, image, active)
-
-	VALUES
+	DB.query(`INSERT INTO images VALUES
 	("02", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 
 	DB.query(`INSERT INTO images VALUES
@@ -365,13 +371,22 @@ var setupTables = function setupTables() {
 
 	DB.query(`INSERT INTO images VALUES
 	("johnnysilv", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
+	
+	DB.query(`INSERT INTO images VALUES
+	("jfred", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
+
+	DB.query(`INSERT INTO images VALUES
+	("qwerty", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
+
+	DB.query(`INSERT INTO images VALUES
+	("sally", "https://res.cloudinary.com/matchawtc/image/upload/v1579871481/userImages/olr3fym3d8vclzjpcdeu.jpg", 0)`);
 					// vvv FAKE USER vvv
 	DB.query(`INSERT INTO images VALUES
 	("bigboss", "https://image.shutterstock.com/image-photo/dubai-uae-november-15-2017-600w-778759507.jpg", 0)`);
 
 
-	DB.query(`INSERT INTO interests VALUES ("#music", "01")`);
-	DB.query(`INSERT INTO interests VALUES ("#sports", "01")`);
+	DB.query(`INSERT INTO interests VALUES ("#music", "jeff")`);
+	DB.query(`INSERT INTO interests VALUES ("#sports", "jeff")`);
 
 	DB.query(`INSERT INTO interests VALUES ("#books", "02")`);
 	DB.query(`INSERT INTO interests VALUES ("#swimming", "02")`);
@@ -397,22 +412,22 @@ var setupTables = function setupTables() {
 	DB.query(`INSERT INTO interests VALUES ("#cats", "07")`);
 	DB.query(`INSERT INTO interests VALUES ("#gaming", "07")`);
 
-	DB.query(`INSERT INTO interests VALUES ("#books", "08")`);
-	DB.query(`INSERT INTO interests VALUES ("#movies", "08")`);
-	DB.query(`INSERT INTO interests VALUES ("#food", "08")`);
+	DB.query(`INSERT INTO interests VALUES ("#books", "charlie")`);
+	DB.query(`INSERT INTO interests VALUES ("#movies", "charlie")`);
+	DB.query(`INSERT INTO interests VALUES ("#food", "charlie")`);
 
-	DB.query(`INSERT INTO interests VALUES ("#hiking", "09")`);
-	DB.query(`INSERT INTO interests VALUES ("#fishing", "09")`);
-	DB.query(`INSERT INTO interests VALUES ("#work", "09")`);
+	DB.query(`INSERT INTO interests VALUES ("#hiking", "bwebb")`);
+	DB.query(`INSERT INTO interests VALUES ("#fishing", "bwebb")`);
+	DB.query(`INSERT INTO interests VALUES ("#work", "bwebb")`);
 	
-	DB.query(`INSERT INTO interests VALUES ("#programming", "10")`);
-	DB.query(`INSERT INTO interests VALUES ("#beer", "10")`);
-	DB.query(`INSERT INTO interests VALUES ("#dogs", "10")`);
-	DB.query(`INSERT INTO interests VALUES ("#hunting", "10")`);
+	DB.query(`INSERT INTO interests VALUES ("#programming", "yuuki")`);
+	DB.query(`INSERT INTO interests VALUES ("#beer", "yuuki")`);
+	DB.query(`INSERT INTO interests VALUES ("#dogs", "yuuki")`);
+	DB.query(`INSERT INTO interests VALUES ("#hunting", "yuuki")`);
 
-	DB.query(`INSERT INTO interests VALUES ("#programming", "11")`);
-	DB.query(`INSERT INTO interests VALUES ("#work", "11")`);
-	DB.query(`INSERT INTO interests VALUES ("#jokes", "11")`);
+	DB.query(`INSERT INTO interests VALUES ("#programming", "vera")`);
+	DB.query(`INSERT INTO interests VALUES ("#work", "vera")`);
+	DB.query(`INSERT INTO interests VALUES ("#jokes", "devon")`);
 
 	DB.query(`INSERT INTO interests VALUES ("#gym", "12")`);
 	DB.query(`INSERT INTO interests VALUES ("#programming", "12")`);
@@ -445,14 +460,14 @@ var setupTables = function setupTables() {
 	DB.query(`INSERT INTO interests VALUES ("#programming", "17")`);
 	DB.query(`INSERT INTO interests VALUES ("#outdoors", "17")`);
 
-	DB.query(`INSERT INTO interests VALUES ("#programming", "18")`);
-	DB.query(`INSERT INTO interests VALUES ("#movies", "18")`);
-	DB.query(`INSERT INTO interests VALUES ("#gaming", "18")`);
+	DB.query(`INSERT INTO interests VALUES ("#programming", "nharris")`);
+	DB.query(`INSERT INTO interests VALUES ("#movies", "skyzer")`);
+	DB.query(`INSERT INTO interests VALUES ("#gaming", "nharris")`);
 
-	DB.query(`INSERT INTO interests VALUES ("#programming", "19")`);
-	DB.query(`INSERT INTO interests VALUES ("#beer", "19")`);
-	DB.query(`INSERT INTO interests VALUES ("#dogs", "19")`);
-	DB.query(`INSERT INTO interests VALUES ("#hunting", "19")`);
+	DB.query(`INSERT INTO interests VALUES ("#programming", "samurai")`);
+	DB.query(`INSERT INTO interests VALUES ("#beer", "samurai")`);
+	DB.query(`INSERT INTO interests VALUES ("#dogs", "samurai")`);
+	DB.query(`INSERT INTO interests VALUES ("#hunting", "samurai")`);
 				});
 			}
 		});
