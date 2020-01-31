@@ -442,9 +442,9 @@ var setupTables = function setupTables() {
 	DB.query(`INSERT INTO interests VALUES ("#gaming", "14")`);
 	DB.query(`INSERT INTO interests VALUES ("#dancing", "14")`);
 	
-	DB.query(`INSERT INTO interests VALUES ("#netflix", "15")`);
-	DB.query(`INSERT INTO interests VALUES ("#movies", "15")`);
-	DB.query(`INSERT INTO interests VALUES ("#dancing", "15")`);
+	DB.query(`INSERT INTO interests VALUES ("#netflix", "bigboss")`);
+	DB.query(`INSERT INTO interests VALUES ("#movies", "bigboss")`);
+	DB.query(`INSERT INTO interests VALUES ("#dancing", "vera")`);
 	
 	DB.query(`INSERT INTO interests VALUES ("#netflix", "15")`);
 	DB.query(`INSERT INTO interests VALUES ("#movies", "15")`);
@@ -468,6 +468,21 @@ var setupTables = function setupTables() {
 	DB.query(`INSERT INTO interests VALUES ("#beer", "samurai")`);
 	DB.query(`INSERT INTO interests VALUES ("#dogs", "samurai")`);
 	DB.query(`INSERT INTO interests VALUES ("#hunting", "samurai")`);
+
+	DB.query(`INSERT INTO interests VALUES ("#netflix", "qwerty")`);
+	DB.query(`INSERT INTO interests VALUES ("#movies", "jfred")`);
+	DB.query(`INSERT INTO interests VALUES ("#dancing", "sally")`);
+	DB.query(`INSERT INTO interests VALUES ("#gaming", "skyzer")`);
+
+	DB.query(`INSERT INTO interests VALUES ("#gaming", "qwerty")`);
+	DB.query(`INSERT INTO interests VALUES ("#dogs", "sally")`);
+	DB.query(`INSERT INTO interests VALUES ("#family", "jfred")`);
+	DB.query(`INSERT INTO interests VALUES ("#pizza", "devon")`);
+
+	DB.query(`INSERT INTO interests VALUES ("#netflix", "jfred")`);
+	DB.query(`INSERT INTO interests VALUES ("#movies", "sally")`);
+	DB.query(`INSERT INTO interests VALUES ("#dancing", "02")`);
+	DB.query(`INSERT INTO interests VALUES ("#gaming", "jfred")`);
 				});
 			}
 		});

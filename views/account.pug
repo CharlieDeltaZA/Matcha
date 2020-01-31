@@ -108,7 +108,7 @@ html
 				.card-body
 					h4.card-title Add Interests
 					small#HelpBlock.form-text.text-muted
-						| You can add multiple interests at a time, remember to add a hashtag and leave a space between.
+						| You can add multiple interests at a time, remember to add a hashtag and leave a space between. Example: #food
 					hr
 					form#addInterests(name="interests", action='', method='POST' novalidate, onsubmit='return false')
 						input#userInterests.form-control(type='text' placeholder='Interests' name='userInterests')
@@ -122,7 +122,7 @@ html
 				.card-body
 					h4.card-title Remove Interests
 					small#HelpBlock.form-text.text-muted
-						| You can remove multiple interests at a time, remember to add a hashtag and leave a space between.
+						| You can remove multiple interests at a time, remember to add a hashtag and leave a space between. Example: #food
 					hr
 					form#removeInterests(name="interests", action='', method='POST' novalidate, onsubmit='return false')
 						input#removedInterests.form-control(type='text' placeholder='Interests' name='userInterests')
