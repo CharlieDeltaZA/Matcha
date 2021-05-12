@@ -30,7 +30,7 @@
     "multer-storage-cloudinary": "^2.2.1",
     "mysql": "^2.17.1",
     "mysql-pool": "^0.2.2",
-    "nodemailer": "^6.4.2",
+    "nodemailer": "^6.4.16",
     "nouislider": "^14.1.0",
     "pug": "^3.0.1",
     "socket.io": "^2.4.0",
